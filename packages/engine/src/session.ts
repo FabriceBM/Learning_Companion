@@ -1,4 +1,5 @@
 import type { PlannedItem, SessionPlan } from './planner.ts';
+import { DEFAULT_TUNING, type Tuning } from './tuning.ts';
 import type { Attempt } from './types.ts';
 
 export type SessionStep =
@@ -12,14 +13,8 @@ export interface SessionResult {
   retry: boolean;
 }
 
-export interface SessionRules {
-  /** After this many misses in a row, slip in a unit the child probably knows. */
-  easeOffAfterMisses: number;
-  /** After this many misses in a row, end the session kindly. */
-  stopAfterMisses: number;
-}
-
-const DEFAULT_RULES: SessionRules = { easeOffAfterMisses: 3, stopAfterMisses: 5 };
+/** After `easeOffAfterMisses` misses in a row, slip in an easier unit; after `stopAfterMisses`, end kindly. */
+export type SessionRules = Tuning['session'];
 
 /**
  * Runs one session from a plan and adapts inside it: missed units come back
@@ -36,7 +31,7 @@ export class SessionRunner {
   constructor(
     plan: SessionPlan,
     private readonly budgetSeconds: number,
-    private readonly rules: SessionRules = DEFAULT_RULES,
+    private readonly rules: SessionRules = DEFAULT_TUNING.session,
   ) {
     this.queue = plan.items.map((item) => ({ item, retry: false }));
   }

@@ -1,0 +1,35 @@
+{
+  "mode": "by_heart",
+  "subject": "French",
+  "language": "fr",
+  "title": "Le Corbeau et le Renard (début)",
+  "summary": "Les neuf premiers vers de la fable de La Fontaine, à réciter. Le renard flatte le corbeau pour lui prendre son fromage.",
+  "units": [
+    {
+      "key": "morale",
+      "kind": "concept",
+      "notion": "Fables: the moral",
+      "title": "La morale de la fable",
+      "statement": "Tout flatteur vit aux dépens de celui qui l'écoute.",
+      "importance": "expected",
+      "prerequisites": [],
+      "probes": [
+        {
+          "level": "explain",
+          "prompt": "Pourquoi le renard fait-il des compliments au corbeau ?",
+          "answer": "Pour qu'il ouvre le bec et lâche le fromage : le flatteur profite de celui qui l'écoute.",
+          "choices": null,
+          "grading": "rubric"
+        }
+      ],
+      "misconceptions": [
+        "Croire que le renard trouve vraiment le corbeau beau"
+      ],
+      "source_quote": "",
+      "uncertain": false
+    }
+  ],
+  "verbatim_text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau !\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+  "figure_labels": [],
+  "unreadable_parts": []
+}

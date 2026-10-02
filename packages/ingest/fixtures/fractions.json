@@ -1,0 +1,160 @@
+{
+  "mode": "understand",
+  "subject": "Maths",
+  "language": "fr",
+  "title": "Additionner des fractions",
+  "summary": "Comment additionner deux fractions quand elles ont le même dénominateur, puis quand un dénominateur est un multiple de l'autre. La leçon s'appuie sur les fractions égales.",
+  "units": [
+    {
+      "key": "vocabulaire-fraction",
+      "kind": "term",
+      "notion": "Fractions: numerator and denominator",
+      "title": "Numérateur et dénominateur",
+      "statement": "Dans la fraction a/b, a est le numérateur et b est le dénominateur (b ≠ 0).",
+      "importance": "foundational",
+      "prerequisites": [],
+      "probes": [
+        {
+          "level": "recognize",
+          "prompt": "Dans 3/8, quel nombre est le dénominateur ?",
+          "answer": "8",
+          "choices": [
+            "3",
+            "8",
+            "11",
+            "24"
+          ],
+          "grading": "exact"
+        },
+        {
+          "level": "recall",
+          "prompt": "Comment s'appelle le nombre du haut dans une fraction ?",
+          "answer": "le numérateur",
+          "choices": null,
+          "grading": "accent_sensitive"
+        }
+      ],
+      "misconceptions": [
+        "Confondre numérateur et dénominateur"
+      ],
+      "source_quote": "a/b : a est le numérateur, b est le dénominateur",
+      "uncertain": false
+    },
+    {
+      "key": "fractions-egales",
+      "kind": "rule",
+      "notion": "Equivalent fractions",
+      "title": "Fractions égales",
+      "statement": "On ne change pas une fraction en multipliant (ou en divisant) son numérateur et son dénominateur par un même nombre non nul.",
+      "importance": "foundational",
+      "prerequisites": [
+        "vocabulaire-fraction"
+      ],
+      "probes": [
+        {
+          "level": "recall",
+          "prompt": "Complète : 3/4 = …/8",
+          "answer": "6",
+          "choices": null,
+          "grading": "numeric"
+        },
+        {
+          "level": "apply",
+          "prompt": "Complète : 5/6 = …/18",
+          "answer": "15",
+          "choices": null,
+          "grading": "numeric"
+        },
+        {
+          "level": "explain",
+          "prompt": "Pourquoi 2/3 et 4/6 sont-elles égales ?",
+          "answer": "On multiplie le numérateur et le dénominateur par le même nombre (2) : la fraction ne change pas.",
+          "choices": null,
+          "grading": "rubric"
+        }
+      ],
+      "misconceptions": [
+        "Ajouter le même nombre en haut et en bas (2/3 = 3/4)"
+      ],
+      "source_quote": "On ne change pas une fraction en multipliant son numérateur et son dénominateur par un même nombre",
+      "uncertain": false
+    },
+    {
+      "key": "addition-meme-denominateur",
+      "kind": "procedure",
+      "notion": "Adding and subtracting fractions",
+      "title": "Additionner avec le même dénominateur",
+      "statement": "Pour additionner deux fractions de même dénominateur, on additionne les numérateurs et on garde le dénominateur.",
+      "importance": "expected",
+      "prerequisites": [
+        "vocabulaire-fraction"
+      ],
+      "probes": [
+        {
+          "level": "recall",
+          "prompt": "Calcule : 2/7 + 3/7",
+          "answer": "5/7",
+          "choices": null,
+          "grading": "numeric"
+        },
+        {
+          "level": "apply",
+          "prompt": "Calcule : 4/11 + 5/11",
+          "answer": "9/11",
+          "choices": null,
+          "grading": "numeric"
+        }
+      ],
+      "misconceptions": [
+        "Additionner aussi les dénominateurs (2/7 + 3/7 = 5/14)"
+      ],
+      "source_quote": "on additionne les numérateurs et on garde le dénominateur",
+      "uncertain": false
+    },
+    {
+      "key": "addition-denominateur-multiple",
+      "kind": "procedure",
+      "notion": "Adding and subtracting fractions",
+      "title": "Additionner quand un dénominateur est multiple de l'autre",
+      "statement": "On écrit d'abord les deux fractions avec le même dénominateur, puis on additionne les numérateurs.",
+      "importance": "expected",
+      "prerequisites": [
+        "fractions-egales",
+        "addition-meme-denominateur"
+      ],
+      "probes": [
+        {
+          "level": "recall",
+          "prompt": "Calcule : 3/4 + 1/8",
+          "answer": "7/8",
+          "choices": null,
+          "grading": "numeric"
+        },
+        {
+          "level": "apply",
+          "prompt": "Calcule : 2/5 + 3/10",
+          "answer": "7/10",
+          "choices": null,
+          "grading": "numeric"
+        },
+        {
+          "level": "explain",
+          "prompt": "Pourquoi 3/4 + 1/8 ne fait pas 4/12 ?",
+          "answer": "On ne peut additionner les numérateurs que si les dénominateurs sont égaux : 3/4 = 6/8, donc 6/8 + 1/8 = 7/8.",
+          "choices": null,
+          "grading": "rubric"
+        }
+      ],
+      "misconceptions": [
+        "Additionner numérateurs et dénominateurs (3/4 + 1/8 = 4/12)"
+      ],
+      "source_quote": "Ex : 3/4 + 1/8 = 6/8 + 1/8 = 7/8",
+      "uncertain": true
+    }
+  ],
+  "unreadable_parts": [
+    "Bas de la page 2 : l'exercice 4 est coupé par la photo."
+  ],
+  "verbatim_text": null,
+  "figure_labels": []
+}

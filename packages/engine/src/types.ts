@@ -10,7 +10,9 @@ export type KnowledgeKind =
   | 'rule' // grammar, spelling, sign rules (with exceptions)
   | 'procedure' // methods: adding fractions, solving an equation
   | 'concept' // ideas that need explaining: why the seasons change
-  | 'formula';
+  | 'formula'
+  | 'verbatim' // learned word for word: a poem, a definition (by-heart.ts)
+  | 'label'; // a label on a map or diagram, learned by blanking it (by-heart.ts)
 
 /**
  * Question forms, from easiest to hardest. The same unit climbs this ladder as
@@ -30,6 +32,8 @@ export interface KnowledgeUnit {
   prerequisites: string[];
   /** Tests or projects this unit counts for. */
   goalIds: string[];
+  /** The notion on the knowledge map this unit belongs to (see knowledge-map.ts). */
+  notionId?: string;
   /**
    * Cumulative knowledge (times tables, conjugations) keeps a normal retention
    * target after its tests; one-off material drops to a cheap maintenance level.
@@ -49,8 +53,12 @@ export interface LearnerProfile {
   name: string;
   /** FSRS-6 weights fitted to this learner's history; undefined means population defaults. */
   weights?: readonly number[];
-  /** Agreed between child and parent; the planner never exceeds it. */
-  dailyBudgetMinutes: number;
+  /** Length of one session, agreed between child and parent; the planner never exceeds it. */
+  sessionMinutes: number;
+  /** Most sessions in a day, each at least `minGapMinutes` after the previous one. */
+  sessionsPerDay: number;
+  minGapMinutes: number;
+  /** New units per day, across all of the day's sessions. */
   maxNewPerDay: number;
   /** Typical seconds per question at each level, learned from the learner's history. */
   secondsPerProbe: Record<ProbeLevel, number>;

@@ -16,7 +16,7 @@ function backlog(): ItemState[] {
 
 describe('planSession', () => {
   it('never exceeds the time budget and reports what it deferred', () => {
-    const plan = planSession({ learner: learner({ dailyBudgetMinutes: 5 }), items: backlog(), goals: [], now: NOW, memory });
+    const plan = planSession({ learner: learner({ sessionMinutes: 5 }), items: backlog(), goals: [], now: NOW, memory });
     const seconds = plan.items.reduce((s, i) => s + i.seconds, 0);
     assert.ok(seconds <= 5 * 60);
     assert.ok(plan.deferred > 0);
@@ -24,7 +24,7 @@ describe('planSession', () => {
   });
 
   it('interleaves subjects', () => {
-    const plan = planSession({ learner: learner({ dailyBudgetMinutes: 8 }), items: backlog(), goals: [], now: NOW, memory });
+    const plan = planSession({ learner: learner({ sessionMinutes: 8 }), items: backlog(), goals: [], now: NOW, memory });
     for (let i = 2; i < plan.items.length; i++) {
       const run = plan.items.slice(i - 2, i + 1).map((p) => p.subject);
       assert.ok(new Set(run).size > 1, `three ${run[0]} in a row at ${i}`);
@@ -32,7 +32,7 @@ describe('planSession', () => {
   });
 
   it('opens and closes on units the child probably knows', () => {
-    const plan = planSession({ learner: learner({ dailyBudgetMinutes: 8 }), items: backlog(), goals: [], now: NOW, memory });
+    const plan = planSession({ learner: learner({ sessionMinutes: 8 }), items: backlog(), goals: [], now: NOW, memory });
     const recalls = plan.items.filter((i) => i.kind === 'review').map((i) => i.recall).sort((a, b) => b - a);
     assert.equal(plan.items[0]!.recall, recalls[0]);
     assert.equal(plan.items.at(-1)!.recall, recalls[1]);
@@ -53,7 +53,7 @@ describe('planSession', () => {
 });
 
 describe('SessionRunner', () => {
-  const plan = planSession({ learner: learner({ dailyBudgetMinutes: 6 }), items: backlog(), goals: [], now: NOW, memory });
+  const plan = planSession({ learner: learner({ sessionMinutes: 6 }), items: backlog(), goals: [], now: NOW, memory });
   const wrong = { correct: false, latencyMs: 6000, hintsUsed: 0, level: 'recall' as const };
 
   it('ends kindly after a run of misses', () => {

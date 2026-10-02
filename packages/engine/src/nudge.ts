@@ -1,4 +1,5 @@
 import { sampleBeta, type Rng } from './random.ts';
+import { DEFAULT_TUNING, type Tuning } from './tuning.ts';
 
 /** A time slot the family agreed on, e.g. "after school", weekdays 17:00-18:30. */
 export interface NudgeWindow {
@@ -40,19 +41,6 @@ export type NudgeDecision =
   | { send: false; reason: string }
   | { send: true; at: Date; windowId: string; text: string; reason: string };
 
-export const NUDGE_RULES = {
-  /** Reminders pause once the child starts on their own on this share of active days... */
-  selfStartShare: 0.8,
-  /** ...measured over this many recent days... */
-  lookbackDays: 14,
-  /** ...with at least this many active days. */
-  minActiveDays: 7,
-  /** After this many ignored reminders in a row, remind every other day only. */
-  backoffAfterIgnored: 3,
-  /** After this many, stop reminding the child; parents see it in the weekly summary. */
-  stopAfterIgnored: 6,
-} as const;
-
 export interface NudgeContext {
   sessionDoneToday: boolean;
   remindersSentToday: number;
@@ -67,7 +55,13 @@ export interface NudgeContext {
  * starts on their own, back off when ignored, and never escalate. The time slot
  * is learned per child with Thompson sampling over the agreed windows.
  */
-export function decideNudge(now: Date, settings: NudgeSettings, state: NudgeState, ctx: NudgeContext): NudgeDecision {
+export function decideNudge(
+  now: Date,
+  settings: NudgeSettings,
+  state: NudgeState,
+  ctx: NudgeContext,
+  rules: Tuning['reminders'] = DEFAULT_TUNING.reminders,
+): NudgeDecision {
   const no = (reason: string): NudgeDecision => ({ send: false, reason });
 
   if (settings.maxPerDay <= 0) return no('Reminders are switched off.');
@@ -76,15 +70,15 @@ export function decideNudge(now: Date, settings: NudgeSettings, state: NudgeStat
   if (settings.restDays.includes(now.getDay())) return no('Rest day.');
   if (ctx.remindersSentToday >= settings.maxPerDay) return no('Daily reminder limit reached.');
 
-  const active = state.days.slice(-NUDGE_RULES.lookbackDays).filter((d) => d.sessionDone);
+  const active = state.days.slice(-rules.lookbackDays).filter((d) => d.sessionDone);
   const selfStarted = active.filter((d) => d.selfStarted).length;
-  if (active.length >= NUDGE_RULES.minActiveDays && selfStarted / active.length >= NUDGE_RULES.selfStartShare) {
+  if (active.length >= rules.minActiveDays && selfStarted / active.length >= rules.selfStartShare) {
     return no('Habit formed: started on their own on most days, so reminders pause.');
   }
-  if (state.ignoredStreak >= NUDGE_RULES.stopAfterIgnored) {
+  if (state.ignoredStreak >= rules.stopAfterIgnored) {
     return no('Reminders were ignored several times in a row: stopped. Parents see it in the weekly summary.');
   }
-  if (state.ignoredStreak >= NUDGE_RULES.backoffAfterIgnored && state.days.at(-1)?.nudged) {
+  if (state.ignoredStreak >= rules.backoffAfterIgnored && state.days.at(-1)?.nudged) {
     return no('Backing off after ignored reminders: none today.');
   }
 

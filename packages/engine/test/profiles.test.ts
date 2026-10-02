@@ -3,7 +3,7 @@ import { describe, it } from 'node:test';
 import { ageBand, defaultsForAge, withinLimits } from '../src/index.ts';
 
 describe('age bands', () => {
-  it('maps children 10–13 onto cycle 3 and cycle 4, and parents onto the adult band', () => {
+  it('maps children 10–13 onto two child bands, and parents onto the adult band', () => {
     assert.deepEqual([10, 11, 12, 13, 40].map(ageBand), ['child', 'child', 'young-teen', 'young-teen', 'adult']);
   });
 
@@ -14,11 +14,11 @@ describe('age bands', () => {
     assert.equal(defaultsForAge(40).visibility, 'learner-only');
   });
 
-  it('keeps what a family chooses inside the band limits', () => {
-    const child = withinLimits(10, { dailyBudgetMinutes: 60, maxRemindersPerDay: 3, maxNewPerDay: 30 });
-    assert.deepEqual(child, { dailyBudgetMinutes: 15, maxRemindersPerDay: 1, maxNewPerDay: 6 });
-    const parent = withinLimits(40, { dailyBudgetMinutes: 40, maxRemindersPerDay: 2, maxNewPerDay: 12 });
-    assert.deepEqual(parent, { dailyBudgetMinutes: 40, maxRemindersPerDay: 2, maxNewPerDay: 12 });
+  it('allows up to five sessions of up to 15 minutes for a child, and no more', () => {
+    const child = withinLimits(11, { sessionMinutes: 30, sessionsPerDay: 8, maxRemindersPerDay: 3, maxNewPerDay: 30 });
+    assert.deepEqual(child, { sessionMinutes: 15, sessionsPerDay: 5, maxRemindersPerDay: 1, maxNewPerDay: 10 });
+    const parent = withinLimits(40, { sessionMinutes: 25, sessionsPerDay: 3, maxRemindersPerDay: 2, maxNewPerDay: 12 });
+    assert.deepEqual(parent, { sessionMinutes: 25, sessionsPerDay: 3, maxRemindersPerDay: 2, maxNewPerDay: 12 });
   });
 
   it('never allows more than one reminder a day for a child', () => {

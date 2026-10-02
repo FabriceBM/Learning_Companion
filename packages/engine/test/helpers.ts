@@ -21,7 +21,9 @@ export function learner(overrides: Partial<LearnerProfile> = {}): LearnerProfile
   return {
     id: 'lea',
     name: 'Léa',
-    dailyBudgetMinutes: 10,
+    sessionMinutes: 10,
+    sessionsPerDay: 1,
+    minGapMinutes: 90,
     maxNewPerDay: 6,
     secondsPerProbe: { recognize: 8, recall: 12, apply: 20, explain: 35 },
     latencyMs: { p25: 3000, p75: 9000 },

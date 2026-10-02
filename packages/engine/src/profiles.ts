@@ -1,7 +1,8 @@
 /**
- * The app is for children aged 10 to 13 (CM2 to 4e) and their parents, who
- * learn too. Defaults and hard limits follow the age band: a family can choose
- * anything inside the band's limits, never outside them.
+ * The app is for children aged 10 to 13 and their parents, who learn too.
+ * Knowledge is measured on an absolute map (knowledge-map.ts), not by school
+ * grade, so bands only set time limits, answer modes and who sees what. A
+ * family can choose anything inside a band's limits, never outside them.
  */
 
 export type AgeBand = 'child' | 'young-teen' | 'adult';
@@ -13,12 +14,18 @@ export type ProgressVisibility =
   | 'family' // children: parents see progress, and the child sees exactly what parents see
   | 'learner-only'; // parents' own learning: nobody else sees it unless they share it
 
+type Range = [min: number, max: number];
+
 export interface BandDefaults {
   band: AgeBand;
-  /** In the French system */
-  stage: string;
-  dailyBudgetMinutes: number;
-  budgetRange: [min: number, max: number];
+  /** One session: short enough to stay sharp. */
+  sessionMinutes: number;
+  sessionRange: Range;
+  /** Sessions allowed per day; each one is still finite. */
+  sessionsPerDay: number;
+  sessionsPerDayRange: Range;
+  /** Minimum break between two sessions: spacing within the day helps memory. */
+  minGapMinutes: number;
   maxNewPerDay: number;
   maxRemindersPerDay: number;
   answerModes: AnswerMode[];
@@ -30,10 +37,12 @@ export interface BandDefaults {
 const BANDS: Record<AgeBand, BandDefaults> = {
   child: {
     band: 'child',
-    stage: 'CM2–6e, cycle 3 (10–11)',
-    dailyBudgetMinutes: 10,
-    budgetRange: [5, 15],
-    maxNewPerDay: 6,
+    sessionMinutes: 10,
+    sessionRange: [5, 15],
+    sessionsPerDay: 2,
+    sessionsPerDayRange: [1, 5],
+    minGapMinutes: 90,
+    maxNewPerDay: 10,
     maxRemindersPerDay: 1,
     answerModes: ['choices', 'voice', 'short-text'],
     visibility: 'family',
@@ -41,10 +50,12 @@ const BANDS: Record<AgeBand, BandDefaults> = {
   },
   'young-teen': {
     band: 'young-teen',
-    stage: '5e–4e, cycle 4 (12–13)',
-    dailyBudgetMinutes: 15,
-    budgetRange: [5, 20],
-    maxNewPerDay: 8,
+    sessionMinutes: 12,
+    sessionRange: [5, 15],
+    sessionsPerDay: 2,
+    sessionsPerDayRange: [1, 5],
+    minGapMinutes: 90,
+    maxNewPerDay: 14,
     maxRemindersPerDay: 1,
     // free text means a sentence or two for "explain" questions
     answerModes: ['choices', 'voice', 'short-text', 'maths', 'free-text'],
@@ -53,10 +64,12 @@ const BANDS: Record<AgeBand, BandDefaults> = {
   },
   adult: {
     band: 'adult',
-    stage: 'parents, their own topics',
-    dailyBudgetMinutes: 20,
-    budgetRange: [5, 45],
-    maxNewPerDay: 15,
+    sessionMinutes: 15,
+    sessionRange: [5, 30],
+    sessionsPerDay: 2,
+    sessionsPerDayRange: [1, 5],
+    minGapMinutes: 60,
+    maxNewPerDay: 20,
     maxRemindersPerDay: 2,
     answerModes: ['choices', 'voice', 'short-text', 'maths', 'free-text'],
     visibility: 'learner-only',
@@ -64,10 +77,7 @@ const BANDS: Record<AgeBand, BandDefaults> = {
   },
 };
 
-/**
- * Children outside 10–13 fall back to the nearest child band; the stricter
- * child limits also apply to any minor until teen rules are designed.
- */
+/** Children outside 10–13 fall back to the nearest child band; any minor keeps the child limits. */
 export function ageBand(age: number): AgeBand {
   if (age < 12) return 'child';
   if (age < 18) return 'young-teen';
@@ -78,16 +88,21 @@ export function defaultsForAge(age: number): BandDefaults {
   return BANDS[ageBand(age)];
 }
 
+export interface DailyLimits {
+  sessionMinutes: number;
+  sessionsPerDay: number;
+  maxRemindersPerDay: number;
+  maxNewPerDay: number;
+}
+
 /** Keep what a family or learner chose inside the limits of the learner's age band. */
-export function withinLimits(
-  age: number,
-  chosen: { dailyBudgetMinutes: number; maxRemindersPerDay: number; maxNewPerDay: number },
-): { dailyBudgetMinutes: number; maxRemindersPerDay: number; maxNewPerDay: number } {
+export function withinLimits(age: number, chosen: DailyLimits): DailyLimits {
   const d = defaultsForAge(age);
-  const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+  const clamp = (v: number, [lo, hi]: Range) => Math.min(hi, Math.max(lo, v));
   return {
-    dailyBudgetMinutes: clamp(chosen.dailyBudgetMinutes, d.budgetRange[0], d.budgetRange[1]),
-    maxRemindersPerDay: clamp(chosen.maxRemindersPerDay, 0, d.maxRemindersPerDay),
-    maxNewPerDay: clamp(chosen.maxNewPerDay, 0, d.maxNewPerDay),
+    sessionMinutes: clamp(chosen.sessionMinutes, d.sessionRange),
+    sessionsPerDay: clamp(chosen.sessionsPerDay, d.sessionsPerDayRange),
+    maxRemindersPerDay: clamp(chosen.maxRemindersPerDay, [0, d.maxRemindersPerDay]),
+    maxNewPerDay: clamp(chosen.maxNewPerDay, [0, d.maxNewPerDay]),
   };
 }

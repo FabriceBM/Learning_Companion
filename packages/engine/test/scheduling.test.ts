@@ -8,6 +8,7 @@ import {
   addDays,
   daysBetween,
   gradeAttempt,
+  pickProbe,
   probeLevelFor,
   relaxForLoad,
   targetRetention,
@@ -97,5 +98,23 @@ describe('AdaptiveScheduler', () => {
       return item.card!.scheduled_days;
     };
     assert.ok(intervalAfterThreeGoods(weak) < intervalAfterThreeGoods(strong));
+  });
+});
+
+describe('pickProbe', () => {
+  const probes = [
+    { id: 'chanter-ils', level: 'apply' as const },
+    { id: 'finir-nous', level: 'apply' as const },
+    { id: 'etre-il', level: 'apply' as const },
+    { id: 'ending-er', level: 'recognize' as const },
+  ];
+  it('cycles through varied questions, least recently asked first', () => {
+    const asked = new Map([['chanter-ils', 3], ['finir-nous', 1]]);
+    assert.equal(pickProbe(probes, 'apply', asked)!.id, 'etre-il');
+    asked.set('etre-il', 5);
+    assert.equal(pickProbe(probes, 'apply', asked)!.id, 'finir-nous');
+  });
+  it('falls back to an easier level when needed', () => {
+    assert.equal(pickProbe(probes, 'recall', new Map())!.id, 'ending-er');
   });
 });

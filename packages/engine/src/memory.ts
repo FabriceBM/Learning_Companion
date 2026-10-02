@@ -1,5 +1,12 @@
 import { createEmptyCard, default_w, forgetting_curve, fsrs, State, type Card, type FSRS, type Grade } from 'ts-fsrs';
 import { daysBetween } from './time.ts';
+import { DEFAULT_TUNING } from './tuning.ts';
+
+export interface MemoryOptions {
+  /** With several sessions a day: a new or missed unit comes back after this break for a second look the same day. */
+  sameDayGapMinutes?: number;
+  maximumIntervalDays?: number;
+}
 
 /**
  * One learner's memory model (FSRS-6).
@@ -12,7 +19,10 @@ import { daysBetween } from './time.ts';
 export class MemoryModel {
   private readonly schedulers = new Map<number, FSRS>();
 
-  constructor(readonly weights: readonly number[] = default_w) {}
+  constructor(
+    readonly weights: readonly number[] = default_w,
+    readonly options: MemoryOptions = {},
+  ) {}
 
   /** Probability of recall at `at`; 0 for a unit never studied. */
   retrievability(card: Card | undefined, at: Date): number {
@@ -30,14 +40,18 @@ export class MemoryModel {
     const key = Math.round(retention * 100) / 100;
     let scheduler = this.schedulers.get(key);
     if (!scheduler) {
+      const gap = this.options.sameDayGapMinutes;
       scheduler = fsrs({
         w: [...this.weights],
         request_retention: key,
-        // Same-day retries are handled by the session, not by the long-term model.
-        enable_short_term: false,
+        // One session a day: retries happen inside the session. Several: FSRS-6
+        // models the same-day second look (new unit: two steps; missed unit: one).
+        enable_short_term: gap !== undefined,
+        learning_steps: gap !== undefined ? [`${gap}m`, `${gap}m`] : [],
+        relearning_steps: gap !== undefined ? [`${gap}m`] : [],
         // Spreads due dates so a lesson learned in one go doesn't all fall due on one day.
         enable_fuzz: true,
-        maximum_interval: 365,
+        maximum_interval: this.options.maximumIntervalDays ?? DEFAULT_TUNING.memory.maximumIntervalDays,
       });
       this.schedulers.set(key, scheduler);
     }

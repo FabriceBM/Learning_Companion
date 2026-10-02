@@ -8,6 +8,8 @@
   "scripts": {
     "test": "npm test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "simulate": "npm run simulate -w @lc/engine"
+    "simulate": "npm run simulate -w @lc/engine",
+    "params": "npm run params -w @lc/engine",
+    "push": "npm run push -w @lc/engine"
   }
 }

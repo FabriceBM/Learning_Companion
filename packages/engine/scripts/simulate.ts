@@ -157,7 +157,9 @@ interface Policy {
 const PROFILE: LearnerProfile = {
   id: 'sim',
   name: 'sim',
-  dailyBudgetMinutes: 10,
+  sessionMinutes: 10,
+  sessionsPerDay: 1,
+  minGapMinutes: 90,
   maxNewPerDay: 8,
   secondsPerProbe: { recognize: SECONDS_PER_REVIEW, recall: SECONDS_PER_REVIEW, apply: SECONDS_PER_REVIEW, explain: SECONDS_PER_REVIEW },
   latencyMs: { p25: 3000, p75: 9000 },
@@ -227,7 +229,7 @@ function fixedLadder(): Policy {
       const due = available
         .filter((ku) => state.has(ku.id) && state.get(ku.id)!.due < endOfDay)
         .sort((a, b) => state.get(a.id)!.due.getTime() - state.get(b.id)!.due.getTime());
-      const budget = PROFILE.dailyBudgetMinutes * 60;
+      const budget = PROFILE.sessionMinutes * 60;
       const picked = due.slice(0, Math.floor(budget / SECONDS_PER_REVIEW)).map((ku) => ku.id);
       let used = picked.length * SECONDS_PER_REVIEW;
       if (picked.length === due.length) {
@@ -346,7 +348,7 @@ for (const m of MINDS) {
 }
 
 const unitCount = buildUnits(seededRng(42)).length;
-console.log(`\n${DAYS} days · ${unitCount} units in ${LESSONS.length} lessons · budget ${PROFILE.dailyBudgetMinutes} min/day · Sunday off, ~10% of days missed\n`);
+console.log(`\n${DAYS} days · ${unitCount} units in ${LESSONS.length} lessons · one ${PROFILE.sessionMinutes}-min session a day · Sunday off, ~10% of days missed\n`);
 console.table(
   outcomes.map((o) => ({
     learner: o.learner,

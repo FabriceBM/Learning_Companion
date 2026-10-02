@@ -4,9 +4,13 @@ How the app decides **what** each person reviews, **when**, **how hard**, and **
 
 ```
 npm install
-npm test           # 32 tests: engine + extraction schema
+npm test           # 62 tests: engine + extraction schema
 npm run simulate   # 60-day comparison with two synthetic learners
+npm run push       # use case 2 end to end: parents push a notion → placement check → path → mission → one day of sessions
+npm run params     # regenerate docs/PARAMETERS.md from the code
 ```
+
+Every number in this document is a parameter with a default, a range and a reason: see [PARAMETERS.md](PARAMETERS.md).
 
 ## 1. Memory model: FSRS-6
 
@@ -77,11 +81,11 @@ The top of the ladder depends on the kind of knowledge: a date stops at *recall*
 
 **Test-aware scheduling** (`AdaptiveScheduler.fitToGoal`): suppose the normal interval would jump past a test, and predicted recall on test day would be below 0.95. Then the review is pulled forward to 1–2 days before the test, so there is a night of sleep between the last review and the test. Test dates also decide which new material is introduced first.
 
-**Workload control** (`relaxForLoad`): if the work needed keeps exceeding the agreed budget (more than 110% on average over a week), everyday targets go down a little, never below 0.80. Test targets are not touched. This prevents the "347 reviews due" avalanche.
+**Workload control** (`relaxForLoad`): if the work needed keeps exceeding the agreed time (more than 110% on average over a week), everyday targets go down a little, never below 0.80. Test targets are not touched. This prevents the "347 reviews due" avalanche.
 
-## 5. Session planner
+## 5. Session planner: mixed review
 
-`planSession()` builds a finite list that fits the budget:
+`planSession()` builds one finite session that fits the session length. Without a mission it is a mixed review:
 
 1. **Due reviews, most at risk first.** Priority is
    $$\text{importance} \times \text{test boost} \times \max(0.01,\; r^* - R + 0.05)$$
@@ -91,24 +95,65 @@ The top of the ladder depends on the kind of knowledge: a date stops at *recall*
    * open on a unit the child almost certainly knows (warm-up);
    * interleave subjects ([Rohrer & Taylor, 2007](ARCHITECTURE.md#references)): telling apart "which method is this?" is part of the skill;
    * close on a likely success, so the session ends on a good note.
-4. **Deferred reviews** stay due and are re-prioritised tomorrow. The count is used for workload control and is never shown to the child.
+4. **Deferred reviews** stay due and are re-prioritised in the next session. The count is used for workload control and is never shown to the child.
 
 `SessionRunner` then adapts inside the session:
 * a missed unit returns once at the end (successive relearning); the retry is not sent to the memory model;
 * after 3 misses in a row it slips in an easier unit;
 * after 5 it ends kindly;
-* it stops when the budget is used, even with items left;
+* it stops when the session length is used, even with items left;
 * the child can always stop.
 
 Each planned item carries a `why` line, for example *"Seen 6 days ago · recall now about 78% · Maths test in 4 days"*. It is shown under "Why this card?", so the schedule is never a black box.
 
-## 6. Reminders: designed to make themselves unnecessary
+## 6. Missions: the learner chooses, the session focuses
+
+`missions.ts` defines five kinds of mission: **by-heart** (a text or figure to learn word for word, use case 1), **pushed** (a notion parents pushed and its missing prerequisites, use case 2), **test** (units a dated test covers), **topic** (anything chosen freely) and **mixed** ("keep everything fresh").
+
+**Suggestions.** `suggestMissions()` ranks missions; the learner can pick any of them.
+* **Test:** scored by $b + (1 - \text{readiness}) \times \min(1, \text{window} / \text{days left})$, where readiness is the mean predicted recall on the test day and $b$ is 0.5 inside the test window (0.2 outside), so a close test leads.
+* **Pushed notion:** $0.6 \times$ the share of units not yet secure; **by heart:** $0.5 \times$ that share.
+* **Topic:** $0.3 \times$ that share.
+* **Mixed review:** $0.7 \times \text{due} / (\text{due} + 15)$, so it rises as reviews pile up without overtaking a close test.
+
+Any mission with a date (a recitation, "before September") is scored like a test.
+
+**A mission session** (`planSession({ focus })`) goes entirely to the mission:
+1. **Repair:** prerequisites of mission units with recall below `mission.repairBelowRecall` (0.8), foundations first.
+2. **Due mission reviews,** most at risk first.
+3. **New mission units** in prerequisite order. A unit may follow a prerequisite *of the same notion* introduced earlier in the session, so a notion is learned in one go. A prerequisite from another notion must already be known.
+4. **Extra practice** on mission units whose stability is below `mission.secureStabilityDays` (7), lowest recall first, until the session is full.
+
+**Order and focus:**
+* **Order:** repairs first, then by depth in the prerequisite graph, one notion at a time, ending on a likely success.
+* **Blocked inside a mission:** practising one notion at a time suits a skill being acquired. Mixed review interleaves, which helps discrimination and long-term retention ([Brunmair & Richter, 2019](ARCHITECTURE.md#references)).
+* **Other due reviews wait:** they are counted in `plan.waiting`, and a day's wait costs little.
+* **Full focus by default:** `mission.focusShare` (default 1) can reserve part of the session for the most at-risk other reviews. With full focus, a small mission makes a short session; it is never padded.
+
+**Progress.** `missionProgress()` reports units started, units secure, and readiness on the test day. A unit is secure at a stability of 7 days. That needs correct answers on separate days, which is successive relearning, not one good session. A mission is complete when every unit is secure; its units then return to normal spaced reviews.
+
+## 7. Several sessions a day
+
+`day.ts`, with limits per age band in `profiles.ts`: up to 5 sessions of 10–15 minutes, default 2, at least 90 minutes apart for a child.
+
+* **Same-day second looks.** `MemoryModel` with `sameDayGapMinutes` turns on FSRS-6 short-term steps equal to the break:
+  * a new unit gets two same-day steps;
+  * a missed unit gets one;
+  * a unit answered correctly moves on to its normal spaced schedule.
+
+  FSRS-6 models these short-term reviews itself (weights $w_{17}$–$w_{19}$). Weights are refitted with `fitWeights(log, { sameDayReviews: true })`.
+* **What is due:** `isDue()` treats units in a same-day step as due at their exact time, and everything else as due for the whole day. A morning session therefore takes the day's reviews, and a later one takes the second looks.
+* **Shared limits:** the new-unit limit is shared across the day's sessions (`newToday`).
+* **The gate:** `sessionGate()` refuses a session before the break is over or after the daily number. `nextUsefulTime()` tells the app when a session will next have something worth doing, so it never offers filler.
+* **The worked example** in [ARCHITECTURE.md §2.2](ARCHITECTURE.md#22-use-case-2-parents-push-a-notion) shows three sessions of one day on a pushed notion.
+
+## 8. Reminders: designed to make themselves unnecessary
 
 `decideNudge()` answers: should today's reminder be sent, and when?
 
 **Hard rules, checked in this order:**
 1. Reminders switched off (`maxPerDay` = 0).
-2. Today's session already done.
+2. A session already done today (later sessions start on the child's initiative).
 3. Nothing planned.
 4. Rest day.
 5. Daily cap reached (1 by default).
@@ -125,23 +170,63 @@ The opposite pattern, louder and guiltier reminders when ignored, is exactly wha
 
 **Text:** what to do and how long, starting with the child's own plan (an implementation intention, [Gollwitzer, 1999](ARCHITECTURE.md#references)): *"After my snack: 9 min today (Spanish, Maths)."* A test checks every reminder against a banned list: streak, lose, sad, miss, hurry, last chance, exclamation marks.
 
-## 7. Planned: concept graph and re-teaching
+**What the research on nudges says, and what we take from it:**
+* **Mixed but real effects:** nudges in education are cheap and often help, but effects vary a lot between settings and fade when they become noise ([Damgaard & Nielsen, 2018](ARCHITECTURE.md#references)). Large nudge programmes for older students have shown little effect ([Oreopoulos & Petronijevic, 2019](ARCHITECTURE.md#references)). Hence one reminder at most, and fewer over time.
+* **Informing parents works well:** regular, specific information sent to parents improved children's outcomes, both for school assignments ([Bergman & Chan, 2021](ARCHITECTURE.md#references)) and early literacy ([York, Loeb & Doss, 2019](ARCHITECTURE.md#references)). Hence the weekly summary, the dinner-table questions, and telling parents rather than escalating on the child.
+* **Same bandit, different goal:** Duolingo optimises its reminders with a bandit that maximises return to the app ([Yancey & Settles, 2020](ARCHITECTURE.md#references)). We use the same kind of bandit for the time slot, but count success as a useful session started, and aim to stop reminding altogether.
 
-Not implemented yet; this is the design:
+## 9. Knowledge map, gaps and placement
 
-* **Leech handling:** a unit with 4 or more lapses triggers a check of its prerequisites. Weak prerequisites are scheduled first.
-* **Re-teaching instead of drilling:** offer a new explanation, a worked example or a mnemonic generated by the extraction model, or a "teach-back" moment with a parent.
-* **Splitting:** a unit that bundles two ideas is split into two.
-* **Skill estimates:** knowledge tracing over the prerequisite graph gives a skill-level mastery estimate for the family view.
+`knowledge-map.ts`, with a sample map in `maps/maths-core.json` (22 notions from whole numbers to linear functions, Pythagoras and probability).
 
-## 8. Simulation
+* **Notions and levels.** A notion lists its prerequisites; the map rejects unknown prerequisites and cycles. A notion's level is its position on the map; where a domain has an absolute scale (CEFR for languages), the notion carries that label.
+* **Learning path.** `learningPath(targets, known)` walks down from the pushed notions, stops at known notions, and returns what is missing in prerequisite order. It becomes a pushed mission (use case 2).
+* **Varied practice.** `pickProbe()` picks the least recently asked question at the unit's level, falling back to an easier level. A rule practised in free sessions therefore cycles through varied items instead of repeating one.
+* **Placement check.** `PlacementCheck` follows Knowledge Space Theory ([Doignon & Falmagne, 1999](ARCHITECTURE.md#references)):
+  * passing a notion marks its prerequisites known; missing it marks what builds on it unknown;
+  * each question goes to the notion that settles the most notions either way;
+  * on a 16-notion chain it places a learner in 4–5 questions (tested), and in the worked example 5 questions settle 10 notions.
+  * The results are starting beliefs: once units are practised, their memory states take over.
+* **Notion status.** `notionStatus()` reads the status from its units' memories: not started, learning, fragile (some unit below 80% recall) or solid (every unit stable for 3 weeks).
+
+**Still planned:**
+* **Leech handling:** a unit with 4 or more lapses triggers a check of its prerequisites, then a new explanation, a worked example or a teach-back with a parent, and possibly a split into two units.
+* **Skill estimates:** knowledge tracing over the map ([BKT/DKT](ARCHITECTURE.md#references)) to estimate notions never asked directly.
+
+## 10. Learning by heart (use case 1)
+
+`by-heart.ts`:
+* **`chunkText(text, chunkWords)`** cuts at line ends (a single long line at punctuation) into chunks of about the learner's chunk size; a short tail joins the previous chunk.
+* **`cue(text, level)`** renders a chunk at one of four levels: `read` (full text), `first-letters`, `key-words-blank` (content words of 4+ letters hidden) or `recite` (nothing shown, punctuation and line breaks kept for rhythm).
+* **`cueFor(card)`** fades the cue as stability grows: first letters after the first meeting, key words blanked from `byHeart.keyWordsFromDays` (2), recite from `byHeart.reciteFromDays` (5).
+* **`byHeartUnits()`** creates one unit per chunk, learned in order, plus chained units "parts 1–k" that need part k and the previous chain. The last chain is the whole text.
+* **`figureUnits()`** creates one unit per hidden label of a map or diagram, plus "every label" once each is known.
+* **`compareRecitation()`** aligns the recitation with the text word by word, in order (longest common subsequence) and lists the missing words. `recitationAttempt()` maps the result to a grade: ≥ 95% correct, ≥ 85% near miss, otherwise missed.
+* **Audio mode (phase 2):** a `listen` step before `read`, and spoken recitation through on-device speech recognition, graded by the same comparison.
+
+## 11. Concentration profile
+
+`concentration.ts`. Each value starts at an age default and moves toward the learner's own data, weighted like `concentration.priorWeight` (5) sessions, so a few odd days don't swing it.
+
+| Value | Estimated from | Applied to (`applyConcentration`) |
+|---|---|---|
+| Attention span | Pooled over sessions: the first minute where accuracy stays 15 points below the start for two minutes, or answer time rises 40% | Session length = min(family limit, span) |
+| Chunk size | Largest chunk size whose first study succeeds 70% of the time | `chunkText` |
+| Switch cost | Accuracy right after a subject change versus staying on one subject | Mixed review grouped by subject above `concentration.groupAboveSwitchCost` (0.15) |
+| Best hours | Hours with the highest accuracy (at least 10 answers) | Suggested times and reminder slots |
+| Recovery | Shortest break after which a session starts at the usual accuracy | Break between sessions = max(family minimum, recovery) |
+| Frustration point | Shortest run of misses after which the next answer is a miss 60% of the time | `session.easeOffAfterMisses`, with `stopAfterMisses` two later |
+
+The test suite checks that a synthetic learner who loses focus at 7 minutes and 30 points per subject switch gets a span of 6–9 minutes, a switch cost above 0.15, and mixed reviews grouped by subject.
+
+## 12. Simulation
 
 `npm run simulate` runs 60 days with:
 * 4 subjects, one lesson per subject per week, 12 units each: 432 units in total;
 * 5 tests;
-* a 10-minute daily budget, Sundays off, and about 10% of other days missed at random.
+* one 10-minute session a day, Sundays off, and about 10% of other days missed at random.
 
-Two synthetic learners have hidden FSRS-6 memories: A forgets fast, B has a strong memory. Their hidden memory decides every answer. Three schedulers get the same budget and the same new-material limit:
+Two synthetic learners have hidden FSRS-6 memories: A forgets fast, B has a strong memory. Their hidden memory decides every answer. Three schedulers get the same session length and the same new-material limit:
 
 * **Fixed ladder:** intervals of 1-2-4-7-14-30-60 days, back to the start on a miss. This is how Leitner boxes and many apps work.
 * **FSRS, population weights:** FSRS with default weights, no knowledge of tests.
@@ -180,18 +265,27 @@ Personalisation (adaptive engine):
 * **Personal weights barely changed prediction quality here** (log loss 0.421 → 0.414 for A, 0.291 → 0.295 for B). Each unit's own memory state already absorbs most of the difference between these synthetic children. Per-user fitting does help on real review data in the public benchmark, so it stays, but it has to prove itself on this family's own logs. That is why log loss is logged per learner from day one.
 * **The learners are synthetic** and follow the same equations the scheduler assumes, which flatters FSRS-based schedulers. Real children have bad days, guess, and learn outside the app. The simulation tests the mechanics, not the effect size.
 
-## 9. Code map
+## 13. Code map
 
 | File | Responsibility |
 |---|---|
 | `types.ts` | Knowledge units, goals, learner profile, attempts |
 | `memory.ts` | FSRS-6 wrapper: recall now, next due date for a target retention |
-| `grading.ts` | Attempt → grade; question ladder |
+| `grading.ts` | Attempt → grade; question ladder; varied question rotation |
 | `retention.ts` | Target retention policy, workload relaxation |
 | `scheduler.ts` | Memory + goals: test-aware due dates |
-| `planner.ts` | Today's finite session |
+| `planner.ts` | One finite session: mixed review, or a focused mission |
+| `missions.ts` | Mission kinds, scope, progress, ranked suggestions |
+| `day.ts` | Several sessions a day: what is due now, the gate between sessions, the next useful time |
+| `knowledge-map.ts` | Notions and prerequisites, learning path for a gap, placement check, notion status |
+| `by-heart.ts` | Use case 1: chunks, fading cues, chained recitations, blanked maps, recitation grading |
+| `concentration.ts` | Concentration profile: age defaults, estimation from sessions, application to sessions |
+| `tuning.ts` | Every parameter: default, range, reason; `withTuning()` for overrides |
 | `session.ts` | In-session adaptation and stopping rules |
 | `nudge.ts` | Reminder policy |
 | `personalize.ts` | Per-learner weight fitting (fsrs-rs) |
-| `profiles.ts` | Age bands (10–11, 12–13, parents): default budget, limits on reminders and new material, answer modes, who sees progress |
+| `profiles.ts` | Age bands (10–11, 12–13, parents): session length, sessions per day, break, limits on reminders and new material, answer modes, who sees progress |
+| `maps/maths-core.json`, `maps/french-core.json` | Sample knowledge maps (domain › area › notion) |
 | `scripts/simulate.ts` | 60-day comparison |
+| `scripts/push.ts` | Use case 2 end to end |
+| `scripts/params.ts` | Generates docs/PARAMETERS.md |

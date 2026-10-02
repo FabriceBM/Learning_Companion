@@ -1,32 +1,14 @@
+import { DEFAULT_TUNING, type Tuning } from './tuning.ts';
 import type { Goal, KnowledgeUnit } from './types.ts';
 import { daysBetween } from './time.ts';
 
 /**
  * Target probability of recall when a unit comes back. This is the main dial
- * between "remember more" and "spend less time": above ~0.9 the review load
- * grows steeply for little gain.
+ * between "remember more" and "spend less time". Values: tuning.ts.
  */
-export interface RetentionPolicy {
-  base: number;
-  /** Importance 3: other units build on it. */
-  foundational: number;
-  /** Importance 1. */
-  niceToKnow: number;
-  /** Days before a test during which its units aim higher. */
-  testWindowDays: number;
-  test: number;
-  /** One-off material whose tests are all past: kept alive cheaply. */
-  maintenance: number;
-}
+export type RetentionPolicy = Tuning['retention'];
 
-export const DEFAULT_RETENTION: RetentionPolicy = {
-  base: 0.9,
-  foundational: 0.92,
-  niceToKnow: 0.85,
-  testWindowDays: 7,
-  test: 0.95,
-  maintenance: 0.8,
-};
+export const DEFAULT_RETENTION: RetentionPolicy = DEFAULT_TUNING.retention;
 
 /** The soonest test still ahead that this unit counts for. */
 export function nextGoal(ku: KnowledgeUnit, goals: readonly Goal[], now: Date): Goal | undefined {
@@ -55,9 +37,13 @@ export function targetRetention(
  *
  * @param overload average (minutes needed / minutes budgeted) over the last week
  */
-export function relaxForLoad(policy: RetentionPolicy, overload: number): RetentionPolicy {
-  if (overload <= 1.1) return policy;
-  const drop = Math.min(0.06, (overload - 1) * 0.05);
+export function relaxForLoad(
+  policy: RetentionPolicy,
+  overload: number,
+  workload: Tuning['workload'] = DEFAULT_TUNING.workload,
+): RetentionPolicy {
+  if (overload <= workload.overloadThreshold) return policy;
+  const drop = Math.min(workload.maxDrop, (overload - 1) * workload.dropPerOverload);
   const floor = (value: number) => Math.max(policy.maintenance, value - drop);
   return {
     ...policy,
