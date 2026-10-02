@@ -25,6 +25,8 @@
   --solid-soft: #e0f1e7;
   --fragile: #9a5b00;
   --fragile-soft: #fbefd8;
+  --gap: #b3283a;
+  --gap-soft: #fbe4e7;
   --s-spanish: #2a78d6;
   --s-maths: #eb6834;
   --s-french: #1baf7a;
@@ -40,7 +42,7 @@
     --desk: #0c1011; --paper: #1b2422; --paper-2: #222d2a; --fg: #eef1ec; --fg-2: #c3cbc5; --muted: #8d978f;
     --line: #34413d; --rule: rgba(255, 255, 255, 0.045); --rule-strong: rgba(255, 255, 255, 0.085); --margin: rgba(255, 128, 138, 0.28);
     --ink: #a3bbff; --ink-soft: #27325a; --on-ink: #0d1430; --redpen: #ff9a9a;
-    --solid: #74d6a2; --solid-soft: #1d3b2c; --fragile: #f2b65a; --fragile-soft: #3b301b;
+    --solid: #74d6a2; --solid-soft: #1d3b2c; --fragile: #f2b65a; --fragile-soft: #3b301b; --gap: #ff9aa5; --gap-soft: #3d1f25;
     --s-spanish: #3987e5; --s-maths: #d95926; --s-french: #199e70; --s-history: #c98500;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.5);
     color-scheme: dark;
@@ -50,7 +52,7 @@
   --desk: #0c1011; --paper: #1b2422; --paper-2: #222d2a; --fg: #eef1ec; --fg-2: #c3cbc5; --muted: #8d978f;
   --line: #34413d; --rule: rgba(255, 255, 255, 0.045); --rule-strong: rgba(255, 255, 255, 0.085); --margin: rgba(255, 128, 138, 0.28);
   --ink: #a3bbff; --ink-soft: #27325a; --on-ink: #0d1430; --redpen: #ff9a9a;
-  --solid: #74d6a2; --solid-soft: #1d3b2c; --fragile: #f2b65a; --fragile-soft: #3b301b;
+  --solid: #74d6a2; --solid-soft: #1d3b2c; --fragile: #f2b65a; --fragile-soft: #3b301b; --gap: #ff9aa5; --gap-soft: #3d1f25;
   --s-spanish: #3987e5; --s-maths: #d95926; --s-french: #199e70; --s-history: #c98500;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.5);
   color-scheme: dark;
@@ -248,723 +250,931 @@ select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line); ba
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+
+/* ---------- additions: missions, day, map, by heart, figure, params, workflow ---------- */
+.tabs { grid-template-columns: repeat(5, 1fr); }
+.tabs button { font-size: 11px; }
+.missions { display: grid; gap: 10px; }
+.mission { text-align: left; width: 100%; border: 1.5px solid var(--line); border-radius: 16px; background: var(--paper); padding: 13px 14px; display: grid; gap: 7px; }
+.mission:hover:not([aria-disabled="true"]) { border-color: var(--ink); }
+.mission[aria-disabled="true"] { opacity: 0.6; cursor: default; }
+.mission .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.mission strong { font-size: 16px; line-height: 1.3; }
+.mission .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; }
+.mission .go { color: var(--ink); font-weight: 700; }
+.kind { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 800; color: var(--fg-2); }
+.daybar { display: grid; gap: 8px; }
+.slots { display: flex; gap: 5px; }
+.slots i { width: 26px; height: 8px; border-radius: 4px; background: var(--paper-2); border: 1px solid var(--line); }
+.slots i.done { background: var(--ink); border-color: var(--ink); }
+.gate { border-radius: 14px; background: var(--ink-soft); padding: 12px 14px; display: grid; gap: 6px; }
+.gate .btn { justify-self: start; padding: 8px 12px; font-size: 13.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 12px; font-size: 13.5px; font-weight: 600; display: inline-flex; gap: 7px; align-items: center; }
+.chips button[aria-pressed="true"] { background: var(--fg); color: var(--paper); border-color: var(--fg); }
+.verse { font-family: var(--font-display); font-size: 19px; line-height: 1.45; white-space: pre-line; font-weight: 600; letter-spacing: 0.01em; }
+.verse.cue { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 14.5px; letter-spacing: 0.02em; font-weight: 500; }
+textarea.answer { min-height: 92px; resize: vertical; font-size: 16px; line-height: 1.45; }
+.stagebar { display: flex; gap: 4px; }
+.stagebar span { flex: 1; height: 6px; border-radius: 3px; background: var(--paper-2); }
+.stagebar span.on { background: var(--ink); }
+.missing { color: var(--fragile); font-weight: 700; }
+.figure { position: relative; width: 100%; max-width: 100%; aspect-ratio: 16 / 11; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--paper-2); }
+.figure svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.figure .lbl { position: absolute; transform: translate(-50%, -50%); font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 8px; background: var(--paper); border: 1.5px solid var(--line); white-space: nowrap; color: var(--fg); }
+.figure .lbl.blank { border-style: dashed; border-color: var(--ink); color: var(--ink); min-width: 70px; text-align: center; }
+.figure .lbl.focus { background: var(--ink); color: var(--on-ink); border-style: solid; }
+.path { display: grid; }
+.path .step { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 7px 0; position: relative; font-size: 14px; }
+.path .node { width: 13px; height: 13px; border-radius: 50%; border: 2.5px solid var(--ink); background: var(--paper); justify-self: center; z-index: 1; }
+.path .step:not(:last-child)::before { content: ""; position: absolute; left: 10px; top: 26px; bottom: -8px; width: 2px; background: var(--line); }
+.nstatus { font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.nstatus.solid { background: var(--solid-soft); color: var(--solid); }
+.nstatus.learning { background: var(--ink-soft); color: var(--ink); }
+.nstatus.fragile { background: var(--fragile-soft); color: var(--fragile); }
+.nstatus.missing { background: var(--gap-soft); color: var(--gap); }
+.nstatus.none { background: var(--paper-2); color: var(--muted); }
+.area { display: grid; gap: 2px; }
+.area .notion { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+.summarybar { display: flex; height: 10px; border-radius: 99px; overflow: hidden; gap: 2px; }
+.summarybar span { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--fg-2); }
+.legend b { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.log { display: grid; gap: 4px; font-size: 13.5px; }
+select.field, input.field { width: 100%; padding: 9px 10px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--paper); font-size: 15px; }
+.params { display: grid; gap: 14px; margin-top: 10px; }
+.param { display: grid; gap: 3px; }
+.param .why { font-size: 12.5px; color: var(--muted); }
+.param code { font-size: 11px; color: var(--muted); }
+.param .live { font-size: 11px; font-weight: 800; color: var(--solid); letter-spacing: 0.05em; text-transform: uppercase; }
+details.adv > summary { cursor: pointer; font-weight: 700; color: var(--ink); list-style: none; }
+details.adv > summary::-webkit-details-marker { display: none; }
+.group-title { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 8px; }
+.profile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 14px; }
+.profile dt { color: var(--fg-2); }
+.profile dd { margin: 0; font-weight: 700; text-align: right; }
+.flowcase { display: grid; gap: 6px; }
+.flowcase .label { margin-bottom: 2px; }
+.flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.flow button { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 11px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; text-align: left; }
+.flow button .n { font-family: var(--font-display); font-weight: 800; color: var(--ink); }
+.flow button[aria-current="step"] { background: var(--fg); color: var(--paper); border-color: var(--fg); }
+.flow button[aria-current="step"] .n { color: var(--paper); }
+.flow .arrow { color: var(--muted); font-size: 12px; }
+.audio { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); border: 1px dashed var(--line); border-radius: 999px; padding: 5px 10px; background: transparent; }
+.audio svg { width: 16px; height: 16px; }
 </style>
 
 <div class="page">
   <header class="intro">
     <span class="eyebrow">Clickable sample · Learning Companion</span>
-    <h1>Short sessions that end, scheduled for each person's memory</h1>
-    <p>This is a sample, not the app: no data leaves this page. Tap through Léa's day: today's plan, a review session with "why this card?", photographing a lesson, the family view and the rhythm settings. The notes beside the phone explain the design choice behind each screen.</p>
+    <h1>Two ways to learn, one calm engine</h1>
+    <p>This is a sample, not the app: nothing leaves this page. Follow either use case with the steps beside the phone. Learn a poem by heart with chunks, fading cues and a blanked map, or push a notion as a parent and practise it in a free session. The notes explain the design choice behind each screen.</p>
   </header>
 
   <main class="stage">
     <div class="phone" id="phone">
-      <div class="status"><span class="num">17:05</span><span class="dots"><b></b><i></i></span></div>
-
-      <!-- TODAY -->
-      <section class="screen" id="s-today" aria-label="Today">
-        <div class="hello">
-          <span class="label">Friday 2 October</span>
-          <h2>Hi Léa</h2>
-        </div>
-        <div id="plan-card"></div>
-        <div class="card">
-          <div class="row between"><span class="label">Coming up</span><span class="pill ink">Tue 6 Oct</span></div>
-          <div class="row between"><strong>Maths test: fractions</strong><span class="num" id="ready-pct">74% ready</span></div>
-          <div class="meter" aria-hidden="true"><span id="ready-bar" style="width:74%"></span></div>
-          <p class="small muted">Share of the test material you're predicted to remember on Tuesday morning. Today's plan already includes it.</p>
-        </div>
-        <div class="card">
-          <span class="label">This week</span>
-          <div class="week" id="week"></div>
-          <p class="small muted" id="week-caption"></p>
-        </div>
-        <div class="card sunken">
-          <span class="label">Recently solid</span>
-          <div class="solidlist">
-            <div><span>tener → yo tengo</span><span class="pill solid">solid</span></div>
-            <div><span>3/4 = 6/8</span><span class="pill solid">solid</span></div>
-            <div><span>Plural of « cheval »</span><span class="pill fragile">fragile</span></div>
-          </div>
-        </div>
-        <button class="btn quiet block" data-go="capture">Photograph a lesson</button>
-      </section>
-
-      <!-- SESSION -->
-      <section class="screen" id="s-session" hidden aria-label="Review session">
+      <div class="status"><span class="num" id="clock">17:05</span><span class="dots"><b></b><i></i></span></div>
+      <section class="screen" id="s-today" aria-label="Today"></section>
+      <section class="screen" id="s-session" hidden aria-label="Session">
         <div class="sessionbar">
           <button class="btn ghost" id="stop-btn">Stop</button>
           <div class="meter" aria-hidden="true"><span id="sess-bar" style="width:0%"></span></div>
           <span class="small muted num" id="sess-left"></span>
         </div>
+        <div class="row between wrap"><span class="kind" id="sess-kind"></span><strong class="small" id="sess-title"></strong></div>
         <div id="qcard"></div>
       </section>
-
-      <!-- DONE -->
       <section class="screen" id="s-done" hidden aria-label="Session finished"></section>
-
-      <!-- CAPTURE -->
-      <section class="screen" id="s-capture" hidden aria-label="Capture a lesson"></section>
-
-      <!-- FAMILY -->
-      <section class="screen" id="s-family" hidden aria-label="Family">
-        <div class="hello"><span class="label">Family · week of 28 Sept</span><h2>How everyone's doing</h2></div>
-        <div id="members" class="stack"></div>
-        <div class="card">
-          <span class="label">Léa · planned minutes, next 14 days</span>
-          <div class="chart" id="load-chart"></div>
-          <p class="small muted">The work before Tuesday's test bulges up to the 10-minute budget but never past it. Sundays are rest days.</p>
-        </div>
-        <div class="card">
-          <span class="label">Ask Noé at dinner</span>
-          <details class="ask"><summary>Combien font 7 × 8 ?</summary><p>56</p></details>
-          <details class="ask"><summary>Quel est le pluriel de « cheval » ?</summary><p>chevaux</p></details>
-          <details class="ask"><summary>Comment dit-on « chat » en anglais ?</summary><p>cat</p></details>
-          <p class="small muted">Three questions from what Noé is reviewing this week. Asking aloud counts as practice too.</p>
-        </div>
-        <div class="card sunken">
-          <span class="label">Teach-back</span>
-          <p>Ask Léa to explain <strong>why 3/4 = 6/8</strong>. Explaining is one of the best ways to learn.</p>
-        </div>
-      </section>
-
-      <!-- RHYTHM -->
-      <section class="screen" id="s-rhythm" hidden aria-label="Rhythm settings">
-        <div class="hello"><span class="label">Set together with a parent</span><h2>My rhythm</h2></div>
-        <div class="card">
-          <div class="row between"><label for="budget" class="label">Time per day</label><strong class="num" id="budget-val">10 min</strong></div>
-          <input type="range" id="budget" min="5" max="20" step="1" value="10">
-          <p class="small muted">Between 5 and 20 minutes at 12. Today's plan is built to fit this. Whatever doesn't fit waits, and you never see a pile of overdue cards.</p>
-        </div>
-        <div class="card">
-          <span class="label">My plan</span>
-          <p class="row wrap" style="gap:6px">After
-            <select id="intention" aria-label="When">
-              <option value="After my snack">my snack</option>
-              <option value="After homework">homework</option>
-              <option value="Before dinner">dinner (before)</option>
-              <option value="After football">football</option>
-            </select>
-            I do my <strong class="num" id="intent-min">10</strong> minutes.
-          </p>
-        </div>
-        <div class="card">
-          <span class="label">Reminder slots</span>
-          <label class="check"><input type="checkbox" id="slot-school" checked><span>After school<br><span class="small muted">Mon–Fri, 17:00–18:30</span></span></label>
-          <label class="check"><input type="checkbox" id="slot-dinner"><span>Before dinner<br><span class="small muted">Mon–Fri, 18:30–19:30</span></span></label>
-          <label class="check"><input type="checkbox" id="slot-sat" checked><span>Saturday morning<br><span class="small muted">10:00–12:00</span></span></label>
-          <div class="row between"><span>Reminders per day</span>
-            <div class="seg" role="group" aria-label="Reminders per day">
-              <button aria-pressed="false" data-rem="0">None</button>
-              <button aria-pressed="true" data-rem="1">At most 1</button>
-            </div>
-          </div>
-          <div class="preview" id="reminder-preview" aria-live="polite"></div>
-          <p class="small muted">Reminders stop by themselves once you start on your own most days.</p>
-        </div>
-        <div class="card">
-          <span class="label">Rest days</span>
-          <div class="daychips" id="restdays"></div>
-          <label class="check"><input type="checkbox" id="holiday"><span>Holiday mode<br><span class="small muted">No new material, only light upkeep</span></span></label>
-        </div>
-      </section>
-
+      <section class="screen" id="s-map" hidden aria-label="Knowledge map"></section>
+      <section class="screen" id="s-capture" hidden aria-label="Capture"></section>
+      <section class="screen" id="s-family" hidden aria-label="Family"></section>
+      <section class="screen" id="s-settings" hidden aria-label="Settings"></section>
       <nav class="tabs" id="tabs" aria-label="Main">
-        <button data-tab="today" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Today</button>
+        <button data-tab="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Today</button>
+        <button data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.2l2.9 9M16.6 8.8l-3.4 7.4M8.2 6.2h7.6"/></svg>Map</button>
         <button data-tab="capture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Capture</button>
         <button data-tab="family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5M14.5 15.2c.8-.7 1.6-1 2.5-1 2 0 3.4 1.5 4 4"/></svg>Family</button>
-        <button data-tab="rhythm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></svg>Rhythm</button>
+        <button data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
       </nav>
     </div>
 
     <aside class="notes" aria-live="polite">
-      <div class="jump" id="jump" aria-label="Go to screen"></div>
+      <div class="flowcase"><span class="label">Use case 1 · learn a lesson by heart</span><div class="flow" id="flow1"></div></div>
+      <div class="flowcase"><span class="label">Use case 2 · parents push a notion</span><div class="flow" id="flow2"></div></div>
       <h2 class="screen-title" id="note-title"></h2>
       <ul id="note-list"></ul>
-      <p class="foot">The engine behind these screens is real code: <code>packages/engine</code> (FSRS-6 memory model, session planner, reminder policy) with a 60-day simulation. Card content stays in the lesson's language; the app's own labels are in English for this sample.</p>
+      <p class="foot">The engine behind these screens is real code in <code>packages/engine</code>: missions, sessions, learning by heart, the concentration profile and the knowledge map, with 59 tests. Card content stays in the lesson's language; the app's labels are in English for this sample.</p>
     </aside>
   </main>
 </div>
 
+<script>const DATA = {"spec": [{"path": "retention.base", "label": "Target recall, everyday units", "min": 0.75, "max": 0.97, "step": 0.01, "why": "Above ~0.9 the review load grows steeply for little gain (FSRS workload curves).", "value": 0.9}, {"path": "retention.foundational", "label": "Target recall, foundational units", "min": 0.75, "max": 0.97, "step": 0.01, "why": "Other units build on these, so forgetting them costs more.", "value": 0.92}, {"path": "retention.niceToKnow", "label": "Target recall, nice-to-know units", "min": 0.7, "max": 0.95, "step": 0.01, "why": "Cheaper upkeep for material that matters less.", "value": 0.85}, {"path": "retention.testWindowDays", "label": "Test window (days)", "min": 1, "max": 21, "step": 1, "why": "A week of higher targets before a test, not more: earlier cramming fades.", "value": 7}, {"path": "retention.test", "label": "Target recall before a test", "min": 0.85, "max": 0.98, "step": 0.01, "why": "Aim high only when it is about to be checked.", "value": 0.95}, {"path": "retention.maintenance", "label": "Target recall after a one-off test", "min": 0.6, "max": 0.9, "step": 0.01, "why": "Keeps old chapters alive at little cost.", "value": 0.8}, {"path": "workload.overloadThreshold", "label": "Overload threshold (needed / budget)", "min": 1, "max": 2, "step": 0.05, "why": "Relax targets when the work needed keeps exceeding the time agreed.", "value": 1.1}, {"path": "workload.dropPerOverload", "label": "Target drop per unit of overload", "min": 0, "max": 0.2, "step": 0.01, "why": "Gentle: a 50% overload lowers targets by 0.025.", "value": 0.05}, {"path": "workload.maxDrop", "label": "Largest target drop", "min": 0, "max": 0.15, "step": 0.01, "why": "Never below the maintenance level.", "value": 0.06}, {"path": "ladder.recallFromDays", "label": "Recall questions from (stability, days)", "min": 1, "max": 14, "step": 1, "why": "Pick among choices while a memory is fragile, then produce it.", "value": 3}, {"path": "ladder.applyFromDays", "label": "Apply questions from (stability, days)", "min": 3, "max": 30, "step": 1, "why": "Use on new material once recall is reliable (desirable difficulty).", "value": 10}, {"path": "ladder.explainFromDays", "label": "Explain questions from (stability, days)", "min": 7, "max": 90, "step": 1, "why": "Explaining why is the deepest check, kept for stable knowledge.", "value": 30}, {"path": "planner.weightNiceToKnow", "label": "Priority weight, nice to know", "min": 0.1, "max": 2, "step": 0.1, "why": "Relative priority when time is short.", "value": 0.7}, {"path": "planner.weightExpected", "label": "Priority weight, expected", "min": 0.1, "max": 2, "step": 0.1, "why": "Reference weight.", "value": 1}, {"path": "planner.weightFoundational", "label": "Priority weight, foundational", "min": 0.1, "max": 3, "step": 0.1, "why": "Foundations first when time is short.", "value": 1.4}, {"path": "planner.testBoost", "label": "Priority boost the day before a test", "min": 0, "max": 3, "step": 0.1, "why": "1 doubles the priority on the eve of the test, fading over the test window.", "value": 1}, {"path": "planner.riskFloor", "label": "Priority floor", "min": 0, "max": 0.2, "step": 0.01, "why": "Units right at their target still get some priority.", "value": 0.05}, {"path": "planner.prerequisiteRecall", "label": "Prerequisite counts as known from recall", "min": 0.5, "max": 0.95, "step": 0.05, "why": "New units wait until what they build on is known.", "value": 0.8}, {"path": "planner.pauseNewBelow", "label": "Pause new material below accuracy", "min": 0.4, "max": 0.9, "step": 0.05, "why": "Struggling means consolidate first, not add more.", "value": 0.7}, {"path": "planner.halveNewBelow", "label": "Halve new material below accuracy", "min": 0.5, "max": 0.95, "step": 0.05, "why": "Most answers should succeed: learning is fastest around 85% success.", "value": 0.8}, {"path": "planner.newUnitCost", "label": "Time cost of a new unit (× a question)", "min": 1, "max": 4, "step": 0.5, "why": "Studying the card, then answering it.", "value": 2}, {"path": "session.easeOffAfterMisses", "label": "Easier unit after this many misses in a row", "min": 2, "max": 6, "step": 1, "why": "Rebuild confidence before continuing.", "value": 3}, {"path": "session.stopAfterMisses", "label": "End the session after this many misses in a row", "min": 3, "max": 10, "step": 1, "why": "Past this point, re-teaching beats more questions.", "value": 5}, {"path": "mission.focusShare", "label": "Share of a mission session on the mission", "min": 0.5, "max": 1, "step": 0.05, "why": "1 = full focus; lower keeps a few at-risk reviews from other subjects alive.", "value": 1}, {"path": "mission.secureStabilityDays", "label": "Mission unit is secure from (stability, days)", "min": 3, "max": 30, "step": 1, "why": "Needs correct answers on separate days (successive relearning), not one good session.", "value": 7}, {"path": "mission.repairBelowRecall", "label": "Repair prerequisites below recall", "min": 0.5, "max": 0.95, "step": 0.05, "why": "Fix the foundations before building on them.", "value": 0.8}, {"path": "reminders.selfStartShare", "label": "Pause reminders from this self-start share", "min": 0.5, "max": 1, "step": 0.05, "why": "The habit has formed; the reminder has done its job.", "value": 0.8}, {"path": "reminders.lookbackDays", "label": "Self-start measured over (days)", "min": 7, "max": 28, "step": 1, "why": "Two weeks smooths out holidays and busy days.", "value": 14}, {"path": "reminders.minActiveDays", "label": "Minimum active days before pausing", "min": 3, "max": 14, "step": 1, "why": "Do not conclude from too few days.", "value": 7}, {"path": "reminders.backoffAfterIgnored", "label": "Every other day after this many ignored", "min": 2, "max": 10, "step": 1, "why": "Back off, never escalate.", "value": 3}, {"path": "reminders.stopAfterIgnored", "label": "Stop reminding after this many ignored", "min": 3, "max": 15, "step": 1, "why": "Then parents see it in the weekly summary instead.", "value": 6}, {"path": "reminders.followWindowMinutes", "label": "Reminder followed if a session starts within (min)", "min": 10, "max": 120, "step": 5, "why": "Used to learn which time slot works for each child.", "value": 30}, {"path": "memory.maximumIntervalDays", "label": "Longest gap between reviews (days)", "min": 30, "max": 3650, "step": 5, "why": "A yearly check even on very stable memories.", "value": 365}, {"path": "memory.minReviewsToFit", "label": "Reviews needed before personal fitting", "min": 100, "max": 2000, "step": 50, "why": "Below this, defaults predict better than a fit.", "value": 400}, {"path": "memory.refitEveryDays", "label": "Refit personal weights every (days)", "min": 1, "max": 30, "step": 1, "why": "Weekly is enough; memory habits change slowly.", "value": 7}, {"path": "byHeart.keyWordsFromDays", "label": "Blank key words from (stability, days)", "min": 0.5, "max": 7, "step": 0.5, "why": "First letters while the text is fresh, then only the small words stay.", "value": 2}, {"path": "byHeart.reciteFromDays", "label": "Recite with nothing shown from (stability, days)", "min": 1, "max": 21, "step": 1, "why": "Fading cues: the support disappears as memory takes over.", "value": 5}, {"path": "byHeart.passRatio", "label": "Recitation correct from (share of words in order)", "min": 0.8, "max": 1, "step": 0.01, "why": "Word for word means nearly every word, in order.", "value": 0.95}, {"path": "byHeart.nearMissRatio", "label": "Recitation near miss from", "min": 0.6, "max": 0.98, "step": 0.01, "why": "Close enough to come back soon, not from scratch.", "value": 0.85}, {"path": "concentration.priorWeight", "label": "Age default worth (sessions)", "min": 1, "max": 30, "step": 1, "why": "A few odd days must not swing the profile.", "value": 5}, {"path": "concentration.attentionDropPoints", "label": "Focus ends at an accuracy drop of", "min": 0.05, "max": 0.4, "step": 0.05, "why": "15 points below the session start is a clear dip.", "value": 0.15}, {"path": "concentration.latencyRise", "label": "Focus ends at an answer-time rise of", "min": 0.1, "max": 1, "step": 0.05, "why": "Slowing down by 40% is the other sign of fatigue.", "value": 0.4}, {"path": "concentration.chunkSuccessTarget", "label": "Chunk size holds from first-study success of", "min": 0.5, "max": 0.95, "step": 0.05, "why": "Bigger chunks while 70% stick on first study; smaller below.", "value": 0.7}, {"path": "concentration.groupAboveSwitchCost", "label": "Group mixed reviews by subject above switch cost", "min": 0, "max": 0.5, "step": 0.01, "why": "Interleaving helps most learners; not one who loses 15 points per switch.", "value": 0.15}], "notions": [{"id": "verb-groups", "title": "Verb groups (-er, -ir, others)", "domain": "French", "area": "Conjugation", "prerequisites": []}, {"id": "present-indicative", "title": "Present (indicatif)", "domain": "French", "area": "Conjugation", "prerequisites": ["verb-groups"]}, {"id": "imparfait", "title": "Imparfait (indicatif)", "domain": "French", "area": "Conjugation", "prerequisites": ["present-indicative"]}, {"id": "past-participle", "title": "Past participles", "domain": "French", "area": "Conjugation", "prerequisites": ["verb-groups"]}, {"id": "passe-compose", "title": "Passé composé (indicatif)", "domain": "French", "area": "Conjugation", "prerequisites": ["present-indicative", "past-participle"]}, {"id": "passe-simple", "title": "Passé simple (indicatif)", "domain": "French", "area": "Conjugation", "prerequisites": ["verb-groups", "present-indicative"]}, {"id": "futur-simple", "title": "Futur simple (indicatif)", "domain": "French", "area": "Conjugation", "prerequisites": ["present-indicative"]}, {"id": "conditionnel-present", "title": "Conditionnel présent", "domain": "French", "area": "Conjugation", "prerequisites": ["futur-simple", "imparfait"]}, {"id": "agreement-avoir", "title": "Past participle agreement with avoir", "domain": "French", "area": "Grammar", "prerequisites": ["passe-compose"]}, {"id": "homophones-a", "title": "Homophones a / à", "domain": "French", "area": "Spelling", "prerequisites": []}, {"id": "whole-numbers", "title": "Whole numbers and place value", "domain": "Maths", "area": "Numbers", "prerequisites": []}, {"id": "multiplication-facts", "title": "Multiplication facts", "domain": "Maths", "area": "Numbers", "prerequisites": ["whole-numbers"]}, {"id": "division", "title": "Division with remainders", "domain": "Maths", "area": "Numbers", "prerequisites": ["multiplication-facts"]}, {"id": "order-of-operations", "title": "Order of operations", "domain": "Maths", "area": "Numbers", "prerequisites": ["multiplication-facts"]}, {"id": "decimals", "title": "Decimal numbers", "domain": "Maths", "area": "Numbers", "prerequisites": ["whole-numbers"]}, {"id": "fractions-meaning", "title": "What a fraction means", "domain": "Maths", "area": "Fractions", "prerequisites": ["division"]}, {"id": "equivalent-fractions", "title": "Equivalent fractions", "domain": "Maths", "area": "Fractions", "prerequisites": ["fractions-meaning", "multiplication-facts"]}, {"id": "fractions-add", "title": "Adding and subtracting fractions", "domain": "Maths", "area": "Fractions", "prerequisites": ["equivalent-fractions"]}, {"id": "fractions-multiply", "title": "Multiplying fractions", "domain": "Maths", "area": "Fractions", "prerequisites": ["fractions-meaning"]}, {"id": "negative-numbers", "title": "Negative numbers: operations", "domain": "Maths", "area": "Numbers", "prerequisites": ["whole-numbers", "order-of-operations"]}, {"id": "proportionality", "title": "Proportionality", "domain": "Maths", "area": "Proportions", "prerequisites": ["fractions-multiply", "decimals"]}, {"id": "percentages", "title": "Percentages", "domain": "Maths", "area": "Proportions", "prerequisites": ["proportionality"]}, {"id": "powers", "title": "Powers and square roots", "domain": "Maths", "area": "Numbers", "prerequisites": ["multiplication-facts"]}, {"id": "algebraic-expressions", "title": "Algebraic expressions", "domain": "Maths", "area": "Algebra", "prerequisites": ["order-of-operations", "negative-numbers"]}, {"id": "expand-factor", "title": "Expanding and factorising", "domain": "Maths", "area": "Algebra", "prerequisites": ["algebraic-expressions"]}, {"id": "linear-equations", "title": "Solving linear equations", "domain": "Maths", "area": "Algebra", "prerequisites": ["algebraic-expressions", "fractions-add"]}, {"id": "linear-functions", "title": "Linear functions", "domain": "Maths", "area": "Algebra", "prerequisites": ["proportionality", "linear-equations"]}, {"id": "pythagoras", "title": "Pythagoras' theorem", "domain": "Maths", "area": "Geometry", "prerequisites": ["powers", "algebraic-expressions"]}, {"id": "angles-triangles", "title": "Angles in triangles", "domain": "Maths", "area": "Geometry", "prerequisites": ["whole-numbers"]}, {"id": "area-volume", "title": "Area and volume", "domain": "Maths", "area": "Geometry", "prerequisites": ["decimals", "multiplication-facts"]}, {"id": "mean-median", "title": "Mean and median", "domain": "Maths", "area": "Data and chance", "prerequisites": ["decimals", "division"]}, {"id": "probability", "title": "Simple probability", "domain": "Maths", "area": "Data and chance", "prerequisites": ["fractions-meaning", "decimals"]}]};</script>
 <script>
 (() => {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const hm = (min) => `${String(Math.floor(min / 60) % 24).padStart(2, '0')}:${String(Math.round(min % 60)).padStart(2, '0')}`;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const SUBJECTS = {
-    Spanish: { label: 'Spanish', color: 'var(--s-spanish)' },
-    Maths: { label: 'Maths', color: 'var(--s-maths)' },
-    French: { label: 'French', color: 'var(--s-french)' },
-    History: { label: 'History', color: 'var(--s-history)' },
+  const SUBJECTS = { French: 'var(--s-french)', Maths: 'var(--s-maths)', Spanish: 'var(--s-spanish)', Science: 'var(--s-history)', History: 'var(--s-history)' };
+  const SECONDS = { read: 25, 'first-letters': 40, 'key-words-blank': 45, recite: 50, recognize: 20, recall: 28, apply: 45, explain: 50 };
+
+  // ---------- parameters (the same set as packages/engine/src/tuning.ts) ----------
+  const T = {};
+  DATA.spec.forEach((p) => (T[p.path] = p.value));
+  const DEFAULTS = { ...T };
+  const LIVE = new Set(['retention.base', 'retention.test', 'session.easeOffAfterMisses', 'session.stopAfterMisses', 'mission.focusShare', 'byHeart.passRatio', 'byHeart.nearMissRatio']);
+
+  // ---------- knowledge map (packages/engine/maps) ----------
+  const N = new Map(DATA.notions.map((n) => [n.id, n]));
+  const ancestors = (id) => { const out = new Set(); const st = [...N.get(id).prerequisites]; while (st.length) { const p = st.pop(); if (!out.has(p)) { out.add(p); st.push(...N.get(p).prerequisites); } } return out; };
+  const descendants = (id) => new Set([...N.keys()].filter((x) => ancestors(x).has(id)));
+  const depth = (id) => { const p = N.get(id).prerequisites; return p.length ? 1 + Math.max(...p.map(depth)) : 0; };
+  function learningPath(targets, known) {
+    const need = new Set(); const st = [...targets];
+    while (st.length) { const id = st.pop(); if (need.has(id) || known(id)) continue; need.add(id); st.push(...N.get(id).prerequisites); }
+    return [...need].sort((a, b) => depth(a) - depth(b));
+  }
+  function placementCheck(scope, passes) {
+    const belief = new Map(scope.map((id) => [id, 'unsure'])); const log = [];
+    const unsure = (ids) => [...ids].filter((i) => belief.get(i) === 'unsure').length;
+    for (let q = 0; q < 12; q++) {
+      let best = null;
+      for (const [id, b] of belief) {
+        if (b !== 'unsure') continue;
+        const score = Math.min(1 + unsure(ancestors(id)), 1 + unsure(descendants(id)));
+        if (!best || score > best.score || (score === best.score && depth(id) < best.depth)) best = { id, score, depth: depth(id) };
+      }
+      if (!best) break;
+      const ok = passes(best.id); log.push({ id: best.id, ok });
+      for (const n of [best.id, ...(ok ? ancestors(best.id) : descendants(best.id))]) if (belief.has(n)) belief.set(n, ok ? 'known' : 'unknown');
+    }
+    return { log, known: (id) => belief.get(id) === 'known' };
+  }
+
+  // Léa's map, as the engine reads it from the memories of Léa's units.
+  const STATUS = {
+    'verb-groups': 'solid', 'present-indicative': 'solid', imparfait: 'learning', 'past-participle': 'solid', 'passe-compose': 'learning', 'passe-simple': 'none',
+    'futur-simple': 'learning', 'conditionnel-present': 'none', 'agreement-avoir': 'fragile', 'homophones-a': 'solid',
+    'whole-numbers': 'solid', 'multiplication-facts': 'solid', division: 'solid', 'order-of-operations': 'solid', decimals: 'solid', 'fractions-meaning': 'solid',
+    'equivalent-fractions': 'learning', 'fractions-add': 'missing', 'fractions-multiply': 'learning', 'negative-numbers': 'missing', proportionality: 'none',
+    percentages: 'none', powers: 'none', 'algebraic-expressions': 'missing', 'expand-factor': 'none', 'linear-equations': 'missing', 'linear-functions': 'none',
+    pythagoras: 'none', 'angles-triangles': 'solid', 'area-volume': 'solid', 'mean-median': 'fragile', probability: 'none',
   };
+  const PUSHED = new Set(['negative-numbers', 'algebraic-expressions', 'fractions-add', 'linear-equations']);
+  const STATUS_LABEL = { solid: 'solid', learning: 'learning', fragile: 'fragile', missing: 'missing', none: 'not started' };
 
-  // Today's due cards in the order the planner would give them: an easy opener,
-  // subjects interleaved, a likely success to close. `seen` = days since last review,
-  // `recall` = predicted recall now, `test` = days until the test (if any).
-  const DECK = [
-    { id: 's1', subject: 'Spanish', level: 'recall', prompt: 'tener (avoir) — yo ___', answers: ['tengo'], grading: 'loose', seen: 9, recall: 0.94, becomes: 'tener → yo tengo', note: 'Irregular in the « yo » form: tengo, then tienes, tiene…' },
-    { id: 'm1', subject: 'Maths', level: 'recall', prompt: 'Calcule : 3/4 + 1/8', answers: ['7/8'], grading: 'fraction', seen: 6, recall: 0.78, test: 4, becomes: '3/4 + 1/8', note: 'Same denominator first: 3/4 = 6/8, then 6/8 + 1/8 = 7/8.' },
-    { id: 'f1', subject: 'French', level: 'apply', prompt: 'Les fleurs que j’ai (cueillir) sont belles.', answers: ['cueillies'], grading: 'accent', seen: 12, recall: 0.81, becomes: 'past participle agreement', note: 'With « avoir », agree with the direct object placed before: « que » = les fleurs → cueillies.' },
-    { id: 'h1', subject: 'History', level: 'recall', prompt: 'Quel peuple Clovis dirige-t-il ?', answers: ['les francs', 'francs', 'les francs saliens'], grading: 'loose', seen: 15, recall: 0.86, becomes: 'Clovis, roi des Francs', note: 'Clovis is king of the Franks (around 481–511).' },
-    { id: 's2', subject: 'Spanish', level: 'recognize', isNew: true, prompt: 'Que veut dire « la cocina » ?', choices: ['la voiture', 'la cuisine', 'l’école', 'le jardin'], answers: ['la cuisine'], becomes: 'la cocina', note: 'la cocina = la cuisine. Watch out: « el coche » is the car.' },
-    { id: 'm2', subject: 'Maths', level: 'apply', prompt: 'Complète : 5/6 = …/18', answers: ['15'], grading: 'number', seen: 5, recall: 0.83, test: 4, becomes: 'equivalent fractions', note: '6 × 3 = 18, so 5 × 3 = 15.' },
-    { id: 'f2', subject: 'French', level: 'recall', prompt: 'Écris le pluriel de « cheval ».', answers: ['chevaux'], grading: 'accent', seen: 3, recall: 0.74, becomes: 'cheval → chevaux', note: 'Most nouns in -al take -aux: un cheval, des chevaux.' },
-    { id: 'h2', subject: 'History', level: 'recognize', prompt: 'En quelle année Charlemagne est-il couronné empereur ?', choices: ['732', '800', '843', '987'], answers: ['800'], seen: 4, recall: 0.8, becomes: 'Charlemagne, 800', note: 'Crowned emperor in Rome on 25 December 800.' },
-    { id: 's3', subject: 'Spanish', level: 'recall', prompt: 'hablar — nosotros ___', answers: ['hablamos'], grading: 'loose', seen: 7, recall: 0.85, becomes: 'hablar → hablamos', note: 'Regular -ar verb: hablo, hablas, habla, hablamos…' },
-    { id: 'm3', subject: 'Maths', level: 'recognize', isNew: true, prompt: 'Dans 3/8, quel nombre est le dénominateur ?', choices: ['3', '8', '11', '24'], answers: ['8'], test: 4, becomes: 'numerator / denominator', note: 'The denominator is the number below the line: 8.' },
-    { id: 'f3', subject: 'French', level: 'recognize', prompt: 'Avec « avoir », le participe passé s’accorde avec…', choices: ['le sujet', 'le COD placé avant le verbe', 'le COD placé après le verbe', 'il ne s’accorde jamais'], answers: ['le COD placé avant le verbe'], seen: 2, recall: 0.82, becomes: 'agreement rule', note: 'Only when the direct object comes before the verb.' },
-    { id: 'h3', subject: 'History', level: 'recall', prompt: 'En quelle année a lieu l’Hégire ?', answers: ['622'], grading: 'number', seen: 21, recall: 0.79, becomes: 'Hégire, 622', note: 'Muhammad leaves Mecca for Medina in 622: year 1 of the Muslim calendar.' },
-    { id: 'm4', subject: 'Maths', level: 'explain', prompt: 'Pourquoi 3/4 + 1/8 ne fait-il pas 4/12 ?', choices: ['Parce que 4/12 se simplifie', 'On n’additionne pas les dénominateurs : on écrit d’abord 3/4 = 6/8', 'Parce que 1/8 est plus petit que 3/4'], answers: ['On n’additionne pas les dénominateurs : on écrit d’abord 3/4 = 6/8'], seen: 11, recall: 0.8, test: 4, becomes: 'why denominators are not added', note: 'Fractions must share a denominator before you add the numerators.' },
-    { id: 's4', subject: 'Spanish', level: 'apply', prompt: 'Traduis : « Je mange à la maison. »', answers: ['como en casa', 'yo como en casa'], grading: 'loose', seen: 8, recall: 0.8, becomes: 'comer en casa', note: 'comer → yo como; « à la maison » = en casa.' },
-    { id: 'f4', subject: 'French', level: 'recall', prompt: 'Complète avec « a » ou « à » : Il ___ un chat.', answers: ['a'], grading: 'accent', seen: 6, recall: 0.62, becomes: 'a / à', note: '« a » is the verb avoir: you could say « il avait un chat ». « à » is a preposition.' },
-    { id: 's5', subject: 'Spanish', level: 'recall', prompt: 'hablar — yo ___', answers: ['hablo'], grading: 'loose', seen: 10, recall: 0.93, becomes: 'hablar → hablo', note: 'Regular -ar verb, « yo » form: hablo.' },
+  // ---------- cards ----------
+  const C = (subject, kind0, level, prompt, answers, o = {}) => ({ subject, kind0, level, prompt, answers, ...o });
+  const CARDS = {
+    // test: fractions
+    'fr-rep': C('Maths', 'repair', 'recall', 'Complète : 2/3 = …/12', ['8'], { grading: 'number', seen: 9, recall: 0.64, notion: 'equivalent-fractions', note: '3 × 4 = 12, so 2 × 4 = 8.', why: 'Needed for adding fractions: recall is down to 64%. Foundations first.' }),
+    m1: C('Maths', 'review', 'recall', 'Calcule : 3/4 + 1/8', ['7/8'], { grading: 'number', seen: 6, recall: 0.78, test: 4, note: 'Same denominator first: 3/4 = 6/8, then 6/8 + 1/8 = 7/8.' }),
+    m2: C('Maths', 'review', 'apply', 'Complète : 5/6 = …/18', ['15'], { grading: 'number', seen: 5, recall: 0.83, test: 4, note: '6 × 3 = 18, so 5 × 3 = 15.' }),
+    'fr-new1': C('Maths', 'new', 'recognize', 'Calcule : 2/5 + 3/10', ['7/10'], { grading: 'number', note: '2/5 = 4/10, then 4/10 + 3/10 = 7/10.' }),
+    'fr-new2': C('Maths', 'new', 'recognize', 'Calcule : 5/6 − 1/3', ['1/2'], { grading: 'number', note: '1/3 = 2/6, so 5/6 − 2/6 = 3/6 = 1/2.' }),
+    'fr-p1': C('Maths', 'practice', 'recall', 'Calcule : 1/4 + 3/8', ['5/8'], { grading: 'number', seen: 1, recall: 0.9, note: '1/4 = 2/8, so 2/8 + 3/8 = 5/8.' }),
+    m4: C('Maths', 'practice', 'explain', 'Pourquoi 3/4 + 1/8 ne fait-il pas 4/12 ?', ['On n’additionne pas les dénominateurs : on écrit d’abord 3/4 = 6/8'], { choices: ['Parce que 4/12 se simplifie', 'On n’additionne pas les dénominateurs : on écrit d’abord 3/4 = 6/8', 'Parce que 1/8 est plus petit que 3/4'], seen: 11, recall: 0.8, test: 4, note: 'Fractions must share a denominator before you add the numerators.' }),
+    m3: C('Maths', 'new', 'recognize', 'Dans 3/8, quel nombre est le dénominateur ?', ['8'], { choices: ['3', '8', '11', '24'], note: 'The denominator is below the line.' }),
+    'fr-p2': C('Maths', 'practice', 'recall', 'Calcule : 7/12 − 1/4', ['1/3'], { grading: 'number', seen: 1, recall: 0.88, note: '1/4 = 3/12, so 7/12 − 3/12 = 4/12 = 1/3.' }),
+    // pushed: solving equations (path: negatives, fractions, expressions, equations)
+    neg1: C('Maths', 'new', 'recognize', 'Calcule : −3 + 7', ['4'], { grading: 'number', notion: 'negative-numbers', note: 'Start at −3 and move 7 to the right: 4.' }),
+    neg2: C('Maths', 'new', 'recall', 'Calcule : −5 − 2', ['-7'], { grading: 'number', notion: 'negative-numbers', note: 'Moving 2 further left from −5 gives −7.' }),
+    neg3: C('Maths', 'new', 'recall', 'Calcule : (−4) × 3', ['-12'], { grading: 'number', notion: 'negative-numbers', note: 'A negative times a positive is negative: −12.' }),
+    fa1: C('Maths', 'new', 'recall', 'Calcule : 1/2 + 1/3', ['5/6'], { grading: 'number', notion: 'fractions-add', note: '3/6 + 2/6 = 5/6.' }),
+    alg1: C('Maths', 'new', 'recall', 'Si x = 3, combien vaut 2x + 1 ?', ['7'], { grading: 'number', notion: 'algebraic-expressions', note: '2 × 3 + 1 = 7.' }),
+    alg2: C('Maths', 'new', 'recall', 'Simplifie : 3x + 2x', ['5x'], { notion: 'algebraic-expressions', note: '3 of x plus 2 of x is 5 of x.' }),
+    eq1: C('Maths', 'new', 'apply', 'Résous : x + 5 = 12', ['7'], { grading: 'number', notion: 'linear-equations', note: 'Take 5 from both sides: x = 7.' }),
+    eq2: C('Maths', 'new', 'apply', 'Résous : 3x = 18', ['6'], { grading: 'number', notion: 'linear-equations', note: 'Divide both sides by 3: x = 6.' }),
+    eq3: C('Maths', 'new', 'apply', 'Résous : 2x + 3 = 11', ['4'], { grading: 'number', notion: 'linear-equations', note: '2x = 8, so x = 4.' }),
+    // pushed: passé simple, varied exercises (pickProbe rotates them)
+    'ps-r1': C('French', 'new', 'recognize', 'Passé simple des verbes en -er : « ils » se termine par…', ['-èrent'], { choices: ['-èrent', '-irent', '-aient', '-erent'], notion: 'passe-simple', note: 'ils chantèrent, ils parlèrent: -èrent, with a grave accent.' }),
+    ps1: C('French', 'new', 'apply', 'chanter → ils ___ (passé simple)', ['chantèrent'], { grading: 'accent', notion: 'passe-simple', variant: 1, note: 'Verbs in -er: -ai, -as, -a, -âmes, -âtes, -èrent.' }),
+    ps2: C('French', 'new', 'apply', 'parler → je ___ (passé simple)', ['parlai'], { grading: 'accent', notion: 'passe-simple', variant: 2, note: 'je parlai: -ai for « je » with -er verbs.' }),
+    ps4: C('French', 'new', 'apply', 'finir → nous ___ (passé simple)', ['finîmes'], { grading: 'accent', notion: 'passe-simple', variant: 3, note: 'Verbs in -ir: -is, -is, -it, -îmes, -îtes, -irent. Note the circumflex.' }),
+    ps5: C('French', 'new', 'apply', 'être → il ___ (passé simple)', ['fut'], { grading: 'accent', notion: 'passe-simple', variant: 4, note: 'être: je fus, tu fus, il fut, nous fûmes, vous fûtes, ils furent.' }),
+    ps6: C('French', 'new', 'apply', 'avoir → ils ___ (passé simple)', ['eurent'], { grading: 'accent', notion: 'passe-simple', variant: 5, note: 'avoir: j’eus, tu eus, il eut, nous eûmes, vous eûtes, ils eurent.' }),
+    ps7: C('French', 'new', 'apply', 'prendre → elle ___ (passé simple)', ['prit'], { grading: 'accent', notion: 'passe-simple', variant: 6, note: 'prendre: je pris, il prit, ils prirent.' }),
+    ps8: C('French', 'new', 'apply', 'aller → tu ___ (passé simple)', ['allas'], { grading: 'accent', notion: 'passe-simple', variant: 7, note: 'aller is regular here: j’allai, tu allas, il alla.' }),
+    ps9: C('French', 'new', 'apply', 'venir → ils ___ (passé simple)', ['vinrent'], { grading: 'accent', notion: 'passe-simple', variant: 8, note: 'venir: je vins, il vint, ils vinrent.' }),
+    ps10: C('French', 'new', 'explain', 'À quoi sert surtout le passé simple ?', ['Raconter des actions passées et terminées, dans un récit écrit'], { choices: ['Parler de ce qui se passe maintenant', 'Raconter des actions passées et terminées, dans un récit écrit', 'Donner un ordre'], notion: 'passe-simple', note: 'It is the tense of written stories: « Le renard s’en saisit. »' }),
+    // topic: Spanish
+    s1: C('Spanish', 'review', 'recall', 'tener (avoir) — yo ___', ['tengo'], { seen: 9, recall: 0.94, note: 'Irregular in the « yo » form: tengo.' }),
+    s3: C('Spanish', 'review', 'recall', 'hablar — nosotros ___', ['hablamos'], { seen: 7, recall: 0.85, note: 'Regular -ar verb: hablamos.' }),
+    s6: C('Spanish', 'review', 'recall', 'comer — tú ___', ['comes'], { seen: 5, recall: 0.8, note: 'Regular -er verb: comes.' }),
+    s7: C('Spanish', 'review', 'apply', 'vivir — ellos ___', ['viven'], { seen: 8, recall: 0.79, note: 'Regular -ir verb: viven.' }),
+    s2: C('Spanish', 'new', 'recognize', 'Que veut dire « la cocina » ?', ['la cuisine'], { choices: ['la voiture', 'la cuisine', 'l’école', 'le jardin'], note: 'la cocina = la cuisine.' }),
+    s5: C('Spanish', 'review', 'recall', 'hablar — yo ___', ['hablo'], { seen: 10, recall: 0.93, note: 'Regular -ar verb: hablo.' }),
+    // mixed review
+    f1: C('French', 'review', 'apply', 'Les fleurs que j’ai (cueillir) sont belles.', ['cueillies'], { grading: 'accent', seen: 12, recall: 0.81, note: 'With « avoir », agree with the direct object placed before: cueillies.' }),
+    h1: C('History', 'review', 'recall', 'Quel peuple Clovis dirige-t-il ?', ['les francs', 'francs'], { seen: 15, recall: 0.86, note: 'Clovis is king of the Franks.' }),
+    f2: C('French', 'review', 'recall', 'Écris le pluriel de « cheval ».', ['chevaux'], { grading: 'accent', seen: 3, recall: 0.74, note: 'un cheval, des chevaux.' }),
+    h2: C('History', 'review', 'recognize', 'En quelle année Charlemagne est-il couronné empereur ?', ['800'], { choices: ['732', '800', '843', '987'], seen: 4, recall: 0.8, note: 'Crowned in Rome on 25 December 800.' }),
+    f4: C('French', 'review', 'recall', 'Complète avec « a » ou « à » : Il ___ un chat.', ['a'], { grading: 'accent', seen: 6, recall: 0.62, note: '« a » is the verb avoir (il avait un chat); « à » is a preposition.' }),
+    h3: C('History', 'review', 'recall', 'En quelle année a lieu l’Hégire ?', ['622'], { grading: 'number', seen: 21, recall: 0.79, note: 'Muhammad leaves Mecca for Medina in 622.' }),
+  };
+  // Cards for notions pushed from the map in this demo (in the app: written by teachNotion and checked by a parent).
+  const BANK = {
+    proportionality: ['prop1', 'prop2'], percentages: ['pct1'], powers: ['pow1', 'pow2'], pythagoras: ['pyth1'], 'linear-functions': ['lf1'], probability: ['prob1'], 'expand-factor': ['exp1'],
+    'futur-simple': ['fs1', 'fs2'], 'conditionnel-present': ['cond1'], imparfait: ['imp1'],
+  };
+  Object.assign(CARDS, {
+    prop1: C('Maths', 'new', 'apply', '3 cahiers coûtent 6 €. Combien coûtent 5 cahiers ?', ['10'], { grading: 'number', note: '1 cahier coûte 2 €, donc 5 coûtent 10 €.' }),
+    prop2: C('Maths', 'new', 'apply', 'Pour 4 personnes il faut 200 g de farine. Pour 6 personnes ?', ['300'], { grading: 'number', note: '50 g par personne: 6 × 50 = 300 g.' }),
+    pct1: C('Maths', 'new', 'recall', 'Combien font 20 % de 50 ?', ['10'], { grading: 'number', note: '20 % = 1/5, and 50 ÷ 5 = 10.' }),
+    pow1: C('Maths', 'new', 'recall', 'Combien vaut 3² ?', ['9'], { grading: 'number', note: '3 × 3 = 9.' }),
+    pow2: C('Maths', 'new', 'recall', 'Combien vaut √49 ?', ['7'], { grading: 'number', note: '7 × 7 = 49.' }),
+    pyth1: C('Maths', 'new', 'apply', 'Triangle rectangle : les côtés de l’angle droit mesurent 3 et 4. Hypoténuse ?', ['5'], { grading: 'number', note: '3² + 4² = 25 = 5².' }),
+    lf1: C('Maths', 'new', 'apply', 'f(x) = 2x + 1. Combien vaut f(3) ?', ['7'], { grading: 'number', note: '2 × 3 + 1 = 7.' }),
+    prob1: C('Maths', 'new', 'recall', 'Probabilité d’obtenir 6 avec un dé ?', ['1/6'], { grading: 'number', note: 'One face out of six.' }),
+    exp1: C('Maths', 'new', 'apply', 'Développe : 2(x + 3)', ['2x+6'], { note: '2 × x + 2 × 3 = 2x + 6.' }),
+    fs1: C('French', 'new', 'apply', 'chanter → nous ___ (futur simple)', ['chanterons'], { grading: 'accent', note: 'Infinitive + -ai, -as, -a, -ons, -ez, -ont.' }),
+    fs2: C('French', 'new', 'apply', 'être → ils ___ (futur simple)', ['seront'], { grading: 'accent', note: 'être has its own stem: ser-.' }),
+    cond1: C('French', 'new', 'apply', 'aimer → je ___ (conditionnel présent)', ['aimerais'], { grading: 'accent', note: 'Future stem + imparfait endings.' }),
+    imp1: C('French', 'new', 'apply', 'finir → nous ___ (imparfait)', ['finissions'], { grading: 'accent', note: 'Stem of « nous » in the present + -ions.' }),
+  });
+
+  // ---------- learning by heart ----------
+  const POEM = `Maître Corbeau, sur un arbre perché,
+Tenait en son bec un fromage.
+Maître Renard, par l'odeur alléché,
+Lui tint à peu près ce langage :
+« Hé ! bonjour, Monsieur du Corbeau.
+Que vous êtes joli ! que vous me semblez beau !
+Sans mentir, si votre ramage
+Se rapporte à votre plumage,
+Vous êtes le Phénix des hôtes de ces bois. »`;
+  const words = (s) => s.split(/\s+/).filter(Boolean).length;
+  function chunkText(text, size) {
+    const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
+    const out = []; let cur = [];
+    for (const l of lines) { cur.push(l); if (words(cur.join(' ')) >= size) { out.push(cur.join('\n')); cur = []; } }
+    if (cur.length) { if (out.length && words(cur.join(' ')) < size / 2) out[out.length - 1] += '\n' + cur.join('\n'); else out.push(cur.join('\n')); }
+    return out;
+  }
+  const STOP = new Set('le la les un une des de du d l à au aux en et ou sur dans par pour que qui ne pas se sa son ses il elle on vous nous je tu me te lui y a est'.split(' '));
+  function cue(text, level) {
+    if (level === 'read') return text;
+    if (level === 'recite') return text.replace(/[^\n]+/g, '…');
+    return text.replace(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu, (w) => (level === 'first-letters' ? w[0] + '_'.repeat(w.length - 1) : w.length >= 4 && !STOP.has(w.toLowerCase()) ? '_'.repeat(w.length) : w));
+  }
+  const toks = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[’']/g, ' ').split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  function compareRecitation(expected, given) {
+    const a = toks(expected), b = toks(given);
+    const dp = Array.from({ length: a.length + 1 }, () => new Array(b.length + 1).fill(0));
+    for (let i = a.length - 1; i >= 0; i--) for (let j = b.length - 1; j >= 0; j--) dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    const missing = []; let i = 0, j = 0;
+    while (i < a.length) { if (j < b.length && a[i] === b[j]) { i++; j++; } else if (j < b.length && dp[i][j + 1] >= dp[i + 1][j]) j++; else missing.push(a[i++]); }
+    return { ratio: a.length ? dp[0][0] / a.length : 1, missing };
+  }
+  const FIGURE = {
+    labels: [
+      { id: 'evaporation', label: 'évaporation', x: 25, y: 58 },
+      { id: 'condensation', label: 'condensation', x: 50, y: 12 },
+      { id: 'precipitations', label: 'précipitations', x: 83, y: 38 },
+      { id: 'ruissellement', label: 'ruissellement', x: 68, y: 72 },
+      { id: 'infiltration', label: 'infiltration', x: 72, y: 92 },
+    ],
+  };
+  const FIGURE_SVG = `<svg viewBox="0 0 160 110" aria-hidden="true">
+    <rect x="0" y="0" width="160" height="110" style="fill:var(--paper)"/>
+    <circle cx="18" cy="16" r="8" style="fill:var(--fragile-soft);stroke:var(--fragile);stroke-width:1"/>
+    <ellipse cx="80" cy="22" rx="18" ry="7" style="fill:var(--paper-2);stroke:var(--muted);stroke-width:.8"/><ellipse cx="94" cy="19" rx="12" ry="6" style="fill:var(--paper-2);stroke:var(--muted);stroke-width:.8"/>
+    <polygon points="92,82 122,40 160,82" style="fill:var(--solid-soft);stroke:var(--solid);stroke-width:1"/>
+    <rect x="0" y="82" width="92" height="28" style="fill:var(--ink-soft)"/>
+    <rect x="92" y="82" width="68" height="28" style="fill:var(--line)"/>
+    <path d="M30 78 V40" style="stroke:var(--ink);stroke-width:1.4;fill:none;stroke-dasharray:3 2"/><path d="M27 44 L30 38 L33 44" style="stroke:var(--ink);stroke-width:1.4;fill:none"/>
+    <path d="M118 30 L114 44 M126 30 L122 44 M134 30 L130 44" style="stroke:var(--ink);stroke-width:1.2"/>
+    <path d="M128 52 Q112 72 94 84" style="stroke:var(--ink);stroke-width:1.4;fill:none"/><path d="M96 79 L92 85 L99 85" style="stroke:var(--ink);stroke-width:1.4;fill:none"/>
+    <path d="M118 86 V104" style="stroke:var(--ink);stroke-width:1.4;fill:none;stroke-dasharray:2 2"/><path d="M115 100 L118 106 L121 100" style="stroke:var(--ink);stroke-width:1.4;fill:none"/>
+  </svg>`;
+
+  // ---------- missions ----------
+  const generic = (o) => ({ batchIndex: 0, pending: [], second: [], ...o });
+  const missions = [
+    { id: 'corbeau', kind: 'by-heart', subject: 'French', title: 'Le Corbeau et le Renard', date: 'Fri 9 Oct', daysLeft: 7, stages: null, chain: {} },
+    generic({ id: 'fractions', kind: 'test', subject: 'Maths', title: 'Maths test: fractions', date: 'Tue 6 Oct', daysLeft: 4, readiness: 74, total: 10, secure: 4, started: 7, batches: [['fr-rep', 'm1', 'm2', 'fr-new1', 'fr-new2', 'fr-p1', 'm4'], ['m3', 'fr-p2']] }),
+    generic({ id: 'equations', kind: 'pushed', subject: 'Maths', title: 'Before high school: solving equations', pushedBy: 'your parents', total: 9, secure: 0, started: 0, notions: ['negative-numbers', 'fractions-add', 'algebraic-expressions', 'linear-equations'], batches: [['neg1', 'neg2', 'neg3', 'fa1'], ['alg1', 'alg2'], ['eq1', 'eq2', 'eq3']] }),
+    { id: 'water', kind: 'figure', subject: 'Science', title: 'Le cycle de l’eau: blank map', stages: { evaporation: 2, condensation: 2, precipitations: 1, ruissellement: 0, infiltration: 0 }, wholeDone: false },
+    generic({ id: 'spanish', kind: 'topic', subject: 'Spanish', title: 'Spanish verbs', total: 9, secure: 5, started: 9, batches: [['s1', 's3', 's6', 's7', 's2', 's5']] }),
+    generic({ id: 'mixed', kind: 'mixed', subject: null, title: 'Keep everything fresh', due: 23, total: 0, secure: 0, batches: [['s1', 'm2', 'f1', 'h1', 's3', 'f2', 'h2', 'f4', 'h3', 's5']] }),
   ];
-  // Typical seconds per card, answer plus reading the feedback; a new card takes longer (the planner learns these per child).
-  const SECONDS = { recognize: 20, recall: 28, apply: 45, explain: 50 };
-  DECK.forEach((c) => (c.seconds = SECONDS[c.level] + (c.isNew ? 15 : 0)));
-  const OPENER = DECK[0];
-  const CLOSER = DECK[DECK.length - 1];
+  const KIND_LABEL = { 'by-heart': 'By heart', figure: 'By heart · map', pushed: 'Pushed', test: 'Test', topic: 'Topic', mixed: 'Mixed review' };
 
   const state = {
-    tab: 'today',
-    budget: 10,
-    reminders: 1,
-    intention: 'After my snack',
-    restDays: new Set([0]),
-    doneToday: false,
-    session: null,
-    capture: 0,
-    kept: {},
+    clock: 17 * 60 + 5, sessionsDone: 0, lastEnded: null,
+    settings: { sessionMinutes: 10, sessionsPerDay: 4, breakMin: 90, reminders: 1, intention: 'After my snack', restDays: new Set([0]) },
+    profile: { attentionSpanMinutes: 12, chunkWords: 12, switchCost: 0.06, bestHours: '17:00–19:00', recoveryMinutes: 90, frustrationAfterMisses: 3, basedOnSessions: 23 },
+    session: null, capture: { mode: 'heart', step: 0 }, push: { domain: 'French', notion: 'passe-simple', child: 'Léa', step: 0 }, mapDomain: 'French', flow: null,
   };
+  const sessionLimit = () => Math.min(state.settings.sessionMinutes, state.profile.attentionSpanMinutes) * 60;
 
-  // ---------- planning (mirrors packages/engine planner: budget, opener/closer, interleaving) ----------
-  function plan() {
-    const budget = state.budget * 60;
-    const middle = DECK.slice(1, -1);
-    const picked = [OPENER];
-    let used = OPENER.seconds + CLOSER.seconds;
-    for (const card of middle) {
-      if (used + card.seconds > budget) continue;
-      picked.push(card);
-      used += card.seconds;
+  // ---------- planning (mirrors packages/engine: planner, missions, by-heart, day) ----------
+  function fit(items) {
+    let used = 0; const out = [];
+    for (const it of items) { if (used + it.seconds > sessionLimit()) continue; out.push(it); used += it.seconds; }
+    return { items: out, minutes: Math.max(1, Math.round(used / 60)) };
+  }
+  const cardItem = (id, kind) => { const c = CARDS[id]; return { type: 'card', id, kind, seconds: SECONDS[c.level] + (kind === 'new' ? 15 : 0) }; };
+  function plan(m, commit = false) {
+    if (m.kind === 'by-heart') return heartPlan(m);
+    if (m.kind === 'figure') return figurePlan(m);
+    if (m.inbox) return { items: [], minutes: 0 };
+    let source = m.pending;
+    if (!source.length && m.batchIndex < m.batches.length) { source = m.batches[m.batchIndex]; if (commit) { m.pending = [...source]; m.batchIndex++; } }
+    const items = [...m.second.map((id) => cardItem(id, 'second look')), ...source.map((id) => cardItem(id, CARDS[id].kind0))];
+    const share = T['mission.focusShare'];
+    if (share < 1 && m.kind !== 'mixed') {
+      const extra = Math.round(items.length * (1 - share) / share);
+      ['f2', 'f4', 'h3', 's6'].slice(0, extra).forEach((id) => items.push({ ...cardItem(id, 'review'), kept: true }));
     }
-    picked.push(CLOSER);
-    return { cards: picked, minutes: Math.max(1, Math.round(used / 60)), deferred: DECK.length - picked.length };
+    return fit(items);
+  }
+  function heartPlan(m) {
+    const chunks = chunkText(POEM, state.profile.chunkWords);
+    if (!m.stages || m.stages.length !== chunks.length) { m.stages = chunks.map(() => 0); m.chain = {}; }
+    const items = [];
+    chunks.forEach((c, i) => { if (m.stages[i] === 1) items.push({ type: 'heart', chunk: i, cue: 'key-words-blank', kind: 'second look', seconds: SECONDS['key-words-blank'] }); });
+    for (let k = 2; k <= chunks.length; k++) {
+      if (m.stages.slice(0, k).every((s) => s >= 2) && !m.chain[k]) { items.push({ type: 'heart', chain: k, cue: 'first-letters', kind: 'chain', seconds: SECONDS['first-letters'] * 1.5 }); break; }
+    }
+    let fresh = 0;
+    m.stages.forEach((s, i) => {
+      if (s === 0 && fresh < 2) { fresh++; items.push({ type: 'heart', chunk: i, cue: 'read', kind: 'new', seconds: SECONDS.read }, { type: 'heart', chunk: i, cue: 'first-letters', kind: 'new', seconds: SECONDS['first-letters'] }); }
+    });
+    return fit(items);
+  }
+  function figurePlan(m) {
+    const items = [];
+    FIGURE.labels.forEach((l) => {
+      const s = m.stages[l.id];
+      if (s === 0) items.push({ type: 'label', id: l.id, mode: 'recognize', kind: 'new', seconds: SECONDS.recognize });
+      else if (s === 1) items.push({ type: 'label', id: l.id, mode: 'recall', kind: 'second look', seconds: SECONDS.recall });
+    });
+    if (!m.wholeDone && FIGURE.labels.every((l) => m.stages[l.id] >= 1)) items.push({ type: 'whole', kind: 'whole map', seconds: 60 });
+    return fit(items);
   }
 
-  function subjectsOf(cards) {
-    const counts = {};
-    cards.forEach((c) => (counts[c.subject] = (counts[c.subject] || 0) + 1));
-    return Object.entries(counts);
+  function progress(m) {
+    if (m.kind === 'by-heart') {
+      const chunks = chunkText(POEM, state.profile.chunkWords);
+      const stages = m.stages && m.stages.length === chunks.length ? m.stages : chunks.map(() => 0);
+      const ready = stages.reduce((a, s) => a + Math.min(s, 3) / 3, 0) / stages.length;
+      return { ready, text: `Recite on ${m.date} · ${stages.filter((s) => s >= 1).length} of ${chunks.length} parts started`, notSecure: 1 - ready };
+    }
+    if (m.kind === 'figure') {
+      const done = Object.values(m.stages).filter((s) => s >= 2).length;
+      return { ready: done / FIGURE.labels.length, text: `To learn by heart · ${done} of ${FIGURE.labels.length} labels secure`, notSecure: 1 - done / FIGURE.labels.length };
+    }
+    if (m.kind === 'mixed') return { text: `${m.due} reviews due across subjects` };
+    if (m.inbox) return { text: 'Pushed by your parents · lesson being written, then checked by a parent in the review inbox', notSecure: 1 };
+    if (m.kind === 'test') return { ready: m.readiness / 100, text: `In ${m.daysLeft} days · ${m.readiness}% ready`, notSecure: 1 - m.secure / m.total };
+    const label = m.kind === 'pushed' ? `Pushed by ${m.pushedBy}` : 'Your choice';
+    return { text: `${label} · ${m.started} of ${m.total} started, ${m.secure} secure`, notSecure: 1 - m.secure / m.total };
+  }
+  function score(m) {
+    const p = progress(m);
+    if (m.kind === 'mixed') return (0.7 * m.due) / (m.due + 15);
+    if (m.daysLeft) return (m.daysLeft <= 7 ? 0.5 : 0.2) + (1 - (p.ready ?? 0)) * Math.min(1, 7 / m.daysLeft);
+    return p.notSecure * ({ pushed: 0.6, figure: 0.5, 'by-heart': 0.5, topic: 0.3 }[m.kind] ?? 0.3);
+  }
+  function gate() {
+    const s = state.settings;
+    if (state.sessionsDone >= s.sessionsPerDay) return { open: false, reason: `That's all ${s.sessionsPerDay} sessions for today.`, tomorrow: true };
+    if (state.lastEnded !== null && state.clock < state.lastEnded + s.breakMin) return { open: false, reason: 'A break between sessions helps memory.', nextAt: state.lastEnded + s.breakMin };
+    return { open: true };
   }
 
-  function chips(cards) {
-    return subjectsOf(cards)
-      .map(([s, n]) => `<span class="chip"><span class="dot" style="background:${SUBJECTS[s].color}"></span>${SUBJECTS[s].label} <span class="muted num">${n}</span></span>`)
-      .join('');
-  }
-
-  // ---------- today ----------
+  // ---------- Today ----------
   function renderToday() {
-    const p = plan();
-    $('#plan-card').innerHTML = state.doneToday
-      ? `<div class="plan seyes">
-           <span class="label">Today</span>
-           <div class="big">Done ✓</div>
-           <p class="hand">see you tomorrow, after your snack</p>
-           <p class="small muted">Tomorrow's plan is already adjusted to what you answered today.</p>
-         </div>`
-      : `<div class="plan seyes">
-           <span class="label">Today's plan</span>
-           <div class="row" style="align-items:baseline;gap:8px"><span class="big num">${p.minutes} min</span><span class="muted num">· ${p.cards.length} cards</span></div>
-           <div class="row wrap" style="gap:6px">${chips(p.cards)}</div>
-           <button class="btn block" id="start-btn">Start</button>
-           <p class="small muted">Ends by itself. You can stop at any time.</p>
-         </div>`;
-    const start = $('#start-btn');
-    if (start) start.addEventListener('click', startSession);
-
-    const week = [[1, 'M', 'done'], [2, 'T', 'done'], [3, 'W', 'skipped'], [4, 'T', 'done'], [5, 'F', state.doneToday ? 'done' : 'today'], [6, 'S', 'later'], [0, 'S', 'later']];
-    $('#week').innerHTML = week
-      .map(([dow, letter, status]) => {
-        const rest = state.restDays.has(dow) && status !== 'done';
-        const cls = rest ? 'rest' : status === 'done' || status === 'today' ? status : '';
-        const inner = status === 'done' ? '✓' : rest ? 'rest' : '';
-        return `<div class="${cls}"><i aria-hidden="true">${inner}</i><span>${letter}</span></div>`;
-      })
-      .join('');
-    const done = week.filter(([, , st]) => st === 'done').length;
-    const rest = state.restDays.size;
-    $('#week-caption').textContent = `${done} sessions this week. ${rest === 0 ? 'No rest day set.' : rest === 1 ? '1 planned rest day.' : rest + ' planned rest days.'} A skipped day is just a blank: nothing is lost.`;
+    const g = gate();
+    const ranked = [...missions].sort((a, b) => score(b) - score(a));
+    const s = state.settings;
+    const slots = Array.from({ length: s.sessionsPerDay }, (_, i) => `<i class="${i < state.sessionsDone ? 'done' : ''}"></i>`).join('');
+    $('#s-today').innerHTML = `
+      <div class="hello"><span class="label">Friday 2 October</span><h2>Hi Léa</h2></div>
+      <div class="daybar">
+        <div class="row between"><span class="small"><strong>Session ${Math.min(state.sessionsDone + 1, s.sessionsPerDay)}</strong> of up to ${s.sessionsPerDay} today · ${Math.round(sessionLimit() / 60)} min each</span><span class="slots" aria-hidden="true">${slots}</span></div>
+        ${g.open ? '' : `<div class="gate"><strong>${esc(g.reason)}</strong><span class="small">${g.tomorrow ? 'Everything is planned for tomorrow. Nothing is lost.' : `Next session from ${hm(g.nextAt)}: this session's new and missed cards come back then for a second look.`}</span>${g.tomorrow ? '' : `<button class="btn quiet" id="skip-btn">Skip to ${hm(g.nextAt)} (demo)</button>`}</div>`}
+      </div>
+      <div class="stack"><span class="label">Pick a mission</span><div class="missions">${ranked.map((m, i) => missionCard(m, i === 0, g)).join('')}</div></div>
+      <div class="card sunken"><span class="label">Or choose a subject to work on</span><div class="chips">${['French', 'Maths', 'Spanish'].map((x) => `<button data-subject="${x}"><span class="dot" style="background:${SUBJECTS[x]}"></span>${x}</button>`).join('')}</div></div>`;
+    $$('#s-today [data-mission]').forEach((b) => b.addEventListener('click', () => { if (b.getAttribute('aria-disabled') !== 'true') startMission(b.dataset.mission); }));
+    $$('#s-today [data-subject]').forEach((b) => b.addEventListener('click', () => {
+      const m = missions.find((x) => x.kind === 'topic' && x.subject === b.dataset.subject) ?? missions.find((x) => x.subject === b.dataset.subject && x.kind !== 'mixed');
+      if (m && gate().open) startMission(m.id);
+    }));
+    const skip = $('#skip-btn'); if (skip) skip.addEventListener('click', () => { state.clock = gate().nextAt; renderClock(); renderToday(); });
+  }
+  function missionCard(m, suggested, g) {
+    const p = progress(m); const pl = plan(m);
+    const empty = pl.items.length === 0;
+    const disabled = !g.open || empty;
+    const meter = p.ready !== undefined ? `<div class="meter" aria-hidden="true"><span style="width:${Math.round(p.ready * 100)}%"></span></div>` : '';
+    const foot = m.inbox ? 'Not ready yet' : empty ? 'Done for today: next step after a night’s sleep' : `~${pl.minutes} min · ${pl.items.length} card${pl.items.length > 1 ? 's' : ''}`;
+    return `<button class="mission" data-mission="${m.id}" aria-disabled="${disabled}">
+      <span class="top"><span class="kind">${KIND_LABEL[m.kind]}${m.subject ? ` · ${m.subject}` : ''}</span>${suggested ? '<span class="pill ink">Suggested</span>' : ''}</span>
+      <strong>${esc(m.title)}</strong>
+      <span class="small muted">${esc(p.text)}</span>${meter}
+      <span class="foot"><span class="muted">${foot}</span>${disabled ? '' : '<span class="go">Start →</span>'}</span>
+    </button>`;
   }
 
   // ---------- session ----------
-  function startSession() {
-    const p = plan();
-    state.session = { queue: p.cards.map((c) => ({ card: c, retry: false })), total: p.cards.length, asked: 0, results: [], elapsed: 0, misses: 0 };
+  function startMission(id) {
+    const m = missions.find((x) => x.id === id);
+    if (!gate().open) return;
+    const pl = plan(m, true);
+    if (!pl.items.length) return;
+    state.session = { m, queue: pl.items.map((it) => ({ ...it, retry: false })), total: pl.items.length, asked: 0, results: [], elapsed: 0, misses: 0 };
+    $('#sess-kind').textContent = KIND_LABEL[m.kind] + (m.subject ? ` · ${m.subject}` : '');
+    $('#sess-title').textContent = m.title;
     show('session');
-    nextQuestion();
+    next();
   }
-
-  function norm(s, keepAccents) {
-    let t = String(s).trim().toLowerCase().replace(/[’']/g, '’').replace(/\s+/g, ' ').replace(/[.!?]$/, '');
-    if (!keepAccents) t = t.normalize('NFD').replace(/[̀-ͯ]/g, '');
-    return t;
+  const norm = (s, keep) => { let t = String(s).trim().toLowerCase().replace(/[’']/g, '’').replace(/\s+/g, ' ').replace(/[.!?]$/, '').replace(/^[a-z]\s*=\s*/, ''); if (!keep) t = t.normalize('NFD').replace(/[̀-ͯ]/g, ''); return t; };
+  const num = (s) => { const t = String(s).replace(',', '.').replace(/[−–]/g, '-').replace(/\s/g, '').replace(/^[a-z]=/, ''); const f = t.match(/^(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/); return f ? Number(f[1]) / Number(f[2]) : t === '' ? NaN : Number(t); };
+  function isCorrect(c, given) {
+    if (c.choices) return c.answers.includes(given);
+    if (c.grading === 'number') return c.answers.some((a) => Math.abs(num(a) - num(given)) < 1e-9);
+    const keep = c.grading === 'accent';
+    return c.answers.some((a) => norm(a, keep).replace(/\s/g, '') === norm(given, keep).replace(/\s/g, ''));
   }
-  function toNumber(s) {
-    const t = String(s).replace(',', '.').replace(/\s/g, '');
-    const m = t.match(/^(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/);
-    if (m) return Number(m[1]) / Number(m[2]);
-    return t === '' ? NaN : Number(t);
-  }
-  function isCorrect(card, given) {
-    if (card.choices) return card.answers.includes(given);
-    if (card.grading === 'number' || card.grading === 'fraction') {
-      const v = toNumber(given);
-      return card.answers.some((a) => Math.abs(toNumber(a) - v) < 1e-9);
-    }
-    const keep = card.grading === 'accent';
-    return card.answers.some((a) => norm(a, keep) === norm(given, keep));
-  }
-
-  function nextQuestion() {
+  const PILL = { repair: 'fragile', 'second look': 'ink', new: 'ink', practice: 'ink', review: 'ink', chain: 'ink', 'whole map': 'ink' };
+  function next() {
     const s = state.session;
-    if (s.misses >= 5) return finish('A tough set today. Stopping here is the right call; these come back with a new explanation.');
+    if (s.misses >= T['session.stopAfterMisses']) return finish('A tough set. Stopping here is the right call; these come back with a new explanation.');
     if (!s.queue.length) return finish();
-    if (s.misses >= 3) {
-      let best = -1;
-      s.queue.forEach((q, i) => { if (!q.retry && (best < 0 || (q.card.recall || 0) > (s.queue[best].card.recall || 0))) best = i; });
+    if (s.misses >= T['session.easeOffAfterMisses']) {
+      let best = -1; s.queue.forEach((q, i) => { const r = q.type === 'card' ? (CARDS[q.id].recall ?? 0.5) : 0.5; if (!q.retry && (best < 0 || r > (s.queue[best].type === 'card' ? CARDS[s.queue[best].id].recall ?? 0.5 : 0.5))) best = i; });
       if (best > 0) s.queue.unshift(...s.queue.splice(best, 1));
     }
-    const { card, retry } = s.queue[0];
-    s.current = { card, retry, choice: null, confidence: null, startedAt: performance.now() };
-    const remaining = s.queue.reduce((t, q) => t + q.card.seconds, 0);
+    const it = s.queue[0];
+    s.current = { it, choice: null, confidence: null, t0: performance.now(), whole: {} };
+    const left = s.queue.reduce((t, q) => t + q.seconds, 0);
     $('#sess-bar').style.width = `${Math.round((s.asked / s.total) * 100)}%`;
-    $('#sess-left').textContent = `about ${Math.max(1, Math.round(remaining / 60))} min left`;
-    const level = { recognize: 'pick', recall: 'recall', apply: 'apply', explain: 'explain' }[card.level];
-    $('#qcard').innerHTML = `
-      <div class="qcard seyes">
-        <div class="row between wrap">
-          <span class="chip"><span class="dot" style="background:${SUBJECTS[card.subject].color}"></span>${SUBJECTS[card.subject].label}</span>
-          <span class="row" style="gap:6px">${card.isNew ? '<span class="pill ink">new</span>' : ''}${retry ? '<span class="pill fragile">second try</span>' : ''}<span class="pill ink">${level}</span></span>
-        </div>
-        <p class="prompt">${esc(card.prompt)}</p>
-        ${card.choices
-          ? `<div class="choices" role="group" aria-label="Choices">${card.choices.map((c, i) => `<button data-choice="${i}" aria-pressed="false">${esc(c)}</button>`).join('')}</div>`
-          : `<input class="answer" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="Your answer">`}
-        <div class="row between wrap">
-          <div class="seg" role="group" aria-label="How sure are you?">
-            <button data-conf="sure" aria-pressed="false">Sure</button>
-            <button data-conf="unsure" aria-pressed="false">Not sure</button>
-          </div>
-          <button class="btn" id="check-btn" disabled>Check</button>
-        </div>
-        <div id="fb" aria-live="polite"></div>
-        <button class="why" id="why-btn">Why this card?</button>
-      </div>`;
-    const check = $('#check-btn');
-    const input = $('#answer');
+    $('#sess-left').textContent = `about ${Math.max(1, Math.round(left / 60))} min left`;
+    const kindPill = `<span class="pill ${PILL[it.kind] ?? 'ink'}">${it.retry ? 'second try' : it.kept ? 'kept alive' : it.kind}</span>`;
+    let body = '';
+    if (it.type === 'card') {
+      const c = CARDS[it.id];
+      const variant = c.variant ? `<span class="pill ink">variant ${c.variant} of 8</span>` : '';
+      body = `<div class="row between wrap"><span class="chip"><span class="dot" style="background:${SUBJECTS[c.subject]}"></span>${c.subject}</span><span class="row" style="gap:6px">${variant}${kindPill}</span></div>
+        <p class="prompt">${esc(c.prompt)}</p>
+        ${c.choices ? `<div class="choices" role="group" aria-label="Choices">${c.choices.map((x, i) => `<button data-choice="${i}" aria-pressed="false">${esc(x)}</button>`).join('')}</div>` : '<input class="answer" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="Your answer">'}
+        ${confidenceRow()}`;
+    } else if (it.type === 'heart') {
+      const chunks = chunkText(POEM, state.profile.chunkWords);
+      const text = it.chain ? chunks.slice(0, it.chain).join('\n') : chunks[it.chunk];
+      const title = it.chain ? (it.chain === chunks.length ? 'The whole text' : `Parts 1–${it.chain}, chained`) : `Part ${it.chunk + 1} of ${chunks.length}`;
+      const levels = ['read', 'first-letters', 'key-words-blank', 'recite'];
+      const bar = levels.map((l, i) => `<span class="${i <= levels.indexOf(it.cue) ? 'on' : ''}"></span>`).join('');
+      const cueName = { read: 'Read it, then hide it', 'first-letters': 'First letters only', 'key-words-blank': 'Key words hidden', recite: 'Nothing shown' }[it.cue];
+      body = `<div class="row between wrap"><span class="chip"><span class="dot" style="background:${SUBJECTS.French}"></span>${title}</span>${kindPill}</div>
+        <div class="stack"><span class="small muted">${cueName}</span><div class="stagebar" aria-hidden="true">${bar}</div></div>
+        <p class="verse ${it.cue === 'read' ? '' : 'cue'}">${esc(cue(text, it.cue))}</p>
+        ${it.cue === 'read' ? '<button class="audio" disabled title="Audio mode: phase 2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>Listen · audio mode, phase 2</button>' : '<textarea class="answer" id="answer" aria-label="Write it from memory" placeholder="Write it from memory (in the audio mode, you will say it)"></textarea>'}`;
+    } else if (it.type === 'label') {
+      const l = FIGURE.labels.find((x) => x.id === it.id);
+      const opts = shuffle(FIGURE.labels.map((x) => x.label), it.id);
+      body = `<div class="row between wrap"><span class="chip"><span class="dot" style="background:${SUBJECTS.Science}"></span>Le cycle de l’eau</span>${kindPill}</div>
+        ${figureHtml(it.id)}
+        <p class="prompt" style="font-size:19px">What goes in the highlighted box?</p>
+        ${it.mode === 'recognize' ? `<div class="choices" role="group" aria-label="Choices">${opts.map((x, i) => `<button data-choice="${i}" data-value="${esc(x)}" aria-pressed="false">${esc(x)}</button>`).join('')}</div>` : '<input class="answer" id="answer" autocomplete="off" spellcheck="false" aria-label="The label" placeholder="Type the label">'}`;
+      it.options = opts;
+      it.expected = l.label;
+    } else {
+      body = `<div class="row between wrap"><span class="chip"><span class="dot" style="background:${SUBJECTS.Science}"></span>Le cycle de l’eau</span>${kindPill}</div>
+        ${figureHtml(null, true)}
+        <p class="prompt" style="font-size:19px">Blank map: name every box.</p>
+        <div class="stack">${FIGURE.labels.map((l, i) => `<label class="row between small"><span><strong>${i + 1}</strong></span><select class="field" data-whole="${l.id}" aria-label="Box ${i + 1}"><option value="">Choose…</option>${FIGURE.labels.map((x) => `<option>${esc(x.label)}</option>`).join('')}</select></label>`).join('')}</div>`;
+    }
+    $('#qcard').innerHTML = `<div class="qcard seyes">${body}
+      <div class="row between wrap"><span></span><button class="btn" id="check-btn" ${it.type === 'heart' && it.cue === 'read' ? '' : 'disabled'}>${it.type === 'heart' && it.cue === 'read' ? 'Hide it' : 'Check'}</button></div>
+      <div id="fb" aria-live="polite"></div>
+      <button class="why" id="why-btn">Why this card?</button></div>`;
+    wireQuestion(it);
+  }
+  const confidenceRow = () => `<div class="seg" role="group" aria-label="How sure are you?"><button data-conf="sure" aria-pressed="false">Sure</button><button data-conf="unsure" aria-pressed="false">Not sure</button></div>`;
+  function shuffle(_arr, id) {
+    const correct = FIGURE.labels.find((l) => l.id === id).label;
+    const all = [correct, ...FIGURE.labels.filter((l) => l.id !== id).map((l) => l.label).slice(0, 3)];
+    const h = [...id].reduce((x, c) => x + c.charCodeAt(0), 0) % all.length;
+    return [...all.slice(h), ...all.slice(0, h)];
+  }
+  function figureHtml(focusId, allBlank) {
+    const m = missions.find((x) => x.id === 'water');
+    return `<div class="figure">${FIGURE_SVG}${FIGURE.labels.map((l, i) => {
+      const hidden = allBlank || l.id === focusId || m.stages[l.id] < 1;
+      const text = allBlank ? String(i + 1) : l.id === focusId ? '?' : hidden ? '' : l.label;
+      return `<span class="lbl ${hidden ? 'blank' : ''} ${l.id === focusId ? 'focus' : ''}" style="left:${l.x}%;top:${l.y}%">${esc(text) || '&nbsp;'}</span>`;
+    }).join('')}</div>`;
+  }
+  function wireQuestion(it) {
+    const s = state.session; const check = $('#check-btn'); const input = $('#answer');
     if (input) {
       input.addEventListener('input', () => (check.disabled = input.value.trim() === ''));
-      input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !check.disabled) check.click(); });
+      if (input.tagName === 'INPUT') input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !check.disabled) check.click(); });
       setTimeout(() => input.focus({ preventScroll: true }), 30);
     }
     $$('[data-choice]').forEach((b) => b.addEventListener('click', () => {
-      $$('[data-choice]').forEach((x) => x.setAttribute('aria-pressed', 'false'));
-      b.setAttribute('aria-pressed', 'true');
-      s.current.choice = card.choices[Number(b.dataset.choice)];
-      check.disabled = false;
+      $$('[data-choice]').forEach((x) => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true');
+      s.current.choice = b.dataset.value ?? CARDS[it.id]?.choices[Number(b.dataset.choice)]; check.disabled = false;
     }));
-    $$('[data-conf]').forEach((b) => b.addEventListener('click', () => {
-      $$('[data-conf]').forEach((x) => x.setAttribute('aria-pressed', 'false'));
-      b.setAttribute('aria-pressed', 'true');
-      s.current.confidence = b.dataset.conf;
-    }));
-    check.addEventListener('click', submit);
-    $('#why-btn').addEventListener('click', () => openWhy(card));
+    $$('[data-conf]').forEach((b) => b.addEventListener('click', () => { $$('[data-conf]').forEach((x) => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); s.current.confidence = b.dataset.conf; }));
+    $$('[data-whole]').forEach((sel) => sel.addEventListener('change', () => { s.current.whole[sel.dataset.whole] = sel.value; check.disabled = $$('[data-whole]').some((x) => !x.value); }));
+    check.addEventListener('click', it.type === 'heart' && it.cue === 'read' ? () => { s.queue.shift(); s.asked++; s.elapsed += it.seconds; next(); } : submit);
+    $('#why-btn').addEventListener('click', () => openWhy(it));
   }
-
   function submit() {
-    const s = state.session;
-    const { card, retry } = s.current;
-    const given = card.choices ? s.current.choice : $('#answer').value;
-    const ok = isCorrect(card, given);
-    const seconds = (performance.now() - s.current.startedAt) / 1000;
-    const slow = seconds > 25;
-    s.queue.shift();
-    s.asked += retry ? 0 : 1;
-    s.elapsed += card.seconds;
-    s.results.push({ card, ok, retry, confidence: s.current.confidence });
-    if (ok) s.misses = 0; else { s.misses++; if (!retry) s.queue.push({ card, retry: true }); }
-
-    let grade;
-    if (!ok) grade = 'comes back at the end, then tomorrow';
-    else if (retry) grade = 'got it on the second try: back tomorrow';
-    else if (slow || s.current.confidence === 'unsure') grade = 'correct but effortful: back in a few days';
-    else if (s.current.confidence === 'sure' && card.level !== 'recognize') grade = 'fluent: next time in about 3 weeks';
-    else grade = 'next time in about 9 days';
-
-    const confidentMiss = !ok && s.current.confidence === 'sure';
-    $('#fb').innerHTML = ok
-      ? `<div class="feedback ok"><strong>Yes: ${esc(card.answers[0])}</strong><span class="small">${esc(card.note)}</span><span class="small muted">${grade}</span></div>`
-      : `<div class="feedback no"><strong>The answer: ${esc(card.answers[0])}</strong><span class="small">${esc(card.note)}</span>${confidentMiss ? '<span class="small"><strong>You were sure:</strong> worth a second look. Surprises like this are the ones you remember best once corrected.</span>' : ''}<span class="small muted">It ${grade}.</span></div>`;
-    $$('#qcard input, #qcard [data-choice], #qcard [data-conf]').forEach((el) => (el.disabled = true));
-    const btn = $('#check-btn');
-    btn.textContent = 'Next';
-    btn.disabled = false;
-    btn.replaceWith(btn.cloneNode(true));
-    $('#check-btn').addEventListener('click', nextQuestion);
-    $('#check-btn').focus({ preventScroll: true });
+    const s = state.session; const it = s.current.it;
+    let ok, fb;
+    if (it.type === 'card') {
+      const c = CARDS[it.id]; const given = c.choices ? s.current.choice : $('#answer').value; ok = isCorrect(c, given);
+      fb = ok ? `<strong>Yes: ${esc(c.answers[0])}</strong><span class="small">${esc(c.note)}</span>` : `<strong>The answer: ${esc(c.answers[0])}</strong><span class="small">${esc(c.note)}</span>${s.current.confidence === 'sure' ? '<span class="small"><strong>You were sure:</strong> surprises like this are the ones you remember best once corrected.</span>' : ''}`;
+    } else if (it.type === 'heart') {
+      const chunks = chunkText(POEM, state.profile.chunkWords);
+      const text = it.chain ? chunks.slice(0, it.chain).join('\n') : chunks[it.chunk];
+      const r = compareRecitation(text, $('#answer').value);
+      ok = r.ratio >= T['byHeart.passRatio']; const near = !ok && r.ratio >= T['byHeart.nearMissRatio'];
+      fb = `<strong>${ok ? 'Word for word' : near ? 'Nearly' : 'Not yet'}: ${Math.round(r.ratio * 100)}% of the words, in order</strong>${r.missing.length ? `<span class="small">Missing or out of place: <span class="missing">${esc(r.missing.join(', '))}</span></span>` : ''}<span class="verse" style="font-size:15px">${esc(text)}</span>`;
+    } else if (it.type === 'label') {
+      const given = it.mode === 'recognize' ? s.current.choice : $('#answer').value;
+      ok = norm(given, false) === norm(it.expected, false);
+      fb = `<strong>${ok ? 'Yes' : 'It is'}: ${esc(it.expected)}</strong>`;
+    } else {
+      const wrong = FIGURE.labels.filter((l) => s.current.whole[l.id] !== l.label);
+      ok = wrong.length === 0;
+      fb = ok ? '<strong>Every label, from memory.</strong>' : `<strong>${FIGURE.labels.length - wrong.length} of ${FIGURE.labels.length}</strong><span class="small">To look at again: ${esc(wrong.map((l) => l.label).join(', '))}</span>`;
+    }
+    s.queue.shift(); s.asked += it.retry ? 0 : 1; s.elapsed += it.seconds;
+    s.results.push({ it, ok });
+    if (ok) s.misses = 0; else { s.misses++; if (!it.retry && it.type !== 'whole') s.queue.push({ ...it, retry: true }); }
+    const tail = ok ? (it.kind === 'new' || it.kind === 'chain' ? 'Comes back for a second look in a later session today.' : 'Next time in a few days.') : 'Comes back at the end, then in a later session.';
+    $('#fb').innerHTML = `<div class="feedback ${ok ? 'ok' : 'no'}">${fb}<span class="small muted">${tail}</span></div>`;
+    $$('#qcard input, #qcard textarea, #qcard select, #qcard [data-choice], #qcard [data-conf]').forEach((el) => (el.disabled = true));
+    const btn = $('#check-btn'); btn.textContent = 'Next'; btn.disabled = false; btn.replaceWith(btn.cloneNode(true)); $('#check-btn').addEventListener('click', next); $('#check-btn').focus({ preventScroll: true });
   }
-
-  /** For the "End" shortcut: answer today's plan as Léa might (two slips), then show the end screen. */
-  function playSampleSession() {
-    const p = plan();
-    const misses = new Set(['f4', 'h3']);
-    state.session = { queue: [], total: p.cards.length, asked: p.cards.length, elapsed: p.cards.reduce((t, c) => t + c.seconds, 0), misses: 0, results: p.cards.map((card) => ({ card, ok: !misses.has(card.id), retry: false })) };
-    finish();
-  }
-
   function finish(message) {
-    const s = state.session;
-    state.doneToday = true;
-    const firsts = s.results.filter((r) => !r.retry);
-    const right = firsts.filter((r) => r.ok);
-    const wrong = firsts.filter((r) => !r.ok);
-    const solid = right.filter((r) => !r.card.isNew).slice(0, 3);
+    const s = state.session; const m = s.m;
+    const firsts = s.results.filter((r) => !r.it.retry);
+    const right = firsts.filter((r) => r.ok).length;
+    // Update the mission, as the engine would after grading.
+    if (m.kind === 'by-heart') {
+      for (const r of s.results) {
+        const it = r.it; if (!r.ok) continue;
+        if (it.chain) m.chain[it.chain] = true;
+        else if (it.cue === 'first-letters' && m.stages[it.chunk] === 0) m.stages[it.chunk] = 1;
+        else if (it.cue === 'key-words-blank' && m.stages[it.chunk] === 1) m.stages[it.chunk] = 2;
+      }
+    } else if (m.kind === 'figure') {
+      for (const r of s.results) { if (!r.ok) continue; if (r.it.type === 'label') m.stages[r.it.id] = Math.min(2, m.stages[r.it.id] + 1); else m.wholeDone = true; }
+    } else {
+      const asked = new Set(s.results.map((r) => r.it.id));
+      const second = [];
+      for (const r of firsts) {
+        const id = r.it.id;
+        if (r.it.kind === 'second look') { if (!r.ok) second.push(id); continue; }
+        if (m.pending.includes(id)) { m.pending = m.pending.filter((x) => x !== id); if (r.it.kind === 'new' || !r.ok) second.push(id); if (r.it.kind === 'new') m.started = Math.min(m.total, (m.started ?? 0) + 1); }
+        if (m.kind === 'test' && r.ok && CARDS[id]?.test) m.readiness = Math.min(95, m.readiness + 2);
+        if (r.ok && CARDS[id]?.notion && STATUS[CARDS[id].notion] === 'missing') STATUS[CARDS[id].notion] = 'learning';
+      }
+      m.second = [...m.second.filter((id) => !asked.has(id)), ...second];
+      if (m.kind === 'mixed') { m.due = Math.max(0, m.due - firsts.length); m.pending = []; m.batchIndex = 1; }
+    }
     const minutes = Math.max(1, Math.round(s.elapsed / 60));
-    const mathsRight = right.filter((r) => r.card.test).length;
-    const ready = Math.min(92, 74 + mathsRight * 2);
-    $('#ready-pct').textContent = `${ready}% ready`;
-    $('#ready-bar').style.width = `${ready}%`;
+    state.clock += minutes; state.sessionsDone++; state.lastEnded = state.clock;
+    renderClock();
+    const g = gate(); const p = progress(m);
     $('#s-done').innerHTML = `
-      <div class="hello" style="margin-top:12px">
-        <span class="label">${message ? 'Stopped kindly' : 'Session finished'}</span>
-        <h2>${message ? 'Good effort.' : 'Done for today.'}</h2>
-        <p class="hand" style="margin-top:6px">${message ? esc(message) : 'see you tomorrow, or not: nothing is lost'}</p>
-      </div>
+      <div class="hello" style="margin-top:12px"><span class="label">${message ? 'Stopped kindly' : 'Session finished'}</span><h2>${message ? 'Good effort.' : 'Session done.'}</h2>
+      <p class="hand" style="margin-top:6px">${message ? esc(message) : 'a break now helps it stick'}</p></div>
       <div class="card">
         <div class="row between"><span>Cards</span><strong class="num">${firsts.length} · ${minutes} min</strong></div>
-        <div class="row between"><span>Right first time</span><strong class="num">${right.length} of ${firsts.length}</strong></div>
-        <div class="row between"><span>Maths test, Tuesday</span><strong class="num">74% → ${ready}% ready</strong></div>
+        <div class="row between"><span>Right first time</span><strong class="num">${right} of ${firsts.length}</strong></div>
+        <div class="stack"><span class="small muted">${esc(KIND_LABEL[m.kind])} · ${esc(m.title)}</span><strong class="small">${esc(p.text)}</strong></div>
       </div>
-      ${solid.length ? `<div class="card sunken"><span class="label">Getting stronger</span>${solid.map((r) => `<div class="row between"><span>${esc(r.card.becomes)}</span><span class="pill solid">stronger</span></div>`).join('')}</div>` : ''}
-      ${wrong.length ? `<div class="card sunken"><span class="label">Back tomorrow</span>${wrong.map((r) => `<div class="row between"><span>${esc(r.card.becomes)}</span><span class="pill fragile">tomorrow</span></div>`).join('')}</div>` : ''}
-      <button class="btn block" id="close-btn">Close</button>
-      <button class="btn ghost" data-go="capture" style="justify-self:center">Curious? Look at the fractions lesson again</button>`;
+      <div class="gate"><strong>${g.tomorrow ? 'That was the last session for today.' : `Next session from ${hm(g.nextAt)}`}</strong><span class="small">${g.tomorrow ? 'Tomorrow, what held overnight moves on: cues fade, units become secure.' : `${state.settings.sessionsPerDay - state.sessionsDone} more allowed today. What was new or missed comes back then for a second look; a unit is secure only after correct answers on separate days.`}</span></div>
+      <button class="btn block" id="close-btn">Close</button>`;
     show('done');
     $('#close-btn').addEventListener('click', () => show('today'));
-    $$('#s-done [data-go]').forEach((b) => b.addEventListener('click', () => show(b.dataset.go)));
   }
+  $('#stop-btn').addEventListener('click', () => { const s = state.session; if (!s || !s.results.length) { state.session = null; show('today'); return; } finish('Stopped. Everything left moves to another session, nothing to catch up on.'); });
 
-  $('#stop-btn').addEventListener('click', () => {
-    const s = state.session;
-    if (!s || s.results.length === 0) { state.session = null; show('today'); return; }
-    finish('Stopped. Everything left moves to another day, with nothing to catch up on.');
-  });
-
-  // ---------- why this card? (FSRS-6 curve, same formula as packages/engine) ----------
-  const DECAY = 0.1542;
-  const FACTOR = Math.pow(0.9, -1 / DECAY) - 1;
+  // ---------- why this card? ----------
+  const DECAY = 0.1542, FACTOR = Math.pow(0.9, -1 / DECAY) - 1;
   const recallAt = (t, S) => Math.pow(1 + (FACTOR * t) / S, -DECAY);
-
-  function openWhy(card) {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'sheet-backdrop';
-    let body;
-    if (card.isNew) {
-      body = `<p>This card is <strong>new</strong>. It comes from the lesson you photographed on Monday${card.test ? ' and counts for Tuesday\'s test, so it is introduced first' : ''}.</p>
-              <p class="small muted">New cards come in a few per day, only once the cards they build on are known.</p>`;
-    } else {
-      const S = (FACTOR * card.seen) / (Math.pow(card.recall, -1 / DECAY) - 1);
-      const parts = [`Seen ${card.seen} days ago`, `recall now about ${Math.round(card.recall * 100)}%`];
-      if (card.test) parts.push(`Maths test in ${card.test} days`);
-      body = `<p><strong>${parts.join(' · ')}</strong></p>
-              <div class="chart" id="why-chart"></div>
-              <p class="small">Your memory of this card fades along this curve. We ask again when recall is about to drop below the target line${card.test ? ', and before a test we aim higher' : ''}. Each correct answer makes the curve flatter, so the next gap is longer.</p>
-              <p class="small muted">Memory strength: about ${S < 10 ? S.toFixed(1) : Math.round(S)} days (the time for recall to fall to 90%).</p>`;
-      backdrop.dataset.S = S;
+  function openWhy(it) {
+    const back = document.createElement('div'); back.className = 'sheet-backdrop';
+    let body = ''; let curve = null;
+    if (it.type === 'heart') body = `<p>Learning by heart, part by part. The cues fade as the memory holds: <strong>full text</strong> on the first meeting, then <strong>first letters</strong>, then <strong>key words hidden</strong> once it has held for ${T['byHeart.keyWordsFromDays']} days, then <strong>nothing shown</strong> from ${T['byHeart.reciteFromDays']} days.</p><p class="small muted">Parts are ${state.profile.chunkWords} words because that is what usually sticks for Léa on a first read (concentration profile). Chained recitations unlock once the parts hold.</p>`;
+    else if (it.type === 'label' || it.type === 'whole') body = '<p>Blank the map: each label is hidden and named, then the whole map at once. A label you picked among choices comes back to be typed; then it joins the whole map.</p>';
+    else {
+      const c = CARDS[it.id];
+      if (c.why) body += `<p><strong>${esc(c.why)}</strong></p>`;
+      if (c.variant) body += `<p>Pushed by your parents. This is variant ${c.variant} of 8: questions rotate so you practise the rule, not one answer.</p>`;
+      if (it.kind === 'second look') body += '<p>You met this card earlier today. A second look after a break fixes it far better than repeating it straight away.</p>';
+      if (c.seen) { curve = c; body += `<p><strong>Seen ${c.seen} days ago · recall now about ${Math.round(c.recall * 100)}%${c.test ? ` · test in ${c.test} days` : ''}</strong></p><div class="chart" id="why-chart"></div><p class="small">Memory of this card fades along this curve. It comes back when recall is about to drop below the target line${c.test ? ', which is higher in the week before a test' : ''}.</p>`; }
+      if (!body) body = '<p>New in this mission. New cards come in only once what they build on is known.</p>';
     }
-    backdrop.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-label="Why this card"><div class="grab"></div><h3>Why this card now?</h3>${body}<button class="btn quiet block" id="why-close">Got it</button></div>`;
-    $('#phone').appendChild(backdrop);
-    if (!card.isNew) drawCurve($('#why-chart'), card, Number(backdrop.dataset.S));
-    const close = () => backdrop.remove();
-    $('#why-close').addEventListener('click', close);
-    $('#why-close').focus({ preventScroll: true });
-    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) close(); });
-    backdrop.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    back.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-label="Why this card"><div class="grab"></div><h3>Why this card now?</h3>${body}<button class="btn quiet block" id="why-close">Got it</button></div>`;
+    $('#phone').appendChild(back);
+    if (curve) drawCurve($('#why-chart'), curve);
+    const close = () => back.remove();
+    $('#why-close').addEventListener('click', close); $('#why-close').focus({ preventScroll: true });
+    back.addEventListener('click', (e) => { if (e.target === back) close(); });
+    back.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+  function drawCurve(el, c) {
+    const S = (FACTOR * c.seen) / (Math.pow(c.recall, -1 / DECAY) - 1);
+    const W = 340, H = 180, L = 36, R = 12, Tp = 14, B = 26, yMin = 0.5;
+    const maxT = Math.max(Math.ceil(c.seen * 1.8), c.test ? c.seen + c.test + 2 : 0, 10);
+    const x = (t) => L + (t / maxT) * (W - L - R), y = (r) => Tp + ((1 - r) / (1 - yMin)) * (H - Tp - B);
+    const pts = Array.from({ length: 81 }, (_, i) => { const t = (i / 80) * maxT; return `${x(t).toFixed(1)},${y(Math.max(yMin, recallAt(t, S))).toFixed(1)}`; });
+    const target = c.test && c.test <= T['retention.testWindowDays'] ? T['retention.test'] : T['retention.base'];
+    const tx = c.test ? x(c.seen + c.test) : null; const step = maxT > 20 ? 10 : 5;
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Predicted recall over the days since this card was last seen">
+      ${[0.5, 0.6, 0.7, 0.8, 0.9, 1].map((r) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(r)}" y2="${y(r)}"/><text class="axis" x="${L - 6}" y="${y(r) + 4}" text-anchor="end">${Math.round(r * 100)}%</text>`).join('')}
+      ${Array.from({ length: Math.floor(maxT / step) + 1 }, (_, i) => `<text class="axis" x="${x(i * step)}" y="${H - 8}" text-anchor="middle">${i * step}d</text>`).join('')}
+      <path class="area" d="M${pts.join('L')}L${x(maxT)},${y(yMin)}L${x(0)},${y(yMin)}Z"/>
+      <line class="target" x1="${L}" x2="${W - R}" y1="${y(target)}" y2="${y(target)}"/><text class="ann" x="${L + 6}" y="${y(target) - 5}">target ${Math.round(target * 100)}%</text>
+      ${tx ? `<line class="marker" x1="${tx}" x2="${tx}" y1="${Tp}" y2="${H - B}"/><text class="ann red" x="${tx - 4}" y="${H - B - 6}" text-anchor="end">test</text>` : ''}
+      <path class="curve" d="M${pts.join('L')}"/><circle class="ring" cx="${x(c.seen)}" cy="${y(c.recall)}" r="5"/>
+      <text class="ann" x="${x(c.seen) + 8}" y="${y(c.recall) + 16}">today ${Math.round(c.recall * 100)}%</text></svg>`;
   }
 
-  function drawCurve(el, card, S) {
-    const W = 340, H = 190, L = 36, R = 12, T = 14, B = 26;
-    const maxT = Math.max(Math.ceil(card.seen * 1.8), (card.test ? card.seen + card.test + 2 : 0), 10);
-    const yMin = 0.5;
-    const x = (t) => L + (t / maxT) * (W - L - R);
-    const y = (r) => T + ((1 - r) / (1 - yMin)) * (H - T - B);
-    const pts = [];
-    for (let i = 0; i <= 80; i++) { const t = (i / 80) * maxT; pts.push([x(t), y(Math.max(yMin, recallAt(t, S)))]); }
-    const path = 'M' + pts.map((p) => p.map((v) => v.toFixed(1)).join(',')).join('L');
-    const area = `${path}L${x(maxT).toFixed(1)},${y(yMin)}L${x(0)},${y(yMin)}Z`;
-    const ticksY = [0.5, 0.6, 0.7, 0.8, 0.9, 1];
-    const stepX = maxT > 20 ? 10 : 5;
-    const ticksX = []; for (let t = 0; t <= maxT; t += stepX) ticksX.push(t);
-    const target = card.test && card.test <= 7 ? 0.95 : 0.9;
-    const testX = card.test ? x(card.seen + card.test) : null;
-    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Predicted recall over the days since this card was last seen">
-      ${ticksY.map((r) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(r)}" y2="${y(r)}"/><text class="axis" x="${L - 6}" y="${y(r) + 4}" text-anchor="end">${Math.round(r * 100)}%</text>`).join('')}
-      ${ticksX.map((t) => `<text class="axis" x="${x(t)}" y="${H - 8}" text-anchor="middle">${t}d</text>`).join('')}
-      <path class="area" d="${area}"/>
-      <line class="target" x1="${L}" x2="${W - R}" y1="${y(target)}" y2="${y(target)}"/>
-      <text class="ann" x="${L + 6}" y="${y(target) - 5}">target ${Math.round(target * 100)}%</text>
-      ${testX ? `<line class="marker" x1="${testX}" x2="${testX}" y1="${T}" y2="${H - B}"/><text class="ann red" x="${testX - 4}" y="${H - B - 6}" text-anchor="end">test</text>` : ''}
-      <path class="curve" d="${path}"/>
-      <circle class="ring" cx="${x(card.seen)}" cy="${y(card.recall)}" r="5"/>
-      <text class="ann" x="${x(card.seen) + 8}" y="${y(card.recall) + 16}">today ${Math.round(card.recall * 100)}%</text>
-      <rect class="hit" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}"/>
-    </svg><div class="tip" hidden></div>`;
-    const svg = $('svg', el), tip = $('.tip', el);
-    svg.addEventListener('pointermove', (e) => {
-      const box = svg.getBoundingClientRect();
-      const px = ((e.clientX - box.left) / box.width) * W;
-      const t = Math.min(maxT, Math.max(0, ((px - L) / (W - L - R)) * maxT));
-      const r = recallAt(t, S);
-      tip.hidden = false;
-      tip.textContent = `day ${Math.round(t)} · ${Math.round(r * 100)}%`;
-      tip.style.left = `${(x(t) / W) * box.width}px`;
-      tip.style.top = `${(y(Math.max(yMin, r)) / H) * box.height}px`;
-    });
-    svg.addEventListener('pointerleave', () => (tip.hidden = true));
+  // ---------- map ----------
+  function renderMap() {
+    const dom = state.mapDomain;
+    const notions = DATA.notions.filter((n) => n.domain === dom);
+    const counts = { solid: 0, learning: 0, fragile: 0, missing: 0, none: 0 };
+    notions.forEach((n) => counts[STATUS[n.id]]++);
+    const color = { solid: 'var(--solid)', learning: 'var(--ink)', fragile: 'var(--fragile)', missing: 'var(--gap)', none: 'var(--line)' };
+    const areas = [...new Set(notions.map((n) => n.area))];
+    const pushedPath = notions.filter((n) => PUSHED.has(n.id)).sort((a, b) => depth(a.id) - depth(b.id));
+    $('#s-map').innerHTML = `
+      <div class="hello"><span class="label">Léa's map · absolute level, not school grade</span><h2>What Léa knows</h2></div>
+      <div class="chips">${['French', 'Maths'].map((d) => `<button data-domain="${d}" aria-pressed="${d === dom}">${d}</button>`).join('')}</div>
+      <div class="card">
+        <div class="summarybar" role="img" aria-label="${Object.entries(counts).map(([k, v]) => `${v} ${STATUS_LABEL[k]}`).join(', ')}">${Object.entries(counts).filter(([, v]) => v).map(([k, v]) => `<span style="flex:${v};background:${color[k]}"></span>`).join('')}</div>
+        <div class="legend">${Object.entries(counts).map(([k, v]) => `<span><b style="background:${color[k]}"></b>${v} ${STATUS_LABEL[k]}</span>`).join('')}</div>
+      </div>
+      ${pushedPath.length ? `<div class="card"><span class="label">Pushed by your parents · learning path</span><div class="path">${pushedPath.map((n) => `<div class="step"><span class="node"></span><span>${esc(n.title)}</span><span class="nstatus ${STATUS[n.id]}">${STATUS_LABEL[STATUS[n.id]]}</span></div>`).join('')}</div><p class="small muted">Foundations first: each notion opens once the ones it builds on are known.</p></div>` : ''}
+      ${areas.map((a) => `<div class="card"><span class="label">${esc(dom)} › ${esc(a)}</span><div class="area">${notions.filter((n) => n.area === a).sort((x, y) => depth(x.id) - depth(y.id)).map((n) => `<div class="notion"><span>${esc(n.title)}${PUSHED.has(n.id) ? ' <span class="pill ink">pushed</span>' : ''}</span><span class="nstatus ${STATUS[n.id]}">${STATUS_LABEL[STATUS[n.id]]}</span></div>`).join('')}</div></div>`).join('')}
+      <button class="btn quiet block" id="map-push">Parents: push a notion</button>`;
+    $$('#s-map [data-domain]').forEach((b) => b.addEventListener('click', () => { state.mapDomain = b.dataset.domain; renderMap(); }));
+    $('#map-push').addEventListener('click', () => { state.push = { domain: dom, notion: dom === 'French' ? 'passe-simple' : 'proportionality', child: 'Léa', step: 0 }; show('family'); $('#push-card').scrollIntoView({ block: 'start' }); });
   }
 
   // ---------- capture ----------
-  const LESSON = [
-    { kind: 'term', title: 'Numérateur et dénominateur', q: 'Dans 3/8, quel nombre est le dénominateur ?' },
-    { kind: 'rule', title: 'Fractions égales', q: 'Complète : 3/4 = …/8' },
-    { kind: 'procedure', title: 'Additionner avec le même dénominateur', q: 'Calcule : 2/7 + 3/7' },
-    { kind: 'procedure', title: 'Additionner quand un dénominateur est multiple de l’autre', q: 'Calcule : 2/5 + 3/10', uncertain: true },
-    { kind: 'concept', title: 'Pourquoi on n’additionne pas les dénominateurs', q: 'Pourquoi 3/4 + 1/8 ne fait pas 4/12 ?', added: true },
-  ];
-
   function renderCapture() {
-    const el = $('#s-capture');
-    const step = state.capture;
-    if (step === 0) {
-      el.innerHTML = `
-        <div class="hello"><span class="label">Capture · Maths</span><h2>Photograph a lesson</h2></div>
-        <div class="photos" aria-label="Two photographed notebook pages">
-          <div class="photo seyes"><div class="hw"><b>Additionner des fractions</b><br>a/b : a est le numérateur,<br>b est le dénominateur<br><br>On ne change pas une fraction en multipliant le num. et le dén. par un même nombre<br><br>3/4 = 6/8</div></div>
-          <div class="photo seyes"><div class="hw">Même dénominateur :<br>on additionne les num.<br>et on garde le dén.<br>2/7 + 3/7 = 5/7<br><br>Ex : 3/4 + 1/8<br>= 6/8 + 1/8 = <b>7/8</b></div></div>
-        </div>
-        <p class="small muted">The scanner on the phone crops and straightens each page. Photos are deleted once the lesson has been read.</p>
-        <button class="btn block" id="cap-go">Use these 2 pages</button>`;
-      $('#cap-go').addEventListener('click', () => {
-        state.capture = 1; renderCapture();
-        setTimeout(() => { state.capture = 2; renderCapture(); }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 1400);
-      });
-    } else if (step === 1) {
-      el.innerHTML = `
-        <div class="hello"><span class="label">Capture · Maths</span><h2>Reading the lesson…</h2></div>
-        <div class="card"><div class="progress-dots" aria-hidden="true"><i></i><i></i><i></i></div>
-        <p class="small muted">Finding each idea, writing questions at several levels, and checking against the 5e curriculum and open textbooks.</p></div>`;
-    } else if (step === 2) {
-      const kept = LESSON.filter((_, i) => state.kept[i] !== false).length;
-      el.innerHTML = `
-        <div class="hello"><span class="label">Review inbox</span><h2>Additionner des fractions</h2></div>
-        <p class="small muted">${LESSON.length} cards found. Keep, fix or drop each one. Nothing enters your plan until you say so.</p>
-        <div class="inbox">${LESSON.map((u, i) => `
-          <div class="item ${state.kept[i] === false ? 'off' : ''}">
-            <div class="row between"><span class="pill ink">${u.kind}</span>
-              <input type="checkbox" class="toggle" id="keep-${i}" data-keep="${i}" ${state.kept[i] === false ? '' : 'checked'} aria-label="Keep card: ${esc(u.title)}"></div>
-            <strong>${esc(u.title)}</strong>
-            <span class="q">${esc(u.q)}</span>
-            ${u.uncertain ? '<span class="pill fragile">Check this: the photo was blurry here</span>' : ''}
-            ${u.added ? '<span class="pill solid">Added by Lesson Lens</span>' : ''}
-          </div>`).join('')}</div>
-        <div class="card lens">
-          <span class="label">Lesson Lens · for parents</span>
-          <ul>
-            <li><span class="sym">✔</span><span>Matches the 5e curriculum: <em>add fractions when one denominator is a multiple of the other</em>. <span class="source">Official curriculum, cycle 4</span></span></li>
-            <li><span class="sym">+</span><span>Common confusion: adding the denominators (3/4 + 1/8 ≠ 4/12). One check card was added. <span class="source">Open textbook (Sésamath 5e)</span></span></li>
-            <li><span class="sym">↗</span><span>Going further: fractions on a number line, for a curious moment. Optional.</span></li>
-          </ul>
-          <p class="small muted">The teacher's wording stays on the cards: it is what the test will use.</p>
-        </div>
-        <button class="btn block" id="cap-add">Add ${kept} cards to my plan</button>`;
-      $$('[data-keep]').forEach((t) => t.addEventListener('change', () => { state.kept[t.dataset.keep] = t.checked; renderCapture(); $('#keep-' + t.dataset.keep).focus(); }));
-      $('#cap-add').addEventListener('click', () => { state.capture = 3; renderCapture(); });
+    const c = state.capture; const el = $('#s-capture');
+    const tabs = `<div class="chips"><button data-cmode="heart" aria-pressed="${c.mode === 'heart'}">To learn by heart</button><button data-cmode="understand" aria-pressed="${c.mode === 'understand'}">To understand</button></div>`;
+    if (c.mode === 'heart') {
+      if (c.step === 0) {
+        el.innerHTML = `<div class="hello"><span class="label">Capture · French</span><h2>A lesson to learn by heart</h2></div>${tabs}
+          <div class="photo seyes" style="transform:none;aspect-ratio:auto"><div class="hw"><b>Le Corbeau et le Renard</b> — à réciter vendredi<br>${esc(POEM.split('\n').slice(0, 6).join('\n')).replace(/\n/g, '<br>')}<br>…</div></div>
+          <button class="btn block" id="cap-go">Read this page</button>`;
+      } else if (c.step === 1) {
+        el.innerHTML = `<div class="hello"><span class="label">Capture</span><h2>Reading the text…</h2></div><div class="card"><div class="progress-dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="small muted">Copying the exact text with its line breaks, and identifying the notion.</p></div>`;
+      } else if (c.step === 2) {
+        const chunks = chunkText(POEM, state.profile.chunkWords);
+        el.innerHTML = `<div class="hello"><span class="label">Review inbox</span><h2>Check the text</h2></div>
+          <div class="card"><span class="label">Notion</span><p>French › Poetry › La Fontaine, <em>Le Corbeau et le Renard</em> (first 9 lines)</p></div>
+          <div class="card"><label class="label" for="poem-text">Exact text (fix anything misread)</label><textarea class="answer" id="poem-text" style="min-height:180px">${esc(POEM)}</textarea></div>
+          <div class="card"><span class="label">Cut for Léa: about ${state.profile.chunkWords} words a part</span>${chunks.map((t, i) => `<div class="row between small" style="align-items:flex-start"><strong>Part ${i + 1}</strong><span class="muted" style="text-align:right">${esc(t.split('\n')[0])}…</span></div>`).join('')}<p class="small muted">${chunks.length} parts, then ${chunks.length - 1} chained recitations ending with the whole text. The part size comes from Léa's concentration profile (Settings).</p></div>
+          <div class="card"><span class="label">Recitation</span><p>Friday 9 October, chosen by Léa</p></div>
+          <button class="btn block" id="cap-add">Create the mission</button>`;
+      } else {
+        el.innerHTML = `<div class="hello"><span class="label">Capture</span><h2>Mission ready</h2></div><div class="card seyes" style="padding-left:46px"><p><strong>Le Corbeau et le Renard</strong> is on Léa's mission list.</p><p class="hand">a few parts a day, then chained</p></div><button class="btn quiet block" data-go="today">See it on Today</button>`;
+      }
     } else {
-      const kept = LESSON.filter((_, i) => state.kept[i] !== false).length;
-      el.innerHTML = `
-        <div class="hello"><span class="label">Capture</span><h2>Added</h2></div>
-        <div class="card seyes" style="padding-left:46px">
-          <p><strong class="num">${kept} cards</strong> from <em>Additionner des fractions</em>.</p>
-          <p class="hand">a few per day, test material first</p>
-          <p class="small muted">They start once the cards they build on are known. Nothing new is added on days when the plan is already full.</p>
-        </div>
-        <button class="btn quiet block" id="cap-again">Photograph another lesson</button>`;
-      $('#cap-again').addEventListener('click', () => { state.capture = 0; state.kept = {}; renderCapture(); });
+      el.innerHTML = `<div class="hello"><span class="label">Capture · Maths</span><h2>A lesson to understand</h2></div>${tabs}
+        <div class="card lens"><span class="label">Additionner des fractions · 5 cards found</span>
+        <ul><li><span class="sym">✔</span><span>Placed on the map: <em>Adding and subtracting fractions</em>. Its prerequisite <em>Equivalent fractions</em> is learning for Léa. <span class="source">Knowledge map</span></span></li>
+        <li><span class="sym">+</span><span>Common confusion: adding the denominators (3/4 + 1/8 ≠ 4/12). One check card was added. <span class="source">Open textbook (Sésamath)</span></span></li>
+        <li><span class="sym">↗</span><span>Going further: fractions on a number line. Optional.</span></li></ul>
+        <p class="small muted">The teacher's wording stays on the cards: it is what the test will use. These cards feed the "Maths test: fractions" mission.</p></div>`;
     }
+    $$('#s-capture [data-cmode]').forEach((b) => b.addEventListener('click', () => { state.capture = { mode: b.dataset.cmode, step: 0 }; renderCapture(); }));
+    const go = $('#cap-go'); if (go) go.addEventListener('click', () => { c.step = 1; renderCapture(); setTimeout(() => { c.step = 2; renderCapture(); }, reduced ? 50 : 1300); });
+    const add = $('#cap-add'); if (add) add.addEventListener('click', () => { c.step = 3; renderCapture(); });
+    $$('#s-capture [data-go]').forEach((b) => b.addEventListener('click', () => show(b.dataset.go)));
   }
 
-  // ---------- family ----------
+  // ---------- family: push a notion ----------
   function renderFamily() {
+    const p = state.push;
+    const domainNotions = DATA.notions.filter((n) => n.domain === p.domain);
+    const areas = [...new Set(domainNotions.map((n) => n.area))];
+    let pushBody = '';
+    if (p.step === 0) {
+      pushBody = `<div class="stack">
+        <label class="small" for="push-domain">Domain</label><select class="field" id="push-domain">${['French', 'Maths'].map((d) => `<option ${d === p.domain ? 'selected' : ''}>${d}</option>`).join('')}</select>
+        <label class="small" for="push-notion">Area › notion</label><select class="field" id="push-notion">${areas.map((a) => `<optgroup label="${esc(a)}">${domainNotions.filter((n) => n.area === a).map((n) => `<option value="${n.id}" ${n.id === p.notion ? 'selected' : ''}>${esc(n.title)}</option>`).join('')}</optgroup>`).join('')}</select>
+        <label class="small" for="push-child">For</label><select class="field" id="push-child"><option>Léa</option><option>Noé</option></select>
+        <button class="btn" id="push-check">Check what it builds on</button></div>`;
+    } else if (p.step === 1) {
+      const scope = [p.notion, ...ancestors(p.notion)];
+      const res = placementCheck(scope, (id) => ['solid', 'learning', 'fragile'].includes(STATUS[id]));
+      const path = learningPath([p.notion], res.known);
+      p.path = path;
+      pushBody = `<div class="stack"><strong>${esc(N.get(p.notion).domain)} › ${esc(N.get(p.notion).area)} › ${esc(N.get(p.notion).title)}</strong>
+        <span class="label">Placement check · ${res.log.length} question${res.log.length > 1 ? 's' : ''} for ${esc(p.child)}</span>
+        <div class="log">${res.log.map((q) => `<span>${q.ok ? '✓' : '✗'} ${esc(N.get(q.id).title)} <span class="muted">${q.ok ? 'known' : 'missing'}</span></span>`).join('')}</div>
+        <span class="label">Learning path</span><div class="path">${path.map((id) => `<div class="step"><span class="node"></span><span>${esc(N.get(id).title)}</span><span class="nstatus missing">to learn</span></div>`).join('')}</div>
+        <p class="small muted">Claude writes a short lesson for ${path.length > 1 ? 'each notion' : 'it'}, with at least eight varied exercises per rule. You check it in the review inbox before it reaches ${esc(p.child)}.</p>
+        <button class="btn" id="push-go">Push to ${esc(p.child)}'s app</button><button class="btn ghost" id="push-back">Choose another notion</button></div>`;
+    } else {
+      pushBody = `<div class="stack"><strong>Pushed: ${esc(N.get(p.notion).title)}</strong><p class="small">It is on ${esc(p.child)}'s mission list as "pushed by your parents". ${esc(p.child)} picks it in a free session, or not: it is ranked high, never forced.</p><button class="btn" data-go="today">See ${esc(p.child)}'s missions</button><button class="btn ghost" id="push-again">Push another notion</button></div>`;
+    }
     const members = [
-      { i: 'L', name: 'Léa', level: '12 · 5e', week: 41, budget: 60, next: 'Maths, Tue · 74% ready', rem: 'Paused: started alone on 5 of 6 days', seen: 'Léa sees exactly this too' },
-      { i: 'N', name: 'Noé', level: '10 · CM2', week: 38, budget: 60, next: 'Dictée, Thu · 81% ready', rem: '1 a day after school · followed 4 of 5', seen: 'Noé sees exactly this too' },
-      { i: 'Y', name: 'You', level: 'Spanish B1', week: 52, budget: 120, next: 'No test · 212 words solid', rem: 'Off', seen: 'Only you, unless you share' },
+      { i: 'L', name: 'Léa', age: '13 · high school next year', missions: missions.filter((m) => m.kind !== 'mixed').length, sessions: `${state.sessionsDone} of ${state.settings.sessionsPerDay} sessions today`, seen: 'Léa sees exactly this too' },
+      { i: 'N', name: 'Noé', age: '10', missions: 3, sessions: '1 of 2 sessions today', seen: 'Noé sees exactly this too' },
+      { i: 'Y', name: 'You', age: 'Spanish B1', missions: 1, sessions: '1 of 2 sessions today', seen: 'Only you, unless you share' },
     ];
-    $('#members').innerHTML = members.map((m) => `
-      <div class="card member">
-        <div class="row"><span class="avatar">${m.i}</span><div><strong>${m.name}</strong><div class="small muted">${m.level}</div></div></div>
-        <div class="row between small"><span>This week</span><span class="num">${m.week} of ${m.budget} min</span></div>
-        <div class="meter" aria-hidden="true"><span style="width:${Math.round((m.week / m.budget) * 100)}%"></span></div>
-        <dl class="kv"><dt>Next</dt><dd>${m.next}</dd><dt>Reminders</dt><dd>${m.rem}</dd><dt>Visible to</dt><dd>${m.seen}</dd></dl>
-      </div>`).join('');
+    $('#s-family').innerHTML = `
+      <div class="hello"><span class="label">Family · for parents</span><h2>Steer, don't watch</h2></div>
+      <div class="card" id="push-card"><span class="label">Push a notion</span>${pushBody}</div>
+      <div class="stack">${members.map((m) => `<div class="card member"><div class="row"><span class="avatar">${m.i}</span><div><strong>${m.name}</strong><div class="small muted">${m.age}</div></div></div><dl class="kv"><dt>Missions</dt><dd>${m.missions} open</dd><dt>Today</dt><dd>${m.sessions}</dd><dt>Visible to</dt><dd>${m.seen}</dd></dl></div>`).join('')}</div>
+      <div class="card"><span class="label">Léa · planned minutes per day, next 14 days</span><div class="chart" id="load-chart"></div><p class="small muted">Never above the daily limit (${state.settings.sessionsPerDay} × ${Math.round(sessionLimit() / 60)} min). Sessions are only offered when useful, so most days use less.</p></div>
+      <div class="card"><span class="label">Ask Noé at dinner</span>
+        <details class="ask"><summary>Combien font 7 × 8 ?</summary><p>56</p></details>
+        <details class="ask"><summary>Quel est le pluriel de « cheval » ?</summary><p>chevaux</p></details>
+        <details class="ask"><summary>Comment dit-on « chat » en anglais ?</summary><p>cat</p></details></div>
+      <div class="card sunken"><span class="label">Teach-back</span><p>Ask Léa to recite the first four lines of <em>Le Corbeau et le Renard</em> to you, and to explain the moral.</p></div>`;
+    const sel = (id, f) => { const e = $(id); if (e) e.addEventListener('change', f); };
+    sel('#push-domain', (e) => { p.domain = e.target.value; p.notion = DATA.notions.find((n) => n.domain === p.domain && STATUS[n.id] === 'none')?.id ?? DATA.notions.find((n) => n.domain === p.domain).id; renderFamily(); });
+    sel('#push-notion', (e) => { p.notion = e.target.value; });
+    sel('#push-child', (e) => { p.child = e.target.value; });
+    const ck = $('#push-check'); if (ck) ck.addEventListener('click', () => { p.step = 1; state.flow = 'u2-2'; renderFamily(); renderNotes('family'); });
+    const bk = $('#push-back'); if (bk) bk.addEventListener('click', () => { p.step = 0; renderFamily(); });
+    const again = $('#push-again'); if (again) again.addEventListener('click', () => { p.step = 0; renderFamily(); });
+    const pg = $('#push-go'); if (pg) pg.addEventListener('click', () => { pushNotion(p); p.step = 2; renderFamily(); });
+    $$('#s-family [data-go]').forEach((b) => b.addEventListener('click', () => { state.flow = 'u2-3'; show(b.dataset.go); }));
     drawLoad($('#load-chart'));
   }
-
+  function pushNotion(p) {
+    const path = p.path ?? [p.notion];
+    path.forEach((id) => { PUSHED.add(id); if (STATUS[id] === 'none') STATUS[id] = 'missing'; });
+    if (missions.some((m) => m.id === `pushed-${p.notion}`)) return;
+    const title = N.get(p.notion).title;
+    if (p.notion === 'passe-simple') {
+      missions.push(generic({ id: 'pushed-passe-simple', kind: 'pushed', subject: 'French', title: 'Passé simple (indicatif)', pushedBy: 'your parents', total: 10, secure: 0, started: 0, notions: ['passe-simple'], batches: [['ps-r1', 'ps1', 'ps2', 'ps4', 'ps5', 'ps6'], ['ps7', 'ps8', 'ps9', 'ps10']] }));
+      return;
+    }
+    const cards = path.flatMap((id) => BANK[id] ?? []);
+    missions.push(generic({ id: `pushed-${p.notion}`, kind: 'pushed', subject: N.get(p.notion).domain, title, pushedBy: 'your parents', total: Math.max(cards.length, path.length * 3), secure: 0, started: 0, notions: path, inbox: cards.length === 0, batches: cards.length ? [cards] : [] }));
+  }
   function drawLoad(el) {
-    const days = [['Sat', 3, 7], ['Sun', 4, 0], ['Mon', 5, 10], ['Tue', 6, 6], ['Wed', 7, 8], ['Thu', 8, 9], ['Fri', 9, 7], ['Sat', 10, 6], ['Sun', 11, 0], ['Mon', 12, 8], ['Tue', 13, 9], ['Wed', 14, 8], ['Thu', 15, 10], ['Fri', 16, 7]];
-    const budget = state.budget;
-    const W = 340, H = 170, L = 26, R = 6, T = 16, B = 30, max = Math.max(12, budget + 2);
-    const bw = (W - L - R) / days.length;
-    const y = (v) => T + (1 - v / max) * (H - T - B);
-    const ticks = [0, 5, 10].filter((v) => v <= max);
-    if (max >= 15) ticks.push(15);
-    const scaled = days.map(([d, n, v]) => [d, n, Math.min(v, budget)]);
-    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Planned minutes per day for the next 14 days, all at or under the ${budget}-minute budget">
+    const limit = state.settings.sessionsPerDay * Math.round(sessionLimit() / 60);
+    const vals = [22, 0, 31, 18, 26, 29, 24, 17, 0, 25, 28, 21, 30, 19].map((v) => Math.min(v, limit));
+    const days = ['Sat 3', 'Sun 4', 'Mon 5', 'Tue 6', 'Wed 7', 'Thu 8', 'Fri 9', 'Sat 10', 'Sun 11', 'Mon 12', 'Tue 13', 'Wed 14', 'Thu 15', 'Fri 16'];
+    const W = 340, H = 170, L = 28, R = 6, Tp = 16, B = 30, max = Math.max(limit + 5, 20);
+    const bw = (W - L - R) / vals.length, y = (v) => Tp + (1 - v / max) * (H - Tp - B);
+    const ticks = [0, Math.round(max / 2 / 5) * 5, Math.floor(max / 10) * 10].filter((v, i, a) => a.indexOf(v) === i);
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Planned minutes per day, at or under the daily limit of ${limit} minutes">
       ${ticks.map((v) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${L - 5}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join('')}
-      ${scaled.map(([d, n, v], i) => {
-        const x0 = L + i * bw + 2, w = bw - 4, h = Math.max(0, y(0) - y(v));
-        const r = Math.min(4, w / 2, h);
-        const bar = v > 0 ? `<path class="bar ${n === 6 ? 'dim' : ''}" d="M${x0},${y(0)}V${y(v) + r}Q${x0},${y(v)} ${x0 + r},${y(v)}H${x0 + w - r}Q${x0 + w},${y(v)} ${x0 + w},${y(v) + r}V${y(0)}Z"/>` : '';
-        const lab = i % 2 === 0 ? `<text class="axis" x="${x0 + w / 2}" y="${H - 16}" text-anchor="middle">${d[0]}</text><text class="axis" x="${x0 + w / 2}" y="${H - 4}" text-anchor="middle">${n}</text>` : '';
-        return `${bar}${lab}<rect class="hit" data-i="${i}" x="${L + i * bw}" y="${T}" width="${bw}" height="${H - T - B}"/>`;
-      }).join('')}
-      <line class="target" x1="${L}" x2="${W - R}" y1="${y(budget)}" y2="${y(budget)}"/>
-      <text class="ann" x="${W - R}" y="${y(budget) - 5}" text-anchor="end">budget ${budget} min</text>
-      <line class="marker" x1="${L + 3.5 * bw}" x2="${L + 3.5 * bw}" y1="${T - 4}" y2="${y(0)}"/>
-      <text class="ann red" x="${L + 3.5 * bw + 4}" y="${T + 4}">test</text>
-    </svg><div class="tip" hidden></div>`;
+      ${vals.map((v, i) => { const x0 = L + i * bw + 2, w = bw - 4, h = y(0) - y(v), r = Math.min(4, w / 2, h); return `${v > 0 ? `<path class="bar" d="M${x0},${y(0)}V${y(v) + r}Q${x0},${y(v)} ${x0 + r},${y(v)}H${x0 + w - r}Q${x0 + w},${y(v)} ${x0 + w},${y(v) + r}V${y(0)}Z"/>` : ''}${i % 2 === 0 ? `<text class="axis" x="${x0 + w / 2}" y="${H - 16}" text-anchor="middle">${days[i].split(' ')[0][0]}</text><text class="axis" x="${x0 + w / 2}" y="${H - 4}" text-anchor="middle">${days[i].split(' ')[1]}</text>` : ''}<rect class="hit" data-i="${i}" x="${L + i * bw}" y="${Tp}" width="${bw}" height="${H - Tp - B}"/>`; }).join('')}
+      <line class="target" x1="${L}" x2="${W - R}" y1="${y(limit)}" y2="${y(limit)}"/><text class="ann" x="${W - R}" y="${y(limit) - 5}" text-anchor="end">daily limit ${limit} min</text>
+      <line class="marker" x1="${L + 6.5 * bw}" x2="${L + 6.5 * bw}" y1="${Tp - 4}" y2="${y(0)}"/><text class="ann red" x="${L + 6.5 * bw + 4}" y="${Tp + 4}">recitation</text></svg><div class="tip" hidden></div>`;
     const tip = $('.tip', el), svg = $('svg', el);
     $$('.hit', el).forEach((r) => {
-      r.addEventListener('pointerenter', () => {
-        const [d, n, v] = scaled[Number(r.dataset.i)];
-        const note = n === 6 ? ' · test day' : n === 5 ? ' · test tomorrow' : v === 0 ? ' · rest day' : '';
-        const box = svg.getBoundingClientRect();
-        tip.hidden = false;
-        tip.textContent = `${d} ${n} Oct · ${v} min${note}`;
-        tip.style.left = `${((L + (Number(r.dataset.i) + 0.5) * bw) / W) * box.width}px`;
-        tip.style.top = `${(y(v) / H) * box.height}px`;
-      });
+      r.addEventListener('pointerenter', () => { const i = Number(r.dataset.i); const box = svg.getBoundingClientRect(); tip.hidden = false; tip.textContent = `${days[i]} Oct · ${vals[i]} min${vals[i] === 0 ? ' · rest day' : ''}`; tip.style.left = `${((L + (i + 0.5) * bw) / W) * box.width}px`; tip.style.top = `${(y(vals[i]) / H) * box.height}px`; });
       r.addEventListener('pointerleave', () => (tip.hidden = true));
     });
   }
 
-  // ---------- rhythm ----------
-  function renderRhythm() {
-    $('#budget-val').textContent = `${state.budget} min`;
-    $('#intent-min').textContent = state.budget;
-    const p = plan();
-    const subjects = subjectsOf(p.cards).map(([s]) => SUBJECTS[s].label).join(', ');
-    const anySlot = ['#slot-school', '#slot-dinner', '#slot-sat'].some((id) => $(id).checked);
-    // Same wording rule as packages/engine reminderText(): what and how long, nothing else.
-    $('#reminder-preview').innerHTML = state.reminders === 0 || !anySlot
-      ? '<span class="app">No reminders</span><span class="small">You start when you decide. The plan is ready whenever you open the app.</span>'
-      : `<span class="app">Reminder preview · ${$('#slot-school').checked ? '17:00' : $('#slot-dinner').checked ? '18:30' : 'Sat 10:00'}</span><span>${esc(state.intention)}: ${p.minutes} min today (${subjects}).</span>`;
-    const names = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    const full = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    $('#restdays').innerHTML = [1, 2, 3, 4, 5, 6, 0].map((d) => `<button data-day="${d}" aria-pressed="${state.restDays.has(d)}" aria-label="${full[d]}">${names[d]}</button>`).join('');
-    $$('#restdays [data-day]').forEach((b) => b.addEventListener('click', () => {
-      const d = Number(b.dataset.day);
-      state.restDays.has(d) ? state.restDays.delete(d) : state.restDays.add(d);
-      renderRhythm();
-      $(`#restdays [data-day="${d}"]`).focus();
-    }));
+  // ---------- settings ----------
+  const GROUPS = { retention: 'Target recall', workload: 'Workload', ladder: 'Question ladder', planner: 'Session planner', session: 'Inside a session', mission: 'Missions', reminders: 'Reminders', memory: 'Memory model', byHeart: 'Learning by heart', concentration: 'Concentration profile' };
+  function renderSettings() {
+    const s = state.settings, pr = state.profile;
+    const preview = s.reminders === 0 ? '<span class="app">No reminders</span><span class="small">Léa starts whenever ready.</span>' : `<span class="app">Reminder preview · 17:00</span><span>${esc(s.intention)}: ${Math.round(sessionLimit() / 60)} min, ${esc(missions.slice().sort((a, b) => score(b) - score(a))[0].title)}.</span>`;
+    $('#s-settings').innerHTML = `
+      <div class="hello"><span class="label">Set together with a parent</span><h2>Settings</h2></div>
+      <div class="card"><span class="label">Sessions</span>
+        <div class="row between"><label for="set-len">One session</label><strong class="num" id="set-len-v">${s.sessionMinutes} min</strong></div>
+        <input type="range" id="set-len" min="5" max="15" step="1" value="${s.sessionMinutes}">
+        <div class="row between"><span>Sessions per day, at most</span></div>
+        <div class="chips">${[1, 2, 3, 4, 5].map((n) => `<button data-spd="${n}" aria-pressed="${n === s.sessionsPerDay}">${n}</button>`).join('')}</div>
+        <div class="row between"><label for="set-break">Break between sessions</label><strong class="num" id="set-break-v">${s.breakMin} min</strong></div>
+        <input type="range" id="set-break" min="90" max="240" step="15" value="${s.breakMin}">
+        <p class="small muted">Up to ${s.sessionsPerDay} × ${Math.round(sessionLimit() / 60)} min a day, each session offered only when there is something useful to do. Limits for 12–13: 5–15 min, 1–5 sessions, a break of at least 90 min.</p></div>
+      <div class="card"><span class="label">Léa's concentration profile · learned from ${pr.basedOnSessions} sessions</span>
+        <dl class="profile"><dt>Attention span</dt><dd>${pr.attentionSpanMinutes} min</dd><dt>By-heart part size</dt><dd>${pr.chunkWords} words</dd><dt>Best hours</dt><dd>${pr.bestHours}</dd><dt>Recovery after a session</dt><dd>${pr.recoveryMinutes} min</dd><dt>Eases off after</dt><dd>${pr.frustrationAfterMisses} misses</dd><dt>Cost of switching subject</dt><dd>${Math.round(pr.switchCost * 100)} pts · mixing on</dd></dl>
+        <div class="row between"><label for="set-chunk">Try another part size</label><strong class="num" id="set-chunk-v">${pr.chunkWords} words</strong></div>
+        <input type="range" id="set-chunk" min="6" max="24" step="2" value="${pr.chunkWords}">
+        <p class="small muted">Sessions are never longer than the attention span; poems are cut at this size. Change it and look at Capture or the poem mission: the parts are recut.</p></div>
+      <div class="card"><span class="label">Reminders</span>
+        <div class="row between"><span>Per day</span><div class="seg" role="group" aria-label="Reminders per day"><button data-rem="0" aria-pressed="${s.reminders === 0}">None</button><button data-rem="1" aria-pressed="${s.reminders === 1}">At most 1</button></div></div>
+        <div class="preview">${preview}</div><p class="small muted">Later sessions start on Léa's initiative. Reminders stop by themselves once Léa starts without them.</p></div>
+      <div class="card"><details class="adv" id="adv"><summary>Advanced parameters · for parents (${DATA.spec.length})</summary>
+        <p class="small muted" style="margin-top:8px">Every knob of the engine, with its default and why. <span class="live">● live</span> ones change this demo.</p>
+        <div class="params">${Object.entries(GROUPS).map(([g, title]) => `<div class="group-title">${title}</div>${DATA.spec.filter((p) => p.path.startsWith(g + '.')).map((p) => `<div class="param"><div class="row between"><label for="p-${p.path}">${esc(p.label)}${LIVE.has(p.path) ? ' <span class="live">● live</span>' : ''}</label><strong class="num" id="v-${p.path}">${T[p.path]}</strong></div><input type="range" id="p-${p.path}" data-param="${p.path}" min="${p.min}" max="${p.max}" step="${p.step}" value="${T[p.path]}"><span class="why">${esc(p.why)} <code>${p.path}</code></span></div>`).join('')}`).join('')}</div>
+        <button class="btn quiet block" id="p-reset" style="margin-top:12px">Reset to defaults</button></details></div>`;
+    const range = (id, f) => $(id).addEventListener('input', (e) => f(Number(e.target.value)));
+    range('#set-len', (v) => { s.sessionMinutes = v; $('#set-len-v').textContent = `${v} min`; });
+    range('#set-break', (v) => { s.breakMin = v; $('#set-break-v').textContent = `${v} min`; });
+    range('#set-chunk', (v) => { pr.chunkWords = v; $('#set-chunk-v').textContent = `${v} words`; });
+    $$('[data-spd]').forEach((b) => b.addEventListener('click', () => { s.sessionsPerDay = Number(b.dataset.spd); renderSettings(); }));
+    $$('[data-rem]').forEach((b) => b.addEventListener('click', () => { s.reminders = Number(b.dataset.rem); renderSettings(); }));
+    $$('[data-param]').forEach((r) => r.addEventListener('input', () => { T[r.dataset.param] = Number(r.value); $(`[id="v-${r.dataset.param}"]`).textContent = r.value; }));
+    $('#p-reset').addEventListener('click', () => { Object.assign(T, DEFAULTS); renderSettings(); $('#adv').open = true; });
   }
-  $('#budget').addEventListener('input', (e) => { state.budget = Number(e.target.value); renderRhythm(); });
-  $('#intention').addEventListener('change', (e) => { state.intention = e.target.value; renderRhythm(); });
-  ['#slot-school', '#slot-dinner', '#slot-sat'].forEach((id) => $(id).addEventListener('change', renderRhythm));
-  $$('[data-rem]').forEach((b) => b.addEventListener('click', () => {
-    state.reminders = Number(b.dataset.rem);
-    $$('[data-rem]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    renderRhythm();
-  }));
 
-  // ---------- notes ----------
+  // ---------- workflow steps and notes ----------
+  const FLOW1 = [
+    ['u1-1', 'Photo of a text', () => { state.capture = { mode: 'heart', step: 0 }; show('capture'); }],
+    ['u1-2', 'Cut for this child', () => { state.capture = { mode: 'heart', step: 2 }; show('capture'); }],
+    ['u1-3', 'By-heart mission', () => show('today')],
+    ['u1-4', 'Fading cues', () => startOrExplain('corbeau')],
+    ['u1-5', 'Blank the map', () => startOrExplain('water')],
+    ['u1-6', 'Come back later', () => (state.session ? show('done') : show('today'))],
+  ];
+  const FLOW2 = [
+    ['u2-1', 'Pick a notion', () => { state.push = { domain: 'French', notion: 'passe-simple', child: 'Léa', step: 0 }; show('family'); }],
+    ['u2-2', 'Check what it builds on', () => { state.push = { domain: 'French', notion: 'passe-simple', child: 'Léa', step: 1 }; show('family'); }],
+    ['u2-3', 'Pushed mission', () => { if (!missions.some((m) => m.id === 'pushed-passe-simple')) { const p = { domain: 'French', notion: 'passe-simple', child: 'Léa', step: 2, path: ['passe-simple'] }; pushNotion(p); state.push = p; } show('today'); }],
+    ['u2-4', 'Free session, varied exercises', () => { if (!missions.some((m) => m.id === 'pushed-passe-simple')) pushNotion({ notion: 'passe-simple', path: ['passe-simple'] }); startOrExplain('pushed-passe-simple'); }],
+    ['u2-5', 'Progress on the map', () => { state.mapDomain = 'French'; show('map'); }],
+  ];
+  function startOrExplain(id) {
+    if (!gate().open) { state.clock = gate().nextAt ?? state.clock; if (!gate().open) { state.sessionsDone = 0; state.lastEnded = null; } renderClock(); }
+    const m = missions.find((x) => x.id === id);
+    if (m && plan(m).items.length) startMission(id); else show('today');
+  }
+  function renderFlow(current) {
+    const row = (steps, el) => {
+      $(el).innerHTML = steps.map(([id, label], i) => `${i ? '<span class="arrow" aria-hidden="true">→</span>' : ''}<button data-flow="${id}" aria-current="${id === current ? 'step' : 'false'}"><span class="n">${i + 1}</span>${label}</button>`).join('');
+    };
+    row(FLOW1, '#flow1'); row(FLOW2, '#flow2');
+    $$('[data-flow]').forEach((b) => b.addEventListener('click', () => { state.flow = b.dataset.flow; [...FLOW1, ...FLOW2].find(([id]) => id === b.dataset.flow)[2](); }));
+  }
   const NOTES = {
-    today: ['Today: a plan that ends', [
-      ['The plan is computed for Léa\'s agreed time budget. Change it in <strong>Rhythm</strong> and the plan resizes. <code>planSession()</code>'],
-      ['No streak counter. The week shows rhythm and a planned rest day; a skipped Wednesday is just a blank.'],
-      ['The only score is <strong>test readiness</strong>: how much of Tuesday\'s material Léa is predicted to remember on the morning of the test.'],
-      ['Cards that are due but don\'t fit the budget wait for another day. That backlog is never shown to the child.'],
+    today: ['Pick a mission, then focus', [
+      'Missions are ranked: a recitation or test date first, then notions pushed by parents, by-heart texts and topics. Léa can pick any of them. <code>suggestMissions()</code>',
+      'A mission session goes entirely to the mission: weak foundations first, then due cards, new ones in order, then extra practice. <code>planSession({ focus })</code>',
+      'Up to 4 sessions a day with a break between them. New and missed cards come back for a second look in the next session. <code>day.ts</code>',
+      'When nothing is useful yet, the app says when the next session will be. It never offers filler.',
     ]],
-    session: ['A session: hard enough, never endless', [
-      ['Questions climb a ladder as memory gets stronger: pick → recall → apply → explain. <code>probeLevelFor()</code>'],
-      ['Grading is objective: right or wrong, hints, and speed compared with Léa\'s own usual speed. There is no "Easy" button. <code>gradeAttempt()</code>'],
-      ['<strong>Why this card?</strong> opens the memory curve behind the decision. Try it on the fractions card: the test pulls the review earlier.'],
-      ['Stop is always there, with no penalty. Missed cards come back once at the end. After three misses in a row an easier card comes next, and after five the session ends kindly. <code>SessionRunner</code>'],
-      ['Subjects are interleaved; the session opens and closes on cards Léa probably knows.'],
+    session: ['A focused session', [
+      'By heart: cues fade from the full text to first letters, key words hidden, then nothing; recitations are graded word by word, in order. <code>by-heart.ts</code>',
+      'Blanked map: each label hidden in turn, then the whole map at once. <code>figureUnits()</code>',
+      'Pushed notion: exercises rotate (variant 3 of 8…) so Léa practises the rule, not one answer. <code>pickProbe()</code>',
+      'Stop is always there. After a run of misses an easier card comes next, then the session ends kindly (parameters in Settings).',
     ]],
-    done: ['A real ending', [
-      ['A clear end screen. No "keep going", no chest to open, no league table.'],
-      ['Feedback is about learning: what got stronger, what comes back tomorrow, readiness for the test.'],
-      ['Tomorrow\'s plan already reflects today\'s answers. Skipping tomorrow costs nothing; the plan just adapts.'],
+    done: ['Come back after a break', [
+      'A clear end, no "keep going". The next session is offered after the break, with second looks at what was new or missed.',
+      'A unit is secure only after correct answers on separate days: one good session is not enough.',
+      'For by heart: once parts hold, chained recitations unlock, up to the whole text before the recitation day.',
     ]],
-    capture: ['Photo → cards, checked by a person', [
-      ['The phone\'s scanner crops the page, then one Claude call turns the photos into knowledge units and questions. <code>packages/ingest</code>'],
-      ['Nothing enters the plan until someone keeps it. Unclear parts of the photo are flagged, not guessed.'],
-      ['<strong>Lesson Lens</strong> compares the lesson with the curriculum and open textbooks, for parents, with sources. The teacher\'s wording stays.'],
-      ['New cards come in a few per day, material for the next test first.'],
+    map: ['Absolute level, not school grade', [
+      'One map of notions (domain › area › notion) with prerequisites. Status comes from the memories of each notion\'s cards. <code>knowledge-map.ts</code>',
+      'A pushed notion shows its learning path: missing foundations first.',
+      'Any curriculum is just a checklist on this map, so a gap before high school is visible whatever the school system.',
     ]],
-    family: ['Family: information, not surveillance', [
-      ['Children see exactly what parents see about them. A parent\'s own learning stays private unless they share it. <code>profiles.ts</code>'],
-      ['Reminders <strong>pause</strong> once a child starts on their own. The aim is to need them less and less. <code>decideNudge()</code>'],
-      ['The load forecast stays under the budget: it rises before a test but never past the line. Try a different budget in Rhythm.'],
-      ['Dinner-table questions and teach-back: practice without a screen, and something to talk about.'],
+    capture: ['Photo → exact text → parts', [
+      'To learn by heart: the extraction copies the text exactly, keeps the line breaks and names the notion. <code>mode: by_heart</code>',
+      'The text is cut into parts sized by the concentration profile: change the part size in Settings and come back.',
+      'To understand: the lesson is placed on the map and checked against references; its cards feed a mission.',
     ]],
-    rhythm: ['Rhythm: set together', [
-      ['Child and parent set the budget, the time slots, the rest days and the reminders together.'],
-      ['The reminder text starts with the child\'s own plan ("After my snack…"). It never mentions streaks, losing or a sad mascot; a test in the engine enforces this.'],
-      ['At most one reminder a day, only in agreed slots. Which slot works best is learned for each child.'],
+    family: ['Push a notion, then step back', [
+      'Pick a notion, check what it builds on (a few questions settle many notions), then push it. <code>PlacementCheck</code>, <code>learningPath()</code>',
+      'Claude writes the lesson with varied exercises; you check it before it reaches the child. <code>teachNotion()</code>',
+      'The child sees it as "pushed by your parents", ranked high, never forced.',
+    ]],
+    settings: ['Every knob is a parameter', [
+      'Session length, sessions per day and the break stay within the age limits, which the engine enforces. <code>profiles.ts</code>',
+      'The concentration profile is learned from Léa\'s sessions and shapes session length, part size, breaks and when to ease off. <code>concentration.ts</code>',
+      `${DATA.spec.length} engine parameters, each with a default, a range and a reason; docs/PARAMETERS.md is generated from the same list. <code>tuning.ts</code>`,
     ]],
   };
-  const JUMPS = [['today', 'Today'], ['session', 'Session'], ['done', 'End'], ['capture', 'Capture'], ['family', 'Family'], ['rhythm', 'Rhythm']];
-
+  const FLOW_OF_SCREEN = { capture: 'u1-1', today: null, session: null, done: null, map: 'u2-5', family: 'u2-1', settings: null };
   function renderNotes(screen) {
     const [title, items] = NOTES[screen];
     $('#note-title').textContent = title;
-    $('#note-list').innerHTML = items.map(([t], i) => `<li><span class="n">${i + 1}</span><span>${t}</span></li>`).join('');
-    $('#jump').innerHTML = JUMPS.map(([id, label]) => `<button data-jump="${id}" aria-current="${id === screen}">${label}</button>`).join('');
-    $$('#jump [data-jump]').forEach((b) => b.addEventListener('click', () => {
-      const id = b.dataset.jump;
-      if (id === 'session') { state.doneToday = false; startSession(); return; }
-      if (id === 'done') { playSampleSession(); return; }
-      show(id);
-    }));
+    $('#note-list').innerHTML = items.map((t, i) => `<li><span class="n">${i + 1}</span><span>${t}</span></li>`).join('');
+    renderFlow(state.flow ?? FLOW_OF_SCREEN[screen]);
   }
 
   // ---------- navigation ----------
+  function renderClock() { $('#clock').textContent = hm(state.clock); }
   function show(screen) {
     $$('.screen').forEach((s) => (s.hidden = s.id !== `s-${screen}`));
-    const tabbed = ['today', 'capture', 'family', 'rhythm'].includes(screen);
+    const tabbed = ['today', 'map', 'capture', 'family', 'settings'].includes(screen);
     $('#tabs').hidden = !tabbed;
-    if (tabbed) {
-      state.tab = screen;
-      $$('#tabs [data-tab]').forEach((b) => (b.getAttribute('data-tab') === screen ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current')));
-    }
-    if (screen === 'today') renderToday();
-    if (screen === 'capture') renderCapture();
-    if (screen === 'family') renderFamily();
-    if (screen === 'rhythm') renderRhythm();
+    $$('#tabs [data-tab]').forEach((b) => (b.dataset.tab === screen ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current')));
+    ({ today: renderToday, map: renderMap, capture: renderCapture, family: renderFamily, settings: renderSettings }[screen] ?? (() => {}))();
     $(`#s-${screen}`).scrollTop = 0;
     renderNotes(screen);
+    state.flow = null;
   }
-
   $$('#tabs [data-tab]').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
-  $$('[data-go]').forEach((b) => b.addEventListener('click', () => show(b.dataset.go)));
+  renderClock();
   const start = (location.hash || '').replace('#', '');
-  show(NOTES[start] && start !== 'session' && start !== 'done' ? start : 'today');
+  show(['today', 'map', 'capture', 'family', 'settings'].includes(start) ? start : 'today');
 })();
 </script>
