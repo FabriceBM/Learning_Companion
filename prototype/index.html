@@ -316,10 +316,10 @@ select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line); ba
           <p class="small muted">The work before Tuesday's test bulges up to the 10-minute budget but never past it. Sundays are rest days.</p>
         </div>
         <div class="card">
-          <span class="label">Quiz Noé at dinner · Noé turned this on</span>
-          <details class="ask"><summary>Quelle est la dérivée de x² ?</summary><p>2x</p></details>
-          <details class="ask"><summary>En quelle année tombe le mur de Berlin ?</summary><p>1989</p></details>
-          <details class="ask"><summary>Comment dit-on « malgré » en anglais ?</summary><p>despite (in spite of)</p></details>
+          <span class="label">Ask Noé at dinner</span>
+          <details class="ask"><summary>Combien font 7 × 8 ?</summary><p>56</p></details>
+          <details class="ask"><summary>Quel est le pluriel de « cheval » ?</summary><p>chevaux</p></details>
+          <details class="ask"><summary>Comment dit-on « chat » en anglais ?</summary><p>cat</p></details>
           <p class="small muted">Three questions from what Noé is reviewing this week. Asking aloud counts as practice too.</p>
         </div>
         <div class="card sunken">
@@ -333,8 +333,8 @@ select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line); ba
         <div class="hello"><span class="label">Set together with a parent</span><h2>My rhythm</h2></div>
         <div class="card">
           <div class="row between"><label for="budget" class="label">Time per day</label><strong class="num" id="budget-val">10 min</strong></div>
-          <input type="range" id="budget" min="5" max="15" step="1" value="10">
-          <p class="small muted">Between 5 and 15 minutes at 12 (it goes up to 45 for adults). Today's plan is built to fit this. Whatever doesn't fit waits, and you never see a pile of overdue cards.</p>
+          <input type="range" id="budget" min="5" max="20" step="1" value="10">
+          <p class="small muted">Between 5 and 20 minutes at 12. Today's plan is built to fit this. Whatever doesn't fit waits, and you never see a pile of overdue cards.</p>
         </div>
         <div class="card">
           <span class="label">My plan</span>
@@ -810,16 +810,11 @@ select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line); ba
   // ---------- family ----------
   function renderFamily() {
     const members = [
-      { i: 'L', name: 'Léa', level: '12 · 5e', week: 41, budget: 60, next: 'Maths, Tue · 74% ready', rem: 'Paused: started alone on 5 of 6 days', seen: 'Under 15: Léa sees exactly this too' },
-      { i: 'N', name: 'Noé', level: '17 · Terminale', week: 72, budget: 90, next: 'Bac blanc de maths, Thu · 81% ready', rem: '1 a day before dinner · followed 4 of 5', seen: 'Shared by Noé: readiness and time only' },
-      { i: 'I', name: 'Inès', level: '24 · Master 2', private: 'Not shared. Adults see their own progress only, unless they choose to share it.' },
-      { i: 'Y', name: 'You', level: 'Spanish B1', week: 52, budget: 120, next: 'No test · 212 words solid', rem: 'Off', seen: 'Only you' },
+      { i: 'L', name: 'Léa', level: '12 · 5e', week: 41, budget: 60, next: 'Maths, Tue · 74% ready', rem: 'Paused: started alone on 5 of 6 days', seen: 'Léa sees exactly this too' },
+      { i: 'N', name: 'Noé', level: '10 · CM2', week: 38, budget: 60, next: 'Dictée, Thu · 81% ready', rem: '1 a day after school · followed 4 of 5', seen: 'Noé sees exactly this too' },
+      { i: 'Y', name: 'You', level: 'Spanish B1', week: 52, budget: 120, next: 'No test · 212 words solid', rem: 'Off', seen: 'Only you, unless you share' },
     ];
-    $('#members').innerHTML = members.map((m) => m.private ? `
-      <div class="card member sunken">
-        <div class="row"><span class="avatar">${m.i}</span><div><strong>${m.name}</strong><div class="small muted">${m.level}</div></div></div>
-        <p class="small muted">${m.private}</p>
-      </div>` : `
+    $('#members').innerHTML = members.map((m) => `
       <div class="card member">
         <div class="row"><span class="avatar">${m.i}</span><div><strong>${m.name}</strong><div class="small muted">${m.level}</div></div></div>
         <div class="row between small"><span>This week</span><span class="num">${m.week} of ${m.budget} min</span></div>
@@ -924,7 +919,7 @@ select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line); ba
       ['New cards come in a few per day, material for the next test first.'],
     ]],
     family: ['Family: information, not surveillance', [
-      ['Visibility follows age: under 15, the child sees exactly what parents see; from 15, the learner chooses what to share; adults share nothing unless they decide to. <code>profiles.ts</code>'],
+      ['Children see exactly what parents see about them. A parent\'s own learning stays private unless they share it. <code>profiles.ts</code>'],
       ['Reminders <strong>pause</strong> once a child starts on their own. The aim is to need them less and less. <code>decideNudge()</code>'],
       ['The load forecast stays under the budget: it rises before a test but never past the line. Try a different budget in Rhythm.'],
       ['Dinner-table questions and teach-back: practice without a screen, and something to talk about.'],

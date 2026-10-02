@@ -3,28 +3,25 @@ import { describe, it } from 'node:test';
 import { ageBand, defaultsForAge, withinLimits } from '../src/index.ts';
 
 describe('age bands', () => {
-  it('maps ages 10–30 onto school stages', () => {
-    assert.deepEqual([10, 12, 13, 14, 15, 17, 18, 30].map(ageBand), [
-      'child', 'child', 'young-teen', 'young-teen', 'teen', 'teen', 'adult', 'adult',
-    ]);
+  it('maps children 10–13 onto cycle 3 and cycle 4, and parents onto the adult band', () => {
+    assert.deepEqual([10, 11, 12, 13, 40].map(ageBand), ['child', 'child', 'young-teen', 'young-teen', 'adult']);
   });
 
-  it('gives progress to the learner as they grow up', () => {
-    assert.equal(defaultsForAge(11).visibility, 'family');
-    assert.equal(defaultsForAge(16).visibility, 'learner-chooses');
-    assert.equal(defaultsForAge(24).visibility, 'learner-only');
-    assert.equal(defaultsForAge(14).parentalConsent, true);
-    assert.equal(defaultsForAge(15).parentalConsent, false);
+  it('children share one view with their parents; parents keep their own learning private', () => {
+    assert.equal(defaultsForAge(10).visibility, 'family');
+    assert.equal(defaultsForAge(13).visibility, 'family');
+    assert.equal(defaultsForAge(13).parentalConsent, true);
+    assert.equal(defaultsForAge(40).visibility, 'learner-only');
   });
 
   it('keeps what a family chooses inside the band limits', () => {
     const child = withinLimits(10, { dailyBudgetMinutes: 60, maxRemindersPerDay: 3, maxNewPerDay: 30 });
     assert.deepEqual(child, { dailyBudgetMinutes: 15, maxRemindersPerDay: 1, maxNewPerDay: 6 });
-    const adult = withinLimits(25, { dailyBudgetMinutes: 40, maxRemindersPerDay: 2, maxNewPerDay: 12 });
-    assert.deepEqual(adult, { dailyBudgetMinutes: 40, maxRemindersPerDay: 2, maxNewPerDay: 12 });
+    const parent = withinLimits(40, { dailyBudgetMinutes: 40, maxRemindersPerDay: 2, maxNewPerDay: 12 });
+    assert.deepEqual(parent, { dailyBudgetMinutes: 40, maxRemindersPerDay: 2, maxNewPerDay: 12 });
   });
 
-  it('never allows more than one reminder a day for minors', () => {
-    for (let age = 10; age < 18; age++) assert.equal(defaultsForAge(age).maxRemindersPerDay, 1);
+  it('never allows more than one reminder a day for a child', () => {
+    for (let age = 10; age <= 13; age++) assert.equal(defaultsForAge(age).maxRemindersPerDay, 1);
   });
 });

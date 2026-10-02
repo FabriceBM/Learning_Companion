@@ -20,31 +20,31 @@ The README's four use cases map to four subsystems:
 | 3. Learning curve of every concept ("everything is a language") | Knowledge model and mastery map | [4.3](#43-learning-curves-and-the-concept-map) |
 | 4. Compare lessons with reference textbooks and papers | Lesson Lens | [4.4](#44-lesson-lens-comparing-with-reference-material) |
 
-### 1.1 Who it is for: learners from 10 to 30
+### 1.1 Who it is for: children from 10 to 13, and their parents
 
-One engine serves everyone from the last year of primary school to university and the first years of work. What changes with age is set by an **age band** (`packages/engine/src/profiles.ts`). The band gives defaults and limits; a family or learner can choose anything inside them, never outside.
+The children are 10 to 13, from CM2 to 4e. In the French system that spans cycle 3 (CM2, 6e) and cycle 4 (5e, 4e). Parents learn too, on their own topics. Defaults and limits follow an **age band** (`packages/engine/src/profiles.ts`); a family can choose anything inside the band's limits, never outside.
 
-| | 10–12 (CM2–5e) | 13–14 (4e–3e, brevet) | 15–17 (lycée, bac) | 18–30 (higher education, work, own topics) |
-|---|---|---|---|---|
-| Daily budget: default (range) | 10 min (5–15) | 15 min (5–20) | 15 min (5–30) | 20 min (5–45) |
-| Reminders per day, at most | 1 | 1 | 1 | 2 |
-| New units per day, at most | 6 | 8 | 10 | 15 |
-| Answer modes | choices, voice, short typing | + maths entry | + free text graded against a rubric | same, plus LaTeX maths |
-| Who sees progress | parents, and the child sees exactly the same | parents, same view | **the learner decides** what parents see | **only the learner**, unless they share |
-| Consent (France) | parents | parents | the learner | the learner |
-| Typical material | photos of exercise books | photos, worksheets | photos, handouts, past exam papers | PDFs, slides, lecture notes, papers |
-| Typical goals | class tests | class tests, brevet | bac, bac blanc | partiels, concours, certifications, a language |
-| Look and feel | larger type, more voice, fewer words | | | denser, keyboard-first |
+| | 10–11 (CM2–6e, cycle 3) | 12–13 (5e–4e, cycle 4) | Parents |
+|---|---|---|---|
+| Daily budget: default (range) | 10 min (5–15) | 15 min (5–20) | 20 min (5–45) |
+| Reminders per day, at most | 1 | 1 | 2 |
+| New units per day, at most | 6 | 8 | 15 |
+| Answer modes | choices, voice, short typing | + maths entry, and a sentence or two for "explain" questions | everything, including longer free text |
+| Who sees progress | parents, and the child sees exactly the same | parents, and the child sees exactly the same | only the parent, unless they share |
+| Consent | parents | parents | their own |
+| Typical material | photos of exercise books and worksheets | photos, worksheets, PDFs from the school platform | anything: PDFs, slides, papers, an Anki deck |
+| Typical goals | class tests, dictations | class tests | a language, a certification, a work topic |
+| Look and feel | larger type, more voice, fewer words | a little denser | denser, keyboard-first |
 
-The age limits on reminders and budgets are enforced in code and tested, so the calm-by-design rules hold for the youngest learners whatever is configured.
+The child limits on reminders and time are enforced in code and tested, so the calm-by-design rules hold whatever is configured.
 
 ## 2. Principles
 
 1. **Learning science over engagement metrics.** The app uses retrieval practice, spacing, interleaving, immediate feedback and desirable difficulty, which have the strongest evidence of the techniques studied ([Dunlosky et al., 2013](#references)).
 2. **Finite by design.** Each session is computed to fit a time budget the family agreed on, and then it ends. There is no feed and no "one more lesson" button.
-3. **Adapted to each person.** Each learner has their own memory model, retention targets follow goals and test dates, and reminders are tuned to each person. Defaults and limits follow the learner's age band ([§1.1](#11-who-it-is-for-learners-from-10-to-30)).
+3. **Adapted to each person.** Each learner has their own memory model, retention targets follow goals and test dates, and reminders are tuned to each person. Defaults and limits follow the learner's age band ([§1.1](#11-who-it-is-for-children-from-10-to-13-and-their-parents)).
 4. **Autonomy, competence and relatedness** ([Self-Determination Theory](#references)) replace streaks, gems and leagues.
-5. **Explainable.** Every card can say why it is shown today. Under 15, parents and children see the same information; from 15, the learner decides what is shared.
+5. **Explainable.** Every card can say why it is shown today, and parents and children see the same information about the child.
 6. **Local-first and private.** The schedule runs on the device and works offline. Children's data is kept minimal and hosted in the EU.
 7. **The teacher's version comes first.** Reference material adds to the lesson; it never overwrites what the child will be tested on.
 
@@ -109,7 +109,7 @@ sequenceDiagram
 ```
 
 * **Scanner on the device:** ML Kit Document Scanner on Android, VisionKit on iOS. Better photos mean better extraction, and the scanner adds no upload cost.
-* **Beyond photos:** older learners mostly have PDFs, slide decks, lecture notes and papers. Claude reads PDFs directly, so the same extraction accepts a file instead of a photo. Adults can also import an existing Anki deck.
+* **Beyond photos:** worksheets sometimes arrive as PDFs on the school's online platform (ENT). Claude reads PDFs directly, so the same extraction accepts a file instead of a photo. Parents learning their own topics can add PDFs, slides or papers, or import an existing Anki deck.
 * **Extraction:** one Claude call with vision and structured output. The schema and prompt are in [`packages/ingest`](../packages/ingest) and an example output is in [`fixtures/fractions-5e.json`](../packages/ingest/fixtures/fractions-5e.json). The call:
   * splits the lesson into units, one idea each: a word, a rule, a date, a method;
   * keeps the teacher's wording;
@@ -138,10 +138,9 @@ sequenceDiagram
   Engine->>Child: Clear end screen: what became solid, test readiness
 ```
 
-* **Budget:** set within the age band's range ([§1.1](#11-who-it-is-for-learners-from-10-to-30)): agreed with a parent under 15, chosen by the learner from 15. The planner never exceeds it. Due cards that don't fit are pushed to another day without ever being shown to the child as a backlog.
+* **Budget:** agreed by the child and a parent, within the age band's range ([§1.1](#11-who-it-is-for-children-from-10-to-13-and-their-parents)). The planner never exceeds it. Due cards that don't fit are pushed to another day without ever being shown to the child as a backlog.
 * **Grading is objective:** correctness, hints used, and answer time compared with the child's own usual speed. Children are never asked to rate a card "Easy", because self-ratings drift toward whatever ends the session soonest.
-* **Answer modes:** typing, multiple choice while a memory is still fragile, speaking (on-device speech recognition for young children and for languages), and maths entry checked for equivalence (1/2 = 0.5 = 2/4 when the question allows it). From 15, "explain" questions take free text, graded by Claude against the rubric written at extraction.
-* **Big exams** (brevet, bac, partiels, concours) cover months of material. The planner should pace new material so the whole syllabus is seen before a final consolidation period, and say plainly when the budget can't cover it: "at 20 min a day you'll have seen 80% of the syllabus by 15 June; 25 min covers all of it". This syllabus pacing is planned, not yet in the code.
+* **Answer modes:** typing, multiple choice while a memory is still fragile, speaking (on-device speech recognition for young children and for languages), and maths entry checked for equivalence (1/2 = 0.5 = 2/4 when the question allows it). From 12, "explain" questions accept a sentence or two, graded by Claude against the model answer written at extraction.
 * **Inside the session:** after three misses in a row the planner slips in an easier unit, and after five it ends the session kindly. Missed units come back once at the end of the session (successive relearning, [Rawson & Dunlosky, 2011](#references)). The child can stop at any time with no penalty.
 
 ### 4.3 Learning curves and the concept map
@@ -172,30 +171,28 @@ The README's "everything seen as a language" is the core data model. Every subje
 
 For each extracted lesson, a second step compares it with:
 
-1. **The official curriculum, up to the bac.** For French schools this is the *programmes* and *attendus de fin d'année* on Eduscol. The text for one level is small enough to send in full with each request and cache, which avoids running a search index. In higher education there is no national curriculum, so the course's own syllabus takes its place when the learner adds it (photo or PDF).
-2. **Open textbooks, courses and encyclopedias** with compatible licences: Sésamath (CC BY-SA, French maths), OpenStax (CC BY, including university-level books), MIT OpenCourseWare (CC BY-NC-SA), Wikipedia and Wikibooks.
-3. **For university and professional topics:** papers via OpenAlex, Semantic Scholar, arXiv or a research-search connector.
+1. **The official curriculum for the child's cycle:** cycle 3 (CM2, 6e) and cycle 4 (5e, 4e), from the *programmes* and *attendus de fin d'année* on Eduscol. The text for one level is small enough to send in full with each request and cache, which avoids running a search index.
+2. **Open textbooks and encyclopedias written for this age** with compatible licences: Sésamath (CC BY-SA, French maths), Vikidia (CC BY-SA, the French encyclopedia for 8–13-year-olds), Wikipedia and Wikibooks.
+3. **For the parents' own topics:** open university textbooks (OpenStax), and papers via OpenAlex, Semantic Scholar or a research-search connector.
 
 **Version 1** uses Claude's server-side web search restricted to an allowlist of these domains, with citations. **Version 2** indexes a curated corpus for reproducibility and offline use.
 
-The output is a short **lesson insight**. Under 15 it is shown to a parent first; from 15 it goes to the learner:
+The output is a short **lesson insight**, shown to a parent first:
 
 * ✔ Matches *Fractions: add when one denominator is a multiple of the other* (5e).
 * ➕ A common confusion is adding the denominators (3/4 + 1/8 ≠ 4/12). One check card was added for it.
-* ⚠ A possible inaccuracy, with its sources. Under 15 it is shown to the parent only, never as "your teacher is wrong" to the child.
+* ⚠ A possible inaccuracy, with its sources. It is shown to the parent only, never as "your teacher is wrong" to the child.
 * ↗ Optional enrichment: an alternative explanation, a real-world example, and "going further" for a curious child.
 
-Additions are marked as additions. Cards keep the teacher's or lecturer's version, because that is what the test will check.
+Additions are marked as additions. Cards keep the teacher's version, because that is what the test will check.
 
 ### 4.5 The family layer
 
-* **Roles, by age:**
-  * *Parent*: account owner for the family, gives consent for children under 15, and sets limits together with them.
-  * *Child, 10–14*: own profile, on their own device or a shared tablet with profile switching. Parents see their progress, and they see exactly what parents see.
-  * *Teen, 15–17*: decides what parents see. The default shares test readiness and time used, never individual answers.
-  * *Adult, 18–30*: their own account inside the family. Nobody else sees anything unless they choose to share, for example a joint goal like learning Spanish together.
-  * *Every adult is a learner too*: a language, a professional topic, a stack of papers. The same engine handles "any topic that needs refinement".
-* **The family view shows information, not surveillance.** For a child under 15, parents see readiness for upcoming tests, time used against the budget, a load forecast, and whether reminders are still needed. For older learners, it shows only what each one shares.
+* **Roles:**
+  * *Parent*: account owner, gives consent for the children, and sets limits together with them.
+  * *Child, 10–13*: own profile, on their own device or a shared tablet with profile switching.
+  * *Parents are learners too*: a language, a professional topic, a stack of papers. The same engine handles "any topic that needs refinement". A parent's own progress is private unless they share it, for example a joint goal like learning Spanish with a child.
+* **The family view shows information, not surveillance.** Children see exactly what parents see about them. Parents see readiness for upcoming tests, time used against the budget, a load forecast, and whether reminders are still needed.
 * **Dinner-table questions:** three questions per child from what is due this week, for a parent to ask aloud. This is retrieval practice without a screen, and it gives the family something to talk about.
 * **Teach-back:** "Ask Léa to explain why 3/4 = 6/8." Explaining something to someone is a strong way to learn it ([Fiorella & Mayer, 2013](#references)).
 * **Shared units:** siblings or a parent learning the same Spanish list share the units, but each person has their own memory state for them.
@@ -267,7 +264,7 @@ erDiagram
 
 ## 8. Privacy, safety, compliance
 
-* **Consent follows age, under GDPR.** In France, parental consent is required under 15: the parent consents and manages the profile. From 15, learners consent for themselves and control what parents see; from 18, their data is theirs alone. Profiles of minors hold a first name or nickname, a school level and a birth year, and nothing more.
+* **Children's data under GDPR.** In France, parental consent is required under 15, so for every child here the parent consents and owns the account. Child profiles hold a first name or nickname, a school level and a birth year, and nothing more.
 * **Photos are deleted after extraction by default;** the extracted text is kept. Data is hosted in the EU and encrypted at rest. There are no ads, no third-party analytics or tracking SDKs, and a full export or delete takes one tap.
 * **AI calls go only through the server.** Under Anthropic's commercial terms, API inputs are not used for model training by default. Check the account's current data-retention settings before launch. The extraction prompt ignores names, and the review inbox shows parents anything personal it finds.
 * **No open-ended chatbot for children in v1.** All generated content goes through the review inbox.
@@ -300,13 +297,13 @@ erDiagram
 
 These change the design, so they come first:
 
-1. ~~Ages and school levels~~ **Answered: learners are 10 to 30** (see [§1.1](#11-who-it-is-for-learners-from-10-to-30)). Still to confirm: is it the **French school system** (Eduscol curricula, brevet, bac), and which **higher-education tracks** matter (university, prépa, professional exams)?
+1. ~~Ages and school levels~~ **Answered: children aged 10 to 13** (CM2 to 4e), plus parents as learners; see [§1.1](#11-who-it-is-for-children-from-10-to-13-and-their-parents). Still to confirm: is it the **French school system** (Eduscol curricula for cycles 3 and 4)?
 2. **Who builds it and with what?** If you prefer another language (Kotlin, Dart, Python), the stack changes.
 3. **Is cloud AI acceptable for lesson photos** (Claude API, EU-hosted backend, photos deleted after extraction), and what monthly budget is acceptable?
 4. **Family-only tool or a product for other families** (open source? hosted?). This changes accounts, compliance and hosting.
 5. **Devices:** does each child have a phone, or is there a shared family tablet? With a shared tablet, reminders go to a parent or to the household, not to a child.
 6. **School platform:** Pronote, ÉcoleDirecte or another ENT? Importing test dates automatically is the biggest boost to the adaptive engine.
-7. **What will the 18–30 learners mainly use it for:** university courses, a concours, professional certifications, languages, research papers? This decides which reference sources come first.
+7. **What will the parents learn**, and should parent profiles be able to import Anki decks or papers?
 8. **UI language:** French only, or bilingual from day one?
 
 Name ideas to try on the children: *Ardoise* (the school slate), *Rappel*, *Mémo*, *Boussole*, *Lierre*.
