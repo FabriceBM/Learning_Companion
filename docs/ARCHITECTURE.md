@@ -91,7 +91,7 @@ sequenceDiagram
 ```
 
 * **Scanner on the device:** ML Kit Document Scanner on Android, VisionKit on iOS. Better photos mean better extraction, and the scanner adds no upload cost.
-* **Extraction:** one Claude call with vision and structured output. The schema and prompt are in [`packages/ingest`](../packages/ingest) and an example output is in [`fixtures/fractions-6e.json`](../packages/ingest/fixtures/fractions-6e.json). The call:
+* **Extraction:** one Claude call with vision and structured output. The schema and prompt are in [`packages/ingest`](../packages/ingest) and an example output is in [`fixtures/fractions-5e.json`](../packages/ingest/fixtures/fractions-5e.json). The call:
   * splits the lesson into units, one idea each: a word, a rule, a date, a method;
   * keeps the teacher's wording;
   * writes questions at several levels, with fresh numbers for maths methods;
@@ -160,7 +160,7 @@ For each extracted lesson, a second step compares it with:
 
 The output is a short **lesson insight**, shown to the parent first:
 
-* ✔ Matches *Fractions: add when one denominator is a multiple of the other* (6e).
+* ✔ Matches *Fractions: add when one denominator is a multiple of the other* (5e).
 * ➕ A common confusion is adding the denominators (3/4 + 1/8 ≠ 4/12). One check card was added for it.
 * ⚠ A possible inaccuracy, with its sources. It is shown to the parent only, never as "your teacher is wrong" to the child.
 * ↗ Optional enrichment: an alternative explanation, a real-world example, and "going further" for a curious child.

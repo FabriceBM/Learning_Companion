@@ -1,0 +1,970 @@
+<meta charset="utf-8">
+<title>Learning Companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Layout: the phone sits beside a column of design notes; at phone width the app comes first and the notes follow.
+   Light theme is a French Seyès school notebook; dark theme is the classroom slate. */
+:root {
+  --desk: #e7eaf1;
+  --paper: #fdfdfc;
+  --paper-2: #f2f4f9;
+  --fg: #1a1d2b;
+  --fg-2: #4b5165;
+  --muted: #767c91;
+  --line: #d8dbe6;
+  --rule: rgba(92, 104, 196, 0.13);
+  --rule-strong: rgba(92, 104, 196, 0.26);
+  --margin: rgba(214, 64, 84, 0.42);
+  --ink: #2a3fa6;
+  --ink-soft: #e5e9fb;
+  --on-ink: #ffffff;
+  --redpen: #c23346;
+  --solid: #1d7a4a;
+  --solid-soft: #e0f1e7;
+  --fragile: #9a5b00;
+  --fragile-soft: #fbefd8;
+  --s-spanish: #2a78d6;
+  --s-maths: #eb6834;
+  --s-french: #1baf7a;
+  --s-history: #eda100;
+  --shadow: 0 1px 2px rgba(26, 29, 43, 0.06), 0 12px 40px rgba(26, 29, 43, 0.12);
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #0c1011; --paper: #1b2422; --paper-2: #222d2a; --fg: #eef1ec; --fg-2: #c3cbc5; --muted: #8d978f;
+    --line: #34413d; --rule: rgba(255, 255, 255, 0.045); --rule-strong: rgba(255, 255, 255, 0.085); --margin: rgba(255, 128, 138, 0.28);
+    --ink: #a3bbff; --ink-soft: #27325a; --on-ink: #0d1430; --redpen: #ff9a9a;
+    --solid: #74d6a2; --solid-soft: #1d3b2c; --fragile: #f2b65a; --fragile-soft: #3b301b;
+    --s-spanish: #3987e5; --s-maths: #d95926; --s-french: #199e70; --s-history: #c98500;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --desk: #0c1011; --paper: #1b2422; --paper-2: #222d2a; --fg: #eef1ec; --fg-2: #c3cbc5; --muted: #8d978f;
+  --line: #34413d; --rule: rgba(255, 255, 255, 0.045); --rule-strong: rgba(255, 255, 255, 0.085); --margin: rgba(255, 128, 138, 0.28);
+  --ink: #a3bbff; --ink-soft: #27325a; --on-ink: #0d1430; --redpen: #ff9a9a;
+  --solid: #74d6a2; --solid-soft: #1d3b2c; --fragile: #f2b65a; --fragile-soft: #3b301b;
+  --s-spanish: #3987e5; --s-maths: #d95926; --s-french: #199e70; --s-history: #c98500;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--desk); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2.5px solid var(--ink); outline-offset: 2px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+
+.page { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 48px; display: grid; gap: 24px; }
+.intro { display: grid; gap: 6px; max-width: 900px; }
+.intro p { max-width: 70ch; }
+.intro .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.intro h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 750; }
+.intro p { color: var(--fg-2); }
+.intro a { color: var(--ink); }
+
+.stage { display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 40px; align-items: start; }
+@media (max-width: 860px) { .stage { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+/* ---------- phone ---------- */
+.phone {
+  position: relative; width: 100%; max-width: 400px; height: clamp(600px, 84vh, 800px); margin-inline: auto;
+  background: var(--paper); border-radius: 36px; box-shadow: var(--shadow); border: 1px solid var(--line);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+@media (max-width: 860px) { .phone { border-radius: 24px; height: clamp(600px, 86vh, 760px); } }
+.status { display: flex; justify-content: space-between; align-items: center; padding: 14px 26px 6px; font-size: 13px; font-weight: 700; color: var(--fg-2); }
+.status .dots { display: flex; gap: 5px; align-items: center; }
+.status .dots i { width: 16px; height: 9px; border: 1.5px solid currentColor; border-radius: 3px; display: block; }
+.status .dots b { width: 4px; height: 9px; background: currentColor; border-radius: 1px; display: block; opacity: 0.6; }
+.screen { flex: 1; overflow-y: auto; padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 18px; }
+.screen[hidden] { display: none !important; }
+
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--paper); padding: 6px 8px calc(10px + env(safe-area-inset-bottom, 0px)); }
+.tabs button { background: none; border: 0; padding: 6px 2px; display: grid; justify-items: center; gap: 2px; font-size: 11.5px; color: var(--muted); border-radius: 10px; }
+.tabs button svg { width: 22px; height: 22px; }
+.tabs button[aria-current="page"] { color: var(--ink); font-weight: 700; }
+
+/* ---------- shared bits ---------- */
+.seyes {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--margin), var(--margin)),
+    repeating-linear-gradient(to bottom, transparent 0 7px, var(--rule) 7px 8px),
+    repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule-strong) 31px 32px),
+    repeating-linear-gradient(to right, transparent 0 31px, var(--rule-strong) 31px 32px);
+  background-size: 1.5px 100%, auto, auto, auto;
+  background-position: 30px 0, 0 0, 0 0, 0 0;
+  background-repeat: no-repeat, repeat, repeat, repeat;
+}
+.card { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 12px; background: var(--paper); }
+.card.sunken { background: var(--paper-2); border-color: transparent; }
+.label { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.hand { font-family: var(--font-hand); color: var(--redpen); font-size: 21px; line-height: 1.1; font-weight: 600; }
+.btn { border: 0; border-radius: 12px; padding: 12px 18px; font-weight: 700; background: var(--ink); color: var(--on-ink); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn.ghost { background: transparent; color: var(--ink); padding-inline: 8px; }
+.btn.quiet { background: var(--ink-soft); color: var(--ink); }
+.btn.block { width: 100%; }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.row { display: flex; align-items: center; gap: 10px; }
+.row.between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+.pill.solid { background: var(--solid-soft); color: var(--solid); }
+.pill.fragile { background: var(--fragile-soft); color: var(--fragile); }
+.pill.ink { background: var(--ink-soft); color: var(--ink); }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+.chip { display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 999px; background: var(--paper-2); font-size: 13.5px; font-weight: 600; }
+.meter { height: 8px; border-radius: 99px; background: var(--paper-2); overflow: hidden; }
+.meter > span { display: block; height: 100%; border-radius: 99px; background: var(--ink); }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.stack { display: grid; gap: 8px; }
+
+/* ---------- today ---------- */
+.hello h2 { font-size: 30px; font-weight: 750; }
+.plan { padding: 18px 18px 18px 46px; display: grid; gap: 12px; border-radius: 18px; border: 1px solid var(--line); }
+.plan .big { font-family: var(--font-display); font-size: 34px; font-weight: 750; line-height: 1; }
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.week div { display: grid; justify-items: center; gap: 4px; font-size: 12px; color: var(--muted); font-weight: 600; }
+.week i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-style: normal; border: 1.5px dashed var(--line); }
+.week .done i { background: var(--ink); border: 0; color: var(--on-ink); }
+.week .today i { border: 2px solid var(--ink); }
+.week .rest i { border-style: solid; font-size: 10px; color: var(--muted); }
+.solidlist { display: grid; gap: 6px; }
+.solidlist div { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+
+/* ---------- session ---------- */
+.sessionbar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
+.qcard { padding: 20px 20px 20px 46px; border-radius: 18px; border: 1px solid var(--line); display: grid; gap: 16px; min-height: 260px; align-content: start; }
+.qcard .prompt { font-family: var(--font-display); font-size: 23px; font-weight: 650; line-height: 1.25; }
+.answer { width: 100%; font-size: 19px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--paper); }
+.answer:focus { border-color: var(--ink); outline: none; }
+.choices { display: grid; gap: 8px; }
+.choices button { text-align: left; padding: 11px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--paper); font-size: 16px; }
+.choices button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink-soft); }
+.seg { display: inline-grid; grid-auto-flow: column; background: var(--paper-2); border-radius: 12px; padding: 3px; gap: 3px; }
+.seg button { border: 0; background: transparent; padding: 7px 12px; border-radius: 9px; font-size: 14px; font-weight: 600; color: var(--fg-2); }
+.seg button[aria-pressed="true"] { background: var(--paper); color: var(--fg); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+.feedback { border-radius: 14px; padding: 14px 16px; display: grid; gap: 6px; }
+.feedback.ok { background: var(--solid-soft); }
+.feedback.ok strong { color: var(--solid); }
+.feedback.no { background: var(--fragile-soft); }
+.feedback.no strong { color: var(--fragile); }
+.why { background: none; border: 0; color: var(--ink); font-weight: 700; padding: 4px 0; text-align: left; display: inline-flex; gap: 6px; align-items: center; }
+
+.sheet-backdrop { position: absolute; inset: 0; background: rgba(10, 12, 20, 0.35); display: flex; align-items: flex-end; z-index: 5; }
+.sheet { background: var(--paper); width: 100%; border-radius: 22px 22px 0 0; padding: 18px 20px 26px; display: grid; gap: 12px; border-top: 1px solid var(--line); max-height: 88%; overflow-y: auto; }
+.sheet .grab { width: 40px; height: 4px; border-radius: 4px; background: var(--line); margin: 0 auto 4px; }
+
+/* ---------- charts ---------- */
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .axis { fill: var(--muted); font-size: 11px; font-family: var(--font-body); }
+.chart .curve { fill: none; stroke: var(--ink); stroke-width: 2; }
+.chart .area { fill: var(--ink-soft); opacity: 0.7; }
+.chart .target { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.chart .marker { stroke: var(--redpen); stroke-width: 1.5; }
+.chart .ann { fill: var(--fg-2); font-size: 11.5px; font-weight: 700; font-family: var(--font-body); }
+.chart .ann.red { fill: var(--redpen); }
+.chart .bar { fill: var(--ink); }
+.chart .bar.dim { fill: var(--ink); opacity: 0.45; }
+.chart .hit { fill: transparent; }
+.chart .ring { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+.tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--paper); font-size: 12px; font-weight: 600; padding: 5px 8px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -110%); }
+
+/* ---------- capture ---------- */
+.photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.photo { aspect-ratio: 3 / 4; max-width: 100%; border-radius: 10px; border: 1px solid var(--line); padding: 14px 10px 10px 34px; overflow: hidden; transform: rotate(-1.2deg); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.photo + .photo { transform: rotate(1deg); }
+.photo .hw { font-family: var(--font-hand); color: var(--ink); font-size: 15px; line-height: 16px; }
+.photo .hw b { color: var(--redpen); font-weight: 600; }
+.inbox { display: grid; gap: 8px; }
+.inbox .item { border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 6px; }
+.inbox .item.off { opacity: 0.45; }
+.inbox .item .q { font-size: 13.5px; color: var(--fg-2); }
+.toggle { appearance: none; width: 42px; height: 24px; border-radius: 99px; background: var(--line); position: relative; flex: none; cursor: pointer; border: 0; }
+.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); transition: left 0.15s; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+.toggle:checked { background: var(--ink); }
+.toggle:checked::after { left: 21px; }
+.lens { display: grid; gap: 10px; }
+.lens li { list-style: none; display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; }
+.lens ul { padding: 0; margin: 0; display: grid; gap: 10px; }
+.lens .sym { font-weight: 800; color: var(--ink); text-align: center; }
+.source { font-size: 12px; font-weight: 700; color: var(--fg-2); background: var(--paper-2); border-radius: 6px; padding: 2px 7px; }
+.progress-dots { display: flex; gap: 6px; align-items: center; }
+.progress-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); animation: pulse 1s infinite ease-in-out; }
+.progress-dots i:nth-child(2) { animation-delay: 0.15s; }
+.progress-dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulse { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+/* ---------- family ---------- */
+.member { display: grid; gap: 10px; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-family: var(--font-display); background: var(--ink-soft); color: var(--ink); flex: none; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13.5px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+details.ask summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+details.ask summary::-webkit-details-marker { display: none; }
+details.ask summary::after { content: "Show answer"; font-size: 12.5px; color: var(--ink); font-weight: 700; white-space: nowrap; }
+details.ask[open] summary::after { content: "Hide"; }
+details.ask p { margin-top: 4px; color: var(--solid); font-weight: 700; }
+
+/* ---------- rhythm ---------- */
+input[type="range"] { width: 100%; accent-color: var(--ink); }
+.check { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 14.5px; }
+.check input { width: 20px; height: 20px; accent-color: var(--ink); margin-top: 2px; }
+.daychips { display: flex; gap: 6px; flex-wrap: wrap; }
+.daychips button { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--paper); font-weight: 700; font-size: 13px; }
+.daychips button[aria-pressed="true"] { background: var(--fg); color: var(--paper); border-color: var(--fg); }
+.preview { border-radius: 16px; background: var(--paper-2); padding: 12px 14px; display: grid; gap: 4px; }
+.preview .app { font-size: 12px; font-weight: 700; color: var(--muted); }
+select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); }
+
+/* ---------- notes ---------- */
+.notes { display: grid; gap: 18px; min-width: 0; }
+.notes .screen-title { font-size: 26px; font-weight: 750; }
+.notes ul { margin: 0; padding: 0; display: grid; gap: 12px; }
+.notes li { list-style: none; display: grid; grid-template-columns: 28px 1fr; gap: 10px; max-width: 62ch; }
+.notes li .n { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 15px; }
+.notes code { font-size: 12.5px; background: var(--paper); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; }
+.notes .jump { display: flex; flex-wrap: wrap; gap: 8px; }
+.notes .jump button { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 12px; font-size: 13.5px; font-weight: 600; }
+.notes .jump button[aria-current="true"] { background: var(--fg); color: var(--paper); border-color: var(--fg); }
+.notes .foot { font-size: 13px; color: var(--muted); max-width: 62ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="page">
+  <header class="intro">
+    <span class="eyebrow">Clickable sample · Learning Companion</span>
+    <h1>Short sessions that end, scheduled for each person's memory</h1>
+    <p>This is a sample, not the app: no data leaves this page. Tap through Léa's day: today's plan, a review session with "why this card?", photographing a lesson, the family view and the rhythm settings. The notes beside the phone explain the design choice behind each screen.</p>
+  </header>
+
+  <main class="stage">
+    <div class="phone" id="phone">
+      <div class="status"><span class="num">17:05</span><span class="dots"><b></b><i></i></span></div>
+
+      <!-- TODAY -->
+      <section class="screen" id="s-today" aria-label="Today">
+        <div class="hello">
+          <span class="label">Friday 2 October</span>
+          <h2>Hi Léa</h2>
+        </div>
+        <div id="plan-card"></div>
+        <div class="card">
+          <div class="row between"><span class="label">Coming up</span><span class="pill ink">Tue 6 Oct</span></div>
+          <div class="row between"><strong>Maths test: fractions</strong><span class="num" id="ready-pct">74% ready</span></div>
+          <div class="meter" aria-hidden="true"><span id="ready-bar" style="width:74%"></span></div>
+          <p class="small muted">Share of the test material you're predicted to remember on Tuesday morning. Today's plan already includes it.</p>
+        </div>
+        <div class="card">
+          <span class="label">This week</span>
+          <div class="week" id="week"></div>
+          <p class="small muted" id="week-caption"></p>
+        </div>
+        <div class="card sunken">
+          <span class="label">Recently solid</span>
+          <div class="solidlist">
+            <div><span>tener → yo tengo</span><span class="pill solid">solid</span></div>
+            <div><span>3/4 = 6/8</span><span class="pill solid">solid</span></div>
+            <div><span>Plural of « cheval »</span><span class="pill fragile">fragile</span></div>
+          </div>
+        </div>
+        <button class="btn quiet block" data-go="capture">Photograph a lesson</button>
+      </section>
+
+      <!-- SESSION -->
+      <section class="screen" id="s-session" hidden aria-label="Review session">
+        <div class="sessionbar">
+          <button class="btn ghost" id="stop-btn">Stop</button>
+          <div class="meter" aria-hidden="true"><span id="sess-bar" style="width:0%"></span></div>
+          <span class="small muted num" id="sess-left"></span>
+        </div>
+        <div id="qcard"></div>
+      </section>
+
+      <!-- DONE -->
+      <section class="screen" id="s-done" hidden aria-label="Session finished"></section>
+
+      <!-- CAPTURE -->
+      <section class="screen" id="s-capture" hidden aria-label="Capture a lesson"></section>
+
+      <!-- FAMILY -->
+      <section class="screen" id="s-family" hidden aria-label="Family">
+        <div class="hello"><span class="label">Family · week of 28 Sept</span><h2>How everyone's doing</h2></div>
+        <div id="members" class="stack"></div>
+        <div class="card">
+          <span class="label">Léa · planned minutes, next 14 days</span>
+          <div class="chart" id="load-chart"></div>
+          <p class="small muted">The work before Tuesday's test bulges up to the 10-minute budget but never past it. Sundays are rest days.</p>
+        </div>
+        <div class="card">
+          <span class="label">Ask Noé at dinner</span>
+          <details class="ask"><summary>Combien font 7 × 8 ?</summary><p>56</p></details>
+          <details class="ask"><summary>Comment dit-on « chat » en anglais ?</summary><p>cat</p></details>
+          <details class="ask"><summary>Quel est le pluriel de « cheval » ?</summary><p>chevaux</p></details>
+          <p class="small muted">Three questions from what Noé is reviewing this week. Asking aloud counts as practice too.</p>
+        </div>
+        <div class="card sunken">
+          <span class="label">Teach-back</span>
+          <p>Ask Léa to explain <strong>why 3/4 = 6/8</strong>. Explaining is one of the best ways to learn.</p>
+        </div>
+      </section>
+
+      <!-- RHYTHM -->
+      <section class="screen" id="s-rhythm" hidden aria-label="Rhythm settings">
+        <div class="hello"><span class="label">Set together with a parent</span><h2>My rhythm</h2></div>
+        <div class="card">
+          <div class="row between"><label for="budget" class="label">Time per day</label><strong class="num" id="budget-val">10 min</strong></div>
+          <input type="range" id="budget" min="5" max="20" step="1" value="10">
+          <p class="small muted">Today's plan is built to fit this. Whatever doesn't fit waits, and you never see a pile of overdue cards.</p>
+        </div>
+        <div class="card">
+          <span class="label">My plan</span>
+          <p class="row wrap" style="gap:6px">After
+            <select id="intention" aria-label="When">
+              <option value="After my snack">my snack</option>
+              <option value="After homework">homework</option>
+              <option value="Before dinner">dinner (before)</option>
+              <option value="After football">football</option>
+            </select>
+            I do my <strong class="num" id="intent-min">10</strong> minutes.
+          </p>
+        </div>
+        <div class="card">
+          <span class="label">Reminder slots</span>
+          <label class="check"><input type="checkbox" id="slot-school" checked><span>After school<br><span class="small muted">Mon–Fri, 17:00–18:30</span></span></label>
+          <label class="check"><input type="checkbox" id="slot-dinner"><span>Before dinner<br><span class="small muted">Mon–Fri, 18:30–19:30</span></span></label>
+          <label class="check"><input type="checkbox" id="slot-sat" checked><span>Saturday morning<br><span class="small muted">10:00–12:00</span></span></label>
+          <div class="row between"><span>Reminders per day</span>
+            <div class="seg" role="group" aria-label="Reminders per day">
+              <button aria-pressed="false" data-rem="0">None</button>
+              <button aria-pressed="true" data-rem="1">At most 1</button>
+            </div>
+          </div>
+          <div class="preview" id="reminder-preview" aria-live="polite"></div>
+          <p class="small muted">Reminders stop by themselves once you start on your own most days.</p>
+        </div>
+        <div class="card">
+          <span class="label">Rest days</span>
+          <div class="daychips" id="restdays"></div>
+          <label class="check"><input type="checkbox" id="holiday"><span>Holiday mode<br><span class="small muted">No new material, only light upkeep</span></span></label>
+        </div>
+      </section>
+
+      <nav class="tabs" id="tabs" aria-label="Main">
+        <button data-tab="today" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Today</button>
+        <button data-tab="capture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Capture</button>
+        <button data-tab="family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5M14.5 15.2c.8-.7 1.6-1 2.5-1 2 0 3.4 1.5 4 4"/></svg>Family</button>
+        <button data-tab="rhythm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></svg>Rhythm</button>
+      </nav>
+    </div>
+
+    <aside class="notes" aria-live="polite">
+      <div class="jump" id="jump" aria-label="Go to screen"></div>
+      <h2 class="screen-title" id="note-title"></h2>
+      <ul id="note-list"></ul>
+      <p class="foot">The engine behind these screens is real code: <code>packages/engine</code> (FSRS-6 memory model, session planner, reminder policy) with a 60-day simulation. Card content stays in the lesson's language; the app's own labels are in English for this sample.</p>
+    </aside>
+  </main>
+</div>
+
+<script>
+(() => {
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const SUBJECTS = {
+    Spanish: { label: 'Spanish', color: 'var(--s-spanish)' },
+    Maths: { label: 'Maths', color: 'var(--s-maths)' },
+    French: { label: 'French', color: 'var(--s-french)' },
+    History: { label: 'History', color: 'var(--s-history)' },
+  };
+
+  // Today's due cards in the order the planner would give them: an easy opener,
+  // subjects interleaved, a likely success to close. `seen` = days since last review,
+  // `recall` = predicted recall now, `test` = days until the test (if any).
+  const DECK = [
+    { id: 's1', subject: 'Spanish', level: 'recall', prompt: 'tener (avoir) — yo ___', answers: ['tengo'], grading: 'loose', seen: 9, recall: 0.94, becomes: 'tener → yo tengo', note: 'Irregular in the « yo » form: tengo, then tienes, tiene…' },
+    { id: 'm1', subject: 'Maths', level: 'recall', prompt: 'Calcule : 3/4 + 1/8', answers: ['7/8'], grading: 'fraction', seen: 6, recall: 0.78, test: 4, becomes: '3/4 + 1/8', note: 'Same denominator first: 3/4 = 6/8, then 6/8 + 1/8 = 7/8.' },
+    { id: 'f1', subject: 'French', level: 'apply', prompt: 'Les fleurs que j’ai (cueillir) sont belles.', answers: ['cueillies'], grading: 'accent', seen: 12, recall: 0.81, becomes: 'past participle agreement', note: 'With « avoir », agree with the direct object placed before: « que » = les fleurs → cueillies.' },
+    { id: 'h1', subject: 'History', level: 'recall', prompt: 'Quel peuple Clovis dirige-t-il ?', answers: ['les francs', 'francs', 'les francs saliens'], grading: 'loose', seen: 15, recall: 0.86, becomes: 'Clovis, roi des Francs', note: 'Clovis is king of the Franks (around 481–511).' },
+    { id: 's2', subject: 'Spanish', level: 'recognize', isNew: true, prompt: 'Que veut dire « la cocina » ?', choices: ['la voiture', 'la cuisine', 'l’école', 'le jardin'], answers: ['la cuisine'], becomes: 'la cocina', note: 'la cocina = la cuisine. Watch out: « el coche » is the car.' },
+    { id: 'm2', subject: 'Maths', level: 'apply', prompt: 'Complète : 5/6 = …/18', answers: ['15'], grading: 'number', seen: 5, recall: 0.83, test: 4, becomes: 'equivalent fractions', note: '6 × 3 = 18, so 5 × 3 = 15.' },
+    { id: 'f2', subject: 'French', level: 'recall', prompt: 'Écris le pluriel de « cheval ».', answers: ['chevaux'], grading: 'accent', seen: 3, recall: 0.74, becomes: 'cheval → chevaux', note: 'Most nouns in -al take -aux: un cheval, des chevaux.' },
+    { id: 'h2', subject: 'History', level: 'recognize', prompt: 'En quelle année Charlemagne est-il couronné empereur ?', choices: ['732', '800', '843', '987'], answers: ['800'], seen: 4, recall: 0.8, becomes: 'Charlemagne, 800', note: 'Crowned emperor in Rome on 25 December 800.' },
+    { id: 's3', subject: 'Spanish', level: 'recall', prompt: 'hablar — nosotros ___', answers: ['hablamos'], grading: 'loose', seen: 7, recall: 0.85, becomes: 'hablar → hablamos', note: 'Regular -ar verb: hablo, hablas, habla, hablamos…' },
+    { id: 'm3', subject: 'Maths', level: 'recognize', isNew: true, prompt: 'Dans 3/8, quel nombre est le dénominateur ?', choices: ['3', '8', '11', '24'], answers: ['8'], test: 4, becomes: 'numerator / denominator', note: 'The denominator is the number below the line: 8.' },
+    { id: 'f3', subject: 'French', level: 'recognize', prompt: 'Avec « avoir », le participe passé s’accorde avec…', choices: ['le sujet', 'le COD placé avant le verbe', 'le COD placé après le verbe', 'il ne s’accorde jamais'], answers: ['le COD placé avant le verbe'], seen: 2, recall: 0.82, becomes: 'agreement rule', note: 'Only when the direct object comes before the verb.' },
+    { id: 'h3', subject: 'History', level: 'recall', prompt: 'En quelle année a lieu l’Hégire ?', answers: ['622'], grading: 'number', seen: 21, recall: 0.79, becomes: 'Hégire, 622', note: 'Muhammad leaves Mecca for Medina in 622: year 1 of the Muslim calendar.' },
+    { id: 'm4', subject: 'Maths', level: 'explain', prompt: 'Pourquoi 3/4 + 1/8 ne fait-il pas 4/12 ?', choices: ['Parce que 4/12 se simplifie', 'On n’additionne pas les dénominateurs : on écrit d’abord 3/4 = 6/8', 'Parce que 1/8 est plus petit que 3/4'], answers: ['On n’additionne pas les dénominateurs : on écrit d’abord 3/4 = 6/8'], seen: 11, recall: 0.8, test: 4, becomes: 'why denominators are not added', note: 'Fractions must share a denominator before you add the numerators.' },
+    { id: 's4', subject: 'Spanish', level: 'apply', prompt: 'Traduis : « Je mange à la maison. »', answers: ['como en casa', 'yo como en casa'], grading: 'loose', seen: 8, recall: 0.8, becomes: 'comer en casa', note: 'comer → yo como; « à la maison » = en casa.' },
+    { id: 'f4', subject: 'French', level: 'recall', prompt: 'Complète avec « a » ou « à » : Il ___ un chat.', answers: ['a'], grading: 'accent', seen: 6, recall: 0.62, becomes: 'a / à', note: '« a » is the verb avoir: you could say « il avait un chat ». « à » is a preposition.' },
+    { id: 's5', subject: 'Spanish', level: 'recall', prompt: 'hablar — yo ___', answers: ['hablo'], grading: 'loose', seen: 10, recall: 0.93, becomes: 'hablar → hablo', note: 'Regular -ar verb, « yo » form: hablo.' },
+  ];
+  // Typical seconds per card, answer plus reading the feedback; a new card takes longer (the planner learns these per child).
+  const SECONDS = { recognize: 20, recall: 28, apply: 45, explain: 50 };
+  DECK.forEach((c) => (c.seconds = SECONDS[c.level] + (c.isNew ? 15 : 0)));
+  const OPENER = DECK[0];
+  const CLOSER = DECK[DECK.length - 1];
+
+  const state = {
+    tab: 'today',
+    budget: 10,
+    reminders: 1,
+    intention: 'After my snack',
+    restDays: new Set([0]),
+    doneToday: false,
+    session: null,
+    capture: 0,
+    kept: {},
+  };
+
+  // ---------- planning (mirrors packages/engine planner: budget, opener/closer, interleaving) ----------
+  function plan() {
+    const budget = state.budget * 60;
+    const middle = DECK.slice(1, -1);
+    const picked = [OPENER];
+    let used = OPENER.seconds + CLOSER.seconds;
+    for (const card of middle) {
+      if (used + card.seconds > budget) continue;
+      picked.push(card);
+      used += card.seconds;
+    }
+    picked.push(CLOSER);
+    return { cards: picked, minutes: Math.max(1, Math.round(used / 60)), deferred: DECK.length - picked.length };
+  }
+
+  function subjectsOf(cards) {
+    const counts = {};
+    cards.forEach((c) => (counts[c.subject] = (counts[c.subject] || 0) + 1));
+    return Object.entries(counts);
+  }
+
+  function chips(cards) {
+    return subjectsOf(cards)
+      .map(([s, n]) => `<span class="chip"><span class="dot" style="background:${SUBJECTS[s].color}"></span>${SUBJECTS[s].label} <span class="muted num">${n}</span></span>`)
+      .join('');
+  }
+
+  // ---------- today ----------
+  function renderToday() {
+    const p = plan();
+    $('#plan-card').innerHTML = state.doneToday
+      ? `<div class="plan seyes">
+           <span class="label">Today</span>
+           <div class="big">Done ✓</div>
+           <p class="hand">see you tomorrow, after your snack</p>
+           <p class="small muted">Tomorrow's plan is already adjusted to what you answered today.</p>
+         </div>`
+      : `<div class="plan seyes">
+           <span class="label">Today's plan</span>
+           <div class="row" style="align-items:baseline;gap:8px"><span class="big num">${p.minutes} min</span><span class="muted num">· ${p.cards.length} cards</span></div>
+           <div class="row wrap" style="gap:6px">${chips(p.cards)}</div>
+           <button class="btn block" id="start-btn">Start</button>
+           <p class="small muted">Ends by itself. You can stop at any time.</p>
+         </div>`;
+    const start = $('#start-btn');
+    if (start) start.addEventListener('click', startSession);
+
+    const week = [[1, 'M', 'done'], [2, 'T', 'done'], [3, 'W', 'skipped'], [4, 'T', 'done'], [5, 'F', state.doneToday ? 'done' : 'today'], [6, 'S', 'later'], [0, 'S', 'later']];
+    $('#week').innerHTML = week
+      .map(([dow, letter, status]) => {
+        const rest = state.restDays.has(dow) && status !== 'done';
+        const cls = rest ? 'rest' : status === 'done' || status === 'today' ? status : '';
+        const inner = status === 'done' ? '✓' : rest ? 'rest' : '';
+        return `<div class="${cls}"><i aria-hidden="true">${inner}</i><span>${letter}</span></div>`;
+      })
+      .join('');
+    const done = week.filter(([, , st]) => st === 'done').length;
+    const rest = state.restDays.size;
+    $('#week-caption').textContent = `${done} sessions this week. ${rest === 0 ? 'No rest day set.' : rest === 1 ? '1 planned rest day.' : rest + ' planned rest days.'} A skipped day is just a blank: nothing is lost.`;
+  }
+
+  // ---------- session ----------
+  function startSession() {
+    const p = plan();
+    state.session = { queue: p.cards.map((c) => ({ card: c, retry: false })), total: p.cards.length, asked: 0, results: [], elapsed: 0, misses: 0 };
+    show('session');
+    nextQuestion();
+  }
+
+  function norm(s, keepAccents) {
+    let t = String(s).trim().toLowerCase().replace(/[’']/g, '’').replace(/\s+/g, ' ').replace(/[.!?]$/, '');
+    if (!keepAccents) t = t.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    return t;
+  }
+  function toNumber(s) {
+    const t = String(s).replace(',', '.').replace(/\s/g, '');
+    const m = t.match(/^(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/);
+    if (m) return Number(m[1]) / Number(m[2]);
+    return t === '' ? NaN : Number(t);
+  }
+  function isCorrect(card, given) {
+    if (card.choices) return card.answers.includes(given);
+    if (card.grading === 'number' || card.grading === 'fraction') {
+      const v = toNumber(given);
+      return card.answers.some((a) => Math.abs(toNumber(a) - v) < 1e-9);
+    }
+    const keep = card.grading === 'accent';
+    return card.answers.some((a) => norm(a, keep) === norm(given, keep));
+  }
+
+  function nextQuestion() {
+    const s = state.session;
+    if (s.misses >= 5) return finish('A tough set today. Stopping here is the right call; these come back with a new explanation.');
+    if (!s.queue.length) return finish();
+    if (s.misses >= 3) {
+      let best = -1;
+      s.queue.forEach((q, i) => { if (!q.retry && (best < 0 || (q.card.recall || 0) > (s.queue[best].card.recall || 0))) best = i; });
+      if (best > 0) s.queue.unshift(...s.queue.splice(best, 1));
+    }
+    const { card, retry } = s.queue[0];
+    s.current = { card, retry, choice: null, confidence: null, startedAt: performance.now() };
+    const remaining = s.queue.reduce((t, q) => t + q.card.seconds, 0);
+    $('#sess-bar').style.width = `${Math.round((s.asked / s.total) * 100)}%`;
+    $('#sess-left').textContent = `about ${Math.max(1, Math.round(remaining / 60))} min left`;
+    const level = { recognize: 'pick', recall: 'recall', apply: 'apply', explain: 'explain' }[card.level];
+    $('#qcard').innerHTML = `
+      <div class="qcard seyes">
+        <div class="row between wrap">
+          <span class="chip"><span class="dot" style="background:${SUBJECTS[card.subject].color}"></span>${SUBJECTS[card.subject].label}</span>
+          <span class="row" style="gap:6px">${card.isNew ? '<span class="pill ink">new</span>' : ''}${retry ? '<span class="pill fragile">second try</span>' : ''}<span class="pill ink">${level}</span></span>
+        </div>
+        <p class="prompt">${esc(card.prompt)}</p>
+        ${card.choices
+          ? `<div class="choices" role="group" aria-label="Choices">${card.choices.map((c, i) => `<button data-choice="${i}" aria-pressed="false">${esc(c)}</button>`).join('')}</div>`
+          : `<input class="answer" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="Your answer">`}
+        <div class="row between wrap">
+          <div class="seg" role="group" aria-label="How sure are you?">
+            <button data-conf="sure" aria-pressed="false">Sure</button>
+            <button data-conf="unsure" aria-pressed="false">Not sure</button>
+          </div>
+          <button class="btn" id="check-btn" disabled>Check</button>
+        </div>
+        <div id="fb" aria-live="polite"></div>
+        <button class="why" id="why-btn">Why this card?</button>
+      </div>`;
+    const check = $('#check-btn');
+    const input = $('#answer');
+    if (input) {
+      input.addEventListener('input', () => (check.disabled = input.value.trim() === ''));
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !check.disabled) check.click(); });
+      setTimeout(() => input.focus({ preventScroll: true }), 30);
+    }
+    $$('[data-choice]').forEach((b) => b.addEventListener('click', () => {
+      $$('[data-choice]').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true');
+      s.current.choice = card.choices[Number(b.dataset.choice)];
+      check.disabled = false;
+    }));
+    $$('[data-conf]').forEach((b) => b.addEventListener('click', () => {
+      $$('[data-conf]').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true');
+      s.current.confidence = b.dataset.conf;
+    }));
+    check.addEventListener('click', submit);
+    $('#why-btn').addEventListener('click', () => openWhy(card));
+  }
+
+  function submit() {
+    const s = state.session;
+    const { card, retry } = s.current;
+    const given = card.choices ? s.current.choice : $('#answer').value;
+    const ok = isCorrect(card, given);
+    const seconds = (performance.now() - s.current.startedAt) / 1000;
+    const slow = seconds > 25;
+    s.queue.shift();
+    s.asked += retry ? 0 : 1;
+    s.elapsed += card.seconds;
+    s.results.push({ card, ok, retry, confidence: s.current.confidence });
+    if (ok) s.misses = 0; else { s.misses++; if (!retry) s.queue.push({ card, retry: true }); }
+
+    let grade;
+    if (!ok) grade = 'comes back at the end, then tomorrow';
+    else if (retry) grade = 'got it on the second try: back tomorrow';
+    else if (slow || s.current.confidence === 'unsure') grade = 'correct but effortful: back in a few days';
+    else if (s.current.confidence === 'sure' && card.level !== 'recognize') grade = 'fluent: next time in about 3 weeks';
+    else grade = 'next time in about 9 days';
+
+    const confidentMiss = !ok && s.current.confidence === 'sure';
+    $('#fb').innerHTML = ok
+      ? `<div class="feedback ok"><strong>Yes: ${esc(card.answers[0])}</strong><span class="small">${esc(card.note)}</span><span class="small muted">${grade}</span></div>`
+      : `<div class="feedback no"><strong>The answer: ${esc(card.answers[0])}</strong><span class="small">${esc(card.note)}</span>${confidentMiss ? '<span class="small"><strong>You were sure:</strong> worth a second look. Surprises like this are the ones you remember best once corrected.</span>' : ''}<span class="small muted">It ${grade}.</span></div>`;
+    $$('#qcard input, #qcard [data-choice], #qcard [data-conf]').forEach((el) => (el.disabled = true));
+    const btn = $('#check-btn');
+    btn.textContent = 'Next';
+    btn.disabled = false;
+    btn.replaceWith(btn.cloneNode(true));
+    $('#check-btn').addEventListener('click', nextQuestion);
+    $('#check-btn').focus({ preventScroll: true });
+  }
+
+  /** For the "End" shortcut: answer today's plan as Léa might (two slips), then show the end screen. */
+  function playSampleSession() {
+    const p = plan();
+    const misses = new Set(['f4', 'h3']);
+    state.session = { queue: [], total: p.cards.length, asked: p.cards.length, elapsed: p.cards.reduce((t, c) => t + c.seconds, 0), misses: 0, results: p.cards.map((card) => ({ card, ok: !misses.has(card.id), retry: false })) };
+    finish();
+  }
+
+  function finish(message) {
+    const s = state.session;
+    state.doneToday = true;
+    const firsts = s.results.filter((r) => !r.retry);
+    const right = firsts.filter((r) => r.ok);
+    const wrong = firsts.filter((r) => !r.ok);
+    const solid = right.filter((r) => !r.card.isNew).slice(0, 3);
+    const minutes = Math.max(1, Math.round(s.elapsed / 60));
+    const mathsRight = right.filter((r) => r.card.test).length;
+    const ready = Math.min(92, 74 + mathsRight * 2);
+    $('#ready-pct').textContent = `${ready}% ready`;
+    $('#ready-bar').style.width = `${ready}%`;
+    $('#s-done').innerHTML = `
+      <div class="hello" style="margin-top:12px">
+        <span class="label">${message ? 'Stopped kindly' : 'Session finished'}</span>
+        <h2>${message ? 'Good effort.' : 'Done for today.'}</h2>
+        <p class="hand" style="margin-top:6px">${message ? esc(message) : 'see you tomorrow, or not: nothing is lost'}</p>
+      </div>
+      <div class="card">
+        <div class="row between"><span>Cards</span><strong class="num">${firsts.length} · ${minutes} min</strong></div>
+        <div class="row between"><span>Right first time</span><strong class="num">${right.length} of ${firsts.length}</strong></div>
+        <div class="row between"><span>Maths test, Tuesday</span><strong class="num">74% → ${ready}% ready</strong></div>
+      </div>
+      ${solid.length ? `<div class="card sunken"><span class="label">Getting stronger</span>${solid.map((r) => `<div class="row between"><span>${esc(r.card.becomes)}</span><span class="pill solid">stronger</span></div>`).join('')}</div>` : ''}
+      ${wrong.length ? `<div class="card sunken"><span class="label">Back tomorrow</span>${wrong.map((r) => `<div class="row between"><span>${esc(r.card.becomes)}</span><span class="pill fragile">tomorrow</span></div>`).join('')}</div>` : ''}
+      <button class="btn block" id="close-btn">Close</button>
+      <button class="btn ghost" data-go="capture" style="justify-self:center">Curious? Look at the fractions lesson again</button>`;
+    show('done');
+    $('#close-btn').addEventListener('click', () => show('today'));
+    $$('#s-done [data-go]').forEach((b) => b.addEventListener('click', () => show(b.dataset.go)));
+  }
+
+  $('#stop-btn').addEventListener('click', () => {
+    const s = state.session;
+    if (!s || s.results.length === 0) { state.session = null; show('today'); return; }
+    finish('Stopped. Everything left moves to another day, with nothing to catch up on.');
+  });
+
+  // ---------- why this card? (FSRS-6 curve, same formula as packages/engine) ----------
+  const DECAY = 0.1542;
+  const FACTOR = Math.pow(0.9, -1 / DECAY) - 1;
+  const recallAt = (t, S) => Math.pow(1 + (FACTOR * t) / S, -DECAY);
+
+  function openWhy(card) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'sheet-backdrop';
+    let body;
+    if (card.isNew) {
+      body = `<p>This card is <strong>new</strong>. It comes from the lesson you photographed on Monday${card.test ? ' and counts for Tuesday\'s test, so it is introduced first' : ''}.</p>
+              <p class="small muted">New cards come in a few per day, only once the cards they build on are known.</p>`;
+    } else {
+      const S = (FACTOR * card.seen) / (Math.pow(card.recall, -1 / DECAY) - 1);
+      const parts = [`Seen ${card.seen} days ago`, `recall now about ${Math.round(card.recall * 100)}%`];
+      if (card.test) parts.push(`Maths test in ${card.test} days`);
+      body = `<p><strong>${parts.join(' · ')}</strong></p>
+              <div class="chart" id="why-chart"></div>
+              <p class="small">Your memory of this card fades along this curve. We ask again when recall is about to drop below the target line${card.test ? ', and before a test we aim higher' : ''}. Each correct answer makes the curve flatter, so the next gap is longer.</p>
+              <p class="small muted">Memory strength: about ${S < 10 ? S.toFixed(1) : Math.round(S)} days (the time for recall to fall to 90%).</p>`;
+      backdrop.dataset.S = S;
+    }
+    backdrop.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-label="Why this card"><div class="grab"></div><h3>Why this card now?</h3>${body}<button class="btn quiet block" id="why-close">Got it</button></div>`;
+    $('#phone').appendChild(backdrop);
+    if (!card.isNew) drawCurve($('#why-chart'), card, Number(backdrop.dataset.S));
+    const close = () => backdrop.remove();
+    $('#why-close').addEventListener('click', close);
+    $('#why-close').focus({ preventScroll: true });
+    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) close(); });
+    backdrop.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+
+  function drawCurve(el, card, S) {
+    const W = 340, H = 190, L = 36, R = 12, T = 14, B = 26;
+    const maxT = Math.max(Math.ceil(card.seen * 1.8), (card.test ? card.seen + card.test + 2 : 0), 10);
+    const yMin = 0.5;
+    const x = (t) => L + (t / maxT) * (W - L - R);
+    const y = (r) => T + ((1 - r) / (1 - yMin)) * (H - T - B);
+    const pts = [];
+    for (let i = 0; i <= 80; i++) { const t = (i / 80) * maxT; pts.push([x(t), y(Math.max(yMin, recallAt(t, S)))]); }
+    const path = 'M' + pts.map((p) => p.map((v) => v.toFixed(1)).join(',')).join('L');
+    const area = `${path}L${x(maxT).toFixed(1)},${y(yMin)}L${x(0)},${y(yMin)}Z`;
+    const ticksY = [0.5, 0.6, 0.7, 0.8, 0.9, 1];
+    const stepX = maxT > 20 ? 10 : 5;
+    const ticksX = []; for (let t = 0; t <= maxT; t += stepX) ticksX.push(t);
+    const target = card.test && card.test <= 7 ? 0.95 : 0.9;
+    const testX = card.test ? x(card.seen + card.test) : null;
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Predicted recall over the days since this card was last seen">
+      ${ticksY.map((r) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(r)}" y2="${y(r)}"/><text class="axis" x="${L - 6}" y="${y(r) + 4}" text-anchor="end">${Math.round(r * 100)}%</text>`).join('')}
+      ${ticksX.map((t) => `<text class="axis" x="${x(t)}" y="${H - 8}" text-anchor="middle">${t}d</text>`).join('')}
+      <path class="area" d="${area}"/>
+      <line class="target" x1="${L}" x2="${W - R}" y1="${y(target)}" y2="${y(target)}"/>
+      <text class="ann" x="${L + 6}" y="${y(target) - 5}">target ${Math.round(target * 100)}%</text>
+      ${testX ? `<line class="marker" x1="${testX}" x2="${testX}" y1="${T}" y2="${H - B}"/><text class="ann red" x="${testX - 4}" y="${H - B - 6}" text-anchor="end">test</text>` : ''}
+      <path class="curve" d="${path}"/>
+      <circle class="ring" cx="${x(card.seen)}" cy="${y(card.recall)}" r="5"/>
+      <text class="ann" x="${x(card.seen) + 8}" y="${y(card.recall) + 16}">today ${Math.round(card.recall * 100)}%</text>
+      <rect class="hit" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}"/>
+    </svg><div class="tip" hidden></div>`;
+    const svg = $('svg', el), tip = $('.tip', el);
+    svg.addEventListener('pointermove', (e) => {
+      const box = svg.getBoundingClientRect();
+      const px = ((e.clientX - box.left) / box.width) * W;
+      const t = Math.min(maxT, Math.max(0, ((px - L) / (W - L - R)) * maxT));
+      const r = recallAt(t, S);
+      tip.hidden = false;
+      tip.textContent = `day ${Math.round(t)} · ${Math.round(r * 100)}%`;
+      tip.style.left = `${(x(t) / W) * box.width}px`;
+      tip.style.top = `${(y(Math.max(yMin, r)) / H) * box.height}px`;
+    });
+    svg.addEventListener('pointerleave', () => (tip.hidden = true));
+  }
+
+  // ---------- capture ----------
+  const LESSON = [
+    { kind: 'term', title: 'Numérateur et dénominateur', q: 'Dans 3/8, quel nombre est le dénominateur ?' },
+    { kind: 'rule', title: 'Fractions égales', q: 'Complète : 3/4 = …/8' },
+    { kind: 'procedure', title: 'Additionner avec le même dénominateur', q: 'Calcule : 2/7 + 3/7' },
+    { kind: 'procedure', title: 'Additionner quand un dénominateur est multiple de l’autre', q: 'Calcule : 2/5 + 3/10', uncertain: true },
+    { kind: 'concept', title: 'Pourquoi on n’additionne pas les dénominateurs', q: 'Pourquoi 3/4 + 1/8 ne fait pas 4/12 ?', added: true },
+  ];
+
+  function renderCapture() {
+    const el = $('#s-capture');
+    const step = state.capture;
+    if (step === 0) {
+      el.innerHTML = `
+        <div class="hello"><span class="label">Capture · Maths</span><h2>Photograph a lesson</h2></div>
+        <div class="photos" aria-label="Two photographed notebook pages">
+          <div class="photo seyes"><div class="hw"><b>Additionner des fractions</b><br>a/b : a est le numérateur,<br>b est le dénominateur<br><br>On ne change pas une fraction en multipliant le num. et le dén. par un même nombre<br><br>3/4 = 6/8</div></div>
+          <div class="photo seyes"><div class="hw">Même dénominateur :<br>on additionne les num.<br>et on garde le dén.<br>2/7 + 3/7 = 5/7<br><br>Ex : 3/4 + 1/8<br>= 6/8 + 1/8 = <b>7/8</b></div></div>
+        </div>
+        <p class="small muted">The scanner on the phone crops and straightens each page. Photos are deleted once the lesson has been read.</p>
+        <button class="btn block" id="cap-go">Use these 2 pages</button>`;
+      $('#cap-go').addEventListener('click', () => {
+        state.capture = 1; renderCapture();
+        setTimeout(() => { state.capture = 2; renderCapture(); }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 1400);
+      });
+    } else if (step === 1) {
+      el.innerHTML = `
+        <div class="hello"><span class="label">Capture · Maths</span><h2>Reading the lesson…</h2></div>
+        <div class="card"><div class="progress-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="small muted">Finding each idea, writing questions at several levels, and checking against the 5e curriculum and open textbooks.</p></div>`;
+    } else if (step === 2) {
+      const kept = LESSON.filter((_, i) => state.kept[i] !== false).length;
+      el.innerHTML = `
+        <div class="hello"><span class="label">Review inbox</span><h2>Additionner des fractions</h2></div>
+        <p class="small muted">${LESSON.length} cards found. Keep, fix or drop each one. Nothing enters your plan until you say so.</p>
+        <div class="inbox">${LESSON.map((u, i) => `
+          <div class="item ${state.kept[i] === false ? 'off' : ''}">
+            <div class="row between"><span class="pill ink">${u.kind}</span>
+              <input type="checkbox" class="toggle" id="keep-${i}" data-keep="${i}" ${state.kept[i] === false ? '' : 'checked'} aria-label="Keep card: ${esc(u.title)}"></div>
+            <strong>${esc(u.title)}</strong>
+            <span class="q">${esc(u.q)}</span>
+            ${u.uncertain ? '<span class="pill fragile">Check this: the photo was blurry here</span>' : ''}
+            ${u.added ? '<span class="pill solid">Added by Lesson Lens</span>' : ''}
+          </div>`).join('')}</div>
+        <div class="card lens">
+          <span class="label">Lesson Lens · for parents</span>
+          <ul>
+            <li><span class="sym">✔</span><span>Matches the 5e curriculum: <em>add fractions when one denominator is a multiple of the other</em>. <span class="source">Official curriculum, cycle 4</span></span></li>
+            <li><span class="sym">+</span><span>Common confusion: adding the denominators (3/4 + 1/8 ≠ 4/12). One check card was added. <span class="source">Open textbook (Sésamath 5e)</span></span></li>
+            <li><span class="sym">↗</span><span>Going further: fractions on a number line, for a curious moment. Optional.</span></li>
+          </ul>
+          <p class="small muted">The teacher's wording stays on the cards: it is what the test will use.</p>
+        </div>
+        <button class="btn block" id="cap-add">Add ${kept} cards to my plan</button>`;
+      $$('[data-keep]').forEach((t) => t.addEventListener('change', () => { state.kept[t.dataset.keep] = t.checked; renderCapture(); $('#keep-' + t.dataset.keep).focus(); }));
+      $('#cap-add').addEventListener('click', () => { state.capture = 3; renderCapture(); });
+    } else {
+      const kept = LESSON.filter((_, i) => state.kept[i] !== false).length;
+      el.innerHTML = `
+        <div class="hello"><span class="label">Capture</span><h2>Added</h2></div>
+        <div class="card seyes" style="padding-left:46px">
+          <p><strong class="num">${kept} cards</strong> from <em>Additionner des fractions</em>.</p>
+          <p class="hand">a few per day, test material first</p>
+          <p class="small muted">They start once the cards they build on are known. Nothing new is added on days when the plan is already full.</p>
+        </div>
+        <button class="btn quiet block" id="cap-again">Photograph another lesson</button>`;
+      $('#cap-again').addEventListener('click', () => { state.capture = 0; state.kept = {}; renderCapture(); });
+    }
+  }
+
+  // ---------- family ----------
+  function renderFamily() {
+    const members = [
+      { i: 'L', name: 'Léa', level: '5e', week: 41, budget: 60, next: 'Maths, Tue · 74% ready', rem: 'Paused: started alone on 5 of 6 days' },
+      { i: 'N', name: 'Noé', level: 'CE2', week: 28, budget: 42, next: 'Dictation, Thu · 81% ready', rem: '1 a day after school · followed 4 of 5' },
+      { i: 'Y', name: 'You', level: 'Spanish B1', week: 52, budget: 90, next: 'No test · 212 words solid', rem: 'Off' },
+    ];
+    $('#members').innerHTML = members.map((m) => `
+      <div class="card member">
+        <div class="row"><span class="avatar">${m.i}</span><div><strong>${m.name}</strong><div class="small muted">${m.level}</div></div></div>
+        <div class="row between small"><span>This week</span><span class="num">${m.week} of ${m.budget} min</span></div>
+        <div class="meter" aria-hidden="true"><span style="width:${Math.round((m.week / m.budget) * 100)}%"></span></div>
+        <dl class="kv"><dt>Next</dt><dd>${m.next}</dd><dt>Reminders</dt><dd>${m.rem}</dd></dl>
+      </div>`).join('');
+    drawLoad($('#load-chart'));
+  }
+
+  function drawLoad(el) {
+    const days = [['Sat', 3, 7], ['Sun', 4, 0], ['Mon', 5, 10], ['Tue', 6, 6], ['Wed', 7, 8], ['Thu', 8, 9], ['Fri', 9, 7], ['Sat', 10, 6], ['Sun', 11, 0], ['Mon', 12, 8], ['Tue', 13, 9], ['Wed', 14, 8], ['Thu', 15, 10], ['Fri', 16, 7]];
+    const budget = state.budget;
+    const W = 340, H = 170, L = 26, R = 6, T = 16, B = 30, max = Math.max(12, budget + 2);
+    const bw = (W - L - R) / days.length;
+    const y = (v) => T + (1 - v / max) * (H - T - B);
+    const ticks = [0, 5, 10].filter((v) => v <= max);
+    if (max >= 15) ticks.push(15);
+    const scaled = days.map(([d, n, v]) => [d, n, Math.min(v, budget)]);
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Planned minutes per day for the next 14 days, all at or under the ${budget}-minute budget">
+      ${ticks.map((v) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${L - 5}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join('')}
+      ${scaled.map(([d, n, v], i) => {
+        const x0 = L + i * bw + 2, w = bw - 4, h = Math.max(0, y(0) - y(v));
+        const r = Math.min(4, w / 2, h);
+        const bar = v > 0 ? `<path class="bar ${n === 6 ? 'dim' : ''}" d="M${x0},${y(0)}V${y(v) + r}Q${x0},${y(v)} ${x0 + r},${y(v)}H${x0 + w - r}Q${x0 + w},${y(v)} ${x0 + w},${y(v) + r}V${y(0)}Z"/>` : '';
+        const lab = i % 2 === 0 ? `<text class="axis" x="${x0 + w / 2}" y="${H - 16}" text-anchor="middle">${d[0]}</text><text class="axis" x="${x0 + w / 2}" y="${H - 4}" text-anchor="middle">${n}</text>` : '';
+        return `${bar}${lab}<rect class="hit" data-i="${i}" x="${L + i * bw}" y="${T}" width="${bw}" height="${H - T - B}"/>`;
+      }).join('')}
+      <line class="target" x1="${L}" x2="${W - R}" y1="${y(budget)}" y2="${y(budget)}"/>
+      <text class="ann" x="${W - R}" y="${y(budget) - 5}" text-anchor="end">budget ${budget} min</text>
+      <line class="marker" x1="${L + 3.5 * bw}" x2="${L + 3.5 * bw}" y1="${T - 4}" y2="${y(0)}"/>
+      <text class="ann red" x="${L + 3.5 * bw + 4}" y="${T + 4}">test</text>
+    </svg><div class="tip" hidden></div>`;
+    const tip = $('.tip', el), svg = $('svg', el);
+    $$('.hit', el).forEach((r) => {
+      r.addEventListener('pointerenter', () => {
+        const [d, n, v] = scaled[Number(r.dataset.i)];
+        const note = n === 6 ? ' · test day' : n === 5 ? ' · test tomorrow' : v === 0 ? ' · rest day' : '';
+        const box = svg.getBoundingClientRect();
+        tip.hidden = false;
+        tip.textContent = `${d} ${n} Oct · ${v} min${note}`;
+        tip.style.left = `${((L + (Number(r.dataset.i) + 0.5) * bw) / W) * box.width}px`;
+        tip.style.top = `${(y(v) / H) * box.height}px`;
+      });
+      r.addEventListener('pointerleave', () => (tip.hidden = true));
+    });
+  }
+
+  // ---------- rhythm ----------
+  function renderRhythm() {
+    $('#budget-val').textContent = `${state.budget} min`;
+    $('#intent-min').textContent = state.budget;
+    const p = plan();
+    const subjects = subjectsOf(p.cards).map(([s]) => SUBJECTS[s].label).join(', ');
+    const anySlot = ['#slot-school', '#slot-dinner', '#slot-sat'].some((id) => $(id).checked);
+    // Same wording rule as packages/engine reminderText(): what and how long, nothing else.
+    $('#reminder-preview').innerHTML = state.reminders === 0 || !anySlot
+      ? '<span class="app">No reminders</span><span class="small">You start when you decide. The plan is ready whenever you open the app.</span>'
+      : `<span class="app">Reminder preview · ${$('#slot-school').checked ? '17:00' : $('#slot-dinner').checked ? '18:30' : 'Sat 10:00'}</span><span>${esc(state.intention)}: ${p.minutes} min today (${subjects}).</span>`;
+    const names = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    const full = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    $('#restdays').innerHTML = [1, 2, 3, 4, 5, 6, 0].map((d) => `<button data-day="${d}" aria-pressed="${state.restDays.has(d)}" aria-label="${full[d]}">${names[d]}</button>`).join('');
+    $$('#restdays [data-day]').forEach((b) => b.addEventListener('click', () => {
+      const d = Number(b.dataset.day);
+      state.restDays.has(d) ? state.restDays.delete(d) : state.restDays.add(d);
+      renderRhythm();
+      $(`#restdays [data-day="${d}"]`).focus();
+    }));
+  }
+  $('#budget').addEventListener('input', (e) => { state.budget = Number(e.target.value); renderRhythm(); });
+  $('#intention').addEventListener('change', (e) => { state.intention = e.target.value; renderRhythm(); });
+  ['#slot-school', '#slot-dinner', '#slot-sat'].forEach((id) => $(id).addEventListener('change', renderRhythm));
+  $$('[data-rem]').forEach((b) => b.addEventListener('click', () => {
+    state.reminders = Number(b.dataset.rem);
+    $$('[data-rem]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    renderRhythm();
+  }));
+
+  // ---------- notes ----------
+  const NOTES = {
+    today: ['Today: a plan that ends', [
+      ['The plan is computed for Léa\'s agreed time budget. Change it in <strong>Rhythm</strong> and the plan resizes. <code>planSession()</code>'],
+      ['No streak counter. The week shows rhythm and a planned rest day; a skipped Wednesday is just a blank.'],
+      ['The only score is <strong>test readiness</strong>: how much of Tuesday\'s material Léa is predicted to remember on the morning of the test.'],
+      ['Cards that are due but don\'t fit the budget wait for another day. That backlog is never shown to the child.'],
+    ]],
+    session: ['A session: hard enough, never endless', [
+      ['Questions climb a ladder as memory gets stronger: pick → recall → apply → explain. <code>probeLevelFor()</code>'],
+      ['Grading is objective: right or wrong, hints, and speed compared with Léa\'s own usual speed. There is no "Easy" button. <code>gradeAttempt()</code>'],
+      ['<strong>Why this card?</strong> opens the memory curve behind the decision. Try it on the fractions card: the test pulls the review earlier.'],
+      ['Stop is always there, with no penalty. Missed cards come back once at the end. After three misses in a row an easier card comes next, and after five the session ends kindly. <code>SessionRunner</code>'],
+      ['Subjects are interleaved; the session opens and closes on cards Léa probably knows.'],
+    ]],
+    done: ['A real ending', [
+      ['A clear end screen. No "keep going", no chest to open, no league table.'],
+      ['Feedback is about learning: what got stronger, what comes back tomorrow, readiness for the test.'],
+      ['Tomorrow\'s plan already reflects today\'s answers. Skipping tomorrow costs nothing; the plan just adapts.'],
+    ]],
+    capture: ['Photo → cards, checked by a person', [
+      ['The phone\'s scanner crops the page, then one Claude call turns the photos into knowledge units and questions. <code>packages/ingest</code>'],
+      ['Nothing enters the plan until someone keeps it. Unclear parts of the photo are flagged, not guessed.'],
+      ['<strong>Lesson Lens</strong> compares the lesson with the curriculum and open textbooks, for parents, with sources. The teacher\'s wording stays.'],
+      ['New cards come in a few per day, material for the next test first.'],
+    ]],
+    family: ['Family: information, not surveillance', [
+      ['Children see the same view about themselves that parents see.'],
+      ['Reminders <strong>pause</strong> once a child starts on their own. The aim is to need them less and less. <code>decideNudge()</code>'],
+      ['The load forecast stays under the budget: it rises before a test but never past the line. Try a different budget in Rhythm.'],
+      ['Dinner-table questions and teach-back: practice without a screen, and something to talk about.'],
+    ]],
+    rhythm: ['Rhythm: set together', [
+      ['Child and parent set the budget, the time slots, the rest days and the reminders together.'],
+      ['The reminder text starts with the child\'s own plan ("After my snack…"). It never mentions streaks, losing or a sad mascot; a test in the engine enforces this.'],
+      ['At most one reminder a day, only in agreed slots. Which slot works best is learned for each child.'],
+    ]],
+  };
+  const JUMPS = [['today', 'Today'], ['session', 'Session'], ['done', 'End'], ['capture', 'Capture'], ['family', 'Family'], ['rhythm', 'Rhythm']];
+
+  function renderNotes(screen) {
+    const [title, items] = NOTES[screen];
+    $('#note-title').textContent = title;
+    $('#note-list').innerHTML = items.map(([t], i) => `<li><span class="n">${i + 1}</span><span>${t}</span></li>`).join('');
+    $('#jump').innerHTML = JUMPS.map(([id, label]) => `<button data-jump="${id}" aria-current="${id === screen}">${label}</button>`).join('');
+    $$('#jump [data-jump]').forEach((b) => b.addEventListener('click', () => {
+      const id = b.dataset.jump;
+      if (id === 'session') { state.doneToday = false; startSession(); return; }
+      if (id === 'done') { playSampleSession(); return; }
+      show(id);
+    }));
+  }
+
+  // ---------- navigation ----------
+  function show(screen) {
+    $$('.screen').forEach((s) => (s.hidden = s.id !== `s-${screen}`));
+    const tabbed = ['today', 'capture', 'family', 'rhythm'].includes(screen);
+    $('#tabs').hidden = !tabbed;
+    if (tabbed) {
+      state.tab = screen;
+      $$('#tabs [data-tab]').forEach((b) => (b.getAttribute('data-tab') === screen ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current')));
+    }
+    if (screen === 'today') renderToday();
+    if (screen === 'capture') renderCapture();
+    if (screen === 'family') renderFamily();
+    if (screen === 'rhythm') renderRhythm();
+    $(`#s-${screen}`).scrollTop = 0;
+    renderNotes(screen);
+  }
+
+  $$('#tabs [data-tab]').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
+  $$('[data-go]').forEach((b) => b.addEventListener('click', () => show(b.dataset.go)));
+  const start = (location.hash || '').replace('#', '');
+  show(NOTES[start] && start !== 'session' && start !== 'done' ? start : 'today');
+})();
+</script>
