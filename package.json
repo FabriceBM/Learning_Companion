@@ -1,0 +1,13 @@
+{
+  "name": "learning-companion",
+  "private": true,
+  "description": "Family learning companion: adaptive spaced retrieval without the addiction loop.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "simulate": "npm run simulate -w @lc/engine"
+  }
+}

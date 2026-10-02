@@ -1,0 +1,55 @@
+# Calm-by-design charter
+
+This is a family Duolingo without the compulsion loop. Each rule below names an engagement pattern, says why it works against learning or wellbeing, and says what we do instead. Rules marked **[tested]** are enforced by automated tests in `packages/engine`, so they cannot regress silently.
+
+## The patterns we refuse
+
+| Engagement pattern | Why it hurts | What we do instead |
+|---|---|---|
+| **Streaks with loss aversion** ("Don't lose your 87-day streak!") | Turns learning into anxiety about losing; children do the minimum to keep the counter alive; one sick day brings guilt | A weekly rhythm with planned rest days. Skipping a day costs nothing: the plan adapts and nothing is "lost". |
+| **Guilt reminders** (a sad mascot, escalating pings) | Uses social and emotional pressure on children; trains them to ignore or resent the app | At most one reminder a day **[tested]**, only in time slots the family agreed on **[tested]**, informational wording only **[tested]**. Reminders back off when ignored and pause once the child starts on their own **[tested]**. |
+| **Hearts or lives that punish mistakes** | Mistakes are where learning happens; punishing them teaches avoidance and guessing safe | A mistake becomes tomorrow's question, with a short explanation. A confident mistake gets extra feedback, because it is the most correctable kind. |
+| **XP, gems, chests, random rewards** | Variable rewards drive compulsion; extrinsic rewards can crowd out interest in the subject ([Deci et al., 1999](ARCHITECTURE.md#references)) | Feedback about the learning itself: what became solid this week, readiness for Tuesday's test, a unit moving from *fragile* to *solid*. |
+| **Leagues against strangers** | Social comparison and anxiety; rewards time spent, not learning | Cooperative family goals. No rankings, no strangers. |
+| **Infinite lessons, "one more"** | Optimises time in app, not learning; erodes sleep and other activities | A finite session computed from an agreed budget **[tested]**, with a clear end screen. The end screen has no "keep going" button. |
+| **Easy repetition to farm points** | Creates an illusion of competence | Desirable difficulty: a question ladder, interleaved subjects **[tested]**, and spacing tuned to each person. |
+| **A hidden algorithm** | Dependence; children can't learn how learning works | "Why this card?" on every card. Parents and children see the same information. |
+| **Fake urgency, upsells, ads** | Manipulation | No ads, no purchases and no countdown timers in the child's interface. |
+| **Collecting data to drive engagement** | Children's data used against children | Minimal data, hosted in the EU, photos deleted after extraction, one-tap export and delete. |
+
+## What keeps children coming back instead
+
+We use Self-Determination Theory, which says lasting motivation comes from three needs:
+
+* **Autonomy.**
+  * The child picks their own time slot and writes their own plan ("After my snack…").
+  * They choose to start, can stop at any time, and accept or edit their own cards.
+  * Reminders defer to the child's own initiative.
+* **Competence.**
+  * Difficulty is calibrated so most answers succeed. A target recall of about 0.9 keeps sessions mostly successful while still stretching; learning tends to be fastest at a success rate around 85% ([Wilson et al., 2019](ARCHITECTURE.md#references)).
+  * Progress is shown as knowledge: what is solid, what is ready for the test.
+  * Sessions open and close on likely successes **[tested]**.
+  * After a run of misses the session gets easier, then ends kindly **[tested]**.
+* **Relatedness.**
+  * Dinner-table questions, teach-back with a parent, and siblings learning together.
+  * Parents learn too, alongside their children.
+
+## Limits a family sets together
+
+| Setting | Default | Range |
+|---|---|---|
+| Daily budget | 10 min (child), 15 min (adult) | 5–20 min |
+| Reminders per day | 1 | 0–1 for children, 0–2 for adults |
+| Rest days | Sunday | any |
+| Reminder slots | after school on weekdays | any, never after bedtime |
+| Holiday mode | off | pauses new material and keeps only light maintenance |
+
+## How we know we are keeping our word
+
+These are the guardrails from [Architecture §9](ARCHITECTURE.md#9-what-we-measure-and-what-we-refuse-to-optimise). If any of them is crossed, the parent is told in the weekly summary and the design is revisited:
+
+* average time per day goes over the budget;
+* more than 10% of a child's sessions end by "ease-off";
+* the share of sessions children start on their own falls over a month.
+
+**Success means a child who needs fewer and fewer reminders.**
