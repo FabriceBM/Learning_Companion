@@ -4,7 +4,7 @@ How the app decides **what** each person reviews, **when**, **how hard**, and **
 
 ```
 npm install
-npm test           # 28 tests: engine + extraction schema
+npm test           # 32 tests: engine + extraction schema
 npm run simulate   # 60-day comparison with two synthetic learners
 ```
 
@@ -27,7 +27,7 @@ $$I = \frac{S}{f}\left({r^*}^{-1/w_{20}} - 1\right)$$
 **Why FSRS:** it is the strongest open scheduler on the public [srs-benchmark](https://github.com/open-spaced-repetition/srs-benchmark), which measures recall prediction on real review logs. It beats SM-2 (Anki's legacy scheduler) and HLR (the half-life regression model Duolingo published in 2016). It is maintained by its authors, and it has a TypeScript scheduler (`ts-fsrs`) and a Rust optimizer with a WASM binding, so both can run on a phone.
 
 **Personalisation:** `fitWeights()` runs the reference optimizer (fsrs-rs) on one learner's review log.
-* **Defaults first:** below 400 reviews (`MIN_REVIEWS_TO_FIT`), the learner uses population defaults. A planned improvement is family or age-group defaults as an intermediate step.
+* **Defaults first:** below 400 reviews (`MIN_REVIEWS_TO_FIT`), the learner uses population defaults. With learners from 10 to 30, a planned intermediate step is defaults fitted per age band on the family's pooled reviews, since a 10-year-old and a 25-year-old are unlikely to share one forgetting curve.
 * **Refit:** weekly, overnight.
 * **Replay:** after a refit, memory states are rebuilt by replaying the review log, which is the source of truth.
 * **Speed:** about one second for a few thousand reviews.
@@ -193,4 +193,5 @@ Personalisation (adaptive engine):
 | `session.ts` | In-session adaptation and stopping rules |
 | `nudge.ts` | Reminder policy |
 | `personalize.ts` | Per-learner weight fitting (fsrs-rs) |
+| `profiles.ts` | Age bands 10–30: default budget, limits on reminders and new material, answer modes, who sees progress |
 | `scripts/simulate.ts` | 60-day comparison |

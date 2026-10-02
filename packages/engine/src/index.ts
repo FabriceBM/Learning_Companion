@@ -7,5 +7,6 @@ export * from './planner.ts';
 export * from './session.ts';
 export * from './nudge.ts';
 export * from './personalize.ts';
+export * from './profiles.ts';
 export * from './random.ts';
 export * from './time.ts';

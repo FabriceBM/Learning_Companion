@@ -7,7 +7,7 @@ This is a family Duolingo without the compulsion loop. Each rule below names an 
 | Engagement pattern | Why it hurts | What we do instead |
 |---|---|---|
 | **Streaks with loss aversion** ("Don't lose your 87-day streak!") | Turns learning into anxiety about losing; children do the minimum to keep the counter alive; one sick day brings guilt | A weekly rhythm with planned rest days. Skipping a day costs nothing: the plan adapts and nothing is "lost". |
-| **Guilt reminders** (a sad mascot, escalating pings) | Uses social and emotional pressure on children; trains them to ignore or resent the app | At most one reminder a day **[tested]**, only in time slots the family agreed on **[tested]**, informational wording only **[tested]**. Reminders back off when ignored and pause once the child starts on their own **[tested]**. |
+| **Guilt reminders** (a sad mascot, escalating pings) | Uses social and emotional pressure on children; trains them to ignore or resent the app | At most one reminder a day for anyone under 18, two for adults who ask **[tested]**, only in agreed time slots **[tested]**, informational wording only **[tested]**. Reminders back off when ignored and pause once the child starts on their own **[tested]**. |
 | **Hearts or lives that punish mistakes** | Mistakes are where learning happens; punishing them teaches avoidance and guessing safe | A mistake becomes tomorrow's question, with a short explanation. A confident mistake gets extra feedback, because it is the most correctable kind. |
 | **XP, gems, chests, random rewards** | Variable rewards drive compulsion; extrinsic rewards can crowd out interest in the subject ([Deci et al., 1999](ARCHITECTURE.md#references)) | Feedback about the learning itself: what became solid this week, readiness for Tuesday's test, a unit moving from *fragile* to *solid*. |
 | **Leagues against strangers** | Social comparison and anxiety; rewards time spent, not learning | Cooperative family goals. No rankings, no strangers. |
@@ -17,7 +17,7 @@ This is a family Duolingo without the compulsion loop. Each rule below names an 
 | **Fake urgency, upsells, ads** | Manipulation | No ads, no purchases and no countdown timers in the child's interface. |
 | **Collecting data to drive engagement** | Children's data used against children | Minimal data, hosted in the EU, photos deleted after extraction, one-tap export and delete. |
 
-## What keeps children coming back instead
+## What keeps learners coming back instead
 
 We use Self-Determination Theory, which says lasting motivation comes from three needs:
 
@@ -34,15 +34,17 @@ We use Self-Determination Theory, which says lasting motivation comes from three
   * Dinner-table questions, teach-back with a parent, and siblings learning together.
   * Parents learn too, alongside their children.
 
-## Limits a family sets together
+## Limits, by age
 
-| Setting | Default | Range |
-|---|---|---|
-| Daily budget | 10 min (child), 15 min (adult) | 5–20 min |
-| Reminders per day | 1 | 0–1 for children, 0–2 for adults |
-| Rest days | Sunday | any |
-| Reminder slots | after school on weekdays | any, never after bedtime |
-| Holiday mode | off | pauses new material and keeps only light maintenance |
+Learners range from 10 to 30. Under 15, a parent and the child set the limits together; from 15, the learner sets them. Either way they stay inside the limits of the learner's age band, which the engine enforces **[tested]**:
+
+| Setting | 10–12 | 13–14 | 15–17 | 18–30 |
+|---|---|---|---|---|
+| Daily budget, default (range) | 10 min (5–15) | 15 min (5–20) | 15 min (5–30) | 20 min (5–45) |
+| Reminders per day, at most | 1 | 1 | 1 | 2 |
+| Who sees progress | parents and child, same view | parents and child, same view | the learner decides | only the learner |
+
+For everyone: rest days (Sunday by default), reminder slots that never fall after bedtime, and a holiday mode that pauses new material and keeps only light maintenance.
 
 ## How we know we are keeping our word
 
