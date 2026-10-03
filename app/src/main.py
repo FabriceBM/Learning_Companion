@@ -79,6 +79,9 @@ class App:
         self.answer_field: ft.TextField | None = None
         self.camera = None
         self.camera_ready = False
+        self.permissions = None
+        self.photo_count = small("")
+        self.thumbs = ft.Row(wrap=True)
         self.notifications = None
         self.reminder_status = ""
         self.body = ft.Container(expand=True, padding=ft.Padding.symmetric(horizontal=16, vertical=12))
@@ -307,12 +310,9 @@ class App:
     # ------------------------------------------------------------------ Capture
 
     def capture(self) -> ft.Control:
-        photos = self.store.photos()
-        thumbs = [
-            ft.Image(src=Path(path).read_bytes(), width=96, height=128, fit=ft.BoxFit.COVER, border_radius=8)
-            for path, _, _ in photos[:3]
-            if Path(path).exists()
-        ]
+        self.photo_count = small("")
+        self.thumbs = ft.Row(wrap=True)
+        self.refresh_photos()
         controls: list[ft.Control] = [
             heading("Photograph a lesson"),
             small("One photo per page. The photo stays on this phone; reading it into cards comes with the family server."),
@@ -320,10 +320,11 @@ class App:
         if not self.mobile:
             controls.append(card(small("The camera works on the phone. Here, the rest of the app works as usual.")))
         else:
-            if self.camera is None:
-                import flet_camera as fc
+            import flet_camera as fc
 
-                self.camera = fc.Camera(expand=True, preview_enabled=True)
+            # A fresh preview each time the screen opens; "Start camera" initialises it.
+            self.camera = fc.Camera(expand=True, preview_enabled=True)
+            self.camera_ready = False
             controls += [
                 ft.Container(content=self.camera, height=360, border_radius=16, bgcolor=ft.Colors.BLACK),
                 ft.Row(
@@ -334,14 +335,26 @@ class App:
                     wrap=True,
                 ),
             ]
-        controls += [small(f"{plural(len(photos), 'photo')} kept on this phone"), ft.Row(thumbs, wrap=True)]
+        controls += [self.photo_count, self.thumbs]
         return ft.Column(controls, spacing=12, scroll=ft.ScrollMode.AUTO, expand=True)
+
+    def refresh_photos(self) -> None:
+        """Only the list changes after a photo: the camera preview stays as it is."""
+        photos = self.store.photos()
+        self.photo_count.value = f"{plural(len(photos), 'photo')} kept on this phone"
+        self.thumbs.controls = [
+            ft.Image(src=Path(path).read_bytes(), width=96, height=128, fit=ft.BoxFit.COVER, border_radius=8)
+            for path, _, _ in photos[:3]
+            if Path(path).exists()
+        ]
 
     async def start_camera(self, e: ft.Event[ft.OutlinedButton]) -> None:
         import flet_camera as fc
         import flet_permission_handler as fph
 
-        status = await fph.PermissionHandler().request(fph.Permission.CAMERA)
+        if self.permissions is None:
+            self.permissions = fph.PermissionHandler()
+        status = await self.permissions.request(fph.Permission.CAMERA)
         if status != fph.PermissionStatus.GRANTED:
             self.toast("The camera needs your permission (Android settings › Apps › Learning Companion).")
             return
@@ -366,8 +379,8 @@ class App:
         path = folder / f"lesson-{now:%Y%m%d-%H%M%S}.jpg"
         await asyncio.to_thread(path.write_bytes, data)
         self.store.add_photo(str(path), now)
+        self.refresh_photos()
         self.toast("Photo kept on this phone.")
-        self.body.content = self.capture()
 
     # ------------------------------------------------------------------ Phone test
 

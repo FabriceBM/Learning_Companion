@@ -160,3 +160,25 @@ def test_settings_save_and_phone_test_checklist(app_module):
         assert find(body, ft.Text, "Hello Tom") is not None
 
     asyncio.run(go())
+
+
+def test_on_android_the_camera_and_reminder_controls_render(app_module):
+    async def go():
+        session, _ = new_session()
+        page = session.page
+        page.platform = ft.PagePlatform.ANDROID
+        app_module.main(page)
+        body = page.controls[0].content
+        nav = page.navigation_bar
+        nav.selected_index = 1
+        await session.dispatch_event(nav._i, "change", None)
+        import flet_camera as fc
+
+        assert find(body, fc.Camera) is not None
+        assert find(body, ft.FilledButton, "Take photo") is not None
+        nav.selected_index = 2
+        await session.dispatch_event(nav._i, "change", None)
+        assert find(body, ft.FilledButton, "Remind me in 2 minutes") is not None
+        assert find(body, ft.Switch) is not None
+
+    asyncio.run(go())
