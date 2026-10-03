@@ -71,7 +71,7 @@ flowchart TD
   key-words-blank  | ______ _______, sur un _____ ______, / ______ en son bec un _______.
   recite           | … / …
   ```
-* **Chaining** (`by_heart_units`). Nine verses at 12 words become parts 1–4, then chained recitations "parts 1–2", "parts 1–3" and "whole text". Each chain unlocks once its parts hold, so the child never faces the whole poem before knowing its pieces.
+* **Chaining** (`by_heart_units`). Nine verses at 12 words become parts 1–4, then chained recitations "parts 1–2", "parts 1–3" and "whole text". In a by-heart mission the first session goes part by part and recites the chains as soon as their parts are in (part 1, part 2, part 3, parts 1–2, part 4, parts 1–3, whole text), so the child never faces the whole poem before meeting each piece; after that, every part and chain comes back on its own schedule.
 * **Blanked maps** (`figure_units`). Each label is a unit: the label is hidden and the child names it. The last unit hides every label at once, i.e. "blank the map".
 * **Grading a recitation** (`compare_recitation`). Words are compared in order (longest common subsequence). 95% is correct; 85% is a near miss that comes back soon; below that, the chunk is relearned. The missing words are shown as feedback. Accents count only when spelling is the point.
 * **Concentration profile** (`concentration.py`). Learned from the child's own sessions, starting from age defaults and moving toward the child's data as sessions accumulate. It sets:
