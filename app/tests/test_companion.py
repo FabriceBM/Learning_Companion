@@ -113,6 +113,16 @@ def test_a_break_between_sessions_and_a_daily_limit(setup):
     assert not app.gate().open, "two sessions is the family's limit today"
 
 
+def test_a_session_cut_short_still_counts_for_the_day(setup):
+    clock, store, app = setup
+    run = app.start("by-heart:corbeau")
+    run.next()
+    run.answer("Maître Corbeau", latency_ms=5000, seconds=20)  # then the app is closed
+    reopened = Companion(store, age=12, now=clock)
+    assert reopened.sessions_today() == 1
+    assert not reopened.gate().open, "the break starts from the last answer"
+
+
 def test_second_look_later_the_same_day(setup):
     clock, _, app = setup
     play(app.start("by-heart:corbeau"), clock, lambda p: "")  # everything missed

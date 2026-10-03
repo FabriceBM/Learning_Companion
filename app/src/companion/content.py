@@ -42,8 +42,8 @@ class Content:
     """Verbatim text of each by-heart unit."""
     questions: dict[str, list[Question]] = field(default_factory=dict)
     """Questions of each practice unit."""
-    missions: dict[str, tuple[str, str, list[str]]] = field(default_factory=dict)
-    """mission id -> (kind, title, unit ids)."""
+    missions: dict[str, tuple[str, str, list[str], str | None]] = field(default_factory=dict)
+    """mission id -> (kind, title, unit ids, pushed by)."""
 
 
 def _q(uid: str, n: int, level: str, prompt: str, answer: str, *choices: str) -> Question:
@@ -96,10 +96,10 @@ def sample_content(chunk_words: int) -> Content:
         else:
             content.texts[unit.id] = chunks[int(part[1:]) - 1].text
     content.units += corbeau
-    content.missions["by-heart:corbeau"] = ("by-heart", CORBEAU_TITLE, [u.id for u in corbeau])
+    content.missions["by-heart:corbeau"] = ("by-heart", CORBEAU_TITLE, [u.id for u in corbeau], None)
 
     for unit, questions in PASSE_SIMPLE:
         content.units.append(unit)
         content.questions[unit.id] = questions
-    content.missions["pushed:passe-simple"] = ("pushed", "Passé simple", [u.id for u, _ in PASSE_SIMPLE])
+    content.missions["pushed:passe-simple"] = ("pushed", "Passé simple", [u.id for u, _ in PASSE_SIMPLE], "your parents")
     return content

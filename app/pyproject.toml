@@ -1,0 +1,56 @@
+[project]
+name = "learning-companion"
+version = "0.2.0"
+description = "Family learning companion: the phone app."
+requires-python = ">=3.12"
+dependencies = [
+    "flet==1.0.3",
+    "flet-camera==1.0.3",
+    "flet-permission-handler==1.0.3",
+    # Community extension (MIT): the only Flet 1.x package whose reminders fire while the app is closed.
+    "flet-android-notifications==0.11.2",
+    "tzdata",
+    "lc-engine",
+]
+
+[dependency-groups]
+dev = [
+    "flet[all]==1.0.3",
+    "pytest>=8.3",
+]
+
+[tool.uv.sources]
+lc-engine = { path = "../packages/engine", editable = true }
+
+[tool.flet]
+org = "family.learningcompanion"
+product = "Learning Companion"
+company = "Learning Companion"
+build_number = 1
+
+[tool.flet.app]
+path = "src"
+
+# The engine lives in the same repository: flet build installs it from this path.
+[tool.flet.dev_packages]
+lc-engine = "../packages/engine"
+
+[tool.flet.android]
+min_sdk_version = 24
+
+[tool.flet.android.permission]
+"android.permission.CAMERA" = true
+"android.permission.POST_NOTIFICATIONS" = true
+"android.permission.RECEIVE_BOOT_COMPLETED" = true
+"android.permission.SCHEDULE_EXACT_ALARM" = true
+"android.permission.READ_EXTERNAL_STORAGE" = false
+"android.permission.WRITE_EXTERNAL_STORAGE" = false
+
+# Made by scripts/notifications_template.py: Flet's own template, patched so scheduled
+# notifications work (receivers in the manifest, Gradle desugaring).
+[tool.flet.template]
+url = "build-template"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

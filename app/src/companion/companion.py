@@ -129,7 +129,10 @@ class Companion:
         return [ItemState(u, self.cards.get(u.id)) for u in self.content.units]  # type: ignore[arg-type]
 
     def missions(self) -> list[Mission]:
-        out = [Mission(mid, kind, title, tuple(ids)) for mid, (kind, title, ids) in self.content.missions.items()]  # type: ignore[arg-type]
+        out = [
+            Mission(mid, kind, title, tuple(ids), pushed_by=by)  # type: ignore[arg-type]
+            for mid, (kind, title, ids, by) in self.content.missions.items()
+        ]
         return [*out, MIXED_REVIEW]
 
     def suggestions(self) -> list[Suggestion]:
@@ -249,6 +252,8 @@ class Run:
         self.runner.answer(step.item, attempt, seconds, step.retry)
         self.answers += 1
         self.correct += int(attempt.correct)
+        # Saved on every answer, so a session cut short (app closed, battery) still counts for the day.
+        self.c.store.end_session(self.session_id, self.c.now(), self.answers)
         if not step.retry:
             # A retry in the same session helps the learner but is not sent to the memory model.
             grade = grade_attempt(attempt, self.c.learner.latency_ms)

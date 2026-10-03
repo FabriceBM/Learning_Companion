@@ -1,0 +1,58 @@
+# Builds the phone app (app/) into an Android APK you can install on a phone.
+# Download it from the run's "Artifacts" section, copy it to the phone and open it
+# (Android asks once to allow installs from that source).
+name: Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "app/**"
+      - "packages/engine/**"
+      - ".github/workflows/android-apk.yml"
+
+env:
+  PYTHONUTF8: "1"
+  FLET_CLI_NO_RICH_OUTPUT: "1"
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install the app's tools
+        run: uv sync
+
+      - name: Test the app logic and screens
+        run: uv run pytest -q
+
+      - name: Flutter version used by this Flet
+        id: flutter
+        run: echo "version=$(uv run python -c 'import flet.version as v; print(v.flutter_version)')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache the Flutter SDK (flet build installs it in ~/flutter/<version>)
+        uses: actions/cache@v4
+        with:
+          path: ~/flutter/${{ steps.flutter.outputs.version }}
+          key: flutter-${{ runner.os }}-${{ steps.flutter.outputs.version }}
+
+      - name: Build template patched for scheduled reminders
+        run: uv run python scripts/notifications_template.py
+
+      - name: flet build apk
+        run: uv run flet build apk --yes --verbose --arch arm64-v8a --python-version 3.12 --build-number ${{ github.run_number }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: learning-companion-apk
+          path: app/build/apk/*.apk
+          if-no-files-found: error

@@ -37,7 +37,7 @@ Everything is Python 3.12+, managed with [uv](https://docs.astral.sh/uv/):
 
 ```bash
 uv sync                                     # install the packages
-uv run pytest                               # 445 tests: engine, spec, extraction, server, app logic
+uv run pytest                               # 446 tests: engine, spec, extraction, server, app logic
 uv run packages/engine/scripts/push.py      # use case 2 end to end: placement check → learning path → mission → one day of sessions
 uv run packages/engine/scripts/simulate.py  # adaptive vs. fixed ladder vs. plain FSRS, two synthetic learners, 60 days
 uv run packages/engine/scripts/params.py    # regenerate docs/PARAMETERS.md

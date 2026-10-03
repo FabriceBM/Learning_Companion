@@ -21,6 +21,8 @@ package = false
 
 [tool.uv.workspace]
 members = ["packages/engine", "packages/ingest", "packages/server"]
+# The phone app is its own project (Flet and its Android extensions); its logic tests also run here.
+exclude = ["app"]
 
 [tool.uv.sources]
 lc-engine = { workspace = true }
