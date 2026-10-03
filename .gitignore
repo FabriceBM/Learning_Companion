@@ -15,6 +15,3 @@ app/build/
 *.log
 .env
 *.db
-
-# First (TypeScript) engine, kept in history only
-node_modules/

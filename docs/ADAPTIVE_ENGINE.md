@@ -4,7 +4,7 @@ How the app decides **what** each person reviews, **when**, **how hard**, and **
 
 ```
 uv sync                                    # Python 3.12+, installs the engine, ingest and server packages
-uv run pytest                              # 438 tests: engine behaviour, the language-neutral spec, extraction, server
+uv run pytest                              # 445 tests: engine behaviour, the language-neutral spec, extraction, server, app logic
 uv run packages/engine/scripts/simulate.py # 60-day comparison with two synthetic learners
 uv run packages/engine/scripts/push.py     # use case 2 end to end: parents push a notion → placement check → path → mission → one day of sessions
 uv run packages/engine/scripts/params.py   # regenerate docs/PARAMETERS.md from the code

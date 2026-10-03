@@ -28,13 +28,17 @@ Both become missions the learner picks, worked through in short, focused session
 | [docs/PARAMETERS.md](docs/PARAMETERS.md) | Every tuning knob: default, range, and why (generated from the code) |
 | [docs/CHARTER.md](docs/CHARTER.md) | Calm-by-design rules: what replaces streaks, guilt reminders, hearts, gems and leagues |
 | [prototype/index.html](prototype/index.html) | Clickable sample of the phone app (open it in a browser) |
-| [packages/engine](packages/engine) | The adaptive engine in TypeScript, with tests and a 60-day simulation |
-| [packages/ingest](packages/ingest) | Lesson photo → units and questions with the Claude API |
+| [app](app) | The phone app in Python ([Flet](https://flet.dev)): first, a phone test of camera, reminders and offline sessions, with both use cases on sample content |
+| [packages/engine](packages/engine) | The adaptive engine, pure Python (runs on the phone and the server), with tests, a language-neutral spec and a 60-day simulation |
+| [packages/ingest](packages/ingest) | Lesson photo, or a notion parents push → units and questions, with the Claude API |
+| [packages/server](packages/server) | Small family server: lesson reading with Claude, weekly fitting of each learner's memory model |
+
+Everything is Python 3.12+, managed with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-npm install
-npm test            # engine + extraction schema tests
-npm run push        # use case 2 end to end: placement check → learning path → mission → one day of sessions
-npm run simulate    # adaptive vs. fixed-ladder vs. plain FSRS, two synthetic learners, 60 days
-npm run params      # regenerate docs/PARAMETERS.md
+uv sync                                     # install the packages
+uv run pytest                               # 445 tests: engine, spec, extraction, server, app logic
+uv run packages/engine/scripts/push.py      # use case 2 end to end: placement check → learning path → mission → one day of sessions
+uv run packages/engine/scripts/simulate.py  # adaptive vs. fixed ladder vs. plain FSRS, two synthetic learners, 60 days
+uv run packages/engine/scripts/params.py    # regenerate docs/PARAMETERS.md
 ```
