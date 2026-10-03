@@ -1,0 +1,190 @@
+{
+ "age_band": [
+  {
+   "age": 8,
+   "expect": "child"
+  },
+  {
+   "age": 10,
+   "expect": "child"
+  },
+  {
+   "age": 11,
+   "expect": "child"
+  },
+  {
+   "age": 11.9,
+   "expect": "child"
+  },
+  {
+   "age": 12,
+   "expect": "young-teen"
+  },
+  {
+   "age": 13,
+   "expect": "young-teen"
+  },
+  {
+   "age": 15,
+   "expect": "young-teen"
+  },
+  {
+   "age": 17,
+   "expect": "young-teen"
+  },
+  {
+   "age": 18,
+   "expect": "adult"
+  },
+  {
+   "age": 40,
+   "expect": "adult"
+  }
+ ],
+ "defaults_for_age": [
+  {
+   "age": 10,
+   "expect": {
+    "band": "child",
+    "session_minutes": 10,
+    "session_range": [
+     5,
+     15
+    ],
+    "sessions_per_day": 2,
+    "sessions_per_day_range": [
+     1,
+     5
+    ],
+    "min_gap_minutes": 90,
+    "max_new_per_day": 10,
+    "max_reminders_per_day": 1,
+    "answer_modes": [
+     "choices",
+     "voice",
+     "short-text"
+    ],
+    "visibility": "family",
+    "parental_consent": true
+   }
+  },
+  {
+   "age": 13,
+   "expect": {
+    "band": "young-teen",
+    "session_minutes": 12,
+    "session_range": [
+     5,
+     15
+    ],
+    "sessions_per_day": 2,
+    "sessions_per_day_range": [
+     1,
+     5
+    ],
+    "min_gap_minutes": 90,
+    "max_new_per_day": 14,
+    "max_reminders_per_day": 1,
+    "answer_modes": [
+     "choices",
+     "voice",
+     "short-text",
+     "maths",
+     "free-text"
+    ],
+    "visibility": "family",
+    "parental_consent": true
+   }
+  },
+  {
+   "age": 40,
+   "expect": {
+    "band": "adult",
+    "session_minutes": 15,
+    "session_range": [
+     5,
+     30
+    ],
+    "sessions_per_day": 2,
+    "sessions_per_day_range": [
+     1,
+     5
+    ],
+    "min_gap_minutes": 60,
+    "max_new_per_day": 20,
+    "max_reminders_per_day": 2,
+    "answer_modes": [
+     "choices",
+     "voice",
+     "short-text",
+     "maths",
+     "free-text"
+    ],
+    "visibility": "learner-only",
+    "parental_consent": false
+   }
+  }
+ ],
+ "within_limits": [
+  {
+   "age": 11,
+   "chosen": {
+    "session_minutes": 30,
+    "sessions_per_day": 8,
+    "max_reminders_per_day": 3,
+    "max_new_per_day": 30
+   },
+   "expect": {
+    "session_minutes": 15,
+    "sessions_per_day": 5,
+    "max_reminders_per_day": 1,
+    "max_new_per_day": 10
+   }
+  },
+  {
+   "age": 40,
+   "chosen": {
+    "session_minutes": 25,
+    "sessions_per_day": 3,
+    "max_reminders_per_day": 2,
+    "max_new_per_day": 12
+   },
+   "expect": {
+    "session_minutes": 25,
+    "sessions_per_day": 3,
+    "max_reminders_per_day": 2,
+    "max_new_per_day": 12
+   }
+  },
+  {
+   "age": 12,
+   "chosen": {
+    "session_minutes": 2,
+    "sessions_per_day": 0,
+    "max_reminders_per_day": -1,
+    "max_new_per_day": 5
+   },
+   "expect": {
+    "session_minutes": 5,
+    "sessions_per_day": 1,
+    "max_reminders_per_day": 0,
+    "max_new_per_day": 5
+   }
+  },
+  {
+   "age": 40,
+   "chosen": {
+    "session_minutes": 45,
+    "sessions_per_day": 6,
+    "max_reminders_per_day": 5,
+    "max_new_per_day": 25
+   },
+   "expect": {
+    "session_minutes": 30,
+    "sessions_per_day": 5,
+    "max_reminders_per_day": 2,
+    "max_new_per_day": 20
+   }
+  }
+ ]
+}

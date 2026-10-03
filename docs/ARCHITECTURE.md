@@ -28,7 +28,7 @@ It is built as the opposite of an engagement product. **Success means knowledge 
 
 ### 1.1 Who it is for
 
-The **children are 10 to 13**. **You and your wife** are both the builders and parent learners. Ages set time limits and answer modes, never the content: what a child learns follows the knowledge map. A family can choose anything inside a band's limits, never outside them (`packages/engine/src/profiles.ts`).
+The **children are 10 to 13**. **You and your wife** are both the builders and parent learners. Ages set time limits and answer modes, never the content: what a child learns follows the knowledge map. A family can choose anything inside a band's limits, never outside them (`packages/engine/src/lc_engine/profiles.py`).
 
 | | Children 10–11 | Children 12–13 | Parents |
 |---|---|---|---|
@@ -62,8 +62,8 @@ flowchart TD
 ```
 
 * **OCR and notion.** The extraction (`mode: by_heart`) copies the text exactly, keeping line breaks and punctuation, and names the notion. For a map or diagram, it lists each label with an approximate box, which you can adjust in the review inbox.
-* **Chunks sized for this child** (`chunkText`). Cuts fall at line ends, so a verse is never split. The chunk size comes from the concentration profile: 8 words by default at 10–11, 12 at 12–13, then learned from how much of a first study sticks.
-* **Fading cues** (`cueFor`). The first meeting shows the full text. Then first letters. From a memory stability of 2 days, key words are blanked. From 5 days, the chunk is recited with nothing shown. With the real engine on the first verses of *Le Corbeau et le Renard*:
+* **Chunks sized for this child** (`chunk_text`). Cuts fall at line ends, so a verse is never split. The chunk size comes from the concentration profile: 8 words by default at 10–11, 12 at 12–13, then learned from how much of a first study sticks.
+* **Fading cues** (`cue_for`). The first meeting shows the full text. Then first letters. From a memory stability of 2 days, key words are blanked. From 5 days, the chunk is recited with nothing shown. With the real engine on the first verses of *Le Corbeau et le Renard*:
 
   ```
   read             | Maître Corbeau, sur un arbre perché, / Tenait en son bec un fromage.
@@ -71,10 +71,10 @@ flowchart TD
   key-words-blank  | ______ _______, sur un _____ ______, / ______ en son bec un _______.
   recite           | … / …
   ```
-* **Chaining** (`byHeartUnits`). Nine verses at 12 words become parts 1–4, then chained recitations "parts 1–2", "parts 1–3" and "whole text". Each chain unlocks once its parts hold, so the child never faces the whole poem before knowing its pieces.
-* **Blanked maps** (`figureUnits`). Each label is a unit: the label is hidden and the child names it. The last unit hides every label at once, i.e. "blank the map".
-* **Grading a recitation** (`compareRecitation`). Words are compared in order (longest common subsequence). 95% is correct; 85% is a near miss that comes back soon; below that, the chunk is relearned. The missing words are shown as feedback. Accents count only when spelling is the point.
-* **Concentration profile** (`concentration.ts`). Learned from the child's own sessions, starting from age defaults and moving toward the child's data as sessions accumulate. It sets:
+* **Chaining** (`by_heart_units`). Nine verses at 12 words become parts 1–4, then chained recitations "parts 1–2", "parts 1–3" and "whole text". Each chain unlocks once its parts hold, so the child never faces the whole poem before knowing its pieces.
+* **Blanked maps** (`figure_units`). Each label is a unit: the label is hidden and the child names it. The last unit hides every label at once, i.e. "blank the map".
+* **Grading a recitation** (`compare_recitation`). Words are compared in order (longest common subsequence). 95% is correct; 85% is a near miss that comes back soon; below that, the chunk is relearned. The missing words are shown as feedback. Accents count only when spelling is the point.
+* **Concentration profile** (`concentration.py`). Learned from the child's own sessions, starting from age defaults and moving toward the child's data as sessions accumulate. It sets:
 
   | What it measures | How it is learned | What it changes |
   |---|---|---|
@@ -104,12 +104,12 @@ flowchart TD
   FOCUS --> SECURE["Secure after correct answers on separate days<br/>→ back to spaced reviews"]
 ```
 
-* **Pick the notion.** Notions are organised as domain › area › notion. You can browse the map or type a name; Claude matches a typed name to an existing notion or proposes a new one with its prerequisites. Sample maps: [`maps/maths-core.json`](../packages/engine/maps/maths-core.json), [`maps/french-core.json`](../packages/engine/maps/french-core.json).
-* **Check what it builds on.** `PlacementCheck` asks about prerequisites in the order that settles the most at once. `learningPath()` keeps only what is missing, foundations first.
-* **Write the lesson.** `teachNotion()` writes it for the child's age, building on what is known. It includes at least eight varied exercises per rule or method, for example different verbs and persons for a conjugation (*chanter → ils chantèrent; finir → nous finîmes; être → il fut*). `pickProbe()` rotates through them, least recently asked first, so the child practises the rule rather than memorising one answer.
+* **Pick the notion.** Notions are organised as domain › area › notion. You can browse the map or type a name; Claude matches a typed name to an existing notion or proposes a new one with its prerequisites. Sample maps: [`maps/maths-core.json`](../packages/engine/src/lc_engine/maps/maths-core.json), [`maps/french-core.json`](../packages/engine/src/lc_engine/maps/french-core.json).
+* **Check what it builds on.** `PlacementCheck` asks about prerequisites in the order that settles the most at once. `learning_path()` keeps only what is missing, foundations first.
+* **Write the lesson.** `teach_notion()` writes it for the child's age, building on what is known. It includes at least eight varied exercises per rule or method, for example different verbs and persons for a conjugation (*chanter → ils chantèrent; finir → nous finîmes; être → il fut*). `pick_probe()` rotates through them, least recently asked first, so the child practises the rule rather than memorising one answer.
 * **Push it.** It appears on the child's mission list as "pushed by your parents", ranked high but never forced. In a free session, the child chooses it.
 
-Worked example, the output of `npm run push` on the maths map with a synthetic child's answers:
+Worked example, the output of `uv run packages/engine/scripts/push.py` on the maths map with a synthetic child's answers:
 
 ```
 Parents push: "Solving linear equations" (Léa, 13)
@@ -161,11 +161,11 @@ flowchart LR
 
 | Step | Who | What happens | Code |
 |---|---|---|---|
-| Missions are suggested | engine | A close test or recitation date comes first, then notions pushed by parents and by-heart texts, then topics. "Keep everything fresh" rises as reviews pile up. | `missions.ts` |
+| Missions are suggested | engine | A close test or recitation date comes first, then notions pushed by parents and by-heart texts, then topics. "Keep everything fresh" rises as reviews pile up. | `missions.py` |
 | The learner picks | child | Any mission, not only the first. Autonomy is part of the design. | app |
-| A session runs | engine | Focused on the mission. Weak foundations first, then due reviews, new units in prerequisite order, and extra practice. Sized by the concentration profile, it ends on a likely success. | `planner.ts`, `session.ts`, `concentration.ts` |
-| The day continues | engine | Up to the family's limit, with breaks. Anything new or missed comes back for a second look in a later session. If nothing is useful yet, the app says when it will be, never offers filler. | `day.ts` |
-| Progress shows | everyone | A unit is *secure* once its memory holds for a week. A mission is complete when all its units are secure. | `missions.ts`, `knowledge-map.ts` |
+| A session runs | engine | Focused on the mission. Weak foundations first, then due reviews, new units in prerequisite order, and extra practice. Sized by the concentration profile, it ends on a likely success. | `planner.py`, `session.py`, `concentration.py` |
+| The day continues | engine | Up to the family's limit, with breaks. Anything new or missed comes back for a second look in a later session. If nothing is useful yet, the app says when it will be, never offers filler. | `day.py` |
+| Progress shows | everyone | A unit is *secure* once its memory holds for a week. A mission is complete when all its units are secure. | `missions.py`, `knowledge_map.py` |
 | Parents steer | parents | Push the next notion, see the map, adjust [parameters](PARAMETERS.md). | app |
 
 A photographed lesson to *understand* (rather than to learn by heart) uses the same path as use case 2: its notions are identified and become units on the map ([§5.1](#51-capture--cards)).
@@ -216,7 +216,7 @@ flowchart LR
 |---|---|
 | Scheduling, missions, session planning, grading of short answers, reminders: these must work offline, respond instantly and keep answer data local. | Claude calls (the API key never ships in the app), the FSRS optimizer, sync and backups. |
 
-The engine is one TypeScript package ([`packages/engine`](../packages/engine)) that runs unchanged on the phone and on the server.
+The engine is one pure-Python package ([`packages/engine`](../packages/engine)) that runs unchanged inside the phone app and on the server. Its behaviour is also pinned by a language-neutral spec (364 input → output cases in `packages/engine/spec/`), so any module can later be rewritten in another language, Rust for example, and checked against the same cases.
 
 ## 5. Main flows
 
@@ -250,12 +250,12 @@ sequenceDiagram
   * lists common misconceptions, which become wrong answer choices and extra checks;
   * marks anything it couldn't read as `uncertain` instead of guessing.
 * **To learn by heart:** with `mode: by_heart`, the extraction copies the exact text (or the map labels with their boxes) and the engine builds the chunks ([§2.1](#21-use-case-1-learn-a-lesson-by-heart)).
-* **A pushed notion without a photo:** `teachNotion()` writes the lesson. It gets the notion, the child's age, what the placement check found known, and why you pushed it. The output has the same shape, so it goes through the same review inbox.
+* **A pushed notion without a photo:** `teach_notion()` writes the lesson. It gets the notion, the child's age, what the placement check found known, and why you pushed it. The output has the same shape, so it goes through the same review inbox.
 * **Rough cost:** a photographed page is about 2k input tokens plus a few thousand output and thinking tokens, so roughly 10–20 US cents per page with `claude-opus-5-5`. For two children photographing about one page a day each, that is roughly $10–20 a month. Lessons that can wait an hour can go through the Batch API at half price. Switching to a cheaper model is your decision, best taken after measuring quality on your own photos.
 
 ### 5.2 Missions and sessions
 
-**A mission is what the learner chooses to work on** (`packages/engine/src/missions.ts`):
+**A mission is what the learner chooses to work on** (`packages/engine/src/lc_engine/missions.py`):
 
 | Mission | Covers | Typical origin |
 |---|---|---|
@@ -274,13 +274,13 @@ The app ranks missions. A close test or recitation date comes first, then pushed
 3. **New units** in prerequisite order. Within one notion, a unit can follow its prerequisite in the same session, so a notion is learned in one go. A different notion waits until its prerequisites are known.
 4. **Extra practice** on mission units that are not secure yet, lowest recall first, until the session is full.
 
-The session is ordered foundations first, one notion at a time, ending on a likely success. Due reviews from other subjects **wait**: the plan reports how many, and nothing is lost by a day's wait. If a mission is small, the session is short: it never pads with other material. That is the default; the `mission.focusShare` parameter can reserve part of a session for at-risk reviews from other subjects.
+The session is ordered foundations first, one notion at a time, ending on a likely success. Due reviews from other subjects **wait**: the plan reports how many, and nothing is lost by a day's wait. If a mission is small, the session is short: it never pads with other material. That is the default; the `mission.focus_share` parameter can reserve part of a session for at-risk reviews from other subjects.
 
 **Blocked inside a mission, interleaved in mixed review.** Practising one notion at a time suits a skill being acquired. Mixing subjects and problem types is better for telling similar things apart and for long-term retention ([Rohrer & Taylor, 2007](#references); [Brunmair & Richter, 2019](#references)). Missions use the first; "keep everything fresh" uses the second.
 
 **When a mission is complete:** a unit is *secure* once its memory stability reaches 7 days. That takes correct answers on separate days, which is successive relearning ([Rawson & Dunlosky, 2011](#references)), not one good session. When every unit is secure, the mission is complete and its units return to normal spaced reviews.
 
-**Several sessions a day** (`packages/engine/src/day.ts`):
+**Several sessions a day** (`packages/engine/src/lc_engine/day.py`):
 * **Limits:** up to the family's number of sessions (default 2, at most 5), each 10–15 minutes, at least 90 minutes apart.
 * **Second looks:** a unit that is new or missed in one session comes back in a later session the same day. The memory model's same-day steps are set to the break length, and FSRS-6 models these short-term reviews.
 * **New material across the day:** the daily new-unit limit is shared across sessions.
@@ -295,7 +295,7 @@ The session is ordered foundations first, one notion at a time, ending on a like
 
 ### 5.3 The knowledge map: absolute level, not school grade
 
-**Notions and prerequisites, independent of any school system** (`packages/engine/src/knowledge-map.ts`, sample map: [`maps/maths-core.json`](../packages/engine/maps/maths-core.json)):
+**Notions and prerequisites, independent of any school system** (`packages/engine/src/lc_engine/knowledge_map.py`, sample map: [`maps/maths-core.json`](../packages/engine/src/lc_engine/maps/maths-core.json)):
 * A **notion** is one idea or skill, such as "adding fractions with different denominators". It sits in a domain › area hierarchy (*French › Conjugation › Passé simple*) and lists the notions it builds on.
 * A **level** is a position on this map, not a grade. Where a domain has a real absolute scale, the notion carries it, for example CEFR A1–C2 for languages.
 * **Sources point at the same map:** any curriculum (French, British, IB, US Common Core) becomes a *checklist* of notions, for example "usually expected before high school". So does a notion you push, and so does each photographed lesson.
@@ -319,7 +319,7 @@ The session is ordered foundations first, one notion at a time, ending on a like
 1. You pick or name the notion.
 2. A **placement check** asks 5–10 questions. Each goes to the notion that settles the most others: passing a notion makes its prerequisites likely known, missing it makes what builds on it likely unknown. This is the idea behind Knowledge Space Theory and ALEKS ([Doignon & Falmagne, 1999](#references)).
 3. The **learning path** is the pushed notion plus its missing prerequisites, foundations first.
-4. `teachNotion()` writes a lesson for each notion on the path.
+4. `teach_notion()` writes a lesson for each notion on the path.
 5. The path becomes a **pushed mission**, optionally with a target date ("before September").
 
 The placement results are starting beliefs, not verdicts: as soon as units are practised, their memory states take over.
@@ -368,36 +368,36 @@ Adaptivity happens in feedback loops on different timescales. Details and formul
 
 | Loop | Timescale | What adapts | How | Code |
 |---|---|---|---|---|
-| Memory | each answer | when each unit comes back | FSRS-6 memory model with weights fitted to each learner; same-day steps when there are several sessions a day | `memory.ts`, `personalize.ts` |
-| Session | each answer | what comes next, when to stop | length, repair → due → new → practice in a mission, interleaving in mixed review, ease-off after misses, one retry | `planner.ts`, `session.ts` |
-| Day | each session | whether a session is useful now | sessions per day, break, second looks, new-unit quota shared across the day | `day.ts` |
-| Missions | each day | what to work on | ranked suggestions; the learner chooses; secure units and completion | `missions.ts` |
-| By heart | each answer | how much of the text is shown | chunks sized by the profile, fading cues, chained recitations, word-by-word grading | `by-heart.ts` |
-| Concentration | each week | session length, chunk size, breaks, ease-off, mixing | estimated from the learner's sessions, blended with age defaults | `concentration.ts` |
-| Goals | each day | how high to aim | retention target per unit (importance, test window, after-test maintenance); reviews pulled before test dates | `retention.ts`, `scheduler.ts` |
-| Knowledge | each pushed notion | what is missing | placement check, learning path, notion status | `knowledge-map.ts` |
-| Reminders | each day | whether and when to remind | Thompson sampling over agreed slots; back-off when ignored; pause once the child starts on their own | `nudge.ts` |
-| Workload | each week | how much new material, how high to aim | new units throttled by recent accuracy; targets relaxed under sustained overload | `planner.ts`, `retention.ts` |
+| Memory | each answer | when each unit comes back | FSRS-6 memory model with weights fitted to each learner; same-day steps when there are several sessions a day | `memory.py`, `personalize.py` |
+| Session | each answer | what comes next, when to stop | length, repair → due → new → practice in a mission, interleaving in mixed review, ease-off after misses, one retry | `planner.py`, `session.py` |
+| Day | each session | whether a session is useful now | sessions per day, break, second looks, new-unit quota shared across the day | `day.py` |
+| Missions | each day | what to work on | ranked suggestions; the learner chooses; secure units and completion | `missions.py` |
+| By heart | each answer | how much of the text is shown | chunks sized by the profile, fading cues, chained recitations, word-by-word grading | `by_heart.py` |
+| Concentration | each week | session length, chunk size, breaks, ease-off, mixing | estimated from the learner's sessions, blended with age defaults | `concentration.py` |
+| Goals | each day | how high to aim | retention target per unit (importance, test window, after-test maintenance); reviews pulled before test dates | `retention.py`, `scheduler.py` |
+| Knowledge | each pushed notion | what is missing | placement check, learning path, notion status | `knowledge_map.py` |
+| Reminders | each day | whether and when to remind | Thompson sampling over agreed slots; back-off when ignored; pause once the child starts on their own | `nudge.py` |
+| Workload | each week | how much new material, how high to aim | new units throttled by recent accuracy; targets relaxed under sustained overload | `planner.py`, `retention.py` |
 
-The simulation compares three schedulers over 60 days (`npm run simulate`). It uses two synthetic learners, 432 units, one 10-minute session a day and five tests:
+The simulation compares three schedulers over 60 days (`uv run packages/engine/scripts/simulate.py`). It uses two synthetic learners, 432 units, one 10-minute session a day and five tests:
 
 | Learner | Scheduler | min/day | Recall on test days | Worst test | Recall of all units at day 60 |
 |---|---|---|---|---|---|
 | A: forgets fast | Fixed ladder (Leitner/Duolingo-style) | 8.2 | 48% | 24% | 56% |
-| A: forgets fast | FSRS, population weights | 6.8 | 52% | 37% | 60% |
-| A: forgets fast | **Adaptive** (personal + test-aware) | 7.8 | **89%** | **77%** | 59% |
+| A: forgets fast | FSRS, population weights | 7.4 | 53% | 38% | 62% |
+| A: forgets fast | **Adaptive** (personal + test-aware) | 7.8 | **89%** | **76%** | 62% |
 | B: strong memory | Fixed ladder | 7.9 | 51% | 25% | 60% |
-| B: strong memory | FSRS, population weights | 6.8 | 64% | 57% | 76% |
-| B: strong memory | **Adaptive** | 7.1 | **93%** | **79%** | 73% |
+| B: strong memory | FSRS, population weights | 6.9 | 62% | 53% | 73% |
+| B: strong memory | **Adaptive** | 7.3 | **93%** | **79%** | 76% |
 
 In the same time, the adaptive engine makes children ready on test days without losing overall retention. The learners are synthetic, so these numbers show how the mechanics behave, not what real children will do. Caveats are in [ADAPTIVE_ENGINE.md](ADAPTIVE_ENGINE.md#12-simulation).
 
 ## 7. Parameters
 
-Every fine-tuning knob is a named parameter with a default, an allowed range and the reason for its default. There are 44 engine parameters in `packages/engine/src/tuning.ts`, plus the per-learner limits in `profiles.ts` and the learned concentration profile. The reference, [PARAMETERS.md](PARAMETERS.md), is generated from the code (`npm run params`), so it cannot drift.
+Every fine-tuning knob is a named parameter with a default, an allowed range and the reason for its default. There are 44 engine parameters in `packages/engine/src/lc_engine/tuning.py`, plus the per-learner limits in `profiles.py` and the learned concentration profile. The reference, [PARAMETERS.md](PARAMETERS.md), is generated from the code (`uv run packages/engine/scripts/params.py`), so it cannot drift.
 
 * **Who changes them:** you, in an advanced settings panel; values outside a range are clamped.
-* **Scope:** parameters are set per family, and can be overridden per learner (`withTuning()`).
+* **Scope:** parameters are set per family, and can be overridden per learner (`with_tuning()`).
 * **Examples:**
   * target recall (0.90);
   * the week of higher targets before a test (0.95);
@@ -438,17 +438,21 @@ erDiagram
 
 ## 9. Technology choices
 
+**One language: Python**, chosen with you. It runs everywhere this project needs: in the phone app (Flet), on the server, in the simulation and in the analysis of the family's own review logs. Rust is used where it already exists and someone else maintains it: the FSRS optimizer (`fsrs-rs`) and Pydantic's core. The engine is pure Python with no I/O and the current time passed in, and its spec is a set of language-neutral JSON cases, so a module can move to Rust later without a rewrite of the rest.
+
 | Layer | Proposal | Why | Alternatives |
 |---|---|---|---|
-| App | **React Native + Expo (TypeScript)** | One codebase: Android first, then iPhone and tablet. The engine runs unchanged on the device. Camera, notifications and SQLite are covered by Expo modules. | Flutter (the engine would be ported to Dart, where FSRS ports exist); Kotlin Multiplatform |
-| Local data | expo-sqlite + Drizzle | Works offline, typed queries | WatermelonDB |
-| Sync | Custom event sync, or PowerSync / ElectricSQL over Postgres | Append-only events make sync simple | Firebase (less suited to EU data residency and relational data) |
-| Backend | **Supabase in an EU region** (Postgres, Auth, Storage, Edge Functions) | Little to operate for a family-sized project | A small Node service (Hono) + Postgres, self-hosted |
-| Memory model | **FSRS-6** via `ts-fsrs` on the device; optimizer `fsrs-rs` via `@open-spaced-repetition/binding` on the server | State of the art among open schedulers, actively maintained; per-user fitting takes about a second | SM-2 (Anki's legacy scheduler), HLR (Duolingo), [benchmarked here](https://github.com/open-spaced-repetition/srs-benchmark) |
-| AI | **Claude API** (`claude-opus-5-5`): vision + structured outputs for extraction and generated lessons; web search with a domain allowlist + citations for Lesson Lens; rubric grading of free-text answers | One provider for vision, structured data and cited search | — |
-| Speech | On-device speech recognition and text-to-speech | Private, works offline, free | Cloud speech-to-text |
-| Maths | KaTeX for display; mathjs (device) or SymPy (server) for checking answers | Equivalent answers count as correct | — |
+| App | **[Flet](https://flet.dev) 1.x (Python, drawn by Flutter)**: [`app/`](../app) | One Python codebase: Android first, then iPhone and tablet. The engine runs unchanged on the device. Camera, audio recording and scheduled local notifications come from Flet extensions. | Kotlin Multiplatform; Flutter/Dart (engine ported to Dart); React Native (TypeScript, the first plan) |
+| Local data | **SQLite** (Python's `sqlite3`), append-only review log | Works offline; memory states are rebuilt from the log | — |
+| Sync | Custom event sync over Postgres | Append-only events make sync simple | PowerSync / ElectricSQL |
+| Backend | **FastAPI** ([`packages/server`](../packages/server)), EU-hosted, later with Postgres for sync and backups | Small, in the same language as everything else; holds the Claude API key | Supabase (Postgres, Auth, Storage) in an EU region |
+| Memory model | **FSRS-6** via [`py-fsrs`](https://github.com/open-spaced-repetition/py-fsrs) on the device; optimizer [`fsrs-rs`](https://github.com/open-spaced-repetition/fsrs-rs) via `fsrs-rs-python` on the server | State of the art among open schedulers, maintained by its authors; fitting a learner takes well under a second | SM-2 (Anki's legacy scheduler), HLR (Duolingo), [benchmarked here](https://github.com/open-spaced-repetition/srs-benchmark) |
+| AI | **Claude API** (`claude-opus-5-5`, Python SDK): vision + structured outputs validated by Pydantic for extraction and generated lessons; web search with a domain allowlist + citations for Lesson Lens; rubric grading of free-text answers | One provider for vision, structured data and cited search | — |
+| Speech | Audio mode (phase 2): recording on the phone (Flet audio recorder); speech recognition on the server, e.g. Whisper (open source) | Recording works offline; recognition quality matters more than doing it on the device | On-device recognition through a native module |
+| Maths | SymPy for checking answers (pure Python, so on the device too) | Equivalent answers count as correct | — |
 | Reminders | Local notifications scheduled by the engine | No push server, no tracking, works offline | — |
+
+**What to check first on a real phone** (phase 1 starts with it): a photo taken and kept, a reminder that fires with the app closed, and a session that works offline and survives a restart. The [phone test app](../app) does exactly these three, plus both use cases on sample content.
 
 ## 10. Privacy, safety, compliance
 
@@ -475,7 +479,7 @@ erDiagram
 | Phase | Scope | Done when |
 |---|---|---|
 | **0 (this branch)** | Engine core for both use cases (by heart, pushed notions), missions, knowledge map, several sessions a day, concentration profile and parameters; simulation; extraction and generated lessons; clickable prototype; this proposal | You have tried the prototype and answered the [open questions](#13-open-questions) |
-| **1. Both use cases, one family** | Expo app on Android. Use case 1 in text mode: photo → exact text → chunks and fading cues, blanked maps. Use case 2: push a notion → check → generated lesson → pushed mission. Missions and sessions with FSRS. Local reminders. Simple parent view. | A poem recited on the day and a pushed notion secure, for each child |
+| **1. Both use cases, one family** | Flet app on Android, starting with the phone test (photo, reminder with the app closed, offline sessions). Use case 1 in text mode: photo → exact text → chunks and fading cues, blanked maps. Use case 2: push a notion → check → generated lesson → pushed mission. Missions and sessions with FSRS. Local reminders. Simple parent view. | A poem recited on the day and a pushed notion secure, for each child |
 | **2. Audio mode** | Listen to each chunk (text-to-speech or a parent's recording), recite aloud (on-device speech recognition), hands-free listen-and-repeat | A text learned mostly by ear |
 | **3. Adaptive** | Concentration profile learned from real sessions, test dates, nightly per-learner fitting, question ladder, learned reminder slots, workload control, "why now?", advanced parameters panel | Calibration and test-day recall are measured on the family's real data |
 | **4. Lesson Lens + family** | Reference checklists, misconceptions → extra questions, re-teaching units that keep failing; dinner questions, teach-back, parents' own topics, weekly summary, iPhone and tablet layouts | Every family member has used it for a month |
@@ -486,7 +490,7 @@ erDiagram
 1. ~~Ages~~ **Answered:** children aged 10 to 13, plus you and your wife as learners.
 2. ~~School system~~ **Answered:** absolute level of knowledge, not a school system (§5.3). Which **domains** should the map cover first: French (conjugation, grammar), maths, languages (CEFR), sciences, history?
 3. ~~Use cases~~ **Answered:** learn by heart (with an audio mode in phase 2) and parents pushing a notion. For learning by heart, should a **recitation date** be set by the child, the parent, or both?
-4. ~~Who builds it~~ **Answered:** you and your wife. **In which language?** The proposal assumes TypeScript; Kotlin, Dart or Python would change the stack.
+4. ~~Who builds it~~ **Answered:** you and your wife, **in Python** (§9).
 5. **Is cloud AI acceptable for lesson photos** (Claude API, EU-hosted backend, photos deleted after extraction), and what monthly budget is acceptable?
 6. **Family-only tool or a product for other families** (open source? hosted?). This changes accounts, compliance and hosting.
 7. **Devices:** does each child have a phone, or is there a shared family tablet? With a shared tablet, reminders go to a parent or to the household, not to a child.

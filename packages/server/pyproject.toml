@@ -1,0 +1,26 @@
+[project]
+name = "lc-server"
+version = "0.2.0"
+description = "Family server: reads lesson photos and writes lessons with the Claude API, refits each learner's memory model weekly."
+requires-python = ">=3.12"
+dependencies = [
+    "lc-engine[fit]",
+    "lc-ingest",
+    "fastapi>=0.115",
+    "python-multipart>=0.0.9",
+    "uvicorn>=0.30",
+]
+
+[project.scripts]
+lc-server = "lc_server.app:main"
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lc_server"]
+
+[tool.uv.sources]
+lc-engine = { workspace = true }
+lc-ingest = { workspace = true }

@@ -1,4 +1,20 @@
-node_modules/
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
 dist/
+*.egg-info/
+
+# Flet build output
+app/build/
+
+# Local data and secrets
 *.log
 .env
+*.db
+
+# First (TypeScript) engine, kept in history only
+node_modules/

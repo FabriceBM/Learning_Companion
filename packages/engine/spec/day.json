@@ -1,0 +1,865 @@
+{
+ "session_gate": [
+  {
+   "now": "2026-10-03T07:00:00.000Z",
+   "rules": {
+    "sessions_per_day": 4,
+    "min_gap_minutes": 90
+   },
+   "today": {
+    "sessions_done": 0
+   },
+   "expect": {
+    "open": true
+   }
+  },
+  {
+   "now": "2026-10-03T08:00:00.000Z",
+   "rules": {
+    "sessions_per_day": 4,
+    "min_gap_minutes": 90
+   },
+   "today": {
+    "sessions_done": 1,
+    "last_ended_at": "2026-10-03T07:10:00.000Z"
+   },
+   "expect": {
+    "open": false,
+    "reason": "A break between sessions helps memory.",
+    "next_at": "2026-10-03T08:40:00.000Z"
+   }
+  },
+  {
+   "now": "2026-10-03T09:00:00.000Z",
+   "rules": {
+    "sessions_per_day": 4,
+    "min_gap_minutes": 90
+   },
+   "today": {
+    "sessions_done": 1,
+    "last_ended_at": "2026-10-03T07:10:00.000Z"
+   },
+   "expect": {
+    "open": true
+   }
+  },
+  {
+   "now": "2026-10-03T18:00:00.000Z",
+   "rules": {
+    "sessions_per_day": 4,
+    "min_gap_minutes": 90
+   },
+   "today": {
+    "sessions_done": 4,
+    "last_ended_at": "2026-10-03T15:00:00.000Z"
+   },
+   "expect": {
+    "open": false,
+    "reason": "That's all 4 sessions for today.",
+    "next_at": "2026-10-03T22:00:00.000Z"
+   }
+  },
+  {
+   "now": "2026-10-03T08:40:00.000Z",
+   "rules": {
+    "sessions_per_day": 4,
+    "min_gap_minutes": 90
+   },
+   "today": {
+    "sessions_done": 1,
+    "last_ended_at": "2026-10-03T07:10:00.000Z"
+   },
+   "expect": {
+    "open": true
+   }
+  },
+  {
+   "now": "2026-10-03T21:30:00.000Z",
+   "rules": {
+    "sessions_per_day": 2,
+    "min_gap_minutes": 60
+   },
+   "today": {
+    "sessions_done": 2,
+    "last_ended_at": "2026-10-03T19:00:00.000Z"
+   },
+   "expect": {
+    "open": false,
+    "reason": "That's all 2 sessions for today.",
+    "next_at": "2026-10-03T22:00:00.000Z"
+   }
+  }
+ ],
+ "is_due": [
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T07:30:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T08:30:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T08:31:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T13:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T21:59:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-04T07:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-05T07:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 0.212,
+    "difficulty": 6.4133,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-12T07:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T07:30:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T08:30:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T08:31:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T13:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-03T21:59:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-04T07:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-05T07:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 1,
+    "stability": 2.3065,
+    "difficulty": 2.11810397,
+    "due": "2026-10-03T08:30:00.000Z",
+    "last_review": "2026-10-03T07:00:00.000Z"
+   },
+   "now": "2026-10-12T07:00:00.000Z",
+   "expect": true
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-03T07:30:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-03T08:30:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-03T08:31:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-03T13:00:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-03T21:59:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-04T07:00:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-05T07:00:00.000Z",
+   "expect": false
+  },
+  {
+   "card": {
+    "state": 2,
+    "stability": 13.82690327,
+    "difficulty": 2.11121424,
+    "due": "2026-10-15T15:00:00.000Z",
+    "last_review": "2026-09-30T15:00:00.000Z"
+   },
+   "now": "2026-10-12T07:00:00.000Z",
+   "expect": false
+  }
+ ],
+ "next_useful_time": [
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-03T07:30:00.000Z",
+   "expect": "2026-10-03T08:30:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-03T08:30:00.000Z",
+   "expect": "2026-10-03T08:30:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-03T08:31:00.000Z",
+   "expect": "2026-10-03T08:31:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-03T13:00:00.000Z",
+   "expect": "2026-10-03T13:00:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-03T21:59:00.000Z",
+   "expect": "2026-10-03T21:59:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-04T07:00:00.000Z",
+   "expect": "2026-10-04T07:00:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-05T07:00:00.000Z",
+   "expect": "2026-10-05T07:00:00.000Z"
+  },
+  {
+   "items": [
+    {
+     "ku": {
+      "id": "tener",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "tener",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "nuevo",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "nuevo",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 1,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T08:30:00.000Z",
+      "last_review": "2026-10-03T07:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "old",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "old",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 13.82690327,
+      "difficulty": 2.11121424,
+      "due": "2026-10-15T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-12T07:00:00.000Z",
+   "expect": "2026-10-12T07:00:00.000Z"
+  }
+ ]
+}

@@ -1,0 +1,456 @@
+{
+ "goals": [
+  {
+   "id": "t1",
+   "title": "History test",
+   "date": "2026-10-06T15:00:00.000Z"
+  },
+  {
+   "id": "t2",
+   "title": "Later test",
+   "date": "2026-10-22T15:00:00.000Z"
+  }
+ ],
+ "target_retention": [
+  {
+   "ku": {
+    "id": "a",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "a",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": 0.95
+  },
+  {
+   "ku": {
+    "id": "a",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "a",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-10-12T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "a",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "a",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-10-27T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "a",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "a",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-09-27T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "b",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "b",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": 0.95
+  },
+  {
+   "ku": {
+    "id": "b",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "b",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-10-12T15:00:00.000Z",
+   "expect": 0.8
+  },
+  {
+   "ku": {
+    "id": "b",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "b",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-10-27T15:00:00.000Z",
+   "expect": 0.8
+  },
+  {
+   "ku": {
+    "id": "b",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "b",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-09-27T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "c",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "c",
+    "importance": 3,
+    "prerequisites": [],
+    "goal_ids": [
+     "t2"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": 0.92
+  },
+  {
+   "ku": {
+    "id": "c",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "c",
+    "importance": 3,
+    "prerequisites": [],
+    "goal_ids": [
+     "t2"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-10-12T15:00:00.000Z",
+   "expect": 0.92
+  },
+  {
+   "ku": {
+    "id": "c",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "c",
+    "importance": 3,
+    "prerequisites": [],
+    "goal_ids": [
+     "t2"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-10-27T15:00:00.000Z",
+   "expect": 0.92
+  },
+  {
+   "ku": {
+    "id": "c",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "c",
+    "importance": 3,
+    "prerequisites": [],
+    "goal_ids": [
+     "t2"
+    ],
+    "cumulative": true
+   },
+   "now": "2026-09-27T15:00:00.000Z",
+   "expect": 0.92
+  },
+  {
+   "ku": {
+    "id": "d",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "d",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": 0.85
+  },
+  {
+   "ku": {
+    "id": "d",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "d",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-10-12T15:00:00.000Z",
+   "expect": 0.85
+  },
+  {
+   "ku": {
+    "id": "d",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "d",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-10-27T15:00:00.000Z",
+   "expect": 0.85
+  },
+  {
+   "ku": {
+    "id": "d",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "d",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-09-27T15:00:00.000Z",
+   "expect": 0.85
+  },
+  {
+   "ku": {
+    "id": "e",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "e",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "e",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "e",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-10-12T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "e",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "e",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-10-27T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "e",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "e",
+    "importance": 2,
+    "prerequisites": [],
+    "goal_ids": [],
+    "cumulative": true
+   },
+   "now": "2026-09-27T15:00:00.000Z",
+   "expect": 0.9
+  },
+  {
+   "ku": {
+    "id": "f",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "f",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1",
+     "t2"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": 0.95
+  },
+  {
+   "ku": {
+    "id": "f",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "f",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1",
+     "t2"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-10-12T15:00:00.000Z",
+   "expect": 0.85
+  },
+  {
+   "ku": {
+    "id": "f",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "f",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1",
+     "t2"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-10-27T15:00:00.000Z",
+   "expect": 0.8
+  },
+  {
+   "ku": {
+    "id": "f",
+    "subject": "Maths",
+    "kind": "fact",
+    "title": "f",
+    "importance": 1,
+    "prerequisites": [],
+    "goal_ids": [
+     "t1",
+     "t2"
+    ],
+    "cumulative": false
+   },
+   "now": "2026-09-27T15:00:00.000Z",
+   "expect": 0.85
+  }
+ ],
+ "relax_for_load": [
+  {
+   "overload": 0.8,
+   "expect": {
+    "base": 0.9,
+    "foundational": 0.92,
+    "nice_to_know": 0.85,
+    "test_window_days": 7,
+    "test": 0.95,
+    "maintenance": 0.8
+   }
+  },
+  {
+   "overload": 1.1,
+   "expect": {
+    "base": 0.9,
+    "foundational": 0.92,
+    "nice_to_know": 0.85,
+    "test_window_days": 7,
+    "test": 0.95,
+    "maintenance": 0.8
+   }
+  },
+  {
+   "overload": 1.2,
+   "expect": {
+    "base": 0.89,
+    "foundational": 0.91,
+    "nice_to_know": 0.84,
+    "test_window_days": 7,
+    "test": 0.95,
+    "maintenance": 0.8
+   }
+  },
+  {
+   "overload": 1.5,
+   "expect": {
+    "base": 0.875,
+    "foundational": 0.895,
+    "nice_to_know": 0.825,
+    "test_window_days": 7,
+    "test": 0.95,
+    "maintenance": 0.8
+   }
+  },
+  {
+   "overload": 1.8,
+   "expect": {
+    "base": 0.86,
+    "foundational": 0.88,
+    "nice_to_know": 0.8099999999999999,
+    "test_window_days": 7,
+    "test": 0.95,
+    "maintenance": 0.8
+   }
+  },
+  {
+   "overload": 3,
+   "expect": {
+    "base": 0.8400000000000001,
+    "foundational": 0.8600000000000001,
+    "nice_to_know": 0.8,
+    "test_window_days": 7,
+    "test": 0.95,
+    "maintenance": 0.8
+   }
+  }
+ ]
+}

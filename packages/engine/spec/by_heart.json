@@ -1,0 +1,1318 @@
+{
+ "chunk_text": [
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 4,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,",
+     "words": 6
+    },
+    {
+     "index": 1,
+     "text": "Tenait en son bec un fromage.",
+     "words": 6
+    },
+    {
+     "index": 2,
+     "text": "Maître Renard, par l'odeur alléché,",
+     "words": 5
+    },
+    {
+     "index": 3,
+     "text": "Lui tint à peu près ce langage :",
+     "words": 8
+    },
+    {
+     "index": 4,
+     "text": "« Hé !\nbonjour,",
+     "words": 4
+    },
+    {
+     "index": 5,
+     "text": "Monsieur du Corbeau.\nQue vous êtes joli !",
+     "words": 8
+    },
+    {
+     "index": 6,
+     "text": "que vous me semblez beau !\n»",
+     "words": 7
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 8,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.",
+     "words": 12
+    },
+    {
+     "index": 1,
+     "text": "Maître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :",
+     "words": 13
+    },
+    {
+     "index": 2,
+     "text": "« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 19
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 12,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.",
+     "words": 12
+    },
+    {
+     "index": 1,
+     "text": "Maître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :",
+     "words": 13
+    },
+    {
+     "index": 2,
+     "text": "« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 19
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 16,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,",
+     "words": 17
+    },
+    {
+     "index": 1,
+     "text": "Lui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 27
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 20,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :",
+     "words": 25
+    },
+    {
+     "index": 1,
+     "text": "« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 19
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 40,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 44
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 4,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,",
+     "words": 6
+    },
+    {
+     "index": 1,
+     "text": "Tenait en son bec un fromage.",
+     "words": 6
+    },
+    {
+     "index": 2,
+     "text": "Maître Renard, par l'odeur alléché,",
+     "words": 5
+    },
+    {
+     "index": 3,
+     "text": "Lui tint à peu près ce langage :",
+     "words": 8
+    },
+    {
+     "index": 4,
+     "text": "« Hé !\nbonjour,",
+     "words": 4
+    },
+    {
+     "index": 5,
+     "text": "Monsieur du Corbeau.\nQue vous êtes joli !",
+     "words": 8
+    },
+    {
+     "index": 6,
+     "text": "que vous me semblez beau !",
+     "words": 6
+    },
+    {
+     "index": 7,
+     "text": "»\nSans mentir, si votre ramage",
+     "words": 6
+    },
+    {
+     "index": 8,
+     "text": "Se rapporte à votre plumage,",
+     "words": 5
+    },
+    {
+     "index": 9,
+     "text": "Vous êtes le Phénix des hôtes de ces bois.\n»",
+     "words": 10
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 8,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.",
+     "words": 12
+    },
+    {
+     "index": 1,
+     "text": "Maître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :",
+     "words": 13
+    },
+    {
+     "index": 2,
+     "text": "« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 19
+    },
+    {
+     "index": 3,
+     "text": "Sans mentir, si votre ramage\nSe rapporte à votre plumage,",
+     "words": 10
+    },
+    {
+     "index": 4,
+     "text": "Vous êtes le Phénix des hôtes de ces bois. »",
+     "words": 10
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 12,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.",
+     "words": 12
+    },
+    {
+     "index": 1,
+     "text": "Maître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :",
+     "words": 13
+    },
+    {
+     "index": 2,
+     "text": "« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 19
+    },
+    {
+     "index": 3,
+     "text": "Sans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+     "words": 20
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 16,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,",
+     "words": 17
+    },
+    {
+     "index": 1,
+     "text": "Lui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 27
+    },
+    {
+     "index": 2,
+     "text": "Sans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+     "words": 20
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 20,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :",
+     "words": 25
+    },
+    {
+     "index": 1,
+     "text": "« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage",
+     "words": 24
+    },
+    {
+     "index": 2,
+     "text": "Se rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+     "words": 15
+    }
+   ]
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 40,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+     "words": 44
+    },
+    {
+     "index": 1,
+     "text": "Sans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+     "words": 20
+    }
+   ]
+  },
+  {
+   "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+   "chunk_words": 4,
+   "expect": [
+    {
+     "index": 0,
+     "text": "La photosynthèse est le processus par lequel les plantes vertes,",
+     "words": 10
+    },
+    {
+     "index": 1,
+     "text": "grâce à l'énergie de la lumière,",
+     "words": 6
+    },
+    {
+     "index": 2,
+     "text": "fabriquent leur matière organique à partir d'eau et de dioxyde de carbone;",
+     "words": 12
+    },
+    {
+     "index": 3,
+     "text": "elle rejette du dioxygène.",
+     "words": 4
+    },
+    {
+     "index": 4,
+     "text": "C'est la base de presque toutes les chaînes alimentaires!",
+     "words": 9
+    }
+   ]
+  },
+  {
+   "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+   "chunk_words": 8,
+   "expect": [
+    {
+     "index": 0,
+     "text": "La photosynthèse est le processus par lequel les plantes vertes,",
+     "words": 10
+    },
+    {
+     "index": 1,
+     "text": "grâce à l'énergie de la lumière,\nfabriquent leur matière organique à partir d'eau et de dioxyde de carbone;",
+     "words": 18
+    },
+    {
+     "index": 2,
+     "text": "elle rejette du dioxygène.\nC'est la base de presque toutes les chaînes alimentaires!",
+     "words": 13
+    }
+   ]
+  },
+  {
+   "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+   "chunk_words": 12,
+   "expect": [
+    {
+     "index": 0,
+     "text": "La photosynthèse est le processus par lequel les plantes vertes,\ngrâce à l'énergie de la lumière,",
+     "words": 16
+    },
+    {
+     "index": 1,
+     "text": "fabriquent leur matière organique à partir d'eau et de dioxyde de carbone;",
+     "words": 12
+    },
+    {
+     "index": 2,
+     "text": "elle rejette du dioxygène.\nC'est la base de presque toutes les chaînes alimentaires!",
+     "words": 13
+    }
+   ]
+  },
+  {
+   "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+   "chunk_words": 16,
+   "expect": [
+    {
+     "index": 0,
+     "text": "La photosynthèse est le processus par lequel les plantes vertes,\ngrâce à l'énergie de la lumière,",
+     "words": 16
+    },
+    {
+     "index": 1,
+     "text": "fabriquent leur matière organique à partir d'eau et de dioxyde de carbone;\nelle rejette du dioxygène.",
+     "words": 16
+    },
+    {
+     "index": 2,
+     "text": "C'est la base de presque toutes les chaînes alimentaires!",
+     "words": 9
+    }
+   ]
+  },
+  {
+   "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+   "chunk_words": 20,
+   "expect": [
+    {
+     "index": 0,
+     "text": "La photosynthèse est le processus par lequel les plantes vertes,\ngrâce à l'énergie de la lumière,\nfabriquent leur matière organique à partir d'eau et de dioxyde de carbone;",
+     "words": 28
+    },
+    {
+     "index": 1,
+     "text": "elle rejette du dioxygène.\nC'est la base de presque toutes les chaînes alimentaires!",
+     "words": 13
+    }
+   ]
+  },
+  {
+   "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+   "chunk_words": 40,
+   "expect": [
+    {
+     "index": 0,
+     "text": "La photosynthèse est le processus par lequel les plantes vertes, grâce à l'énergie de la lumière, fabriquent leur matière organique à partir d'eau et de dioxyde de carbone; elle rejette du dioxygène. C'est la base de presque toutes les chaînes alimentaires!",
+     "words": 41
+    }
+   ]
+  },
+  {
+   "text": "A noun names a person, a place, a thing or an idea.\n\nAn adjective describes a noun.",
+   "chunk_words": 4,
+   "expect": [
+    {
+     "index": 0,
+     "text": "A noun names a person,",
+     "words": 5
+    },
+    {
+     "index": 1,
+     "text": "a place,\na thing or an idea.",
+     "words": 7
+    },
+    {
+     "index": 2,
+     "text": "An adjective describes a noun.",
+     "words": 5
+    }
+   ]
+  },
+  {
+   "text": "A noun names a person, a place, a thing or an idea.\n\nAn adjective describes a noun.",
+   "chunk_words": 8,
+   "expect": [
+    {
+     "index": 0,
+     "text": "A noun names a person, a place, a thing or an idea.",
+     "words": 12
+    },
+    {
+     "index": 1,
+     "text": "An adjective describes a noun.",
+     "words": 5
+    }
+   ]
+  },
+  {
+   "text": "A noun names a person, a place, a thing or an idea.\n\nAn adjective describes a noun.",
+   "chunk_words": 12,
+   "expect": [
+    {
+     "index": 0,
+     "text": "A noun names a person, a place, a thing or an idea.\nAn adjective describes a noun.",
+     "words": 17
+    }
+   ]
+  },
+  {
+   "text": "A noun names a person, a place, a thing or an idea.\n\nAn adjective describes a noun.",
+   "chunk_words": 16,
+   "expect": [
+    {
+     "index": 0,
+     "text": "A noun names a person, a place, a thing or an idea.\nAn adjective describes a noun.",
+     "words": 17
+    }
+   ]
+  },
+  {
+   "text": "A noun names a person, a place, a thing or an idea.\n\nAn adjective describes a noun.",
+   "chunk_words": 20,
+   "expect": [
+    {
+     "index": 0,
+     "text": "A noun names a person, a place, a thing or an idea.\nAn adjective describes a noun.",
+     "words": 17
+    }
+   ]
+  },
+  {
+   "text": "A noun names a person, a place, a thing or an idea.\n\nAn adjective describes a noun.",
+   "chunk_words": 40,
+   "expect": [
+    {
+     "index": 0,
+     "text": "A noun names a person, a place, a thing or an idea.\nAn adjective describes a noun.",
+     "words": 17
+    }
+   ]
+  },
+  {
+   "text": "  \n  ",
+   "chunk_words": 4,
+   "expect": []
+  },
+  {
+   "text": "  \n  ",
+   "chunk_words": 8,
+   "expect": []
+  },
+  {
+   "text": "  \n  ",
+   "chunk_words": 12,
+   "expect": []
+  },
+  {
+   "text": "  \n  ",
+   "chunk_words": 16,
+   "expect": []
+  },
+  {
+   "text": "  \n  ",
+   "chunk_words": 20,
+   "expect": []
+  },
+  {
+   "text": "  \n  ",
+   "chunk_words": 40,
+   "expect": []
+  },
+  {
+   "text": "Un seul vers.",
+   "chunk_words": 4,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Un seul vers.",
+     "words": 3
+    }
+   ]
+  },
+  {
+   "text": "Un seul vers.",
+   "chunk_words": 8,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Un seul vers.",
+     "words": 3
+    }
+   ]
+  },
+  {
+   "text": "Un seul vers.",
+   "chunk_words": 12,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Un seul vers.",
+     "words": 3
+    }
+   ]
+  },
+  {
+   "text": "Un seul vers.",
+   "chunk_words": 16,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Un seul vers.",
+     "words": 3
+    }
+   ]
+  },
+  {
+   "text": "Un seul vers.",
+   "chunk_words": 20,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Un seul vers.",
+     "words": 3
+    }
+   ]
+  },
+  {
+   "text": "Un seul vers.",
+   "chunk_words": 40,
+   "expect": [
+    {
+     "index": 0,
+     "text": "Un seul vers.",
+     "words": 3
+    }
+   ]
+  }
+ ],
+ "cue": [
+  {
+   "text": "Tenait en son bec un fromage.",
+   "level": "read",
+   "expect": "Tenait en son bec un fromage."
+  },
+  {
+   "text": "Tenait en son bec un fromage.",
+   "level": "first-letters",
+   "expect": "T_____ e_ s__ b__ u_ f______."
+  },
+  {
+   "text": "Tenait en son bec un fromage.",
+   "level": "key-words-blank",
+   "expect": "______ en son bec un _______."
+  },
+  {
+   "text": "Tenait en son bec un fromage.",
+   "level": "recite",
+   "expect": "…"
+  },
+  {
+   "text": "Maître Renard, par l'odeur alléché,",
+   "level": "read",
+   "expect": "Maître Renard, par l'odeur alléché,"
+  },
+  {
+   "text": "Maître Renard, par l'odeur alléché,",
+   "level": "first-letters",
+   "expect": "M_____ R_____, p__ l______ a______,"
+  },
+  {
+   "text": "Maître Renard, par l'odeur alléché,",
+   "level": "key-words-blank",
+   "expect": "______ ______, par _______ _______,"
+  },
+  {
+   "text": "Maître Renard, par l'odeur alléché,",
+   "level": "recite",
+   "expect": "…"
+  },
+  {
+   "text": "« Hé ! bonjour, Monsieur du Corbeau.",
+   "level": "read",
+   "expect": "« Hé ! bonjour, Monsieur du Corbeau."
+  },
+  {
+   "text": "« Hé ! bonjour, Monsieur du Corbeau.",
+   "level": "first-letters",
+   "expect": "« H_ ! b______, M_______ d_ C______."
+  },
+  {
+   "text": "« Hé ! bonjour, Monsieur du Corbeau.",
+   "level": "key-words-blank",
+   "expect": "« Hé ! _______, ________ du _______."
+  },
+  {
+   "text": "« Hé ! bonjour, Monsieur du Corbeau.",
+   "level": "recite",
+   "expect": "…"
+  },
+  {
+   "text": "Aujourd'hui, peut-être 12 élèves — ou 3/4 d'entre eux — l’ont lu.",
+   "level": "read",
+   "expect": "Aujourd'hui, peut-être 12 élèves — ou 3/4 d'entre eux — l’ont lu."
+  },
+  {
+   "text": "Aujourd'hui, peut-être 12 élèves — ou 3/4 d'entre eux — l’ont lu.",
+   "level": "first-letters",
+   "expect": "A__________, p________ 1_ é_____ — o_ 3/4 d______ e__ — l____ l_."
+  },
+  {
+   "text": "Aujourd'hui, peut-être 12 élèves — ou 3/4 d'entre eux — l’ont lu.",
+   "level": "key-words-blank",
+   "expect": "___________, _________ 12 ______ — ou 3/4 _______ eux — _____ lu."
+  },
+  {
+   "text": "Aujourd'hui, peut-être 12 élèves — ou 3/4 d'entre eux — l’ont lu.",
+   "level": "recite",
+   "expect": "…"
+  },
+  {
+   "text": "The water cycle: evaporation, condensation and precipitation.",
+   "level": "read",
+   "expect": "The water cycle: evaporation, condensation and precipitation."
+  },
+  {
+   "text": "The water cycle: evaporation, condensation and precipitation.",
+   "level": "first-letters",
+   "expect": "T__ w____ c____: e__________, c___________ a__ p____________."
+  },
+  {
+   "text": "The water cycle: evaporation, condensation and precipitation.",
+   "level": "key-words-blank",
+   "expect": "The _____ _____: ___________, ____________ and _____________."
+  },
+  {
+   "text": "The water cycle: evaporation, condensation and precipitation.",
+   "level": "recite",
+   "expect": "…"
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "level": "read",
+   "expect": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »"
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "level": "first-letters",
+   "expect": "M_____ C______, s__ u_ a____ p_____,\nT_____ e_ s__ b__ u_ f______.\nM_____ R_____, p__ l______ a______,\nL__ t___ à p__ p___ c_ l______ :\n« H_ ! b______, M_______ d_ C______.\nQ__ v___ ê___ j___ ! q__ v___ m_ s______ b___ ! »"
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "level": "key-words-blank",
+   "expect": "______ _______, sur un _____ ______,\n______ en son bec un _______.\n______ ______, par _______ _______,\nLui ____ à peu ____ ce _______ :\n« Hé ! _______, ________ du _______.\nQue vous ____ ____ ! que vous me _______ ____ ! »"
+  },
+  {
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "level": "recite",
+   "expect": "…\n…\n…\n…\n…\n…"
+  }
+ ],
+ "cue_for": [
+  {
+   "stability": null,
+   "expect": "read"
+  },
+  {
+   "stability": 0,
+   "expect": "first-letters"
+  },
+  {
+   "stability": 1.99,
+   "expect": "first-letters"
+  },
+  {
+   "stability": 2,
+   "expect": "key-words-blank"
+  },
+  {
+   "stability": 4.99,
+   "expect": "key-words-blank"
+  },
+  {
+   "stability": 5,
+   "expect": "recite"
+  },
+  {
+   "stability": 30,
+   "expect": "recite"
+  }
+ ],
+ "by_heart_units": [
+  {
+   "text_id": "corbeau",
+   "title": "Le Corbeau",
+   "subject": "French",
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "chunk_words": 8,
+   "goal_ids": [
+    "recitation"
+   ],
+   "notion_id": "fables",
+   "expect": [
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c1",
+     "title": "Le Corbeau: part 1",
+     "prerequisites": []
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c2",
+     "title": "Le Corbeau: part 2",
+     "prerequisites": [
+      "corbeau/c1"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c3",
+     "title": "Le Corbeau: part 3",
+     "prerequisites": [
+      "corbeau/c2"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/chain2",
+     "title": "Le Corbeau: parts 1–2",
+     "prerequisites": [
+      "corbeau/c2",
+      "corbeau/c1"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/chain3",
+     "title": "Le Corbeau: whole text",
+     "prerequisites": [
+      "corbeau/c3",
+      "corbeau/chain2"
+     ]
+    }
+   ]
+  },
+  {
+   "text_id": "corbeau",
+   "title": "Le Corbeau",
+   "subject": "French",
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 12,
+   "goal_ids": [
+    "recitation"
+   ],
+   "notion_id": "fables",
+   "expect": [
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c1",
+     "title": "Le Corbeau: part 1",
+     "prerequisites": []
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c2",
+     "title": "Le Corbeau: part 2",
+     "prerequisites": [
+      "corbeau/c1"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c3",
+     "title": "Le Corbeau: part 3",
+     "prerequisites": [
+      "corbeau/c2"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c4",
+     "title": "Le Corbeau: part 4",
+     "prerequisites": [
+      "corbeau/c3"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/chain2",
+     "title": "Le Corbeau: parts 1–2",
+     "prerequisites": [
+      "corbeau/c2",
+      "corbeau/c1"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/chain3",
+     "title": "Le Corbeau: parts 1–3",
+     "prerequisites": [
+      "corbeau/c3",
+      "corbeau/chain2"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/chain4",
+     "title": "Le Corbeau: whole text",
+     "prerequisites": [
+      "corbeau/c4",
+      "corbeau/chain3"
+     ]
+    }
+   ]
+  },
+  {
+   "text_id": "corbeau",
+   "title": "Le Corbeau",
+   "subject": "French",
+   "text": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »\nSans mentir, si votre ramage\nSe rapporte à votre plumage,\nVous êtes le Phénix des hôtes de ces bois. »",
+   "chunk_words": 40,
+   "goal_ids": [
+    "recitation"
+   ],
+   "notion_id": "fables",
+   "expect": [
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c1",
+     "title": "Le Corbeau: part 1",
+     "prerequisites": []
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c2",
+     "title": "Le Corbeau: part 2",
+     "prerequisites": [
+      "corbeau/c1"
+     ]
+    },
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/chain2",
+     "title": "Le Corbeau: whole text",
+     "prerequisites": [
+      "corbeau/c2",
+      "corbeau/c1"
+     ]
+    }
+   ]
+  },
+  {
+   "text_id": "corbeau",
+   "title": "Le Corbeau",
+   "subject": "French",
+   "text": "Un seul vers.",
+   "chunk_words": 8,
+   "goal_ids": [
+    "recitation"
+   ],
+   "notion_id": "fables",
+   "expect": [
+    {
+     "subject": "French",
+     "kind": "verbatim",
+     "importance": 2,
+     "goal_ids": [
+      "recitation"
+     ],
+     "notion_id": "fables",
+     "cumulative": true,
+     "id": "corbeau/c1",
+     "title": "Le Corbeau: part 1",
+     "prerequisites": []
+    }
+   ]
+  }
+ ],
+ "figure_units": [
+  {
+   "figure_id": "water-cycle",
+   "title": "Water cycle",
+   "subject": "Science",
+   "labels": [
+    {
+     "id": "evaporation",
+     "label": "évaporation",
+     "box": {
+      "x": 0.1,
+      "y": 0.5,
+      "w": 0.2,
+      "h": 0.08
+     }
+    },
+    {
+     "id": "condensation",
+     "label": "condensation",
+     "box": {
+      "x": 0.4,
+      "y": 0.1,
+      "w": 0.2,
+      "h": 0.08
+     }
+    },
+    {
+     "id": "precipitation",
+     "label": "précipitations",
+     "box": {
+      "x": 0.7,
+      "y": 0.3,
+      "w": 0.2,
+      "h": 0.08
+     }
+    }
+   ],
+   "expect": [
+    {
+     "subject": "Science",
+     "kind": "label",
+     "importance": 2,
+     "goal_ids": [],
+     "cumulative": true,
+     "id": "water-cycle/evaporation",
+     "title": "Water cycle: évaporation",
+     "prerequisites": []
+    },
+    {
+     "subject": "Science",
+     "kind": "label",
+     "importance": 2,
+     "goal_ids": [],
+     "cumulative": true,
+     "id": "water-cycle/condensation",
+     "title": "Water cycle: condensation",
+     "prerequisites": []
+    },
+    {
+     "subject": "Science",
+     "kind": "label",
+     "importance": 2,
+     "goal_ids": [],
+     "cumulative": true,
+     "id": "water-cycle/precipitation",
+     "title": "Water cycle: précipitations",
+     "prerequisites": []
+    },
+    {
+     "subject": "Science",
+     "kind": "label",
+     "importance": 2,
+     "goal_ids": [],
+     "cumulative": true,
+     "id": "water-cycle/all",
+     "title": "Water cycle: every label",
+     "prerequisites": [
+      "water-cycle/evaporation",
+      "water-cycle/condensation",
+      "water-cycle/precipitation"
+     ]
+    }
+   ]
+  }
+ ],
+ "compare_recitation": [
+  {
+   "expected": "Maître Corbeau, sur un arbre perché",
+   "given": "maitre corbeau sur un arbre perche",
+   "accents": false,
+   "expect": {
+    "ratio": 1,
+    "missing": []
+   }
+  },
+  {
+   "expected": "Maître Corbeau, sur un arbre perché",
+   "given": "Maître Corbeau sur une branche perché",
+   "accents": false,
+   "expect": {
+    "ratio": 0.6666666666666666,
+    "missing": [
+     "un",
+     "arbre"
+    ]
+   }
+  },
+  {
+   "expected": "Maître Corbeau, sur un arbre perché",
+   "given": "maitre corbeau sur un arbre perche",
+   "accents": true,
+   "expect": {
+    "ratio": 0.6666666666666666,
+    "missing": [
+     "maître",
+     "perché"
+    ]
+   }
+  },
+  {
+   "expected": "Maître Corbeau, sur un arbre perché",
+   "given": "Maître Corbeau, sur un arbre perché",
+   "accents": true,
+   "expect": {
+    "ratio": 1,
+    "missing": []
+   }
+  },
+  {
+   "expected": "Tenait en son bec un fromage.",
+   "given": "Tenait un fromage en son bec",
+   "accents": false,
+   "expect": {
+    "ratio": 0.6666666666666666,
+    "missing": [
+     "un",
+     "fromage"
+    ]
+   }
+  },
+  {
+   "expected": "Tenait en son bec un fromage.",
+   "given": "",
+   "accents": false,
+   "expect": {
+    "ratio": 0,
+    "missing": [
+     "tenait",
+     "en",
+     "son",
+     "bec",
+     "un",
+     "fromage"
+    ]
+   }
+  },
+  {
+   "expected": "",
+   "given": "anything",
+   "accents": false,
+   "expect": {
+    "ratio": 1,
+    "missing": []
+   }
+  },
+  {
+   "expected": "Maître Renard, par l'odeur alléché,",
+   "given": "Maitre Renard par l odeur alleche",
+   "accents": false,
+   "expect": {
+    "ratio": 1,
+    "missing": []
+   }
+  },
+  {
+   "expected": "Lui tint à peu près ce langage :",
+   "given": "Lui tint a peu pres ce langage euh ce langage",
+   "accents": false,
+   "expect": {
+    "ratio": 1,
+    "missing": []
+   }
+  },
+  {
+   "expected": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un fromage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes joli ! que vous me semblez beau ! »",
+   "given": "Maître Corbeau, sur un arbre perché,\nTenait en son bec un formage.\nMaître Renard, par l'odeur alléché,\nLui tint à peu près ce langage :\n« Hé ! bonjour, Monsieur du Corbeau.\nQue vous êtes gentil ! que vous me semblez beau ! »",
+   "accents": false,
+   "expect": {
+    "ratio": 0.9487179487179487,
+    "missing": [
+     "fromage",
+     "joli"
+    ]
+   }
+  }
+ ],
+ "recitation_attempt": [
+  {
+   "ratio": 1,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": true,
+    "near_miss": false,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  },
+  {
+   "ratio": 0.96,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": true,
+    "near_miss": false,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  },
+  {
+   "ratio": 0.95,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": true,
+    "near_miss": false,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  },
+  {
+   "ratio": 0.94,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": false,
+    "near_miss": true,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  },
+  {
+   "ratio": 0.85,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": false,
+    "near_miss": true,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  },
+  {
+   "ratio": 0.84,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": false,
+    "near_miss": false,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  },
+  {
+   "ratio": 0,
+   "latency_ms": 8000,
+   "expect": {
+    "correct": false,
+    "near_miss": false,
+    "latency_ms": 8000,
+    "hints_used": 0,
+    "level": "recall"
+   }
+  }
+ ]
+}

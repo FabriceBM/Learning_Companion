@@ -1,0 +1,905 @@
+{
+ "plan": {
+  "items": [
+   {
+    "ku_id": "u0",
+    "subject": "Maths",
+    "title": "u0",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u2",
+    "subject": "History",
+    "title": "u2",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u3",
+    "subject": "Maths",
+    "title": "u3",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u5",
+    "subject": "History",
+    "title": "u5",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u4",
+    "subject": "Spanish",
+    "title": "u4",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u8",
+    "subject": "History",
+    "title": "u8",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u6",
+    "subject": "Maths",
+    "title": "u6",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u7",
+    "subject": "Spanish",
+    "title": "u7",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u11",
+    "subject": "History",
+    "title": "u11",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u9",
+    "subject": "Maths",
+    "title": "u9",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u10",
+    "subject": "Spanish",
+    "title": "u10",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u14",
+    "subject": "History",
+    "title": "u14",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u12",
+    "subject": "Maths",
+    "title": "u12",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u13",
+    "subject": "Spanish",
+    "title": "u13",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u17",
+    "subject": "History",
+    "title": "u17",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u15",
+    "subject": "Maths",
+    "title": "u15",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u16",
+    "subject": "Spanish",
+    "title": "u16",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u20",
+    "subject": "History",
+    "title": "u20",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u18",
+    "subject": "Maths",
+    "title": "u18",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u19",
+    "subject": "Spanish",
+    "title": "u19",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u23",
+    "subject": "History",
+    "title": "u23",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u21",
+    "subject": "Maths",
+    "title": "u21",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u22",
+    "subject": "Spanish",
+    "title": "u22",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u26",
+    "subject": "History",
+    "title": "u26",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u24",
+    "subject": "Maths",
+    "title": "u24",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u25",
+    "subject": "Spanish",
+    "title": "u25",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u29",
+    "subject": "History",
+    "title": "u29",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u27",
+    "subject": "Maths",
+    "title": "u27",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u28",
+    "subject": "Spanish",
+    "title": "u28",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   },
+   {
+    "ku_id": "u1",
+    "subject": "Spanish",
+    "title": "u1",
+    "kind": "review",
+    "level": "recall",
+    "recall": 0.85271669,
+    "seconds": 12,
+    "why": "Seen 6 days ago · recall now about 85%"
+   }
+  ],
+  "minutes": 6,
+  "deferred": 30,
+  "waiting": 0,
+  "subjects": [
+   "Maths",
+   "Spanish",
+   "History"
+  ]
+ },
+ "runs": [
+  {
+   "budget": 600,
+   "seconds": 10,
+   "answers": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "expect": [
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u2",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u3",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u5",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u4",
+     "retry": false
+    },
+    {
+     "type": "done",
+     "reason": "ease-off"
+    }
+   ]
+  },
+  {
+   "budget": 600,
+   "seconds": 10,
+   "answers": [
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "expect": [
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u2",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u3",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u5",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u4",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u8",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u6",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u7",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u11",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u9",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u10",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u14",
+     "retry": false
+    },
+    {
+     "type": "done",
+     "reason": "ease-off"
+    }
+   ]
+  },
+  {
+   "budget": 30,
+   "seconds": 12,
+   "answers": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "expect": [
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u2",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u3",
+     "retry": false
+    },
+    {
+     "type": "done",
+     "reason": "time-budget"
+    }
+   ]
+  },
+  {
+   "budget": 600,
+   "seconds": 8,
+   "answers": [
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false
+   ],
+   "expect": [
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u2",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u3",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u5",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u4",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u8",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u6",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u7",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u11",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u9",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u10",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u14",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u12",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u13",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u17",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u15",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u16",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u20",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u18",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u19",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u23",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u21",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u22",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u26",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u24",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u25",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u29",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u27",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u28",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u1",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u5",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u6",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u9",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u12",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u15",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u18",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u21",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u24",
+     "retry": true
+    },
+    {
+     "type": "ask",
+     "ku_id": "u27",
+     "retry": true
+    },
+    {
+     "type": "done",
+     "reason": "plan-complete"
+    }
+   ]
+  },
+  {
+   "budget": 600,
+   "seconds": 8,
+   "answers": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "stop_after": 4,
+   "expect": [
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u2",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u3",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u5",
+     "retry": false
+    },
+    {
+     "type": "done",
+     "reason": "child-stopped"
+    }
+   ]
+  },
+  {
+   "budget": 600,
+   "seconds": 8,
+   "answers": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "rules": {
+    "ease_off_after_misses": 2,
+    "stop_after_misses": 4
+   },
+   "expect": [
+    {
+     "type": "ask",
+     "ku_id": "u0",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u2",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u3",
+     "retry": false
+    },
+    {
+     "type": "ask",
+     "ku_id": "u5",
+     "retry": false
+    },
+    {
+     "type": "done",
+     "reason": "ease-off"
+    }
+   ]
+  }
+ ]
+}

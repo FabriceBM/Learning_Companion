@@ -1,0 +1,1877 @@
+{
+ "decide": [
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T15:00:00.000Z",
+    "window_id": "after-school",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"After school\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ]
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 2,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": true,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Today's session is already done."
+   }
+  },
+  {
+   "now": "2026-10-04T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Rest day."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 1,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Daily reminder limit reached."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 0,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Reminders are switched off."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 0,
+     "subjects": []
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Nothing planned today."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": [
+     {
+      "date": "d0",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d1",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d2",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d3",
+      "session_done": true,
+      "self_started": false,
+      "nudged": false
+     },
+     {
+      "date": "d4",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d5",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d6",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d7",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d8",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d9",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     }
+    ]
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Habit formed: started on their own on most days, so reminders pause."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": [
+     {
+      "date": "d0",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d1",
+      "session_done": true,
+      "self_started": false,
+      "nudged": false
+     },
+     {
+      "date": "d2",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d3",
+      "session_done": true,
+      "self_started": false,
+      "nudged": false
+     },
+     {
+      "date": "d4",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d5",
+      "session_done": true,
+      "self_started": false,
+      "nudged": false
+     },
+     {
+      "date": "d6",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d7",
+      "session_done": true,
+      "self_started": false,
+      "nudged": false
+     },
+     {
+      "date": "d8",
+      "session_done": true,
+      "self_started": true,
+      "nudged": false
+     },
+     {
+      "date": "d9",
+      "session_done": true,
+      "self_started": false,
+      "nudged": false
+     }
+    ]
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T15:00:00.000Z",
+    "window_id": "after-school",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"After school\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 3,
+    "days": [
+     {
+      "date": "d0",
+      "session_done": false,
+      "self_started": false,
+      "nudged": true
+     },
+     {
+      "date": "d1",
+      "session_done": false,
+      "self_started": false,
+      "nudged": true
+     },
+     {
+      "date": "d2",
+      "session_done": false,
+      "self_started": false,
+      "nudged": true
+     }
+    ]
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Backing off after ignored reminders: none today."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 3,
+    "days": [
+     {
+      "date": "d0",
+      "session_done": false,
+      "self_started": false,
+      "nudged": true
+     },
+     {
+      "date": "d1",
+      "session_done": false,
+      "self_started": false,
+      "nudged": true
+     },
+     {
+      "date": "d2",
+      "session_done": false,
+      "self_started": false,
+      "nudged": false
+     }
+    ]
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T15:00:00.000Z",
+    "window_id": "after-school",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"After school\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 6,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "Reminders were ignored several times in a row: stopped. Parents see it in the weekly summary."
+   }
+  },
+  {
+   "now": "2026-10-02T17:45:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": false,
+    "reason": "No agreed time slot left today."
+   }
+  },
+  {
+   "now": "2026-10-02T16:40:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:40:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-03T06:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {},
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 1,
+   "expect": {
+    "send": true,
+    "at": "2026-10-03T08:00:00.000Z",
+    "window_id": "saturday",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Saturday morning\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 3,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 4,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 5,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 6,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 7,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 8,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 9,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  },
+  {
+   "now": "2026-10-02T14:00:00.000Z",
+   "settings": {
+    "windows": [
+     {
+      "id": "after-school",
+      "label": "After school",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "17:00",
+      "end": "18:30"
+     },
+     {
+      "id": "evening",
+      "label": "Before dinner",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "start": "18:30",
+      "end": "19:30"
+     },
+     {
+      "id": "saturday",
+      "label": "Saturday morning",
+      "days": [
+       6
+      ],
+      "start": "10:00",
+      "end": "12:00"
+     }
+    ],
+    "max_per_day": 1,
+    "rest_days": [
+     0
+    ],
+    "intention": "After my snack"
+   },
+   "state": {
+    "windows": {
+     "evening": {
+      "started": 12,
+      "ignored": 0
+     },
+     "after-school": {
+      "started": 0,
+      "ignored": 12
+     }
+    },
+    "ignored_streak": 0,
+    "days": []
+   },
+   "ctx": {
+    "session_done_today": false,
+    "reminders_sent_today": 0,
+    "plan": {
+     "minutes": 9,
+     "subjects": [
+      "Spanish",
+      "Maths"
+     ]
+    }
+   },
+   "seed": 10,
+   "expect": {
+    "send": true,
+    "at": "2026-10-02T16:30:00.000Z",
+    "window_id": "evening",
+    "text": "After my snack: 9 min today (Spanish, Maths).",
+    "reason": "Slot \"Before dinner\" chosen from this child's past responses."
+   }
+  }
+ ],
+ "learned": {
+  "windows": {
+   "evening": {
+    "started": 12,
+    "ignored": 0
+   },
+   "after-school": {
+    "started": 0,
+    "ignored": 12
+   }
+  },
+  "ignored_streak": 0,
+  "days": []
+ },
+ "reminder_text": [
+  {
+   "intention": "After my snack",
+   "minutes": 9,
+   "subjects": [
+    "Spanish",
+    "Maths"
+   ],
+   "expect": "After my snack: 9 min today (Spanish, Maths)."
+  },
+  {
+   "intention": null,
+   "minutes": 12,
+   "subjects": [
+    "French"
+   ],
+   "expect": "12 min today (French)."
+  },
+  {
+   "intention": null,
+   "minutes": 5,
+   "subjects": [],
+   "expect": "5 min today ()."
+  }
+ ]
+}

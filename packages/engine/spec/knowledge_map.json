@@ -1,0 +1,984 @@
+{
+ "structure": {
+  "maths-core": [
+   {
+    "id": "whole-numbers",
+    "ancestors": [],
+    "descendants": [
+     "algebraic-expressions",
+     "angles-triangles",
+     "area-volume",
+     "decimals",
+     "division",
+     "equivalent-fractions",
+     "expand-factor",
+     "fractions-add",
+     "fractions-meaning",
+     "fractions-multiply",
+     "linear-equations",
+     "linear-functions",
+     "mean-median",
+     "multiplication-facts",
+     "negative-numbers",
+     "order-of-operations",
+     "percentages",
+     "powers",
+     "probability",
+     "proportionality",
+     "pythagoras"
+    ],
+    "depth": 0
+   },
+   {
+    "id": "multiplication-facts",
+    "ancestors": [
+     "whole-numbers"
+    ],
+    "descendants": [
+     "algebraic-expressions",
+     "area-volume",
+     "division",
+     "equivalent-fractions",
+     "expand-factor",
+     "fractions-add",
+     "fractions-meaning",
+     "fractions-multiply",
+     "linear-equations",
+     "linear-functions",
+     "mean-median",
+     "negative-numbers",
+     "order-of-operations",
+     "percentages",
+     "powers",
+     "probability",
+     "proportionality",
+     "pythagoras"
+    ],
+    "depth": 1
+   },
+   {
+    "id": "division",
+    "ancestors": [
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "equivalent-fractions",
+     "fractions-add",
+     "fractions-meaning",
+     "fractions-multiply",
+     "linear-equations",
+     "linear-functions",
+     "mean-median",
+     "percentages",
+     "probability",
+     "proportionality"
+    ],
+    "depth": 2
+   },
+   {
+    "id": "order-of-operations",
+    "ancestors": [
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "algebraic-expressions",
+     "expand-factor",
+     "linear-equations",
+     "linear-functions",
+     "negative-numbers",
+     "pythagoras"
+    ],
+    "depth": 2
+   },
+   {
+    "id": "decimals",
+    "ancestors": [
+     "whole-numbers"
+    ],
+    "descendants": [
+     "area-volume",
+     "linear-functions",
+     "mean-median",
+     "percentages",
+     "probability",
+     "proportionality"
+    ],
+    "depth": 1
+   },
+   {
+    "id": "fractions-meaning",
+    "ancestors": [
+     "division",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "equivalent-fractions",
+     "fractions-add",
+     "fractions-multiply",
+     "linear-equations",
+     "linear-functions",
+     "percentages",
+     "probability",
+     "proportionality"
+    ],
+    "depth": 3
+   },
+   {
+    "id": "equivalent-fractions",
+    "ancestors": [
+     "division",
+     "fractions-meaning",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "fractions-add",
+     "linear-equations",
+     "linear-functions"
+    ],
+    "depth": 4
+   },
+   {
+    "id": "fractions-add",
+    "ancestors": [
+     "division",
+     "equivalent-fractions",
+     "fractions-meaning",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "linear-equations",
+     "linear-functions"
+    ],
+    "depth": 5
+   },
+   {
+    "id": "fractions-multiply",
+    "ancestors": [
+     "division",
+     "fractions-meaning",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "linear-functions",
+     "percentages",
+     "proportionality"
+    ],
+    "depth": 4
+   },
+   {
+    "id": "negative-numbers",
+    "ancestors": [
+     "multiplication-facts",
+     "order-of-operations",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "algebraic-expressions",
+     "expand-factor",
+     "linear-equations",
+     "linear-functions",
+     "pythagoras"
+    ],
+    "depth": 3
+   },
+   {
+    "id": "proportionality",
+    "ancestors": [
+     "decimals",
+     "division",
+     "fractions-meaning",
+     "fractions-multiply",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "linear-functions",
+     "percentages"
+    ],
+    "depth": 5
+   },
+   {
+    "id": "percentages",
+    "ancestors": [
+     "decimals",
+     "division",
+     "fractions-meaning",
+     "fractions-multiply",
+     "multiplication-facts",
+     "proportionality",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 6
+   },
+   {
+    "id": "powers",
+    "ancestors": [
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "pythagoras"
+    ],
+    "depth": 2
+   },
+   {
+    "id": "algebraic-expressions",
+    "ancestors": [
+     "multiplication-facts",
+     "negative-numbers",
+     "order-of-operations",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "expand-factor",
+     "linear-equations",
+     "linear-functions",
+     "pythagoras"
+    ],
+    "depth": 4
+   },
+   {
+    "id": "expand-factor",
+    "ancestors": [
+     "algebraic-expressions",
+     "multiplication-facts",
+     "negative-numbers",
+     "order-of-operations",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 5
+   },
+   {
+    "id": "linear-equations",
+    "ancestors": [
+     "algebraic-expressions",
+     "division",
+     "equivalent-fractions",
+     "fractions-add",
+     "fractions-meaning",
+     "multiplication-facts",
+     "negative-numbers",
+     "order-of-operations",
+     "whole-numbers"
+    ],
+    "descendants": [
+     "linear-functions"
+    ],
+    "depth": 6
+   },
+   {
+    "id": "linear-functions",
+    "ancestors": [
+     "algebraic-expressions",
+     "decimals",
+     "division",
+     "equivalent-fractions",
+     "fractions-add",
+     "fractions-meaning",
+     "fractions-multiply",
+     "linear-equations",
+     "multiplication-facts",
+     "negative-numbers",
+     "order-of-operations",
+     "proportionality",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 7
+   },
+   {
+    "id": "pythagoras",
+    "ancestors": [
+     "algebraic-expressions",
+     "multiplication-facts",
+     "negative-numbers",
+     "order-of-operations",
+     "powers",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 5
+   },
+   {
+    "id": "angles-triangles",
+    "ancestors": [
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 1
+   },
+   {
+    "id": "area-volume",
+    "ancestors": [
+     "decimals",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 2
+   },
+   {
+    "id": "mean-median",
+    "ancestors": [
+     "decimals",
+     "division",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 3
+   },
+   {
+    "id": "probability",
+    "ancestors": [
+     "decimals",
+     "division",
+     "fractions-meaning",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "descendants": [],
+    "depth": 4
+   }
+  ],
+  "french-core": [
+   {
+    "id": "verb-groups",
+    "ancestors": [],
+    "descendants": [
+     "agreement-avoir",
+     "conditionnel-present",
+     "futur-simple",
+     "imparfait",
+     "passe-compose",
+     "passe-simple",
+     "past-participle",
+     "present-indicative"
+    ],
+    "depth": 0
+   },
+   {
+    "id": "present-indicative",
+    "ancestors": [
+     "verb-groups"
+    ],
+    "descendants": [
+     "agreement-avoir",
+     "conditionnel-present",
+     "futur-simple",
+     "imparfait",
+     "passe-compose",
+     "passe-simple"
+    ],
+    "depth": 1
+   },
+   {
+    "id": "imparfait",
+    "ancestors": [
+     "present-indicative",
+     "verb-groups"
+    ],
+    "descendants": [
+     "conditionnel-present"
+    ],
+    "depth": 2
+   },
+   {
+    "id": "past-participle",
+    "ancestors": [
+     "verb-groups"
+    ],
+    "descendants": [
+     "agreement-avoir",
+     "passe-compose"
+    ],
+    "depth": 1
+   },
+   {
+    "id": "passe-compose",
+    "ancestors": [
+     "past-participle",
+     "present-indicative",
+     "verb-groups"
+    ],
+    "descendants": [
+     "agreement-avoir"
+    ],
+    "depth": 2
+   },
+   {
+    "id": "passe-simple",
+    "ancestors": [
+     "present-indicative",
+     "verb-groups"
+    ],
+    "descendants": [],
+    "depth": 2
+   },
+   {
+    "id": "futur-simple",
+    "ancestors": [
+     "present-indicative",
+     "verb-groups"
+    ],
+    "descendants": [
+     "conditionnel-present"
+    ],
+    "depth": 2
+   },
+   {
+    "id": "conditionnel-present",
+    "ancestors": [
+     "futur-simple",
+     "imparfait",
+     "present-indicative",
+     "verb-groups"
+    ],
+    "descendants": [],
+    "depth": 3
+   },
+   {
+    "id": "agreement-avoir",
+    "ancestors": [
+     "passe-compose",
+     "past-participle",
+     "present-indicative",
+     "verb-groups"
+    ],
+    "descendants": [],
+    "depth": 3
+   },
+   {
+    "id": "homophones-a",
+    "ancestors": [],
+    "descendants": [],
+    "depth": 0
+   }
+  ]
+ },
+ "learning_path": [
+  {
+   "map": "maths-core",
+   "targets": [
+    "linear-equations"
+   ],
+   "known": [
+    "whole-numbers",
+    "multiplication-facts",
+    "order-of-operations",
+    "fractions-meaning"
+   ],
+   "expect": [
+    "negative-numbers",
+    "algebraic-expressions",
+    "equivalent-fractions",
+    "fractions-add",
+    "linear-equations"
+   ]
+  },
+  {
+   "map": "maths-core",
+   "targets": [
+    "linear-equations"
+   ],
+   "known": [],
+   "expect": [
+    "whole-numbers",
+    "multiplication-facts",
+    "division",
+    "order-of-operations",
+    "negative-numbers",
+    "fractions-meaning",
+    "algebraic-expressions",
+    "equivalent-fractions",
+    "fractions-add",
+    "linear-equations"
+   ]
+  },
+  {
+   "map": "maths-core",
+   "targets": [
+    "linear-equations",
+    "fractions-multiply"
+   ],
+   "known": [
+    "whole-numbers",
+    "multiplication-facts",
+    "division"
+   ],
+   "expect": [
+    "order-of-operations",
+    "negative-numbers",
+    "fractions-meaning",
+    "algebraic-expressions",
+    "equivalent-fractions",
+    "fractions-multiply",
+    "fractions-add",
+    "linear-equations"
+   ]
+  },
+  {
+   "map": "french-core",
+   "targets": [
+    "passe-simple"
+   ],
+   "known": [
+    "verb-groups",
+    "present-indicative"
+   ],
+   "expect": [
+    "passe-simple"
+   ]
+  },
+  {
+   "map": "french-core",
+   "targets": [
+    "conditionnel-present",
+    "agreement-avoir"
+   ],
+   "known": [
+    "verb-groups"
+   ],
+   "expect": [
+    "past-participle",
+    "present-indicative",
+    "futur-simple",
+    "imparfait",
+    "passe-compose",
+    "conditionnel-present",
+    "agreement-avoir"
+   ]
+  },
+  {
+   "map": "french-core",
+   "targets": [
+    "homophones-a"
+   ],
+   "known": [
+    "homophones-a"
+   ],
+   "expect": []
+  }
+ ],
+ "placement": [
+  {
+   "map": "maths-core",
+   "notions": null,
+   "scope": [
+    "linear-equations",
+    "fractions-add",
+    "equivalent-fractions",
+    "multiplication-facts",
+    "whole-numbers",
+    "fractions-meaning",
+    "division",
+    "algebraic-expressions",
+    "negative-numbers",
+    "order-of-operations"
+   ],
+   "truth_known": [
+    "whole-numbers",
+    "multiplication-facts",
+    "division",
+    "order-of-operations",
+    "decimals",
+    "fractions-meaning",
+    "equivalent-fractions"
+   ],
+   "max_questions": 12,
+   "expect": {
+    "asked_ids": [
+     "fractions-meaning",
+     "negative-numbers",
+     "order-of-operations",
+     "equivalent-fractions",
+     "fractions-add"
+    ],
+    "known": [
+     "equivalent-fractions",
+     "multiplication-facts",
+     "whole-numbers",
+     "fractions-meaning",
+     "division",
+     "order-of-operations"
+    ],
+    "unknown": [
+     "linear-equations",
+     "fractions-add",
+     "algebraic-expressions",
+     "negative-numbers"
+    ],
+    "unsure": [],
+    "asked": 5
+   }
+  },
+  {
+   "map": "maths-core",
+   "notions": null,
+   "scope": [
+    "linear-equations",
+    "fractions-add",
+    "equivalent-fractions",
+    "multiplication-facts",
+    "whole-numbers",
+    "fractions-meaning",
+    "division",
+    "algebraic-expressions",
+    "negative-numbers",
+    "order-of-operations"
+   ],
+   "truth_known": [],
+   "max_questions": 12,
+   "expect": {
+    "asked_ids": [
+     "fractions-meaning",
+     "order-of-operations",
+     "multiplication-facts",
+     "whole-numbers"
+    ],
+    "known": [],
+    "unknown": [
+     "linear-equations",
+     "fractions-add",
+     "equivalent-fractions",
+     "multiplication-facts",
+     "whole-numbers",
+     "fractions-meaning",
+     "division",
+     "algebraic-expressions",
+     "negative-numbers",
+     "order-of-operations"
+    ],
+    "unsure": [],
+    "asked": 4
+   }
+  },
+  {
+   "map": "maths-core",
+   "notions": null,
+   "scope": [
+    "linear-equations",
+    "fractions-add",
+    "equivalent-fractions",
+    "multiplication-facts",
+    "whole-numbers",
+    "fractions-meaning",
+    "division",
+    "algebraic-expressions",
+    "negative-numbers",
+    "order-of-operations"
+   ],
+   "truth_known": [
+    "whole-numbers",
+    "multiplication-facts",
+    "division",
+    "order-of-operations",
+    "decimals",
+    "fractions-meaning",
+    "equivalent-fractions",
+    "negative-numbers",
+    "algebraic-expressions",
+    "fractions-add"
+   ],
+   "max_questions": 3,
+   "expect": {
+    "asked_ids": [
+     "fractions-meaning",
+     "negative-numbers",
+     "fractions-add"
+    ],
+    "known": [
+     "fractions-add",
+     "equivalent-fractions",
+     "multiplication-facts",
+     "whole-numbers",
+     "fractions-meaning",
+     "division",
+     "negative-numbers",
+     "order-of-operations"
+    ],
+    "unknown": [],
+    "unsure": [
+     "linear-equations",
+     "algebraic-expressions"
+    ],
+    "asked": 3
+   }
+  },
+  {
+   "map": "french-core",
+   "notions": null,
+   "scope": [
+    "conditionnel-present",
+    "imparfait",
+    "present-indicative",
+    "verb-groups",
+    "futur-simple"
+   ],
+   "truth_known": [
+    "verb-groups",
+    "present-indicative",
+    "imparfait"
+   ],
+   "max_questions": 12,
+   "expect": {
+    "asked_ids": [
+     "present-indicative",
+     "imparfait",
+     "futur-simple"
+    ],
+    "known": [
+     "imparfait",
+     "present-indicative",
+     "verb-groups"
+    ],
+    "unknown": [
+     "conditionnel-present",
+     "futur-simple"
+    ],
+    "unsure": [],
+    "asked": 3
+   }
+  },
+  {
+   "map": null,
+   "notions": [
+    {
+     "id": "n0",
+     "title": "N0",
+     "domain": "x",
+     "prerequisites": []
+    },
+    {
+     "id": "n1",
+     "title": "N1",
+     "domain": "x",
+     "prerequisites": [
+      "n0"
+     ]
+    },
+    {
+     "id": "n2",
+     "title": "N2",
+     "domain": "x",
+     "prerequisites": [
+      "n1"
+     ]
+    },
+    {
+     "id": "n3",
+     "title": "N3",
+     "domain": "x",
+     "prerequisites": [
+      "n2"
+     ]
+    },
+    {
+     "id": "n4",
+     "title": "N4",
+     "domain": "x",
+     "prerequisites": [
+      "n3"
+     ]
+    },
+    {
+     "id": "n5",
+     "title": "N5",
+     "domain": "x",
+     "prerequisites": [
+      "n4"
+     ]
+    },
+    {
+     "id": "n6",
+     "title": "N6",
+     "domain": "x",
+     "prerequisites": [
+      "n5"
+     ]
+    },
+    {
+     "id": "n7",
+     "title": "N7",
+     "domain": "x",
+     "prerequisites": [
+      "n6"
+     ]
+    },
+    {
+     "id": "n8",
+     "title": "N8",
+     "domain": "x",
+     "prerequisites": [
+      "n7"
+     ]
+    },
+    {
+     "id": "n9",
+     "title": "N9",
+     "domain": "x",
+     "prerequisites": [
+      "n8"
+     ]
+    },
+    {
+     "id": "n10",
+     "title": "N10",
+     "domain": "x",
+     "prerequisites": [
+      "n9"
+     ]
+    },
+    {
+     "id": "n11",
+     "title": "N11",
+     "domain": "x",
+     "prerequisites": [
+      "n10"
+     ]
+    },
+    {
+     "id": "n12",
+     "title": "N12",
+     "domain": "x",
+     "prerequisites": [
+      "n11"
+     ]
+    },
+    {
+     "id": "n13",
+     "title": "N13",
+     "domain": "x",
+     "prerequisites": [
+      "n12"
+     ]
+    },
+    {
+     "id": "n14",
+     "title": "N14",
+     "domain": "x",
+     "prerequisites": [
+      "n13"
+     ]
+    },
+    {
+     "id": "n15",
+     "title": "N15",
+     "domain": "x",
+     "prerequisites": [
+      "n14"
+     ]
+    }
+   ],
+   "scope": [
+    "n0",
+    "n1",
+    "n2",
+    "n3",
+    "n4",
+    "n5",
+    "n6",
+    "n7",
+    "n8",
+    "n9",
+    "n10",
+    "n11",
+    "n12",
+    "n13",
+    "n14",
+    "n15"
+   ],
+   "truth_known": [
+    "n0",
+    "n1",
+    "n2",
+    "n3",
+    "n4",
+    "n5",
+    "n6",
+    "n7",
+    "n8",
+    "n9"
+   ],
+   "max_questions": 12,
+   "expect": {
+    "asked_ids": [
+     "n7",
+     "n11",
+     "n9",
+     "n10"
+    ],
+    "known": [
+     "n0",
+     "n1",
+     "n2",
+     "n3",
+     "n4",
+     "n5",
+     "n6",
+     "n7",
+     "n8",
+     "n9"
+    ],
+    "unknown": [
+     "n10",
+     "n11",
+     "n12",
+     "n13",
+     "n14",
+     "n15"
+    ],
+    "unsure": [],
+    "asked": 4
+   }
+  }
+ ],
+ "invalid": [
+  [
+   {
+    "id": "a",
+    "title": "A",
+    "domain": "x",
+    "prerequisites": [
+     "b"
+    ]
+   }
+  ],
+  [
+   {
+    "id": "a",
+    "title": "A",
+    "domain": "x",
+    "prerequisites": [
+     "b"
+    ]
+   },
+   {
+    "id": "b",
+    "title": "B",
+    "domain": "x",
+    "prerequisites": [
+     "a"
+    ]
+   }
+  ],
+  [
+   {
+    "id": "a",
+    "title": "A",
+    "domain": "x",
+    "prerequisites": [
+     "a"
+    ]
+   }
+  ]
+ ]
+}

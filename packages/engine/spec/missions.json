@@ -1,0 +1,2749 @@
+{
+ "sets": [
+  {
+   "missions": [
+    {
+     "id": "mixed",
+     "kind": "mixed",
+     "title": "Keep everything fresh",
+     "ku_ids": []
+    },
+    {
+     "id": "topic:spanish",
+     "kind": "topic",
+     "title": "Spanish verbs",
+     "ku_ids": [
+      "other1",
+      "other3",
+      "other5",
+      "other7",
+      "other9",
+      "other11",
+      "other13",
+      "other15",
+      "other17",
+      "other19",
+      "other21",
+      "other23",
+      "other25",
+      "other27",
+      "other29"
+     ]
+    },
+    {
+     "id": "test:fractions-test",
+     "kind": "test",
+     "title": "Maths test",
+     "goal": {
+      "id": "fractions-test",
+      "title": "Maths test",
+      "date": "2026-10-06T15:00:00.000Z"
+     },
+     "ku_ids": [
+      "add-same",
+      "add-multiple",
+      "subtract",
+      "compare"
+     ]
+    }
+   ],
+   "items": [
+    {
+     "ku": {
+      "id": "equivalent",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Equivalent fractions",
+      "importance": 3,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 1.2931,
+      "difficulty": 5.11217071,
+      "due": "2026-09-25T15:00:00.000Z",
+      "last_review": "2026-09-23T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "add-same",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Add, same denominator",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "add-multiple",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Add, multiple denominator",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-02T15:00:00.000Z",
+      "last_review": "2026-09-29T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "subtract",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Subtract fractions",
+      "importance": 2,
+      "prerequisites": [
+       "add-same"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "compare",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Compare fractions",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "other0",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other0",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other1",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other1",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other2",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other2",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other3",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other3",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other4",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other4",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other5",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other5",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other6",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other6",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other7",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other7",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other8",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other8",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other9",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other9",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other10",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other10",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other11",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other11",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other12",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other12",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other13",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other13",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other14",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other14",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other15",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other15",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other16",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other16",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other17",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other17",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other18",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other18",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other19",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other19",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other20",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other20",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other21",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other21",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other22",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other22",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other23",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other23",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other24",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other24",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other25",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other25",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other26",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other26",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other27",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other27",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other28",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other28",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other29",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other29",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "progress": [
+    {
+     "total": 0,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    },
+    {
+     "total": 15,
+     "started": 15,
+     "secure": 0,
+     "readiness": 0.8527166899999998,
+     "complete": false
+    },
+    {
+     "total": 4,
+     "started": 2,
+     "secure": 0,
+     "readiness": 0.4077094725,
+     "complete": false
+    }
+   ],
+   "expect": [
+    {
+     "mission_id": "test:fractions-test",
+     "score": 1.0922905274999999,
+     "reason": "In 4 days · 41% ready"
+    },
+    {
+     "mission_id": "mixed",
+     "score": 0.47659574468085103,
+     "reason": "32 reviews due across subjects"
+    },
+    {
+     "mission_id": "topic:spanish",
+     "score": 0.3,
+     "reason": "Your choice · 0 of 15 secure"
+    }
+   ]
+  },
+  {
+   "missions": [
+    {
+     "id": "mixed",
+     "kind": "mixed",
+     "title": "Keep everything fresh",
+     "ku_ids": []
+    },
+    {
+     "id": "pushed:passe-simple",
+     "kind": "pushed",
+     "title": "Passé simple",
+     "pushed_by": "your parents",
+     "ku_ids": [
+      "ps/1",
+      "ps/2",
+      "ps/3"
+     ]
+    }
+   ],
+   "items": [
+    {
+     "ku": {
+      "id": "ps/1",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/1",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "ps/2",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/2",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "ps/3",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/3",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "progress": [
+    {
+     "total": 0,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    },
+    {
+     "total": 3,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    }
+   ],
+   "expect": [
+    {
+     "mission_id": "pushed:passe-simple",
+     "score": 0.6,
+     "reason": "Pushed by your parents · 0 of 3 secure"
+    },
+    {
+     "mission_id": "mixed",
+     "score": 0,
+     "reason": "0 reviews due across subjects"
+    }
+   ]
+  },
+  {
+   "missions": [
+    {
+     "id": "mixed",
+     "kind": "mixed",
+     "title": "Keep everything fresh",
+     "ku_ids": []
+    },
+    {
+     "id": "topic:spanish",
+     "kind": "topic",
+     "title": "Spanish verbs",
+     "ku_ids": [
+      "other1",
+      "other3",
+      "other5",
+      "other7",
+      "other9",
+      "other11",
+      "other13",
+      "other15",
+      "other17",
+      "other19",
+      "other21",
+      "other23",
+      "other25",
+      "other27",
+      "other29"
+     ]
+    },
+    {
+     "id": "test:fractions-test",
+     "kind": "test",
+     "title": "Maths test",
+     "goal": {
+      "id": "fractions-test",
+      "title": "Maths test",
+      "date": "2026-10-06T15:00:00.000Z"
+     },
+     "ku_ids": [
+      "add-same",
+      "add-multiple",
+      "subtract",
+      "compare"
+     ]
+    },
+    {
+     "id": "pushed:passe-simple",
+     "kind": "pushed",
+     "title": "Passé simple",
+     "pushed_by": "your parents",
+     "ku_ids": [
+      "ps/1",
+      "ps/2",
+      "ps/3"
+     ]
+    },
+    {
+     "id": "test:far",
+     "kind": "test",
+     "title": "Far test",
+     "goal": {
+      "id": "far",
+      "title": "Far test",
+      "date": "2026-11-01T15:00:00.000Z"
+     },
+     "ku_ids": []
+    },
+    {
+     "id": "by-heart:corbeau",
+     "kind": "by-heart",
+     "title": "Le Corbeau",
+     "ku_ids": [
+      "add-same",
+      "add-multiple"
+     ]
+    }
+   ],
+   "items": [
+    {
+     "ku": {
+      "id": "equivalent",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Equivalent fractions",
+      "importance": 3,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 1.2931,
+      "difficulty": 5.11217071,
+      "due": "2026-09-25T15:00:00.000Z",
+      "last_review": "2026-09-23T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "add-same",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Add, same denominator",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "add-multiple",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Add, multiple denominator",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-02T15:00:00.000Z",
+      "last_review": "2026-09-29T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "subtract",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Subtract fractions",
+      "importance": 2,
+      "prerequisites": [
+       "add-same"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "compare",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Compare fractions",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "other0",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other0",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other1",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other1",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other2",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other2",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other3",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other3",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other4",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other4",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other5",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other5",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other6",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other6",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other7",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other7",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other8",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other8",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other9",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other9",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other10",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other10",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other11",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other11",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other12",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other12",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other13",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other13",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other14",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other14",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other15",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other15",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other16",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other16",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other17",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other17",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other18",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other18",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other19",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other19",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other20",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other20",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other21",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other21",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other22",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other22",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other23",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other23",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other24",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other24",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other25",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other25",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other26",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other26",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other27",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other27",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other28",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other28",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other29",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other29",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "ps/1",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/1",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "ps/2",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/2",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "ps/3",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/3",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "progress": [
+    {
+     "total": 0,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    },
+    {
+     "total": 15,
+     "started": 15,
+     "secure": 0,
+     "readiness": 0.8527166899999998,
+     "complete": false
+    },
+    {
+     "total": 4,
+     "started": 2,
+     "secure": 0,
+     "readiness": 0.4077094725,
+     "complete": false
+    },
+    {
+     "total": 3,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    },
+    {
+     "total": 0,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    },
+    {
+     "total": 2,
+     "started": 2,
+     "secure": 0,
+     "readiness": 0.89522061,
+     "complete": false
+    }
+   ],
+   "expect": [
+    {
+     "mission_id": "test:fractions-test",
+     "score": 1.0922905274999999,
+     "reason": "In 4 days · 41% ready"
+    },
+    {
+     "mission_id": "pushed:passe-simple",
+     "score": 0.6,
+     "reason": "Pushed by your parents · 0 of 3 secure"
+    },
+    {
+     "mission_id": "by-heart:corbeau",
+     "score": 0.5,
+     "reason": "To learn by heart · 0 of 2 secure"
+    },
+    {
+     "mission_id": "mixed",
+     "score": 0.47659574468085103,
+     "reason": "32 reviews due across subjects"
+    },
+    {
+     "mission_id": "test:far",
+     "score": 0.43333333333333335,
+     "reason": "In 30 days · 0% ready"
+    },
+    {
+     "mission_id": "topic:spanish",
+     "score": 0.3,
+     "reason": "Your choice · 0 of 15 secure"
+    }
+   ]
+  },
+  {
+   "missions": [
+    {
+     "id": "mixed",
+     "kind": "mixed",
+     "title": "Keep everything fresh",
+     "ku_ids": []
+    },
+    {
+     "id": "topic:spanish",
+     "kind": "topic",
+     "title": "Spanish verbs",
+     "ku_ids": [
+      "other1",
+      "other3",
+      "other5",
+      "other7",
+      "other9",
+      "other11",
+      "other13",
+      "other15",
+      "other17",
+      "other19",
+      "other21",
+      "other23",
+      "other25",
+      "other27",
+      "other29"
+     ]
+    },
+    {
+     "id": "test:fractions-test",
+     "kind": "test",
+     "title": "Maths test",
+     "goal": {
+      "id": "fractions-test",
+      "title": "Maths test",
+      "date": "2026-10-06T15:00:00.000Z"
+     },
+     "ku_ids": [
+      "add-same",
+      "add-multiple",
+      "subtract",
+      "compare"
+     ]
+    },
+    {
+     "id": "pushed:passe-simple",
+     "kind": "pushed",
+     "title": "Passé simple",
+     "pushed_by": "your parents",
+     "ku_ids": [
+      "ps/1",
+      "ps/2",
+      "ps/3"
+     ]
+    }
+   ],
+   "items": [
+    {
+     "ku": {
+      "id": "equivalent",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Equivalent fractions",
+      "importance": 3,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 1.2931,
+      "difficulty": 5.11217071,
+      "due": "2026-09-25T15:00:00.000Z",
+      "last_review": "2026-09-23T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "add-same",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Add, same denominator",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-03T15:00:00.000Z",
+      "last_review": "2026-09-30T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "add-multiple",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Add, multiple denominator",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "due": "2026-10-02T15:00:00.000Z",
+      "last_review": "2026-09-29T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "subtract",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Subtract fractions",
+      "importance": 2,
+      "prerequisites": [
+       "add-same"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "compare",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "Compare fractions",
+      "importance": 2,
+      "prerequisites": [
+       "equivalent"
+      ],
+      "goal_ids": [
+       "fractions-test"
+      ],
+      "cumulative": true
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "other0",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other0",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other1",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other1",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other2",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other2",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other3",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other3",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other4",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other4",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other5",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other5",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other6",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other6",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other7",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other7",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other8",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other8",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other9",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other9",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other10",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other10",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other11",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other11",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other12",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other12",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other13",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other13",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other14",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other14",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other15",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other15",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other16",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other16",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other17",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other17",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other18",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other18",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other19",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other19",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other20",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other20",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other21",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other21",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other22",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other22",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other23",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other23",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other24",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other24",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other25",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other25",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other26",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other26",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other27",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other27",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other28",
+      "subject": "History",
+      "kind": "fact",
+      "title": "other28",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "other29",
+      "subject": "Spanish",
+      "kind": "fact",
+      "title": "other29",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 3.24941173,
+      "difficulty": 6.74045952,
+      "due": "2026-09-29T15:00:00.000Z",
+      "last_review": "2026-09-26T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "ps/1",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/1",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "ps/2",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/2",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    },
+    {
+     "ku": {
+      "id": "ps/3",
+      "subject": "French",
+      "kind": "fact",
+      "title": "ps/3",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true,
+      "notion_id": "passe-simple"
+     },
+     "card": null
+    }
+   ],
+   "now": "2026-10-05T03:00:00.000Z",
+   "progress": [
+    {
+     "total": 0,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    },
+    {
+     "total": 15,
+     "started": 15,
+     "secure": 0,
+     "readiness": 0.82202079,
+     "complete": false
+    },
+    {
+     "total": 4,
+     "started": 2,
+     "secure": 0,
+     "readiness": 0.4077094725,
+     "complete": false
+    },
+    {
+     "total": 3,
+     "started": 0,
+     "secure": 0,
+     "readiness": 0,
+     "complete": false
+    }
+   ],
+   "expect": [
+    {
+     "mission_id": "test:fractions-test",
+     "score": 1.0922905274999999,
+     "reason": "In 2 days · 41% ready"
+    },
+    {
+     "mission_id": "pushed:passe-simple",
+     "score": 0.6,
+     "reason": "Pushed by your parents · 0 of 3 secure"
+    },
+    {
+     "mission_id": "mixed",
+     "score": 0.48124999999999996,
+     "reason": "33 reviews due across subjects"
+    },
+    {
+     "mission_id": "topic:spanish",
+     "score": 0.3,
+     "reason": "Your choice · 0 of 15 secure"
+    }
+   ]
+  }
+ ],
+ "notion_status": [
+  {
+   "units": [
+    {
+     "ku": {
+      "id": "x",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "x",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": null
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": "not-started"
+  },
+  {
+   "units": [
+    {
+     "ku": {
+      "id": "a",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "a",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 123.56950478,
+      "difficulty": 2.09745544,
+      "due": "2027-02-06T15:00:00.000Z",
+      "last_review": "2026-10-01T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": "solid"
+  },
+  {
+   "units": [
+    {
+     "ku": {
+      "id": "a",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "a",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 123.56950478,
+      "difficulty": 2.09745544,
+      "due": "2027-02-06T15:00:00.000Z",
+      "last_review": "2026-10-01T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "b",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "b",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 1.2931,
+      "difficulty": 5.11217071,
+      "due": "2026-09-22T15:00:00.000Z",
+      "last_review": "2026-09-20T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": "fragile"
+  },
+  {
+   "units": [
+    {
+     "ku": {
+      "id": "a",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "a",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 123.56950478,
+      "difficulty": 2.09745544,
+      "due": "2027-02-06T15:00:00.000Z",
+      "last_review": "2026-10-01T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "c",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "c",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 10.96433194,
+      "difficulty": 2.11121424,
+      "due": "2026-10-14T15:00:00.000Z",
+      "last_review": "2026-10-02T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": "learning"
+  },
+  {
+   "units": [
+    {
+     "ku": {
+      "id": "a",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "a",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 123.56950478,
+      "difficulty": 2.09745544,
+      "due": "2027-02-06T15:00:00.000Z",
+      "last_review": "2026-10-01T15:00:00.000Z"
+     }
+    },
+    {
+     "ku": {
+      "id": "y",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "y",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": null
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": "learning"
+  },
+  {
+   "units": [
+    {
+     "ku": {
+      "id": "c",
+      "subject": "Maths",
+      "kind": "fact",
+      "title": "c",
+      "importance": 2,
+      "prerequisites": [],
+      "goal_ids": [],
+      "cumulative": true
+     },
+     "card": {
+      "state": 2,
+      "stability": 10.96433194,
+      "difficulty": 2.11121424,
+      "due": "2026-10-14T15:00:00.000Z",
+      "last_review": "2026-10-02T15:00:00.000Z"
+     }
+    }
+   ],
+   "now": "2026-10-02T15:00:00.000Z",
+   "expect": "learning"
+  }
+ ]
+}

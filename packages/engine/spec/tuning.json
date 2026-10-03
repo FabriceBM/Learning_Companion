@@ -1,0 +1,553 @@
+{
+ "defaults": {
+  "retention.base": 0.9,
+  "retention.foundational": 0.92,
+  "retention.nice_to_know": 0.85,
+  "retention.test_window_days": 7,
+  "retention.test": 0.95,
+  "retention.maintenance": 0.8,
+  "workload.overload_threshold": 1.1,
+  "workload.drop_per_overload": 0.05,
+  "workload.max_drop": 0.06,
+  "ladder.recall_from_days": 3,
+  "ladder.apply_from_days": 10,
+  "ladder.explain_from_days": 30,
+  "planner.weight_nice_to_know": 0.7,
+  "planner.weight_expected": 1,
+  "planner.weight_foundational": 1.4,
+  "planner.test_boost": 1,
+  "planner.risk_floor": 0.05,
+  "planner.prerequisite_recall": 0.8,
+  "planner.pause_new_below": 0.7,
+  "planner.halve_new_below": 0.8,
+  "planner.new_unit_cost": 2,
+  "session.ease_off_after_misses": 3,
+  "session.stop_after_misses": 5,
+  "mission.focus_share": 1,
+  "mission.secure_stability_days": 7,
+  "mission.repair_below_recall": 0.8,
+  "reminders.self_start_share": 0.8,
+  "reminders.lookback_days": 14,
+  "reminders.min_active_days": 7,
+  "reminders.backoff_after_ignored": 3,
+  "reminders.stop_after_ignored": 6,
+  "reminders.follow_window_minutes": 30,
+  "memory.maximum_interval_days": 365,
+  "memory.min_reviews_to_fit": 400,
+  "memory.refit_every_days": 7,
+  "by_heart.key_words_from_days": 2,
+  "by_heart.recite_from_days": 5,
+  "by_heart.pass_ratio": 0.95,
+  "by_heart.near_miss_ratio": 0.85,
+  "concentration.prior_weight": 5,
+  "concentration.attention_drop_points": 0.15,
+  "concentration.latency_rise": 0.4,
+  "concentration.chunk_success_target": 0.7,
+  "concentration.group_above_switch_cost": 0.15
+ },
+ "spec": [
+  {
+   "path": "retention.base",
+   "min": 0.75,
+   "max": 0.97,
+   "step": 0.01
+  },
+  {
+   "path": "retention.foundational",
+   "min": 0.75,
+   "max": 0.97,
+   "step": 0.01
+  },
+  {
+   "path": "retention.nice_to_know",
+   "min": 0.7,
+   "max": 0.95,
+   "step": 0.01
+  },
+  {
+   "path": "retention.test_window_days",
+   "min": 1,
+   "max": 21,
+   "step": 1
+  },
+  {
+   "path": "retention.test",
+   "min": 0.85,
+   "max": 0.98,
+   "step": 0.01
+  },
+  {
+   "path": "retention.maintenance",
+   "min": 0.6,
+   "max": 0.9,
+   "step": 0.01
+  },
+  {
+   "path": "workload.overload_threshold",
+   "min": 1,
+   "max": 2,
+   "step": 0.05
+  },
+  {
+   "path": "workload.drop_per_overload",
+   "min": 0,
+   "max": 0.2,
+   "step": 0.01
+  },
+  {
+   "path": "workload.max_drop",
+   "min": 0,
+   "max": 0.15,
+   "step": 0.01
+  },
+  {
+   "path": "ladder.recall_from_days",
+   "min": 1,
+   "max": 14,
+   "step": 1
+  },
+  {
+   "path": "ladder.apply_from_days",
+   "min": 3,
+   "max": 30,
+   "step": 1
+  },
+  {
+   "path": "ladder.explain_from_days",
+   "min": 7,
+   "max": 90,
+   "step": 1
+  },
+  {
+   "path": "planner.weight_nice_to_know",
+   "min": 0.1,
+   "max": 2,
+   "step": 0.1
+  },
+  {
+   "path": "planner.weight_expected",
+   "min": 0.1,
+   "max": 2,
+   "step": 0.1
+  },
+  {
+   "path": "planner.weight_foundational",
+   "min": 0.1,
+   "max": 3,
+   "step": 0.1
+  },
+  {
+   "path": "planner.test_boost",
+   "min": 0,
+   "max": 3,
+   "step": 0.1
+  },
+  {
+   "path": "planner.risk_floor",
+   "min": 0,
+   "max": 0.2,
+   "step": 0.01
+  },
+  {
+   "path": "planner.prerequisite_recall",
+   "min": 0.5,
+   "max": 0.95,
+   "step": 0.05
+  },
+  {
+   "path": "planner.pause_new_below",
+   "min": 0.4,
+   "max": 0.9,
+   "step": 0.05
+  },
+  {
+   "path": "planner.halve_new_below",
+   "min": 0.5,
+   "max": 0.95,
+   "step": 0.05
+  },
+  {
+   "path": "planner.new_unit_cost",
+   "min": 1,
+   "max": 4,
+   "step": 0.5
+  },
+  {
+   "path": "session.ease_off_after_misses",
+   "min": 2,
+   "max": 6,
+   "step": 1
+  },
+  {
+   "path": "session.stop_after_misses",
+   "min": 3,
+   "max": 10,
+   "step": 1
+  },
+  {
+   "path": "mission.focus_share",
+   "min": 0.5,
+   "max": 1,
+   "step": 0.05
+  },
+  {
+   "path": "mission.secure_stability_days",
+   "min": 3,
+   "max": 30,
+   "step": 1
+  },
+  {
+   "path": "mission.repair_below_recall",
+   "min": 0.5,
+   "max": 0.95,
+   "step": 0.05
+  },
+  {
+   "path": "reminders.self_start_share",
+   "min": 0.5,
+   "max": 1,
+   "step": 0.05
+  },
+  {
+   "path": "reminders.lookback_days",
+   "min": 7,
+   "max": 28,
+   "step": 1
+  },
+  {
+   "path": "reminders.min_active_days",
+   "min": 3,
+   "max": 14,
+   "step": 1
+  },
+  {
+   "path": "reminders.backoff_after_ignored",
+   "min": 2,
+   "max": 10,
+   "step": 1
+  },
+  {
+   "path": "reminders.stop_after_ignored",
+   "min": 3,
+   "max": 15,
+   "step": 1
+  },
+  {
+   "path": "reminders.follow_window_minutes",
+   "min": 10,
+   "max": 120,
+   "step": 5
+  },
+  {
+   "path": "memory.maximum_interval_days",
+   "min": 30,
+   "max": 3650,
+   "step": 5
+  },
+  {
+   "path": "memory.min_reviews_to_fit",
+   "min": 100,
+   "max": 2000,
+   "step": 50
+  },
+  {
+   "path": "memory.refit_every_days",
+   "min": 1,
+   "max": 30,
+   "step": 1
+  },
+  {
+   "path": "by_heart.key_words_from_days",
+   "min": 0.5,
+   "max": 7,
+   "step": 0.5
+  },
+  {
+   "path": "by_heart.recite_from_days",
+   "min": 1,
+   "max": 21,
+   "step": 1
+  },
+  {
+   "path": "by_heart.pass_ratio",
+   "min": 0.8,
+   "max": 1,
+   "step": 0.01
+  },
+  {
+   "path": "by_heart.near_miss_ratio",
+   "min": 0.6,
+   "max": 0.98,
+   "step": 0.01
+  },
+  {
+   "path": "concentration.prior_weight",
+   "min": 1,
+   "max": 30,
+   "step": 1
+  },
+  {
+   "path": "concentration.attention_drop_points",
+   "min": 0.05,
+   "max": 0.4,
+   "step": 0.05
+  },
+  {
+   "path": "concentration.latency_rise",
+   "min": 0.1,
+   "max": 1,
+   "step": 0.05
+  },
+  {
+   "path": "concentration.chunk_success_target",
+   "min": 0.5,
+   "max": 0.95,
+   "step": 0.05
+  },
+  {
+   "path": "concentration.group_above_switch_cost",
+   "min": 0,
+   "max": 0.5,
+   "step": 0.01
+  }
+ ],
+ "with_tuning": [
+  {
+   "overrides": {
+    "retention": {
+     "base": 0.99
+    },
+    "session": {
+     "stop_after_misses": 4
+    }
+   },
+   "expect": {
+    "retention.base": 0.97,
+    "retention.foundational": 0.92,
+    "retention.nice_to_know": 0.85,
+    "retention.test_window_days": 7,
+    "retention.test": 0.95,
+    "retention.maintenance": 0.8,
+    "workload.overload_threshold": 1.1,
+    "workload.drop_per_overload": 0.05,
+    "workload.max_drop": 0.06,
+    "ladder.recall_from_days": 3,
+    "ladder.apply_from_days": 10,
+    "ladder.explain_from_days": 30,
+    "planner.weight_nice_to_know": 0.7,
+    "planner.weight_expected": 1,
+    "planner.weight_foundational": 1.4,
+    "planner.test_boost": 1,
+    "planner.risk_floor": 0.05,
+    "planner.prerequisite_recall": 0.8,
+    "planner.pause_new_below": 0.7,
+    "planner.halve_new_below": 0.8,
+    "planner.new_unit_cost": 2,
+    "session.ease_off_after_misses": 3,
+    "session.stop_after_misses": 4,
+    "mission.focus_share": 1,
+    "mission.secure_stability_days": 7,
+    "mission.repair_below_recall": 0.8,
+    "reminders.self_start_share": 0.8,
+    "reminders.lookback_days": 14,
+    "reminders.min_active_days": 7,
+    "reminders.backoff_after_ignored": 3,
+    "reminders.stop_after_ignored": 6,
+    "reminders.follow_window_minutes": 30,
+    "memory.maximum_interval_days": 365,
+    "memory.min_reviews_to_fit": 400,
+    "memory.refit_every_days": 7,
+    "by_heart.key_words_from_days": 2,
+    "by_heart.recite_from_days": 5,
+    "by_heart.pass_ratio": 0.95,
+    "by_heart.near_miss_ratio": 0.85,
+    "concentration.prior_weight": 5,
+    "concentration.attention_drop_points": 0.15,
+    "concentration.latency_rise": 0.4,
+    "concentration.chunk_success_target": 0.7,
+    "concentration.group_above_switch_cost": 0.15
+   }
+  },
+  {
+   "overrides": {
+    "retention": {
+     "base": 0.5,
+     "test": 0.99,
+     "test_window_days": 40
+    }
+   },
+   "expect": {
+    "retention.base": 0.75,
+    "retention.foundational": 0.92,
+    "retention.nice_to_know": 0.85,
+    "retention.test_window_days": 21,
+    "retention.test": 0.98,
+    "retention.maintenance": 0.8,
+    "workload.overload_threshold": 1.1,
+    "workload.drop_per_overload": 0.05,
+    "workload.max_drop": 0.06,
+    "ladder.recall_from_days": 3,
+    "ladder.apply_from_days": 10,
+    "ladder.explain_from_days": 30,
+    "planner.weight_nice_to_know": 0.7,
+    "planner.weight_expected": 1,
+    "planner.weight_foundational": 1.4,
+    "planner.test_boost": 1,
+    "planner.risk_floor": 0.05,
+    "planner.prerequisite_recall": 0.8,
+    "planner.pause_new_below": 0.7,
+    "planner.halve_new_below": 0.8,
+    "planner.new_unit_cost": 2,
+    "session.ease_off_after_misses": 3,
+    "session.stop_after_misses": 5,
+    "mission.focus_share": 1,
+    "mission.secure_stability_days": 7,
+    "mission.repair_below_recall": 0.8,
+    "reminders.self_start_share": 0.8,
+    "reminders.lookback_days": 14,
+    "reminders.min_active_days": 7,
+    "reminders.backoff_after_ignored": 3,
+    "reminders.stop_after_ignored": 6,
+    "reminders.follow_window_minutes": 30,
+    "memory.maximum_interval_days": 365,
+    "memory.min_reviews_to_fit": 400,
+    "memory.refit_every_days": 7,
+    "by_heart.key_words_from_days": 2,
+    "by_heart.recite_from_days": 5,
+    "by_heart.pass_ratio": 0.95,
+    "by_heart.near_miss_ratio": 0.85,
+    "concentration.prior_weight": 5,
+    "concentration.attention_drop_points": 0.15,
+    "concentration.latency_rise": 0.4,
+    "concentration.chunk_success_target": 0.7,
+    "concentration.group_above_switch_cost": 0.15
+   }
+  },
+  {
+   "overrides": {
+    "mission": {
+     "focus_share": 0.2
+    },
+    "by_heart": {
+     "pass_ratio": 1.5,
+     "key_words_from_days": 3
+    }
+   },
+   "expect": {
+    "retention.base": 0.9,
+    "retention.foundational": 0.92,
+    "retention.nice_to_know": 0.85,
+    "retention.test_window_days": 7,
+    "retention.test": 0.95,
+    "retention.maintenance": 0.8,
+    "workload.overload_threshold": 1.1,
+    "workload.drop_per_overload": 0.05,
+    "workload.max_drop": 0.06,
+    "ladder.recall_from_days": 3,
+    "ladder.apply_from_days": 10,
+    "ladder.explain_from_days": 30,
+    "planner.weight_nice_to_know": 0.7,
+    "planner.weight_expected": 1,
+    "planner.weight_foundational": 1.4,
+    "planner.test_boost": 1,
+    "planner.risk_floor": 0.05,
+    "planner.prerequisite_recall": 0.8,
+    "planner.pause_new_below": 0.7,
+    "planner.halve_new_below": 0.8,
+    "planner.new_unit_cost": 2,
+    "session.ease_off_after_misses": 3,
+    "session.stop_after_misses": 5,
+    "mission.focus_share": 0.5,
+    "mission.secure_stability_days": 7,
+    "mission.repair_below_recall": 0.8,
+    "reminders.self_start_share": 0.8,
+    "reminders.lookback_days": 14,
+    "reminders.min_active_days": 7,
+    "reminders.backoff_after_ignored": 3,
+    "reminders.stop_after_ignored": 6,
+    "reminders.follow_window_minutes": 30,
+    "memory.maximum_interval_days": 365,
+    "memory.min_reviews_to_fit": 400,
+    "memory.refit_every_days": 7,
+    "by_heart.key_words_from_days": 3,
+    "by_heart.recite_from_days": 5,
+    "by_heart.pass_ratio": 1,
+    "by_heart.near_miss_ratio": 0.85,
+    "concentration.prior_weight": 5,
+    "concentration.attention_drop_points": 0.15,
+    "concentration.latency_rise": 0.4,
+    "concentration.chunk_success_target": 0.7,
+    "concentration.group_above_switch_cost": 0.15
+   }
+  },
+  {
+   "overrides": {
+    "concentration": {
+     "prior_weight": 0,
+     "group_above_switch_cost": 0.3
+    },
+    "memory": {
+     "maximum_interval_days": 10000
+    }
+   },
+   "expect": {
+    "retention.base": 0.9,
+    "retention.foundational": 0.92,
+    "retention.nice_to_know": 0.85,
+    "retention.test_window_days": 7,
+    "retention.test": 0.95,
+    "retention.maintenance": 0.8,
+    "workload.overload_threshold": 1.1,
+    "workload.drop_per_overload": 0.05,
+    "workload.max_drop": 0.06,
+    "ladder.recall_from_days": 3,
+    "ladder.apply_from_days": 10,
+    "ladder.explain_from_days": 30,
+    "planner.weight_nice_to_know": 0.7,
+    "planner.weight_expected": 1,
+    "planner.weight_foundational": 1.4,
+    "planner.test_boost": 1,
+    "planner.risk_floor": 0.05,
+    "planner.prerequisite_recall": 0.8,
+    "planner.pause_new_below": 0.7,
+    "planner.halve_new_below": 0.8,
+    "planner.new_unit_cost": 2,
+    "session.ease_off_after_misses": 3,
+    "session.stop_after_misses": 5,
+    "mission.focus_share": 1,
+    "mission.secure_stability_days": 7,
+    "mission.repair_below_recall": 0.8,
+    "reminders.self_start_share": 0.8,
+    "reminders.lookback_days": 14,
+    "reminders.min_active_days": 7,
+    "reminders.backoff_after_ignored": 3,
+    "reminders.stop_after_ignored": 6,
+    "reminders.follow_window_minutes": 30,
+    "memory.maximum_interval_days": 3650,
+    "memory.min_reviews_to_fit": 400,
+    "memory.refit_every_days": 7,
+    "by_heart.key_words_from_days": 2,
+    "by_heart.recite_from_days": 5,
+    "by_heart.pass_ratio": 0.95,
+    "by_heart.near_miss_ratio": 0.85,
+    "concentration.prior_weight": 1,
+    "concentration.attention_drop_points": 0.15,
+    "concentration.latency_rise": 0.4,
+    "concentration.chunk_success_target": 0.7,
+    "concentration.group_above_switch_cost": 0.3
+   }
+  }
+ ],
+ "unknown": [
+  {
+   "retention": {
+    "nope": 1
+   }
+  },
+  {
+   "nothing": {
+    "base": 0.9
+   }
+  }
+ ]
+}

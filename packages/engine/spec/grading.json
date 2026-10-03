@@ -1,0 +1,671 @@
+{
+ "grade_attempt": [
+  {
+   "attempt": {
+    "correct": false,
+    "latency_ms": 5000,
+    "hints_used": 0,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 1
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 5000,
+    "hints_used": 1,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 2
+  },
+  {
+   "attempt": {
+    "correct": false,
+    "latency_ms": 5000,
+    "hints_used": 0,
+    "level": "recall",
+    "near_miss": true
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 2
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 12000,
+    "hints_used": 0,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 2
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 2000,
+    "hints_used": 0,
+    "level": "recall",
+    "confidence": "sure"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 4
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 2000,
+    "hints_used": 0,
+    "level": "recognize",
+    "confidence": "sure"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 3
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 2000,
+    "hints_used": 0,
+    "level": "recall",
+    "confidence": "unsure"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 2
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 2000,
+    "hints_used": 0,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 3
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 5000,
+    "hints_used": 0,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 3
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 9000,
+    "hints_used": 0,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 3
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 9001,
+    "hints_used": 0,
+    "level": "recall"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 2
+  },
+  {
+   "attempt": {
+    "correct": true,
+    "latency_ms": 2999,
+    "hints_used": 0,
+    "level": "explain",
+    "confidence": "sure"
+   },
+   "latency_ms": {
+    "p25": 3000,
+    "p75": 9000
+   },
+   "expect": 4
+  }
+ ],
+ "probe_level_for": [
+  {
+   "kind": "term",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "term",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "term",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "term",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "term",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "term",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "term",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "term",
+   "stability": 30,
+   "expect": "apply"
+  },
+  {
+   "kind": "term",
+   "stability": 120,
+   "expect": "apply"
+  },
+  {
+   "kind": "fact",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "fact",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "fact",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "fact",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "fact",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "fact",
+   "stability": 10,
+   "expect": "recall"
+  },
+  {
+   "kind": "fact",
+   "stability": 29,
+   "expect": "recall"
+  },
+  {
+   "kind": "fact",
+   "stability": 30,
+   "expect": "recall"
+  },
+  {
+   "kind": "fact",
+   "stability": 120,
+   "expect": "recall"
+  },
+  {
+   "kind": "rule",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "rule",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "rule",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "rule",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "rule",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "rule",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "rule",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "rule",
+   "stability": 30,
+   "expect": "apply"
+  },
+  {
+   "kind": "rule",
+   "stability": 120,
+   "expect": "apply"
+  },
+  {
+   "kind": "procedure",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "procedure",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "procedure",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "procedure",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "procedure",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "procedure",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "procedure",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "procedure",
+   "stability": 30,
+   "expect": "apply"
+  },
+  {
+   "kind": "procedure",
+   "stability": 120,
+   "expect": "apply"
+  },
+  {
+   "kind": "concept",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "concept",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "concept",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "concept",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "concept",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "concept",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "concept",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "concept",
+   "stability": 30,
+   "expect": "explain"
+  },
+  {
+   "kind": "concept",
+   "stability": 120,
+   "expect": "explain"
+  },
+  {
+   "kind": "formula",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "formula",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "formula",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "formula",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "formula",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "formula",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "formula",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "formula",
+   "stability": 30,
+   "expect": "apply"
+  },
+  {
+   "kind": "formula",
+   "stability": 120,
+   "expect": "apply"
+  },
+  {
+   "kind": "verbatim",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 30,
+   "expect": "apply"
+  },
+  {
+   "kind": "verbatim",
+   "stability": 120,
+   "expect": "apply"
+  },
+  {
+   "kind": "label",
+   "stability": null,
+   "expect": "recognize"
+  },
+  {
+   "kind": "label",
+   "stability": 0,
+   "expect": "recognize"
+  },
+  {
+   "kind": "label",
+   "stability": 2.9,
+   "expect": "recognize"
+  },
+  {
+   "kind": "label",
+   "stability": 3,
+   "expect": "recall"
+  },
+  {
+   "kind": "label",
+   "stability": 9.99,
+   "expect": "recall"
+  },
+  {
+   "kind": "label",
+   "stability": 10,
+   "expect": "apply"
+  },
+  {
+   "kind": "label",
+   "stability": 29,
+   "expect": "apply"
+  },
+  {
+   "kind": "label",
+   "stability": 30,
+   "expect": "apply"
+  },
+  {
+   "kind": "label",
+   "stability": 120,
+   "expect": "apply"
+  }
+ ],
+ "pick_probe": [
+  {
+   "probes": [
+    {
+     "id": "chanter-ils",
+     "level": "apply"
+    },
+    {
+     "id": "finir-nous",
+     "level": "apply"
+    },
+    {
+     "id": "etre-il",
+     "level": "apply"
+    },
+    {
+     "id": "ending-er",
+     "level": "recognize"
+    },
+    {
+     "id": "why-er",
+     "level": "explain"
+    }
+   ],
+   "level": "apply",
+   "last_asked_at": {
+    "chanter-ils": 3,
+    "finir-nous": 1
+   },
+   "expect": "etre-il"
+  },
+  {
+   "probes": [
+    {
+     "id": "chanter-ils",
+     "level": "apply"
+    },
+    {
+     "id": "finir-nous",
+     "level": "apply"
+    },
+    {
+     "id": "etre-il",
+     "level": "apply"
+    },
+    {
+     "id": "ending-er",
+     "level": "recognize"
+    },
+    {
+     "id": "why-er",
+     "level": "explain"
+    }
+   ],
+   "level": "apply",
+   "last_asked_at": {
+    "chanter-ils": 3,
+    "finir-nous": 1,
+    "etre-il": 5
+   },
+   "expect": "finir-nous"
+  },
+  {
+   "probes": [
+    {
+     "id": "chanter-ils",
+     "level": "apply"
+    },
+    {
+     "id": "finir-nous",
+     "level": "apply"
+    },
+    {
+     "id": "etre-il",
+     "level": "apply"
+    },
+    {
+     "id": "ending-er",
+     "level": "recognize"
+    },
+    {
+     "id": "why-er",
+     "level": "explain"
+    }
+   ],
+   "level": "recall",
+   "last_asked_at": {},
+   "expect": "ending-er"
+  },
+  {
+   "probes": [
+    {
+     "id": "chanter-ils",
+     "level": "apply"
+    },
+    {
+     "id": "finir-nous",
+     "level": "apply"
+    },
+    {
+     "id": "etre-il",
+     "level": "apply"
+    },
+    {
+     "id": "ending-er",
+     "level": "recognize"
+    },
+    {
+     "id": "why-er",
+     "level": "explain"
+    }
+   ],
+   "level": "explain",
+   "last_asked_at": {},
+   "expect": "why-er"
+  },
+  {
+   "probes": [
+    {
+     "id": "chanter-ils",
+     "level": "apply"
+    },
+    {
+     "id": "finir-nous",
+     "level": "apply"
+    },
+    {
+     "id": "etre-il",
+     "level": "apply"
+    },
+    {
+     "id": "ending-er",
+     "level": "recognize"
+    },
+    {
+     "id": "why-er",
+     "level": "explain"
+    }
+   ],
+   "level": "apply",
+   "last_asked_at": {},
+   "expect": "chanter-ils"
+  }
+ ]
+}

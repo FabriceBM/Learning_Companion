@@ -1,0 +1,47 @@
+[project]
+name = "learning-companion"
+version = "0.2.0"
+description = "Family learning companion: adaptive spaced retrieval without the addiction loop."
+requires-python = ">=3.12"
+dependencies = [
+    "lc-engine[fit]",
+    "lc-ingest",
+    "lc-server",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.27",
+    "pytest>=8.3",
+    "ruff>=0.6",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["packages/engine", "packages/ingest", "packages/server"]
+
+[tool.uv.sources]
+lc-engine = { workspace = true }
+lc-ingest = { workspace = true }
+lc-server = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["packages", "app/tests"]
+addopts = "--import-mode=importlib"
+pythonpath = ["packages/engine/tests", "app/src"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["lc_engine", "lc_ingest", "lc_server", "engine_helpers", "companion"]
